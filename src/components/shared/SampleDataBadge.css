@@ -1,0 +1,15 @@
+.sample-data-badge {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 8px;
+  border: 1px solid rgba(38, 70, 166, 0.35);
+  border-radius: 10px;
+  background: #edf2f9;
+  color: #2646A6;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  vertical-align: middle;
+  white-space: nowrap;
+}

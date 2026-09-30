@@ -1,0 +1,84 @@
+.App {
+  text-align: center;
+}    
+.video{
+   max-height: 60%; 
+   margin-top:100px;
+   margin-left:40px;
+   border-radius:15px;
+}
+/* The virtual forest link on the Sustain page. These were inline styles on a
+   <button> that drove window.location; the element is now an anchor, so the
+   base styling lives here alongside the hover and breakpoint rules that were
+   already in this file. */
+.playbtn{
+  display: inline-block;
+  margin-left: 100px;
+  padding: 10px 22px;
+  border-radius: 15px;
+  background: #493971;
+  color: #fff;
+  font-size: 0.95rem;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.playbtn:hover{
+  background-color: #7e57c2 !important;
+}
+
+.playbtn:focus-visible{
+  outline: 3px solid #7e57c2;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .playbtn{
+    transition: none;
+  }
+}
+
+@media(max-width: 1200px){
+  .hstyle{
+    font-size: 1.5rem;
+  }
+}
+@media(max-width: 750px){
+  .hstyle{
+    font-size: 1rem;
+    margin-left: 10px !important;
+    margin-top: 60px !important;
+  }
+  .playbtn{
+    margin-left: 10px !important;
+  }
+  .video{
+    max-height: 60%; 
+    margin-top:60px;
+    margin-left:40px;
+    border-radius:15px;
+ }
+}
+@media(max-width: 500px){
+  .video{
+    width:280px;
+    max-height: 100%; 
+    margin-top:40px;
+    margin-left:20px;
+    border-radius:15px;
+ }
+ .videodiv{
+  flex-direction: column !important;
+ }
+  .hstyle{
+    font-size: 0.8rem;
+    margin-left: 0px !important;
+    margin-top: 20px !important;
+  }
+  .playbtn{
+    margin-left: 0px !important;
+    width:120px !important;
+    font-size: 1rem;
+  }
+}

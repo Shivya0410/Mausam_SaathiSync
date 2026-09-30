@@ -1,0 +1,27 @@
+/* Map pin drawn with CSS for Leaflet divIcons. Global because Leaflet injects
+   the markup outside React; every rule is namespaced under .swasth-pin. */
+.swasth-pin {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  background: #6a1b9a;
+  border: 3px solid #fff;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.35);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.swasth-pin > span {
+  transform: rotate(45deg);
+  color: #fff;
+  font: 800 13px/1 'Nunito', system-ui, sans-serif;
+}
+
+.swasth-pin--active,
+.leaflet-marker-icon:hover .swasth-pin,
+.leaflet-marker-icon:focus .swasth-pin {
+  background: #e65100;
+  transform: rotate(-45deg) scale(1.15);
+}

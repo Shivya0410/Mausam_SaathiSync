@@ -1,0 +1,183 @@
+⚠ Warning: Next.js ignored package-lock.json in C:\Users\Kritika Singh because it is outside the current Git repository (C:\Users\Kritika Singh\OneDrive\Documents\GitHub\Swasth_AI).
+ To use this directory, set `turbopack.root` in your Next.js config.
+
+[browser] Invalid DOM property `stroke-miterlimit`. Did you mean `strokeMiterlimit`? 
+[browser] Invalid DOM property `stroke-width`. Did you mean `strokeWidth`? 
+[browser] Invalid DOM property `enable-background`. Did you mean `enableBackground`? 
+[browser] The tag <sectionarthub> is unrecognized in this browser. If you meant to render a React component, start its name with an uppercase letter. 
+[browser] The tag <main1> is unrecognized in this browser. If you meant to render a React component, start its name with an uppercase letter. 
+[browser] Invalid DOM property `stroke-miterlimit`. Did you mean `strokeMiterlimit`? 
+[browser] Invalid DOM property `stroke-width`. Did you mean `strokeWidth`? 
+[browser] Invalid DOM property `enable-background`. Did you mean `enableBackground`? 
+[browser] The tag <main1> is unrecognized in this browser. If you meant to render a React component, start its name with an uppercase letter. 
+[browser] The tag <main1> is unrecognized in this browser. If you meant to render a React component, start its name with an uppercase letter. 
+    at S.scheduleRefresh (chrome-extension://fmkadmapgofadopljbjfkapdkoienihi/build/installHook.js:1:79881)
+    at Set.forEach (<anonymous>) (chrome-extension://fmkadmapgofadopljbjfkapdkoienihi/build/installHook.js:1:79881)
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <LoadingBoundaryProvider loading={[...]}>
+                    <SegmentViewNode type="layout" pagePath="layout.js">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html lang="en">
+                          <body
+-                           data-new-gr-c-s-check-loaded="14.1328.0"
+-                           data-gr-ext-installed=""
+                          >
+                  ...
+ 
+[browser] The tag <main1> is unrecognized in this browser. If you meant to render a React component, start its name with an uppercase letter. 
+[browser] Route error: ReferenceError: useState is not defined
+    at Homesection (src/components/Home/home.js:21:41)
+    at S.scheduleRefresh (chrome-extension://fmkadmapgofadopljbjfkapdkoienihi/build/installHook.js:1:79881)
+    at Set.forEach (<anonymous>)
+  19 |   const router = useRouter();
+  20 |   const pathname = usePathname();
+> 21 |   const [googleError, setGoogleError] = useState(false);
+     |                                         ^
+  22 |
+  23 |   // Single prominent entry: real Google button; success lands via onboarding gate.
+  24 |   const handleGoogleSuccess = (appToken) => { (src/app/error.js:15:13)
+[browser] Route error: ReferenceError: useState is not defined
+    at Homesection (src/components/Home/home.js:21:41)
+    at S.scheduleRefresh (chrome-extension://fmkadmapgofadopljbjfkapdkoienihi/build/installHook.js:1:79881)
+    at Set.forEach (<anonymous>)
+  19 |   const router = useRouter();
+  20 |   const pathname = usePathname();
+> 21 |   const [googleError, setGoogleError] = useState(false);
+     |                                         ^
+  22 |
+  23 |   // Single prominent entry: real Google button; success lands via onboarding gate.
+  24 |   const handleGoogleSuccess = (appToken) => { (src/app/error.js:15:13)
+[browser] The tag <main1> is unrecognized in this browser. If you meant to render a React component, start its name with an uppercase letter. 
+    at S.scheduleRefresh (chrome-extension://fmkadmapgofadopljbjfkapdkoienihi/build/installHook.js:1:79881)
+    at Set.forEach (<anonymous>) (chrome-extension://fmkadmapgofadopljbjfkapdkoienihi/build/installHook.js:1:79881)
+[browser] Invalid DOM property `stroke-miterlimit`. Did you mean `strokeMiterlimit`? 
+[browser] Invalid DOM property `stroke-width`. Did you mean `strokeWidth`? 
+[browser] Invalid DOM property `enable-background`. Did you mean `enableBackground`? 
+[browser] Route error: ReferenceError: useState is not defined
+    at Homesection (src/components/Home/home.js:21:41)
+    at Set.forEach (<anonymous>)
+  19 |   const router = useRouter();
+  20 |   const pathname = usePathname();
+> 21 |   const [googleError, setGoogleError] = useState(false);
+     |                                         ^
+  22 |
+  23 |   // Single prominent entry: real Google button; success lands via onboarding gate.
+  24 |   const handleGoogleSuccess = (appToken) => { (src/app/error.js:15:13)
+[browser] Route error: ReferenceError: useState is not defined
+    at Homesection (src/components/Home/home.js:21:41)
+    at Set.forEach (<anonymous>)
+  19 |   const router = useRouter();
+  20 |   const pathname = usePathname();
+> 21 |   const [googleError, setGoogleError] = useState(false);
+     |                                         ^
+  22 |
+  23 |   // Single prominent entry: real Google button; success lands via onboarding gate.
+  24 |   const handleGoogleSuccess = (appToken) => { (src/app/error.js:15:13)
+[browser] React has detected a change in the order of Hooks called by Navbar. This will lead to bugs and errors if not fixed. For more information, read the Rules of Hooks: https://react.dev/link/rules-of-hooks
+
+   Previous render            Next render
+   ------------------------------------------------------
+1. useState                   useState
+2. useState                   useState
+3. useContext                 useContext
+4. undefined                  useContext
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ 
+    at useAuth (src/store/auth.jsx:108:40)
+    at Navbar (src/components/Navbar/navbar.js:31:45)
+    at Set.forEach (<anonymous>)
+  106 |
+  107 | export const useAuth = () => {
+> 108 |     const authContextValue = useContext(AuthContext);
+      |                                        ^
+  109 |     if (!authContextValue) {
+  110 |         throw new Error("useAuth used outside the Provider");
+  111 |     } (src/store/auth.jsx:108:40)
+[browser] React has detected a change in the order of Hooks called by Navbar. This will lead to bugs and errors if not fixed. For more information, read the Rules of Hooks: https://react.dev/link/rules-of-hooks
+
+   Previous render            Next render
+   ------------------------------------------------------
+1. useState                   useState
+2. useState                   useState
+3. useContext                 useContext
+4. undefined                  useContext
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ 
+    at useAuth (src/store/auth.jsx:108:40)
+    at Navbar (src/components/Navbar/navbar.js:31:45)
+    at S.scheduleRefresh (chrome-extension://fmkadmapgofadopljbjfkapdkoienihi/build/installHook.js:1:79881)
+    at Set.forEach (<anonymous>)
+  106 |
+  107 | export const useAuth = () => {
+> 108 |     const authContextValue = useContext(AuthContext);
+      |                                        ^
+  109 |     if (!authContextValue) {
+  110 |         throw new Error("useAuth used outside the Provider");
+  111 |     } (src/store/auth.jsx:108:40)
+[browser] The tag <main1> is unrecognized in this browser. If you meant to render a React component, start its name with an uppercase letter. 
+    at Set.forEach (<anonymous>) (<anonymous>)
+[browser] The tag <main1> is unrecognized in this browser. If you meant to render a React component, start its name with an uppercase letter. 
+    at S.scheduleRefresh (chrome-extension://fmkadmapgofadopljbjfkapdkoienihi/build/installHook.js:1:79881)
+    at Set.forEach (<anonymous>) (chrome-extension://fmkadmapgofadopljbjfkapdkoienihi/build/installHook.js:1:79881)
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <LoadingBoundaryProvider loading={[...]}>
+                    <SegmentViewNode type="layout" pagePath="layout.js">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html lang="en">
+                          <body
+-                           data-new-gr-c-s-check-loaded="14.1328.0"
+-                           data-gr-ext-installed=""
+                          >
+                  ...
+ 
+[browser] The tag <main1> is unrecognized in this browser. If you meant to render a React component, start its name with an uppercase letter. 

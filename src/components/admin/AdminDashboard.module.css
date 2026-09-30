@@ -1,0 +1,314 @@
+.admin-dashboard-container {
+    padding: 40px;
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(to right, #2646A6, #c8d6f0); /* Blue gradient */
+    color: #fff; /* White font for all text */
+    min-height: 100vh;
+    position: relative;
+  }
+  
+  .admin-dashboard-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4); /* Semi-transparent dark overlay */
+    z-index: -1; /* Place the overlay behind the content */
+  }
+  
+  
+  .admin-dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  
+  .admin-dashboard-header h1 {
+    font-size: 2.5rem;
+    background: linear-gradient(to right, #ffffff, #ffffff); /* White gradient for heading */
+    -webkit-background-clip: text;
+    color: transparent;
+    text-shadow: 2px 2px 6px rgba(195, 190, 190, 0.6); /* Darker shadow for better contrast */
+  }
+  
+  
+  .admin-dashboard-header button {
+    padding: 12px 25px;
+    background: linear-gradient(to right, #2646A6, #6382BF); /* Button gradient */
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    box-shadow: 0px 4px 10px rgba(38, 70, 166, 0.2);
+    transition: transform 0.2s, box-shadow 0.3s;
+  }
+  
+  .admin-dashboard-header button:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 6px 15px rgba(38, 70, 166, 0.3);
+  }
+  
+  .admin-dashboard-users {
+    margin-top: 20px;
+  }
+  
+  .admin-dashboard-users h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 5px rgba(38, 70, 166, 0.2);
+  }
+  
+  .admin-dashboard-users table {
+    width: 100%;
+    border-collapse: collapse; /* Ensure borders collapse properly */
+    background: rgba(38, 70, 166, 0.3); /* Lighter table background */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #fff; /* Add border to the entire table */
+  }
+  
+  .admin-dashboard-users th, 
+  .admin-dashboard-users td {
+    padding: 15px;
+    text-align: left;
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Make sure each cell has a border */
+    color: #fff;
+  }
+  
+  .admin-dashboard-users th {
+    background: rgba(38, 70, 166, 0.8); /* Darker header row background */
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  
+  .admin-dashboard-users tr:hover {
+    background: rgba(38, 70, 166, 0.2); /* Highlight row on hover */
+  }
+  
+  .admin-dashboard-users tr:last-child td {
+    border-bottom: none; /* Remove last row border */
+  }
+  
+  
+  .admin-dashboard-form {
+    margin-top: 40px;
+    background: rgba(38, 70, 166, 0.08);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 8px 15px rgba(38, 70, 166, 0.2);
+    backdrop-filter: blur(10px);
+  }
+  
+  .admin-dashboard-form h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #fff;
+    text-align: center;
+  }
+  
+  .admin-dashboard-form input,
+  .admin-dashboard-form select {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    background: rgba(38, 70, 166, 0.4); /* Increased opacity */
+    color: #fff;
+    outline: none;
+    transition: background 0.3s, box-shadow 0.3s;
+  }
+  
+  
+  .admin-dashboard-form input::placeholder,
+  .admin-dashboard-form select {
+    color: rgba(255, 255, 255, 0.6); /* Placeholder text color */
+  }
+  
+  .admin-dashboard-form input:focus,
+  .admin-dashboard-form select:focus {
+    background: rgba(38, 70, 166, 0.3);
+    box-shadow: 0px 4px 10px rgba(38, 70, 166, 0.2);
+  }
+  
+  .admin-dashboard-form button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(to right, #2646A6, #6382BF); /* Button gradient */
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-shadow: 0px 4px 10px rgba(38, 70, 166, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .admin-dashboard-form button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 6px 15px rgba(38, 70, 166, 0.3);
+  }
+  
+  
+  .admin-dashboard-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4); /* Semi-transparent dark overlay */
+    z-index: -1; /* Place the overlay behind the content */
+  }
+  
+  
+  .admin-dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  
+  .admin-dashboard-header h1 {
+    font-size: 2.5rem;
+    background: linear-gradient(to right, #ffffff, #ffffff); /* Purple gradient for heading */
+    -webkit-background-clip: text;
+    color: transparent;
+    text-shadow: 2px 2px 6px rgba(195, 190, 190, 0.6); /* Darker shadow for better contrast */
+  }
+  
+  
+  .admin-dashboard-header button {
+    padding: 12px 25px;
+    background: linear-gradient(to right, #493971, #8574c9); /* Button gradient */
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    box-shadow: 0px 4px 10px rgba(73, 57, 113, 0.2);
+    transition: transform 0.2s, box-shadow 0.3s;
+  }
+  
+  .admin-dashboard-header button:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 6px 15px rgba(73, 57, 113, 0.3);
+  }
+  
+  .admin-dashboard-users {
+    margin-top: 20px;
+  }
+  
+  .admin-dashboard-users h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 5px rgba(73, 57, 113, 0.2);
+  }
+  
+  .admin-dashboard-users table {
+    width: 100%;
+    border-collapse: collapse; /* Ensure borders collapse properly */
+    background: rgba(73, 57, 113, 0.3); /* Lighter table background for better contrast */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #fff; /* Add border to the entire table */
+  }
+  
+  .admin-dashboard-users th, 
+  .admin-dashboard-users td {
+    padding: 15px;
+    text-align: left;
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Make sure each cell has a border */
+    color: #fff;
+  }
+  
+  .admin-dashboard-users th {
+    background: rgba(73, 57, 113, 0.8); /* Darker header row background */
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  
+  .admin-dashboard-users tr:hover {
+    background: rgba(73, 57, 113, 0.2); /* Highlight row on hover */
+  }
+  
+  .admin-dashboard-users tr:last-child td {
+    border-bottom: none; /* Remove last row border */
+  }
+  
+  
+  .admin-dashboard-form {
+    margin-top: 40px;
+    background: rgba(73, 57, 113, 0.08);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 8px 15px rgba(73, 57, 113, 0.2);
+    backdrop-filter: blur(10px);
+  }
+  
+  .admin-dashboard-form h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #fff;
+    text-align: center;
+  }
+  
+  .admin-dashboard-form input,
+  .admin-dashboard-form select {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    background: rgba(73, 57, 113, 0.4); /* Increased opacity */
+    color: #fff;
+    outline: none;
+    transition: background 0.3s, box-shadow 0.3s;
+  }
+  
+  
+  .admin-dashboard-form input::placeholder,
+  .admin-dashboard-form select {
+    color: rgba(255, 255, 255, 0.6); /* Placeholder text color */
+  }
+  
+  .admin-dashboard-form input:focus,
+  .admin-dashboard-form select:focus {
+    background: rgba(73, 57, 113, 0.3);
+    box-shadow: 0px 4px 10px rgba(73, 57, 113, 0.2);
+  }
+  
+  .admin-dashboard-form button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(to right, #493971, #6c63a0); /* Button gradient */
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-shadow: 0px 4px 10px rgba(73, 57, 113, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .admin-dashboard-form button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 6px 15px rgba(73, 57, 113, 0.3);
+  }
+  

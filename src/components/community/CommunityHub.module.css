@@ -1,0 +1,287 @@
+.page {
+  padding: 16px clamp(12px, 4vw, 40px) 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Full-bleed hero band: stretches edge-to-edge, wider than the content. */
+.heroBleed {
+  background: linear-gradient(135deg, #493971 0%, #6a1b9a 55%, #7e57c2 100%);
+  box-shadow: 0 8px 20px rgba(73, 57, 113, 0.25);
+}
+
+.heroInner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px clamp(12px, 4vw, 40px) 18px;
+}
+
+/* PageHeader goes transparent inside the band (the band IS the header). */
+.heroBleed :global(.page-header) {
+  background: transparent;
+  box-shadow: none;
+  margin: 0;
+  padding: 0 0 6px;
+}
+
+.tabbar {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.tab {
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 9px 16px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  transition: background 0.15s ease;
+}
+
+.tab:hover {
+  background: rgba(255, 255, 255, 0.24);
+}
+
+.tabActive {
+  background: #fff;
+  border-color: transparent;
+  color: #493971;
+}
+
+.tab:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+
+/* Hide the feed's own duplicate header when embedded in the hub. */
+.feedEmbed header {
+  display: none;
+}
+
+.ctaRow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 10px;
+  margin: 2px 0 14px;
+}
+
+.cta {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #493971, #7e57c2);
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(73, 57, 113, 0.25);
+}
+
+.cta:hover {
+  filter: brightness(1.08);
+}
+
+.cta i {
+  font-size: 1.3rem;
+  flex: none;
+}
+
+.cta span {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+
+.cta strong {
+  font-size: 0.88rem;
+}
+
+.cta small {
+  opacity: 0.85;
+  font-size: 0.72rem;
+  line-height: 1.4;
+}
+
+.section {
+  padding: 6px 0;
+}
+
+.sectionHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 2px 0 10px;
+}
+
+.sectionHead h2 {
+  margin: 0;
+  color: #2d1b4e;
+  font-size: 1.15rem;
+}
+
+.more {
+  font-weight: 700;
+  color: #7e57c2;
+  font-size: 0.82rem;
+  white-space: nowrap;
+}
+
+.eventGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 10px;
+}
+
+.eventCard {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 12px 13px;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid #ddd0f2;
+  text-decoration: none;
+  color: inherit;
+}
+
+.eventCard:hover {
+  box-shadow: 0 8px 24px rgba(73, 57, 113, 0.15);
+}
+
+.eventCard strong {
+  color: #2d1b4e;
+}
+
+.eventCard small {
+  color: #6b6480;
+  font-size: 0.78rem;
+}
+
+.eventDate {
+  align-self: flex-start;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: #ede7f6;
+  color: #493971;
+}
+
+.planetGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 10px;
+}
+
+.planetCard {
+  padding: 15px;
+  border-radius: 12px;
+  background: linear-gradient(160deg, #e8f5e9, #f1f8e9);
+  border: 1px solid #c5e1a5;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.planetCard i {
+  font-size: 1.6rem;
+  color: #2e7d32;
+}
+
+.planetCard strong {
+  color: #1b5e20;
+}
+
+.planetCard p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #33691e;
+}
+
+.quote {
+  margin: 4px auto 0;
+  max-width: 640px;
+  text-align: center;
+  font-size: clamp(1.15rem, 2.6vw, 1.5rem);
+  font-weight: 700;
+  color: #493971;
+  padding: 20px;
+  border-radius: 14px;
+  background: linear-gradient(160deg, #ede7f6, #fff);
+  border: 1px solid #ddd0f2;
+}
+
+.statsRow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 8px;
+  margin: 12px 0 0;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid #ddd0f2;
+}
+
+.stat strong {
+  font-size: 1.5rem;
+  color: #2d1b4e;
+}
+
+.stat span {
+  font-size: 0.75rem;
+  color: #6b6480;
+}
+
+.heatTitle {
+  margin: 14px 0 8px;
+  font-size: 1rem;
+  color: #2d1b4e;
+}
+
+.heat {
+  display: grid;
+  grid-template-columns: repeat(21, 1fr);
+  gap: 3px;
+  max-width: 560px;
+}
+
+.cell {
+  aspect-ratio: 1;
+  border-radius: 3px;
+  background: #ece9f3;
+}
+
+.lvl1 { background: #c9b4ea; }
+.lvl2 { background: #9575cd; }
+.lvl3 { background: #7e57c2; }
+.lvl4 { background: #493971; }
+
+.heatHint {
+  font-size: 0.78rem;
+  color: #6b6480;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tab, .eventCard {
+    transition: none;
+  }
+}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>A-Frame Environment Component</title>
+    <meta name="description" content="A-Frame Environment Component">
+    <meta name="author" content="Diego F. Goberna">
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+    <script src="dist/aframe-environment-component.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Voces" rel="stylesheet">
+    <style>
+      /* Styling for Plant Sapling Button */
+      #plant-button {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 10px 20px;
+        font-size: 16px;
+        font-family: 'Voces', sans-serif;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      }
+      #plant-button:hover {
+        background-color: #218838;
+      }
+
+      /* Styling for Return Button */
+      #return {
+        position: absolute;
+        bottom: 70px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 10px 20px;
+        font-size: 16px;
+        font-family: 'Voces', sans-serif;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      }
+      #return:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- About Section -->
+    <div id="about">
+      <b>aframe-environment-component</b>
+      <p>A component for adding procedural environments to your <a href="http://aframe.io">A-Frame</a> demos and experiences.</p>
+      <p>Press <b>ctrl + alt + i</b> to enter inspector and tweak parameters.</p>
+      <p><a href="http://github.com/feiss/aframe-environment-component">GitHub / How to use it</a></p>
+    </div>
+    
+    <h1>
+      <a class="previousPreset" href="#">&larr;</a>
+      <b>forest</b>
+      <a class="nextPreset" href="#">&rarr;</a>
+    </h1>
+
+    <!-- A-Frame Scene -->
+    <a-scene overlay-visibility>
+      <!-- Environment -->
+      <a-entity environment="preset: forest" preset-switcher id="environment"></a-entity>
+    </a-scene>
+
+    <!-- Plant Sapling Button -->
+    <button id="return">Back to Home</button>
+    <button id="plant-button">Plant Sapling</button>
+
+    <script>
+      // JavaScript to handle planting saplings
+      const plantButton = document.getElementById('plant-button');
+      const scene = document.querySelector('a-scene');
+
+      // Function to plant sapling
+      plantButton.addEventListener('click', () => {
+        // Create a sapling (tree) entity
+        const sapling = document.createElement('a-cone');
+        sapling.setAttribute('position', {
+          x: (Math.random() - 0.5) * 20, // Random X position
+          y: 0.5,                       // Height above ground
+          z: (Math.random() - 0.5) * 20  // Random Z position
+        });
+        sapling.setAttribute('radius-bottom', '0.2');
+        sapling.setAttribute('radius-top', '0.1');
+        sapling.setAttribute('height', '1');
+        sapling.setAttribute('color', 'brown');
+
+        // Add foliage to the sapling
+        const foliage = document.createElement('a-sphere');
+        foliage.setAttribute('position', { x: 0, y: 1, z: 0 });
+        foliage.setAttribute('radius', '0.5');
+        foliage.setAttribute('color', 'green');
+        sapling.appendChild(foliage);
+
+        // Append sapling to the scene
+        scene.appendChild(sapling);
+      });
+
+      // JavaScript to handle return button click
+      const returnButton = document.getElementById('return');
+      returnButton.addEventListener('click', () => {
+        window.location.href = '/sus'; 
+      });
+    </script>
+  </body>
+</html>

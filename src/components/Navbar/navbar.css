@@ -1,0 +1,175 @@
+/* MuscleWiki-style Curvy Ends Left Navigation Sidebar in purplish dark #493971 (fitness palette) */
+
+.main-menu {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  background-color: #493971;
+  background-image: linear-gradient(180deg, #4a3673 0%, #493971 55%, #3c2a61 100%);
+  width: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 14px 6px 12px 6px;
+  box-shadow: 2px 0 14px rgba(73, 57, 113, 0.35);
+  user-select: none;
+  z-index: 1000;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+/* Top Hamburger Menu Bar */
+.sidebar-hamburger {
+  color: #ffffff;
+  font-size: 22px;
+  cursor: pointer;
+  padding: 8px;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s;
+  background: none;
+  border: none;
+}
+
+.sidebar-hamburger:hover {
+  opacity: 0.8;
+}
+
+/* Nav items list */
+.main-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+}
+
+.main-menu ul::-webkit-scrollbar {
+  display: none;
+}
+
+.nav-item {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-item a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 74px;
+  height: 60px;
+  border-radius: 12px; /* Curvy ends */
+  color: #ffffff;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  padding: 4px 2px;
+  box-sizing: border-box;
+}
+
+.nav-item i {
+  font-size: 19px;
+  margin-bottom: 3px;
+  color: #ffffff;
+  display: block;
+  transition: transform 0.2s;
+}
+
+.nav-item .nav-text {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  text-align: center;
+  line-height: 1.1;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+.nav-item:hover a {
+  background-color: rgba(255, 255, 255, 0.16);
+}
+
+.nav-item:hover i {
+  transform: translateY(-1px);
+}
+
+/* ACTIVE ITEM: Curvy Ends High-Contrast White Card (as shown in photo) */
+.nav-item.active a {
+  background-color: #ffffff;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+}
+
+.nav-item.active i {
+  color: #493971;
+}
+
+.nav-item.active .nav-text {
+  color: #493971;
+  font-weight: 800;
+}
+
+/* WELLNESS: no special highlight — same as every other nav item */
+
+/* Zen audio button */
+.sidebar-zen-btn {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  color: #ffffff;
+  width: 74px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 6px 0 2px 0;
+  transition: background-color 0.2s;
+}
+
+.sidebar-zen-btn:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+/* Footer text */
+.sidebar-bottom-legal {
+  margin-top: 8px;
+  text-align: center;
+  font-size: 0.56rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.25;
+}
+
+.sidebar-bottom-legal a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.sidebar-bottom-legal a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .main-menu {
+    width: 78px;
+    padding: 10px 4px;
+  }
+  .nav-item a {
+    width: 68px;
+    height: 56px;
+  }
+}

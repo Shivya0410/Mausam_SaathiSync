@@ -1,0 +1,843 @@
+/* ═══════════════════════════════════════════════════════════
+   Yoga Dashboard — Premium Wellness UI
+   Color palette: deep purple #493971, lavender #b39ddb,
+   soft white, pastel accents
+   ═══════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap');
+
+/* ── Page wrapper ──────────────────────────────────────────── */
+
+.page {
+  min-height: 100vh;
+  background: linear-gradient(168deg, #ede7f6 0%, #e8dff5 40%, #f3e5f5 100%);
+  padding: 1.5rem 2rem 3rem;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #2d1b4e;
+  overflow-x: hidden;
+}
+
+/* ── Top Bar / Breadcrumb ─────────────────────────────────── */
+
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.backBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.1rem;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(179, 157, 219, 0.4);
+  border-radius: 50px;
+  color: #493971;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 10px rgba(73, 57, 113, 0.06);
+}
+
+.backBtn:hover {
+  background: #ffffff;
+  transform: translateX(-3px);
+  box-shadow: 0 4px 16px rgba(73, 57, 113, 0.12);
+  color: #6a1b9a;
+}
+
+.categoryBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 1rem;
+  background: rgba(126, 87, 194, 0.12);
+  border-radius: 50px;
+  color: #6a1b9a;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ── HERO BANNER ───────────────────────────────────────────── */
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  border-radius: 24px;
+  overflow: hidden;
+  margin-bottom: 1.75rem;
+  box-shadow: 0 8px 40px rgba(73, 57, 113, 0.2);
+}
+
+.heroImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+  filter: brightness(0.85) saturate(1.1);
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    rgba(73, 57, 113, 0.82) 0%,
+    rgba(73, 57, 113, 0.45) 50%,
+    transparent 75%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2.5rem 3rem;
+}
+
+.heroEyebrow {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 0.5rem;
+}
+
+.heroTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.1;
+  margin: 0 0 0.5rem;
+}
+
+.heroSubtitle {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: 0.12em;
+  margin-bottom: 1.5rem;
+}
+
+.heroCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 2rem;
+  background: linear-gradient(135deg, #7e57c2, #6a1b9a);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.25s, box-shadow 0.25s, background 0.3s;
+  box-shadow: 0 4px 20px rgba(106, 27, 154, 0.4);
+  text-decoration: none;
+  width: fit-content;
+}
+
+.heroCta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(106, 27, 154, 0.55);
+  background: linear-gradient(135deg, #9575cd, #7e57c2);
+}
+
+.heroQuote {
+  position: absolute;
+  right: 2.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 200px;
+  text-align: right;
+  line-height: 1.5;
+}
+
+/* ── DASHBOARD 2×2 GRID ───────────────────────────────────── */
+
+.dashGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Generic card container */
+.card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 24px rgba(73, 57, 113, 0.08);
+  border: 1px solid rgba(179, 157, 219, 0.25);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(73, 57, 113, 0.14);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.35rem;
+}
+
+.cardIcon {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.iconPurple {
+  background: #ede7f6;
+  color: #6a1b9a;
+}
+
+.iconAmber {
+  background: #fff8e1;
+  color: #f57f17;
+}
+
+.iconTeal {
+  background: #e0f2f1;
+  color: #00796b;
+}
+
+.iconPink {
+  background: #fce4ec;
+  color: #c2185b;
+}
+
+.cardTitle {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #2d1b4e;
+  margin: 0;
+}
+
+.cardSub {
+  font-size: 0.82rem;
+  color: rgba(45, 27, 78, 0.6);
+  margin: 0 0 1rem;
+}
+
+/* Purple CTA pill button inside cards */
+.cardBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 1.4rem;
+  background: linear-gradient(135deg, #7e57c2, #6a1b9a);
+  color: #fff;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.25s;
+  box-shadow: 0 3px 12px rgba(106, 27, 154, 0.3);
+  width: fit-content;
+  border: none;
+  cursor: pointer;
+}
+
+.cardBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(106, 27, 154, 0.45);
+  background: linear-gradient(135deg, #9575cd, #7e57c2);
+}
+
+/* ── CARD 1: Pose Coach ────────────────────────────────────── */
+
+.poseCoach {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  align-items: center;
+}
+
+.poseCoachLeft {
+  display: flex;
+  flex-direction: column;
+}
+
+.poseCoachRight {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+  position: relative;
+}
+
+.poseImg {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+/* Circular accuracy indicator */
+.accuracyRing {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  flex-shrink: 0;
+}
+
+.accuracyRing svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.ringBg {
+  fill: none;
+  stroke: #ede7f6;
+  stroke-width: 6;
+}
+
+.ringFill {
+  fill: none;
+  stroke: #00c853;
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-dasharray: 226; /* 2 * PI * 36 */
+  stroke-dashoffset: 18;  /* 92% filled */
+  transition: stroke-dashoffset 1s ease;
+}
+
+.ringLabel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.ringPercent {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #1b5e20;
+  line-height: 1;
+}
+
+.ringText {
+  font-size: 0.5rem;
+  color: rgba(45, 27, 78, 0.6);
+  line-height: 1.1;
+  margin-top: 2px;
+}
+
+/* ── CARD 2: Yoga Gurus ────────────────────────────────────── */
+
+.gurusRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+}
+
+.guruItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-width: 68px;
+}
+
+.guruAvatar {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2.5px solid #d1c4e9;
+  margin-bottom: 0.35rem;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.guruAvatar:hover {
+  transform: scale(1.08);
+  border-color: #7e57c2;
+}
+
+.guruName {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #2d1b4e;
+  line-height: 1.2;
+}
+
+.guruStyle {
+  font-size: 0.62rem;
+  color: rgba(45, 27, 78, 0.55);
+}
+
+.gurusArrow {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid #d1c4e9;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6a1b9a;
+  cursor: pointer;
+  flex-shrink: 0;
+  font-size: 1rem;
+  transition: background 0.2s;
+}
+
+.gurusArrow:hover {
+  background: #ede7f6;
+}
+
+.guruCardBottom {
+  margin-top: auto;
+}
+
+/* ── CARD 3: Yoga Calendar ─────────────────────────────────── */
+
+.calendarCard {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 1.25rem;
+  flex: 1;
+}
+
+.calendarWidget {
+  display: flex;
+  flex-direction: column;
+}
+
+.calMonthHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.calMonthTitle {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #2d1b4e;
+}
+
+.calNav {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.calNavBtn {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  cursor: pointer;
+  color: #493971;
+}
+
+.calNavBtn:hover {
+  background: #ede7f6;
+}
+
+.calGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  text-align: center;
+}
+
+.calDayHeader {
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: rgba(45, 27, 78, 0.45);
+  padding: 2px 0;
+}
+
+.calDay {
+  font-size: 0.68rem;
+  font-weight: 500;
+  padding: 3px 0;
+  border-radius: 6px;
+  color: #2d1b4e;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.calDay:hover {
+  background: #ede7f6;
+}
+
+.calDayEmpty {
+  padding: 3px 0;
+}
+
+.calDayToday {
+  background: #7e57c2 !important;
+  color: #fff !important;
+  font-weight: 700;
+  border-radius: 6px;
+}
+
+.calDayEvent::after {
+  content: "";
+  position: absolute;
+  bottom: 1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #ab47bc;
+}
+
+.calDaySpecial {
+  background: #f8bbd0;
+  color: #880e4f;
+  font-weight: 700;
+}
+
+.calendarRight {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  justify-content: flex-start;
+}
+
+.calCategory {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.78rem;
+  color: #2d1b4e;
+  padding: 0.4rem 0.6rem;
+  background: #f8f6fc;
+  border-radius: 8px;
+}
+
+.catIcon {
+  font-size: 0.85rem;
+}
+
+/* ── CARD 4: My Yoga Pledge ────────────────────────────────── */
+
+.pledgeCard {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  align-items: center;
+  flex: 1;
+}
+
+.pledgeLeft {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.pledgeCert {
+  background: linear-gradient(145deg, #fff9f0, #fff0f5);
+  border: 2px solid #f8bbd0;
+  border-radius: 16px;
+  padding: 1.25rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.pledgeLotus {
+  font-size: 2.2rem;
+  margin-bottom: 0.25rem;
+}
+
+.pledgeCertTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #6a1b9a;
+  margin-bottom: 0.25rem;
+}
+
+.pledgeCheck {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #00c853;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+/* ── NEAR YOU SECTION ──────────────────────────────────────── */
+
+.nearSection {
+  margin-top: 0.5rem;
+}
+
+.nearHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.nearHeaderLeft {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.nearIcon {
+  font-size: 1.2rem;
+}
+
+.nearTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #2d1b4e;
+  margin: 0;
+}
+
+.nearSub {
+  font-size: 0.8rem;
+  color: rgba(45, 27, 78, 0.5);
+  margin-left: 0.5rem;
+}
+
+.viewAll {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #7e57c2;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.viewAll:hover {
+  color: #4a148c;
+}
+
+.nearGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.venueCard {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(73, 57, 113, 0.07);
+  border: 1px solid rgba(179, 157, 219, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.venueCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(73, 57, 113, 0.13);
+}
+
+.venueImgWrap {
+  width: 100%;
+  height: 120px;
+  overflow: hidden;
+}
+
+.venueImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s;
+}
+
+.venueCard:hover .venueImg {
+  transform: scale(1.06);
+}
+
+.venueBody {
+  padding: 0.85rem 1rem;
+}
+
+.venueName {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #2d1b4e;
+  margin: 0 0 0.2rem;
+}
+
+.venueDistance {
+  font-size: 0.72rem;
+  color: rgba(45, 27, 78, 0.5);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.venueTags {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.6rem;
+}
+
+.venueTag {
+  font-size: 0.65rem;
+  font-weight: 500;
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  border: 1px solid;
+}
+
+.tagGreen {
+  color: #2e7d32;
+  border-color: #c8e6c9;
+  background: #f1f8e9;
+}
+
+.tagBlue {
+  color: #1565c0;
+  border-color: #bbdefb;
+  background: #e3f2fd;
+}
+
+.tagOrange {
+  color: #e65100;
+  border-color: #ffe0b2;
+  background: #fff3e0;
+}
+
+.tagPurple {
+  color: #6a1b9a;
+  border-color: #e1bee7;
+  background: #f3e5f5;
+}
+
+.venueBtn {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.4rem 1rem;
+  background: #fff;
+  border: 1.5px solid #d1c4e9;
+  border-radius: 10px;
+  color: #6a1b9a;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.venueBtn:hover {
+  background: #ede7f6;
+  border-color: #b39ddb;
+}
+
+/* ── RESPONSIVE ────────────────────────────────────────────── */
+
+@media (max-width: 1024px) {
+  .dashGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .nearGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .hero {
+    height: 260px;
+  }
+
+  .heroQuote {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding: 1rem;
+  }
+
+  .hero {
+    height: 220px;
+    border-radius: 18px;
+  }
+
+  .heroOverlay {
+    padding: 1.5rem;
+  }
+
+  .nearGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .poseCoach {
+    grid-template-columns: 1fr;
+  }
+
+  .poseCoachRight {
+    justify-content: center;
+  }
+
+  .calendarCard {
+    grid-template-columns: 1fr;
+  }
+
+  .pledgeCard {
+    grid-template-columns: 1fr;
+  }
+
+  .pledgeCert {
+    margin: 0 auto;
+  }
+}
+
+/* ── Reduced motion ────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .venueCard,
+  .heroCta,
+  .cardBtn,
+  .guruAvatar,
+  .venueImg {
+    transition: none;
+  }
+
+  .card:hover,
+  .venueCard:hover {
+    transform: none;
+  }
+}

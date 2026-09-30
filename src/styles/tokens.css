@@ -1,0 +1,62 @@
+/*
+ * Design tokens.
+ *
+ * Lilac light theme + purplish dark navbar, matched to the Fitness
+ * landing (FitnessLanding.module.css):
+ * deep purple #493971, ink #2d1b4e, accents #6a1b9a / #7e57c2,
+ * lavender #b39ddb, light washes #ede7f6 / #e8dff5 / #f3e5f5.
+ */
+
+:root {
+  /* Brand Primary — purplish dark (navbar) + lilac (light surfaces) */
+  --swasth-navbar: #493971;
+  --swasth-violet-deep: #493971;
+  --swasth-violet: #7e57c2;
+  --swasth-violet-mid: #9575cd;
+  --swasth-violet-light: #b39ddb;
+  --swasth-lavender: #ede7f6;
+  --swasth-surface: #f5f0fd;
+
+  /* Lilac light theme (was navy) */
+  --wiki-navy-dark: #2d1b4e;
+  --wiki-navy-primary: #493971;
+  --wiki-navy-light: #7e57c2;
+  --wiki-navy-hover: #5e4b8b;
+  --wiki-accent-purple: #7e57c2;
+  --wiki-accent-soft: #b39ddb;
+  --wiki-canvas: #ede7f6;
+  --wiki-canvas-soft: #f3e5f5;
+  --wiki-surface: #faf7ff;
+  --wiki-border: #ddd0f2;
+  --wiki-border-focus: #7e57c2;
+  --wiki-text-main: #2d1b4e;
+  --wiki-text-muted: #6b5b8e;
+  --wiki-accent-red: #d32f2f;
+  --wiki-accent-coral: #ef4444;
+  --wiki-accent-blue: #6a1b9a;
+  --wiki-toggle-bg: #d1c4e9;
+  --wiki-toggle-active: #493971;
+
+  /* Text */
+  --swasth-ink: #0f172a;
+  --swasth-muted: #53647e;
+  --swasth-on-violet: #ffffff;
+
+  /* Lines and edges */
+  --swasth-border: #dbe3f3;
+  --swasth-radius-sm: 8px;
+  --swasth-radius-md: 14px;
+  --swasth-radius-pill: 999px;
+
+  /* Status */
+  --swasth-danger: #b3261e;
+  --swasth-warning: #8a5a00;
+  --swasth-success: #1b5e20;
+
+  /* Spacing */
+  --swasth-space-xs: 4px;
+  --swasth-space-sm: 8px;
+  --swasth-space-md: 16px;
+  --swasth-space-lg: 24px;
+  --swasth-space-xl: 40px;
+}

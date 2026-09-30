@@ -1,0 +1,706 @@
+/*
+ * Scoped styles for the Wellness landing page. Follows the same pattern as
+ * aboutus.module.css (CSS Modules only - no global selectors - so nothing
+ * here can leak onto other routes) and reuses the same colour tokens the
+ * rest of the app already uses, so Wellness feels native rather than
+ * bolted on.
+ */
+
+.page {
+  --ink: #2c2340;
+  --muted: #5c5470;
+  --violet: #6a1b9a;
+  --violet-deep: #493971;
+  --violet-soft: #f4effb;
+  --border: #e4dcf1;
+
+  color: var(--ink);
+  font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  padding-bottom: 28px;
+}
+
+.page *:focus-visible {
+  outline: 3px solid var(--violet);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Page siblings render standalone (banner, steps, coming-soon), so every
+   top-level block carries the same tokens — otherwise vars resolve empty
+   and headings/cards/buttons go invisible. */
+.topFlow,
+.journeySection,
+.comingSoon,
+.stepsCompact {
+  --ink: #2c2340;
+  --muted: #5c5470;
+  --violet: #6a1b9a;
+  --violet-deep: #493971;
+  --violet-soft: #f4effb;
+  --border: #e4dcf1;
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  background: linear-gradient(135deg, var(--violet-deep) 0%, var(--violet) 55%, #8e44c7 100%);
+  color: #fff;
+  padding: clamp(22px, 4vw, 40px) clamp(16px, 4vw, 40px);
+  text-align: center;
+}
+
+.heroTitle {
+  font-size: clamp(1.9rem, 4.4vw, 3rem);
+  font-weight: 600;
+  line-height: 1.15;
+  margin: 0 0 16px;
+  letter-spacing: -0.01em;
+}
+
+.heroLead {
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  line-height: 1.6;
+  max-width: 62ch;
+  margin: 0 auto;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+/* ---------- Shared section furniture ---------- */
+
+.sectionTitle {
+  font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+  font-weight: 600;
+  margin: 0 0 12px;
+  color: var(--ink);
+}
+
+.sectionLead {
+  max-width: 68ch;
+  color: var(--muted);
+  line-height: 1.65;
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* ---------- Senior Wellness Check (the visually prominent section) ---------- */
+
+.seniorSection {
+  max-width: 1120px;
+  margin: clamp(16px, 3vw, 28px) auto 0;
+  padding: clamp(16px, 3vw, 26px) clamp(16px, 3vw, 26px);
+  background: var(--violet-soft);
+  border: 2px solid var(--border);
+  border-radius: 18px;
+}
+
+.seniorHeading {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.seniorBadge {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: var(--violet);
+  color: #fff;
+  font-size: 1.4rem;
+}
+
+.testGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px;
+}
+
+.testCard {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.testCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(73, 57, 113, 0.16);
+}
+
+.testIcon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  margin-bottom: 16px;
+  border-radius: 14px;
+  background: var(--violet-soft);
+  color: var(--violet);
+  font-size: 1.3rem;
+}
+
+.testTitle {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 0 0 10px;
+  color: var(--ink);
+}
+
+.testText {
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: var(--muted);
+  margin: 0 0 14px;
+}
+
+.testResult {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--violet-deep);
+  background: var(--violet-soft);
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin: 0 0 20px;
+}
+
+.testCta {
+  margin-top: auto;
+  display: inline-block;
+  align-self: flex-start;
+  padding: 11px 26px;
+  border-radius: 999px;
+  background: var(--violet);
+  color: #fff;
+  font-weight: 500;
+  font-size: 0.98rem;
+  text-decoration: none;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.testCta:hover {
+  transform: translateY(-2px);
+  background: var(--violet-deep);
+}
+
+.disclaimer {
+  margin: 28px 0 0;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* ---------- Your Wellness Check (journey explainer) ---------- */
+
+.journeySection {
+  max-width: 1120px;
+  margin: clamp(20px, 4vw, 36px) auto 0;
+  padding: 0 clamp(12px, 3vw, 28px);
+  text-align: center;
+}
+
+.journeySteps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+.journeyStep {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px 20px;
+  min-width: 180px;
+  max-width: 220px;
+}
+
+.journeyNumber {
+  display: inline-grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--violet);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+}
+
+.journeyLabel {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 8px;
+  color: var(--ink);
+}
+
+.journeyText {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--muted);
+  margin: 0;
+}
+
+.journeyArrow {
+  color: var(--border);
+  font-size: 1.4rem;
+}
+
+/* ---------- Coming soon ---------- */
+
+.comingSoon {
+  max-width: 1120px;
+  margin: clamp(20px, 4vw, 36px) auto 0;
+  padding: 0 clamp(12px, 3vw, 28px);
+  text-align: center;
+}
+
+.comingSoonTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--muted);
+  margin: 0 0 20px;
+}
+
+.comingSoonGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.comingSoonPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 999px;
+  border: 1px dashed var(--border);
+  color: var(--muted);
+  font-size: 0.92rem;
+  background: #fff;
+}
+
+/* ---------- Final order: purple banner, 2 original model cards ---------- */
+
+.topFlow {
+  background: #f5f0fd;
+}
+
+/* Page headers use the shared PageHeader component. */
+
+/* Constrains the header bar to the same centred container as the content
+   below (Senior Wellness Check), so all left/right edges line up. */
+.topBarWrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: clamp(16px, 3vw, 28px) clamp(12px, 3vw, 28px) 0;
+}
+
+/* Same centred container as the hub + extras below — both ends aligned. */
+.modelsSection {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: clamp(16px, 3vw, 28px) clamp(12px, 3vw, 28px) 4px;
+}
+
+.modelsSectionHead {
+  margin-bottom: 16px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testCard,
+  .testCta {
+    transition: none;
+  }
+
+  .testCard:hover,
+  .testCta:hover {
+    transform: none;
+  }
+}
+
+/* ---------- Wellness models collage (top of page, tilted cards) ---------- */
+
+.modelsWrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 16px clamp(12px, 3vw, 28px) 0;
+}
+
+.modelsHero {
+  text-align: center;
+  padding: 8px 12px 14px;
+}
+
+.modelsHeroTitle {
+  margin: 0 0 6px;
+  font-size: clamp(1.6rem, 3.6vw, 2.4rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.modelsHeroLead {
+  margin: 0 auto;
+  max-width: 60ch;
+  color: var(--muted);
+  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+  line-height: 1.6;
+}
+
+.modelsPanel {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  padding: clamp(18px, 3.4vw, 32px) clamp(14px, 3vw, 28px);
+  background:
+    radial-gradient(600px 300px at 85% 0%, rgba(179, 157, 219, 0.35), transparent 60%),
+    linear-gradient(135deg, #3c2a61 0%, #493971 55%, #5e4b8b 100%);
+  box-shadow: 0 14px 34px rgba(45, 27, 78, 0.3);
+}
+
+.modelsPanel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.05) 0 1px, transparent 1px 44px),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.05) 0 1px, transparent 1px 44px);
+}
+
+.modelsHead {
+  position: relative;
+  text-align: left;
+  max-width: 62ch;
+  margin-bottom: 18px;
+}
+
+.modelsEyebrow {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #d8cdef;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  padding: 4px 12px;
+  margin-bottom: 10px;
+}
+
+.modelsTitle {
+  margin: 0 0 6px;
+  font-size: clamp(1.4rem, 2.8vw, 2rem);
+  font-weight: 600;
+  color: #fff;
+}
+
+.modelsLead {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.collage {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  align-items: start;
+  padding: 6px 2px 2px;
+}
+
+.modelCard {
+  position: relative;
+  border-radius: 18px;
+  padding: 18px 16px 16px;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  background: #ece4f9;
+  color: #493971;
+  box-shadow: 0 10px 26px rgba(20, 10, 45, 0.35);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.modelCard:nth-child(1) { transform: rotate(-5deg) translateY(6px); }
+.modelCard:nth-child(2) { transform: rotate(2.5deg); }
+.modelCard:nth-child(3) { transform: rotate(-2deg) translateY(12px); }
+.modelCard:nth-child(4) { transform: rotate(4deg) translateY(4px); }
+.modelCard:nth-child(5) { transform: rotate(-3deg); }
+.modelCard:nth-child(6) { transform: rotate(3deg) translateY(10px); }
+
+.modelCard:hover {
+  transform: rotate(0deg) translateY(-4px);
+  box-shadow: 0 18px 38px rgba(20, 10, 45, 0.45);
+}
+
+.modelFeatured {
+  background: #ffffff;
+  box-shadow: 0 16px 36px rgba(20, 10, 45, 0.45);
+}
+
+.modelBig {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.modelBig span {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #6a1b9a;
+}
+
+.modelBig small {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #7e57c2;
+}
+
+.modelCardEyebrow {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #7e57c2;
+}
+
+.modelCardTitle {
+  margin: 4px 0 8px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: #2d1b4e;
+}
+
+.modelCardIcon {
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: rgba(106, 27, 154, 0.1);
+  color: #6a1b9a;
+  font-size: 1.15rem;
+  margin-bottom: 10px;
+}
+
+.modelCardMeta {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #6b5b8e;
+}
+
+.modelCardResult {
+  margin: 2px 0 12px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #493971;
+}
+
+.modelCardActions {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.modelCta {
+  display: inline-block;
+  padding: 9px 22px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #6a1b9a, #7e57c2);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  box-shadow: 0 6px 16px rgba(106, 27, 154, 0.35);
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.modelCta:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.08);
+}
+
+.modelLearn {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #7e57c2;
+  text-decoration: none;
+  background: rgba(106, 27, 154, 0.08);
+  border-radius: 999px;
+  padding: 3px 12px;
+}
+
+.modelLearn:hover {
+  text-decoration: underline;
+}
+
+.modelSoonPill {
+  margin-top: auto;
+  align-self: flex-start;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #6a1b9a;
+  background: rgba(106, 27, 154, 0.1);
+  border: 1px dashed rgba(106, 27, 154, 0.4);
+  border-radius: 999px;
+  padding: 6px 18px;
+}
+
+.modelSoon {
+  opacity: 0.96;
+}
+
+.modelsDisclaimer {
+  position: relative;
+  margin: 16px 0 0;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.75);
+  text-align: center;
+}
+
+/* ---------- Compact steps strip (small, right under the model cards) ---------- */
+
+.stepsCompact {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 12px clamp(12px, 3vw, 28px) 2px;
+}
+
+.stepsCompactCard {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 12px 16px;
+  box-shadow: 0 4px 14px rgba(73, 57, 113, 0.07);
+}
+
+.stepsCompactTitle {
+  margin: 0 0 2px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.stepsCompactLead {
+  margin: 0 0 10px;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.stepsCompactRow {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+}
+
+.stepsCompactStep {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  background: var(--violet-soft);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 8px 10px;
+}
+
+.stepsCompactNum {
+  flex-shrink: 0;
+  display: inline-grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--violet);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.7rem;
+}
+
+.stepsCompactLabel {
+  margin: 0 0 1px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.stepsCompactText {
+  margin: 0;
+  font-size: 0.7rem;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.stepsCompactArrow {
+  align-self: center;
+  color: var(--border);
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+  .stepsCompactRow {
+    flex-direction: column;
+  }
+
+  .stepsCompactArrow {
+    transform: rotate(90deg);
+    align-self: center;
+  }
+}
+
+@media (max-width: 900px) {
+  .collage {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .collage {
+    grid-template-columns: 1fr;
+    max-width: 380px;
+    margin: 0 auto;
+  }
+
+  .modelCard:nth-child(n) {
+    transform: rotate(0deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .modelCard,
+  .modelCta {
+    transition: none;
+  }
+
+  .modelCard:hover,
+  .modelCta:hover {
+    transform: none;
+  }
+}

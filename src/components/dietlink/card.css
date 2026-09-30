@@ -1,0 +1,44 @@
+/* Lilac/purple hero banner: matches fitness palette (#493971 / #7e57c2). */
+
+.planner-hero {
+  background: linear-gradient(135deg, #493971 0%, #6a1b9a 55%, #7e57c2 100%);
+  border-radius: 14px;
+  padding: 34px 24px;
+  text-align: center;
+  box-shadow: 0 8px 22px rgba(73, 57, 113, 0.3);
+}
+
+.planner-hero-title {
+  margin: 0 0 12px;
+  color: #ffffff;
+  font-size: 0.98rem;
+  font-weight: 800;
+}
+
+.planner-hero-text {
+  margin: 0 auto 18px;
+  max-width: 46ch;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+.planner-hero-button {
+  cursor: pointer;
+  background: transparent;
+  border: 2px solid #ffffff;
+  border-radius: 4px;
+  padding: 6px 18px;
+  transition: background 0.2s ease;
+}
+
+.planner-hero-button:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.planner-hero-link {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 500;
+}

@@ -1,0 +1,182 @@
+/* Wellness Store — same native conventions as the rest of the app. */
+
+.store-search {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  max-width: 480px;
+}
+
+.store-search input {
+  flex: 1;
+  min-width: 0;
+  height: 44px;
+  padding: 0 16px;
+  border-radius: 12px;
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  font: inherit;
+  font-size: 0.88rem;
+}
+
+.store-search input::placeholder { color: rgba(255, 255, 255, 0.75); }
+.store-search input:focus { outline: 2px solid #fff; outline-offset: 1px; }
+
+.store-promo {
+  margin-top: 18px;
+  border-radius: 16px;
+  padding: 20px 22px;
+  background: linear-gradient(135deg, #e65100, #ff8f00);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  box-shadow: 0 8px 22px rgba(230, 81, 0, 0.3);
+}
+
+.store-promo small {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.store-promo strong { font-size: 1.3rem; }
+.store-promo i { font-size: 2rem; opacity: 0.85; }
+
+.store-cats {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 18px 0 4px;
+}
+
+.store-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 14px;
+  margin-top: 12px;
+}
+
+.store-card {
+  background: #fff;
+  border: 1px solid #ddd0f2;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.store-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(73, 57, 113, 0.16);
+}
+
+.store-art {
+  position: relative;
+  min-height: 130px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 10px 12px;
+  color: #fff;
+  overflow: hidden;
+}
+
+.store-art::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.22) 1.2px, transparent 1.2px);
+  background-size: 15px 15px;
+  pointer-events: none;
+}
+
+.store-art > i {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%) rotate(-8deg);
+  font-size: 3.4rem;
+  opacity: 0.35;
+}
+
+.store-off {
+  position: relative;
+  z-index: 1;
+  font-size: 0.7rem;
+  font-weight: 800;
+  background: rgba(0, 0, 0, 0.32);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.store-body {
+  padding: 12px 14px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1;
+}
+
+.store-brand {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #7e57c2;
+}
+
+.store-body h3 { margin: 0; font-size: 0.95rem; color: #2d1b4e; }
+
+.store-rating {
+  font-size: 0.78rem;
+  color: #6b6480;
+  font-weight: 600;
+}
+
+.store-rating i { color: #f9a825; margin-right: 3px; }
+
+.store-price { display: flex; align-items: baseline; gap: 8px; }
+.store-price strong { font-size: 1.05rem; color: #2d1b4e; }
+.store-price s { font-size: 0.8rem; color: #a08fa0; }
+
+.store-buy {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 10px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #2e7d32, #1b5e20);
+  color: #fff;
+  font-size: 0.84rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.store-buy:hover { filter: brightness(1.1); }
+
+.store-empty {
+  margin: 18px 0;
+  padding: 22px;
+  text-align: center;
+  color: #6b6480;
+  background: #fff;
+  border: 1px dashed #c9d6f0;
+  border-radius: 14px;
+}
+
+.store-section { margin-top: 22px; }
+.store-section h2 { margin: 0 0 4px; font-size: 1.2rem; color: #2d1b4e; }
+.store-section > p { margin: 0 0 4px; font-size: 0.85rem; color: #6b6480; }
+
+@media (prefers-reduced-motion: reduce) {
+  .store-card { transition: none; }
+  .store-card:hover { transform: none; }
+}

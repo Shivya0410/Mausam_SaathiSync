@@ -1,0 +1,326 @@
+canvas {
+  display: block;
+}
+
+html,
+body {
+  background-color: rgb(73, 57, 113);
+  overflow: hidden;
+}
+
+h1 {
+  position: absolute;
+  /* width: 800px; */
+  height: 100px;
+  left: 70px;
+  top: 0px;
+
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 120px;
+  line-height: 141px;
+  /* identical to box height */
+
+  letter-spacing: -0.05em;
+
+  color: #FFFFFF;
+}
+
+h2 {
+  position: absolute;
+  /* width: 800px; */
+  height: 76px;
+  left: 99px;
+  top: 135px;
+
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 60px;
+  line-height: 76px;
+  letter-spacing: -0.05em;
+
+  color: #FFFFFF;
+}
+
+h3 {
+  width: 60px;
+  height: 60px;
+  font-size: 45px;
+  color: #FFFFFF;
+  padding-left: 45px;
+}
+
+p {
+  font-size: 30px;
+  font-weight: normal;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  text-align: justify;
+  margin-top: 0px;
+  margin-bottom: 100px;
+  text-align: left;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  letter-spacing: -0.05em;
+  left: 99px;
+
+  color: #FFFFFF;
+
+  background: rgba(87, 73, 174, 0.37);
+}
+
+a {
+  color: black;
+  text-decoration: none;
+  display: inline-block;
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 30px;
+  width: 100%;
+  color: white;
+  text-align: center;
+}
+
+
+indexbutton {
+  position: absolute;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 50px;
+  line-height: 65px;
+  /* identical to box height */
+  text-align: left;
+  padding-left: 20px;
+  padding-right: 20px;
+  letter-spacing: -0.05em;
+  height: 75px;
+  left: 99px;
+
+  color: #FFFFFF;
+
+  background: rgba(87, 73, 174, 0.37);
+
+}
+
+indexbutton:hover {
+  border: 4px solid #FFFFFF;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.parent {
+  width: 730px;
+  height: 120px;
+  position: absolute;
+  top: 170px;
+  left: 770px;
+  text-align: center;
+  align-content: center;
+}
+
+.child {
+  position: absolute;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -90px);
+}
+
+.stars {
+  visibility: hidden;
+  left: 840px;
+  bottom: 0px;
+  position: absolute;
+  width: 188px;
+  height: 210px;
+  z-index: 0;
+}
+
+.stars.animated {
+  visibility: visible;
+  overflow: auto;
+  left: 840px;
+  position: absolute;
+  bottom: 0px;
+  animation: fadein 1.5s ease;
+
+}
+.image-AI{
+  margin-left:800px; 
+  margin-top:120px; 
+  width: 600px; 
+  height: 500px;
+}
+.img-blob{
+  position:absolute; 
+  width: 500px; 
+  height: 500px; 
+  left: -210px; 
+  top: -350px;
+}
+/*
+@keyframes fadein {
+  0%   {bottom: -220px;}
+  25%  {bottom: -100px;}
+  50%  {bottom: 0px;}
+  75%  {bottom: -100px;}
+  100% {bottom: -220px;}
+}*/
+@media (max-width: 1260px){
+   .image-AI{
+    width: 400px; 
+  height: 300px;
+  margin-left:600px; 
+  margin-top:180px; 
+   }
+
+   h2{
+    /* width:800px !important; */
+    padding-left:20px !important; 
+    font-size:2rem !important; 
+    margin-top: 160px !important; 
+    margin-left: 60px !important;
+   }
+   h1{
+    /* width:800px;  */
+    padding-left:20px; 
+    font-size:3.5rem !important; 
+    margin-top: 200px !important;
+   }
+
+   indexbutton{
+    top: 370px !important; 
+    left:340px !important; 
+    border-radius: 15px; 
+    width: 120px; 
+    height: 70px;
+   }
+   .indexbutton2{
+    top: 370px !important; 
+    left:100px !important; 
+    border-radius: 15px; 
+    width: 120px; 
+    height: 70px;
+   }
+}
+
+@media (max-width: 990px){
+  .image-AI{
+   width: 300px; 
+ height: 200px;
+ margin-left:400px; 
+ margin-top:180px; 
+  }
+
+  h2{
+   /* width:400px !important; */
+   padding-left:20px !important; 
+   font-size:1rem !important; 
+   margin-top: 120px !important; 
+   margin-left: 50px !important;
+  }
+  h1{
+   /* width:400px !important;  */
+   padding-left:15px; 
+   font-size:2rem !important; 
+   margin-top: 200px !important;
+  }
+
+  indexbutton{
+   top: 310px !important; 
+   left:220px !important; 
+   border-radius: 15px; 
+   /* width: 70px !important;  */
+   height: 70px !important;
+   font-size: 2rem !important;
+  }
+  .indexbutton2{
+    top: 310px !important; 
+    left:50px !important; 
+    border-radius: 15px; 
+    width: 120px !important; 
+    height: 70px;
+   }
+}
+
+@media (max-width: 680px){
+  .image-AI{
+   width: 300px; 
+ height: 200px;
+ margin-left:100px; 
+ margin-top:380px; 
+  }
+
+  h2{
+   /* width:400px !important; */
+   padding-left:20px !important; 
+   font-size:1rem !important; 
+   margin-top: 25px !important; 
+   margin-left: 0px !important;
+  }
+  h1{
+   /* width:400px !important;  */
+   padding-left:15px; 
+   font-size:2rem !important; 
+   margin-top: 90px !important;
+   margin-left: 0px !important;
+  }
+
+  indexbutton{
+   top: 210px !important; 
+   left:220px !important; 
+   border-radius: 15px; 
+   /* width: 70px !important;  */
+   height: 70px !important;
+   font-size: 2rem !important;
+  }
+  .indexbutton2{
+    top: 310px !important; 
+    left:210px !important; 
+    border-radius: 15px; 
+    width: 170px; 
+    height: 70px;
+   }
+}
+
+@media (max-width: 360px){
+  .image-AI{
+   width: 350px; 
+ height: 250px;
+ margin-left:0px; 
+ margin-top:380px; 
+  }
+
+  h2{
+   width:400px !important;
+   padding-left:20px !important; 
+   font-size:1rem !important; 
+   margin-top: 25px !important; 
+   margin-left: 30px !important;
+  }
+  h1{
+   width:400px !important; 
+   padding-left:12px; 
+   font-size:2rem !important; 
+   margin-top: 90px !important;
+  }
+
+  indexbutton{
+   top: 210px !important; 
+   left:200px !important; 
+   border-radius: 15px; 
+   width: 70px !important; 
+   height: 70px !important;
+   font-size: 2rem !important;
+  }
+}

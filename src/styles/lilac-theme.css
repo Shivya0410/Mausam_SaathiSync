@@ -1,0 +1,117 @@
+/*
+ * Lilac light theme + purplish dark accents (fitness palette).
+ * Loaded last in layout.js so it wins over legacy navy (#2646A6) styles.
+ * Light: #ede7f6 / #e8dff5 / #f3e5f5, lavender #b39ddb.
+ * Dark: #493971 navbar, ink #2d1b4e, accents #6a1b9a / #7e57c2.
+ */
+
+body {
+  background: linear-gradient(168deg, #ede7f6 0%, #e8dff5 40%, #f3e5f5 100%);
+  color: #2d1b4e;
+}
+
+/* ── Top bar (light lilac) ── */
+.topbar {
+  background-color: #f5f0fd !important;
+  border-bottom-color: #ddd0f2 !important;
+}
+.topbar-brand,
+.topbar-brand-icon,
+.topbar-brand-title,
+.topbar-menu-btn,
+.topbar-profile-btn {
+  color: #493971 !important;
+}
+.topbar-brand-title span,
+.topbar-cta-action,
+.topbar-cta-badge {
+  color: #6a1b9a !important;
+}
+.topbar-cta-pill {
+  border-color: #d1c4e9 !important;
+  color: #493971 !important;
+  box-shadow: 0 2px 10px rgba(73, 57, 113, 0.12) !important;
+}
+.topbar-search:focus-within {
+  border-color: #7e57c2 !important;
+  box-shadow: 0 0 0 3px rgba(126, 87, 194, 0.18) !important;
+}
+
+/* ── Footer (purplish dark) ── */
+.footer-bar {
+  background-color: #2d1b4e !important;
+  border-top: 1px solid rgba(179, 157, 219, 0.25) !important;
+}
+
+/* ── Home layout (lilac wash) ── */
+main1 {
+  background: transparent !important;
+  color: #2d1b4e !important;
+}
+.content {
+  background: transparent !important;
+}
+.left-content,
+.right-content {
+  background: #faf7ff !important;
+  border-color: #ddd0f2 !important;
+  box-shadow: 0 4px 20px rgba(73, 57, 113, 0.08) !important;
+}
+.activities h1,
+.weekly-schedule h1,
+.personal-bests h1,
+.active-calories h1,
+.mobile-personal-bests h1,
+.friends-activity h1 {
+  color: #493971 !important;
+}
+.home-hero-login {
+  background: linear-gradient(135deg, #493971 0%, #6a1b9a 55%, #7e57c2 100%) !important;
+  box-shadow: 0 8px 24px rgba(73, 57, 113, 0.28) !important;
+}
+.overlay {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 30%, rgba(73, 57, 113, 0.88) 100%) !important;
+}
+.box-one {
+  background: linear-gradient(135deg, #ede7f6 0%, #d8cdeF 100%) !important;
+  border-color: #b39ddb !important;
+  color: #493971 !important;
+}
+.active-calories {
+  background: linear-gradient(135deg, #f3eefb 0%, #e6dcf5 100%) !important;
+  border-color: #c9b4ea !important;
+}
+.active-calories h1,
+.circle h2,
+.home-logout-btn,
+.icon-container .nav-icon:hover {
+  color: #493971 !important;
+}
+.circle {
+  background: conic-gradient(
+    from 0deg,
+    #493971 0%,
+    #7e57c2 0% var(--i),
+    #d1c4e9 var(--i),
+    #d1c4e9 100%
+  ) !important;
+  box-shadow: 0 2px 10px rgba(73, 57, 113, 0.22) !important;
+}
+.circle::before {
+  background-color: #f3eefb !important;
+}
+.icon-container .nav-icon,
+.user-info img {
+  border-color: #b39ddb !important;
+}
+.icon-container .nav-icon {
+  color: #7e57c2 !important;
+}
+
+/* ── Generic legacy navy remaps (light lilac / deep purple) ── */
+.playbtn {
+  background: #493971 !important;
+}
+.playbtn:hover {
+  background-color: #7e57c2 !important;
+}

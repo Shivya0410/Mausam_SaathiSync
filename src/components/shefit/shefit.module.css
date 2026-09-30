@@ -1,0 +1,1026 @@
+/*
+ * SheFit — Pinterest-style pin board.
+ * Warm blush paper, editorial serif headings, image-like gradient covers,
+ * masonry columns, hover lift + save buttons. All interactive class names
+ * from the previous design are preserved so CycleTracker / MythOrFact keep
+ * working untouched.
+ */
+
+.page {
+  --ink: #3a2440;
+  --muted: #7a6a80;
+  --plum: #493971;
+  --violet: #7e57c2;
+  --rose: #c2185b;
+  --peach: #ffab91;
+  --paper: #fdf7f4;
+  --card: #ffffff;
+  --border: #f0e2da;
+  --good: #1f7a4c;
+  --bad: #b3261e;
+
+  color: var(--ink);
+  font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  background:
+    radial-gradient(1100px 420px at 8% -40px, rgba(194, 24, 91, 0.08), transparent 60%),
+    radial-gradient(900px 380px at 95% 0%, rgba(126, 87, 194, 0.1), transparent 60%),
+    var(--paper);
+  padding-bottom: 72px;
+  min-height: 100vh;
+}
+
+.page *:focus-visible {
+  outline: 3px solid var(--violet);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.displayFont {
+  font-family: Georgia, 'Playfair Display', 'Times New Roman', serif;
+}
+
+/* ---------- Slim app-like header (compact) ---------- */
+
+.heroSlim {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #493971 0%, #6a1b9a 55%, #7e57c2 100%);
+  color: #fff;
+  padding: 14px 18px;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(73, 57, 113, 0.25);
+  margin: 16px clamp(16px, 4vw, 40px) 0;
+}
+
+.heroSlim::before {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  right: -100px;
+  top: -120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 171, 145, 0.35), transparent 70%);
+  pointer-events: none;
+}
+
+.heroRow {
+  position: relative;
+  max-width: 1220px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.heroAvatar {
+  width: 46px;
+  height: 46px;
+  flex: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  display: grid;
+  place-items: center;
+  font-size: 1.2rem;
+}
+
+.heroText {
+  flex: 1;
+  min-width: 0;
+}
+
+.heroSlim .heroKicker {
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  background: none;
+  padding: 0;
+  margin: 0 0 2px;
+}
+
+.heroSlim .heroTitle {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.3rem, 2.6vw, 1.8rem);
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.savedPill {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  padding: 7px 13px;
+  border-radius: 999px;
+}
+
+.heroSlim .jumpNav {
+  position: relative;
+  max-width: 1220px;
+  margin: 12px auto 2px;
+  justify-content: flex-start;
+  overflow-x: auto;
+  flex-wrap: nowrap;
+  padding-bottom: 2px;
+}
+
+.heroSlim .jumpNav a {
+  font-size: 0.74rem;
+  padding: 7px 13px;
+  white-space: nowrap;
+}
+
+/* ---------- Hero (legacy full banner, unused) ---------- */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(120deg, #3f2b56 0%, #6a1b9a 48%, #c2185b 100%);
+  color: #fff;
+  padding: clamp(56px, 9vw, 96px) clamp(20px, 5vw, 64px) clamp(40px, 6vw, 64px);
+  text-align: center;
+}
+
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero::before {
+  width: 420px;
+  height: 420px;
+  right: -140px;
+  top: -160px;
+  background: radial-gradient(circle, rgba(255, 171, 145, 0.4), transparent 70%);
+}
+
+.hero::after {
+  width: 340px;
+  height: 340px;
+  left: -120px;
+  bottom: -140px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.14), transparent 70%);
+}
+
+.heroKicker {
+  position: relative;
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  margin: 0 0 12px;
+  padding: 7px 16px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
+}
+
+.heroTitle {
+  position: relative;
+  font-family: Georgia, 'Playfair Display', 'Times New Roman', serif;
+  font-size: clamp(2.1rem, 5vw, 3.4rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 0 0 14px;
+  letter-spacing: -0.01em;
+}
+
+.heroTitle em {
+  font-style: italic;
+  color: var(--peach);
+}
+
+.heroLead {
+  position: relative;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  line-height: 1.65;
+  max-width: 58ch;
+  margin: 0 auto 22px;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+/* Quick-jump chips */
+.jumpNav {
+  position: relative;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.jumpNav a {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.08);
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.jumpNav a:hover {
+  background: rgba(255, 255, 255, 0.22);
+  transform: translateY(-1px);
+}
+
+/* ---------- Masonry board ---------- */
+
+.board {
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: clamp(24px, 4vw, 40px) clamp(16px, 4vw, 36px) 0;
+  columns: 340px 3;
+  column-gap: 20px;
+}
+
+/* A section becomes a pin. Wide pins (tracker) span all columns. */
+.section {
+  break-inside: avoid;
+  margin: 0 0 20px;
+  padding: 0;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 3px 14px rgba(73, 57, 113, 0.07);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.section:hover {
+  box-shadow: 0 14px 34px rgba(122, 40, 90, 0.14);
+  transform: translateY(-3px);
+}
+
+.sectionWide {
+  column-span: all;
+}
+
+.sectionTitle {
+  font-family: Georgia, 'Playfair Display', 'Times New Roman', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0;
+  padding: 18px 22px 0;
+  color: var(--ink);
+}
+
+.sectionSubtitle {
+  margin: 6px 0 0;
+  padding: 0 22px;
+  color: var(--muted);
+  font-size: 0.87rem;
+  line-height: 1.6;
+}
+
+.sectionBody {
+  padding: 16px 22px 22px;
+}
+
+/* ---------- Pin covers (pure-CSS art, no hotlinked photos) ---------- */
+
+.pinCover {
+  position: relative;
+  min-height: 148px;
+  display: flex;
+  align-items: flex-end;
+  padding: 16px 18px;
+  color: #fff;
+  overflow: hidden;
+}
+
+.pinCover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.22) 1.2px, transparent 1.2px);
+  background-size: 16px 16px;
+  pointer-events: none;
+}
+
+.pinCoverTall { min-height: 190px; }
+
+.coverTrack { background: linear-gradient(135deg, #6a1b9a, #c2185b); }
+.coverPhase { background: linear-gradient(135deg, #2e7d32, #66bb6a); }
+.coverWater { background: linear-gradient(135deg, #0277bd, #4fc3f7); }
+.coverCoach { background: linear-gradient(135deg, #e65100, #ffb74d); }
+.coverInsight { background: linear-gradient(135deg, #4527a0, #7e57c2); }
+.coverQuiz { background: linear-gradient(135deg, #ad1457, #f06292); }
+.coverLearn { background: linear-gradient(135deg, #4a148c, #9575cd); }
+
+.pinCoverArt {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%) rotate(-8deg);
+  font-size: 5.2rem;
+  opacity: 0.32;
+  pointer-events: none;
+}
+
+.pinTag {
+  position: relative;
+  z-index: 1;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: rgba(0, 0, 0, 0.28);
+  padding: 5px 12px;
+  border-radius: 999px;
+}
+
+.pinCoverTitle {
+  position: relative;
+  z-index: 1;
+  margin: 8px 0 0;
+  font-family: Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+/* Save (bookmark) button on covers */
+.savePin {
+  position: absolute;
+  z-index: 2;
+  top: 12px;
+  right: 12px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--plum);
+  font-size: 1rem;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.15s ease;
+}
+
+.savePin:hover { transform: scale(1.1); }
+
+.savePinOn {
+  background: var(--rose);
+  color: #fff;
+}
+
+/* ---------- Menstrual tracker ---------- */
+
+.trackerCard {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+}
+
+.trackerGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.trackerColumn {
+  background: #fff8f6;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px 20px 24px;
+}
+
+.trackerColumnTitle {
+  font-family: Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0 0 14px;
+  color: var(--ink);
+}
+
+.trackerForm {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.formLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.formInput,
+.formTextarea {
+  font: inherit;
+  font-weight: 400;
+  padding: 10px 13px;
+  border-radius: 12px;
+  border: 1.5px solid var(--border);
+  color: var(--ink);
+  background: #fff;
+}
+
+.formInput:focus,
+.formTextarea:focus {
+  border-color: var(--violet);
+  outline: none;
+}
+
+.formTextarea {
+  resize: vertical;
+}
+
+.symptomFieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.symptomGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(118px, 1fr));
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.symptomOption {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.84rem;
+  font-weight: 500;
+  color: var(--ink);
+  background: #fff;
+  border: 1.5px solid var(--border);
+  border-radius: 999px;
+  padding: 7px 12px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.symptomOption:has(input:checked) {
+  border-color: var(--rose);
+  background: #fce4ec;
+}
+
+.symptomOption input {
+  accent-color: var(--rose);
+}
+
+.formError {
+  color: var(--bad);
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.primaryBtn {
+  align-self: flex-start;
+  display: inline-block;
+  padding: 11px 28px;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(135deg, var(--plum), var(--rose));
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.94rem;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 6px 16px rgba(194, 24, 91, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.primaryBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(194, 24, 91, 0.38);
+}
+
+.primaryBtn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.statsRow {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.statPill {
+  background: linear-gradient(135deg, #fce4ec, #f3e5f5);
+  border-radius: 14px;
+  padding: 10px 18px;
+  display: flex;
+  flex-direction: column;
+  min-width: 120px;
+}
+
+.statValue {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--rose);
+}
+
+.statLabel {
+  font-size: 0.74rem;
+  color: var(--muted);
+}
+
+.calendarHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.calendarHeader button {
+  border: none;
+  background: #fce4ec;
+  color: var(--rose);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.calendarGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-bottom: 14px;
+}
+
+.calendarWeekday {
+  text-align: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--muted);
+  padding-bottom: 4px;
+}
+
+.calendarDay {
+  text-align: center;
+  font-size: 0.8rem;
+  padding: 7px 0;
+  border-radius: 9px;
+  color: var(--ink);
+}
+
+.calendarDayMuted {
+  color: #d5c9c4;
+}
+
+.calendarDayToday {
+  border: 1.5px solid var(--rose);
+}
+
+.calendarDayLogged {
+  background: linear-gradient(135deg, var(--plum), var(--rose));
+  color: #fff;
+  font-weight: 700;
+}
+
+.trackerNote {
+  font-size: 0.86rem;
+  color: var(--muted);
+  margin: 8px 0;
+}
+
+.entryList {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.entryItem {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 0.85rem;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 8px 12px;
+}
+
+.entryDates {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.entrySymptoms {
+  color: var(--muted);
+}
+
+.trackerDisclaimer {
+  font-size: 0.78rem;
+  line-height: 1.55;
+  color: var(--muted);
+  margin-top: 16px;
+}
+
+.privacyNote {
+  margin: 16px 22px 22px;
+  font-size: 0.84rem;
+  color: var(--plum);
+  text-align: center;
+  background: #f6effc;
+  border-radius: 10px;
+  padding: 9px 12px;
+}
+
+/* ---------- Wellness insights ---------- */
+
+.insightsCard {
+  background: #fff;
+  border: none;
+  border-radius: 0;
+  padding: 4px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.insightText {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--ink);
+  background: #fdf3f7;
+  border-left: 4px solid var(--rose);
+  border-radius: 0 12px 12px 0;
+  padding: 10px 14px;
+}
+
+.insightText:last-child {
+  color: var(--muted);
+  font-size: 0.82rem;
+  background: transparent;
+  border-left-color: var(--border);
+}
+
+/* ---------- Myth or Fact ---------- */
+
+.quizCard {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.quizProgressTop {
+  height: 8px;
+  border-radius: 999px;
+  background: #f3e2ea;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.quizProgressTop span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--violet), var(--rose));
+  transition: width 0.3s ease;
+}
+
+.quizEmoji {
+  font-size: 2rem;
+  margin: 0 0 4px;
+}
+
+.quizKicker {
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: var(--rose);
+  margin: 0 0 10px;
+}
+
+.quizStatement {
+  font-family: Georgia, serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--ink);
+  margin: 0 0 20px;
+}
+
+.quizChoices {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.quizChoiceBtn {
+  flex: 1;
+  max-width: 160px;
+  padding: 13px 0;
+  border-radius: 14px;
+  border: 2px solid var(--border);
+  background: #fff;
+  color: var(--ink);
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.15s ease;
+}
+
+.quizChoiceBtn:not(:disabled):hover {
+  border-color: var(--rose);
+  transform: translateY(-2px);
+}
+
+.quizChoiceBtn:disabled {
+  cursor: default;
+}
+
+.quizChoiceCorrect {
+  border-color: var(--good);
+  background: #eaf7f0;
+  color: var(--good);
+}
+
+.quizChoiceWrong {
+  border-color: var(--bad);
+  background: #fbeceb;
+  color: var(--bad);
+}
+
+.quizResult {
+  border-top: 1px dashed var(--border);
+  padding-top: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.quizCorrectLabel {
+  color: var(--good);
+  font-weight: 800;
+  margin: 0;
+}
+
+.quizWrongLabel {
+  color: var(--bad);
+  font-weight: 800;
+  margin: 0;
+}
+
+.quizExplanation {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0 0 4px;
+}
+
+.quizProgress {
+  margin: 14px 0 0;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.quizDoneTitle {
+  font-family: Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0 0 8px;
+  color: var(--ink);
+}
+
+.quizDoneText {
+  color: var(--muted);
+  margin: 0 0 16px;
+}
+
+/* ---------- Education pins ---------- */
+
+.educationGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 0;
+}
+
+.educationCard {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: none;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.educationCard:hover {
+  box-shadow: 0 10px 24px rgba(122, 40, 90, 0.12);
+  transform: translateY(-2px);
+}
+
+.educationCardOpen {
+  border-color: var(--rose);
+  box-shadow: 0 10px 24px rgba(122, 40, 90, 0.14);
+}
+
+.eduCover {
+  position: relative;
+  min-height: 110px;
+  display: flex;
+  align-items: flex-end;
+  padding: 12px 16px;
+  color: #fff;
+  overflow: hidden;
+}
+
+.eduCover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.2) 1.2px, transparent 1.2px);
+  background-size: 14px 14px;
+}
+
+.eduCoverA { background: linear-gradient(135deg, #6a1b9a, #ab47bc); }
+.eduCoverB { background: linear-gradient(135deg, #c2185b, #f48fb1); }
+.eduCoverC { background: linear-gradient(135deg, #00695c, #4db6ac); }
+.eduCoverD { background: linear-gradient(135deg, #e65100, #ffcc80); }
+
+.eduCoverArt {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%) rotate(-8deg);
+  font-size: 3.4rem;
+  opacity: 0.35;
+}
+
+.eduCoverTag {
+  position: relative;
+  z-index: 1;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: rgba(0, 0, 0, 0.28);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.educationCardHeader {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+}
+
+.educationIcon {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: #fce4ec;
+  color: var(--rose);
+  font-size: 1.05rem;
+}
+
+.educationHeaderText {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+  min-width: 0;
+}
+
+.educationTitle {
+  font-weight: 700;
+  font-size: 0.98rem;
+  color: var(--ink);
+}
+
+.educationDescription {
+  font-size: 0.83rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.educationCta {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--rose);
+  white-space: nowrap;
+  margin-top: 2px;
+}
+
+.educationChevron {
+  font-size: 0.7rem;
+  transition: transform 0.25s ease;
+}
+
+.educationCardOpen .educationChevron {
+  transform: rotate(180deg);
+}
+
+.educationPanelWrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease;
+}
+
+.educationCardOpen .educationPanelWrap {
+  grid-template-rows: 1fr;
+}
+
+.educationPanelInner {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.educationList {
+  margin: 0;
+  padding: 2px 18px 18px 18px;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.65;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style: none;
+}
+
+.educationList li {
+  position: relative;
+  padding-left: 22px;
+}
+
+.educationList li::before {
+  content: "♥";
+  position: absolute;
+  left: 0;
+  color: var(--rose);
+  font-size: 0.8rem;
+}
+
+.educationDisclaimer {
+  font-size: 0.82rem;
+  color: var(--muted);
+  text-align: center;
+  padding: 0 22px 20px;
+}
+
+@media (max-width: 480px) {
+  .board {
+    columns: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .primaryBtn,
+  .quizChoiceBtn,
+  .section,
+  .educationCard,
+  .educationChevron,
+  .educationPanelWrap,
+  .quizProgressTop span,
+  .jumpNav a {
+    transition: none;
+  }
+
+  .primaryBtn:hover,
+  .section:hover,
+  .educationCard:hover,
+  .quizChoiceBtn:not(:disabled):hover {
+    transform: none;
+  }
+}

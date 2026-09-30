@@ -1,0 +1,214 @@
+.right-filter-panel {
+  background-color: var(--wiki-surface, #ffffff);
+  border: 1px solid var(--wiki-border, #e2e8f0);
+  border-radius: 14px;
+  padding: 16px;
+  width: 100%;
+  max-width: 360px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Top Switch Bar */
+.filter-toggles-bar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  background-color: var(--wiki-navy-primary, #1f3b73);
+  padding: 10px 8px;
+  border-radius: 10px;
+}
+
+.toggle-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.toggle-label {
+  font-size: 0.7rem;
+  color: #ffffff;
+  font-weight: 600;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.switch-pill {
+  width: 44px;
+  height: 22px;
+  background-color: rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  border: none;
+  padding: 0;
+}
+
+.switch-pill.active {
+  background-color: #ffffff;
+}
+
+.switch-thumb {
+  width: 16px;
+  height: 16px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.switch-pill.active .switch-thumb {
+  transform: translateX(22px);
+  background-color: var(--wiki-navy-primary, #1f3b73);
+}
+
+/* Equipment / Category Header */
+.filter-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--wiki-border, #e2e8f0);
+}
+
+.filter-section-header h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--wiki-navy-primary, #1f3b73);
+  margin: 0;
+}
+
+.filter-collapse-btn {
+  background: none;
+  border: none;
+  color: #64748b;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 2px 6px;
+}
+
+/* Checkbox Grid */
+.filter-checkbox-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 8px;
+}
+
+.filter-checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 0.78rem;
+  color: #334155;
+  user-select: none;
+}
+
+.filter-checkbox-item input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid #94a3b8;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+  background-color: #ffffff;
+}
+
+.filter-checkbox-item input[type="checkbox"]:checked {
+  background-color: var(--wiki-navy-primary, #1f3b73);
+  border-color: var(--wiki-navy-primary, #1f3b73);
+}
+
+.filter-checkbox-item input[type="checkbox"]:checked::after {
+  content: '✓';
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.filter-item-icon {
+  width: 14px;
+  color: var(--wiki-navy-primary, #1f3b73);
+  text-align: center;
+  font-size: 12px;
+}
+
+/* Bottom Promo / Insight Card */
+.filter-insight-card {
+  margin-top: auto;
+  background: linear-gradient(135deg, #f8fafc 0%, #edf2f7 100%);
+  border: 1px solid var(--wiki-border, #e2e8f0);
+  border-radius: 10px;
+  padding: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.filter-insight-dismiss {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #cbd5e1;
+  border: none;
+  border-radius: 4px;
+  color: #334155;
+  font-size: 0.65rem;
+  padding: 2px 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.filter-insight-dismiss:hover {
+  background: #94a3b8;
+  color: #ffffff;
+}
+
+.filter-insight-tag {
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #2563eb;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.filter-insight-title {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--wiki-navy-primary, #1f3b73);
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+
+.filter-insight-body {
+  font-size: 0.75rem;
+  color: #475569;
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+
+.filter-insight-cta {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #2563eb;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.filter-insight-cta:hover {
+  text-decoration: underline;
+}

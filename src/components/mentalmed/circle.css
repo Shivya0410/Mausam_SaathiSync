@@ -1,0 +1,98 @@
+.meditation-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.audio-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  z-index: 20;
+}
+
+.audio-select {
+  padding: 0.5rem;
+  margin-right: 1rem;
+  border-radius: 0.5rem;
+  background-color: rgba(255,255,255,0.7);
+  border: 1px solid #e0e0e0;
+  font-size: 1rem;
+}
+
+.audio-toggle {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  background-color: rgb(57,73,117);;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.background-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.breathing-circle {
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  transition: all 0.5s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.meditation-inhale .breathing-circle {
+  background-color: rgb(57,73,117); /* green-400 with opacity */
+}
+
+.meditation-exhale .breathing-circle {
+  background-color: rgb(57,73,117); /* green-600 with opacity */
+}
+
+.circle-text {
+  position: absolute;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.hidden-audio {
+  display: none;
+}
+
+.breath-count {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  z-index: 10;
+  position: relative;
+}
+
+.meditation-inhale .breath-count {
+  color: rgb(57,73,117); /* green-800 */
+}
+
+.meditation-exhale .breath-count {
+  color:rgb(57,73,117); /* green-900 */
+}

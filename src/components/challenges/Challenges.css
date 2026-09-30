@@ -1,0 +1,274 @@
+/* Challenges Hub + Wellness Store — native Swasth Infinity styling.
+   Purple palette, 12-16px radii, soft shadows. No new design system. */
+
+.chal-page, .store-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px clamp(12px, 4vw, 40px) 48px;
+}
+
+.chal-hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 2px 0 4px;
+  padding: 11px 26px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #493971, #7e57c2);
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.9rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(73, 57, 113, 0.35);
+}
+
+.chal-hero-cta:hover { filter: brightness(1.08); }
+
+.chal-section { margin-top: 20px; }
+.chal-section-head { margin: 0 0 4px; }
+.chal-section-head h2 { margin: 0; font-size: 1.25rem; color: #2d1b4e; }
+.chal-section-head p { margin: 4px 0 12px; color: #6b6480; font-size: 0.86rem; }
+
+.chal-filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 0 0 14px;
+}
+
+.chal-chip {
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1.5px solid #c9d6f0;
+  background: #fff;
+  color: #493971;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.chal-chip:hover { background: #ede7f6; }
+.chal-chip-on {
+  background: linear-gradient(135deg, #493971, #7e57c2);
+  border-color: transparent;
+  color: #fff;
+}
+.chal-chip:focus-visible { outline: 3px solid #7e57c2; outline-offset: 2px; }
+
+.chal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 14px;
+}
+
+.chal-card {
+  background: #fff;
+  border: 1px solid #ddd0f2;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.chal-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(73, 57, 113, 0.16);
+}
+
+.chal-cover {
+  position: relative;
+  min-height: 118px;
+  display: flex;
+  align-items: flex-end;
+  padding: 12px 14px;
+  color: #fff;
+  overflow: hidden;
+}
+
+.chal-cover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.22) 1.2px, transparent 1.2px);
+  background-size: 15px 15px;
+  pointer-events: none;
+}
+
+.chal-cover-art {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%) rotate(-8deg);
+  font-size: 3.6rem;
+  opacity: 0.35;
+}
+
+.chal-cat {
+  position: relative;
+  z-index: 1;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.chal-body {
+  padding: 13px 14px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.chal-body h3 { margin: 0; font-size: 1rem; color: #2d1b4e; }
+.chal-body > p { margin: 0; font-size: 0.82rem; color: #6b6480; line-height: 1.5; }
+
+.chal-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+  font-size: 0.74rem;
+  color: #6b6480;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.chal-meta i { color: #7e57c2; margin-right: 4px; }
+
+.chal-xp {
+  align-self: flex-start;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #6a1b9a;
+  background: #f3e5f5;
+  border-radius: 999px;
+  padding: 3px 10px;
+}
+
+.chal-join {
+  margin-top: auto;
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 800;
+  padding: 10px;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(135deg, #493971, #7e57c2);
+  color: #fff;
+  cursor: pointer;
+}
+
+.chal-join:hover { filter: brightness(1.08); }
+.chal-joined {
+  background: #e8f5e9;
+  color: #2e7d32;
+  cursor: default;
+}
+
+.chal-featured {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  background: #fff;
+  border: 1.5px solid #d1c4e9;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(73, 57, 113, 0.14);
+}
+
+.chal-featured-cover {
+  position: relative;
+  min-height: 230px;
+  display: flex;
+  align-items: flex-end;
+  padding: 18px;
+  color: #fff;
+  overflow: hidden;
+}
+
+.chal-featured-cover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.2) 1.4px, transparent 1.4px);
+  background-size: 17px 17px;
+}
+
+.chal-featured-art {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%) rotate(-8deg);
+  font-size: 6rem;
+  opacity: 0.32;
+}
+
+.chal-featured-body { padding: 20px 22px; display: flex; flex-direction: column; gap: 8px; }
+.chal-featured-body h2 { margin: 0; font-size: 1.4rem; color: #2d1b4e; }
+.chal-featured-body > p { margin: 0; color: #6b6480; font-size: 0.9rem; line-height: 1.55; }
+
+.chal-fstats { display: flex; gap: 16px; flex-wrap: wrap; }
+.chal-fstats div { display: flex; flex-direction: column; }
+.chal-fstats strong { font-size: 1.1rem; color: #2d1b4e; }
+.chal-fstats small { font-size: 0.72rem; color: #6b6480; }
+
+.chal-progress { height: 10px; border-radius: 999px; background: #ede7f6; overflow: hidden; }
+.chal-progress span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #7e57c2, #ec407a); }
+
+.chal-invite {
+  margin-top: 22px;
+  border-radius: 18px;
+  padding: 22px;
+  background: linear-gradient(135deg, #493971, #7e57c2);
+  color: #fff;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.chal-invite h2 { margin: 0 0 6px; font-size: 1.2rem; }
+.chal-invite p { margin: 0 0 10px; opacity: 0.9; font-size: 0.86rem; max-width: 52ch; }
+
+.chal-invite-cats { display: flex; gap: 6px; flex-wrap: wrap; }
+.chal-invite-cats span {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.chal-invite-btn {
+  font: inherit;
+  font-weight: 800;
+  font-size: 0.9rem;
+  padding: 12px 26px;
+  border-radius: 999px;
+  border: none;
+  background: #fff;
+  color: #493971;
+  cursor: pointer;
+  flex: none;
+}
+
+@media (max-width: 720px) {
+  .chal-featured { grid-template-columns: 1fr; }
+  .chal-featured-cover { min-height: 150px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chal-card, .chal-join, .chal-chip { transition: none; }
+  .chal-card:hover { transform: none; }
+}

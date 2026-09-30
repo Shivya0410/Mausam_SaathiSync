@@ -1,0 +1,133 @@
+.streak-nav {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.streak-nav button {
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  color: #fff;
+  background-color: #2646A6;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.streak-nav button:hover {
+  background-color: #6382BF;
+}
+
+.streak-nav button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* streak.css */
+
+/* Calendar container styling */
+.calendar-streak {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(20px, 1fr)) !important;
+  grid-template-rows: 30px !important;
+    grid-auto-rows: 40px !important; /* 7 columns for the days of the week */
+  gap: 8px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Individual day boxes */
+.day-box {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-weight: bold;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  background-color: #ffffff;
+  color: #333333;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Highlight for streak days */
+.day-box.streak-day {
+  background-color: #2646A6;
+  color: white;
+  border: 1px solid #6382BF;
+  box-shadow: 0px 2px 6px rgba(38, 70, 166, 0.5);
+  transform: scale(1.1); /* Slight zoom effect for streak days */
+}
+
+/* Hover effect */
+.day-box:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Placeholder boxes (previous month's overflow) */
+.day-box:empty {
+  background-color: transparent;
+  border: none;
+  pointer-events: none;
+}
+
+/* Header for the calendar */
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Month navigation buttons */
+.calendar-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.calendar-nav button {
+  background-color: #2646A6;
+  color: white;
+  border: none;
+  padding: 5px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.calendar-nav button:hover {
+  background-color: #6382BF;
+}
+
+/* Weekday headers */
+.weekday-header {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #555;
+  text-align: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.weekday-header div {
+  font-size: 12px;
+  text-transform: uppercase;
+}
+

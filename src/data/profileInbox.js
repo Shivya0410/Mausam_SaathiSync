@@ -1,0 +1,141 @@
+// HARDCODED DEMO INBOX AND NOTIFICATIONS for the profile page.
+//
+// Senders are fictional and messages are not delivered by any backend. They
+// stay static for the demo on purpose; replacing them with real messages is a
+// change to this file only. Event notifications point at real routes in the
+// /events pages so they can be clicked through.
+
+export const INBOX = [
+  {
+    id: 'm1',
+    from: 'Dr. Neetu Sharma',
+    look: { hair: 2 },
+    role: 'Sports Nutritionist',
+    tag: 'Appointment',
+    subject: 'Your nutrition consult is confirmed for Friday',
+    time: '9:42 AM',
+    date: 'Today',
+    unread: true,
+    body: [
+      'Hi! Your 30-minute consult is confirmed for Friday at 6:30 PM on video call.',
+      'Before we meet, please log three typical days of meals, including one weekend day, and note roughly when you train.',
+      'We will build a vegetarian high-protein plan around your HYROX training. No supplements needed to start.',
+    ],
+    checklist: [{ label: 'Share 3-day food log', done: false }, { label: 'Add training schedule', done: true }],
+    attachment: { name: 'Food-log-template.pdf', added: 'Today' },
+  },
+  {
+    id: 'm2',
+    from: 'Coach Vikram',
+    look: { hair: 0 },
+    role: 'HYROX Coach, Delhi',
+    tag: 'Coach',
+    subject: 'Week 4 plan: more sled work, fewer junk miles',
+    time: '7:15 AM',
+    date: 'Today',
+    unread: true,
+    body: [
+      'Great session on Sunday: your wall balls held pace through all 100 reps.',
+      'This week: two station days (sled push and pull, burpee broad jumps), one Zone 2 run of 40 minutes, and a full rest day on Thursday.',
+      'If your recovery score is low, swap Tuesday’s stations for mobility.',
+    ],
+    checklist: [{ label: 'Tuesday: stations', done: false }, { label: 'Thursday: rest', done: false }],
+  },
+  {
+    id: 'm3',
+    from: 'Ananya Iyer',
+    look: { hair: 1 },
+    role: 'Community member',
+    tag: 'Community',
+    subject: 'Joining the Lodhi Garden Saturday 5K?',
+    time: 'Yesterday',
+    date: 'Yesterday',
+    unread: false,
+    body: [
+      'A few of us from the community are doing the free Saturday 5K at Lodhi Garden. Walkers welcome!',
+      'Meet at Gate 1 at 6:20 AM, chai afterwards. Let me know and I’ll add you to the group.',
+    ],
+  },
+  {
+    id: 'm4',
+    from: 'Delhi Autumn Half Marathon',
+    role: 'Event organiser',
+    tag: 'Event',
+    subject: 'Bib collection opens 15 October',
+    time: 'Mon',
+    date: '14 Sept',
+    unread: false,
+    body: [
+      'Thank you for registering for the 10 km category.',
+      'Bib and T-shirt collection is at the JLN Stadium expo from 15 to 17 October, 11 AM to 7 PM. Please carry a photo ID.',
+    ],
+    attachment: { name: 'Race-day-guide.pdf', added: '14 Sept' },
+  },
+  {
+    id: 'm5',
+    from: 'Priya Nair',
+    look: { hair: 2 },
+    role: 'Yoga Teacher',
+    tag: 'Coach',
+    subject: 'Evening Yin sequence for better sleep',
+    time: 'Sun',
+    date: '13 Sept',
+    unread: false,
+    body: [
+      'As promised, here is the 20-minute Yin sequence from class. Hold each pose gently; never push into pain.',
+      'Child’s pose, supported butterfly, reclined twist, legs up the wall, then slow breathing.',
+    ],
+  },
+  {
+    id: 'm6',
+    from: 'Dr. Arvind Menon',
+    look: { hair: 0, glasses: true },
+    role: 'Physiotherapist',
+    tag: 'Appointment',
+    subject: 'Knee strength follow-up: how is the running feeling?',
+    time: 'Sat',
+    date: '12 Sept',
+    unread: false,
+    body: [
+      'Checking in two weeks after your assessment. Keep up the step-ups and single-leg balance work three times a week.',
+      'If you notice swelling or sharp pain, pause running and book a review.',
+    ],
+    checklist: [{ label: 'Step-ups, 3 × 12', done: true }, { label: 'Balance work, 3 × 30 s', done: true }],
+  },
+  {
+    id: 'm7',
+    from: 'Swasth Sustain Team',
+    role: 'Swasth Infinity',
+    tag: 'Community',
+    subject: 'Your virtual forest grew 2 trees this week 🌳',
+    time: 'Fri',
+    date: '11 Sept',
+    unread: false,
+    body: ['You logged 5 active commutes this week. Keep it up to unlock the Banyan badge.'],
+  },
+  {
+    id: 'm8',
+    from: 'Kabir Khan',
+    look: { hair: 3 },
+    role: 'Community member',
+    tag: 'Community',
+    subject: 'Volunteers needed: Inclusive Para-Sports Festival',
+    time: 'Thu',
+    date: '10 Sept',
+    unread: false,
+    body: [
+      'We need 20 volunteers for the para-sports festival at Thyagaraj Sports Complex on 8 November.',
+      'No experience needed. A short briefing is held on the morning. Reply if you can help!',
+    ],
+  },
+];
+
+export const NOTIFICATIONS = [
+  { id: 'n1', icon: 'fa-solid fa-dumbbell', title: 'HYROX Delhi registrations close soon', detail: 'Only a few Singles spots left for 24 Oct.', time: '1h', href: '/events/delhi/hyrox-delhi-2026', unread: true },
+  { id: 'n2', icon: 'fa-solid fa-person-running', title: 'Saturday Community 5K is this weekend', detail: 'Lodhi Garden, 6:30 AM · Free · Walkers welcome', time: '3h', href: '/events/delhi/lodhi-parkrun-sat', unread: true },
+  { id: 'n3', icon: 'fa-solid fa-wheelchair', title: 'Inclusive Para-Sports Festival added near you', detail: 'Thyagaraj Sports Complex · 8 Nov · Free', time: '5h', href: '/events/delhi/delhi-para-sports-day', unread: true },
+  { id: 'n4', icon: 'fa-solid fa-trophy', title: 'New personal best: 5K in 22:04', detail: 'Synced from Strava', time: '1d', href: '/activities/running', unread: true },
+  { id: 'n5', icon: 'fa-solid fa-hands-clapping', title: 'Rohan Mehta clapped for your story', detail: '"Six weeks to HYROX Delhi"', time: '1d', href: '/blogs/hyrox-delhi-prep-whoop', unread: true },
+  { id: 'n6', icon: 'fa-solid fa-spa', title: 'Sunrise Yoga at Aravalli Biodiversity Park', detail: '4 Oct · ₹199 · Chair-yoga corner available', time: '2d', href: '/events/delhi/gurugram-sunrise-yoga', unread: false },
+  { id: 'n7', icon: 'fa-solid fa-person-biking', title: 'Car-free Sunday Ride, Connaught Place', detail: '27 Sept · Loaner cycles available', time: '3d', href: '/events/delhi/raahgiri-cp-ride', unread: false },
+];

@@ -1,0 +1,47 @@
+/* Floating WhatsApp button — brand green circle, white glyph, nothing else. */
+
+.wa-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: #25d366;
+  color: #ffffff;
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+  box-shadow: 0 6px 18px rgba(37, 211, 102, 0.45);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.wa-btn i {
+  font-size: 28px;
+  line-height: 1;
+}
+
+.wa-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 8px 22px rgba(37, 211, 102, 0.55);
+  color: #ffffff;
+}
+
+.wa-btn:focus-visible {
+  outline: 3px solid #128c7e;
+  outline-offset: 2px;
+}
+
+.wa-fixed {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1100;
+}
+
+.wa-inline {
+  flex-shrink: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wa-btn {
+    transition: none;
+  }
+}

@@ -1,0 +1,66 @@
+.container3 {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  /* Scoped: a bare `label` rule made every label in the app bold, because
+     global CSS is not unloaded on navigation in the App Router. */
+  .container3 label {
+    font-weight: bold;
+  }
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .form-control-file {
+    width: 100%;
+    padding: 10px;
+    padding-left: 0;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  
+  
+  .btn3 {
+    padding: 10px 20px;
+    background-color: #70C0CF;
+    color: #fff;
+    border: none;
+    border-radius: 24px;
+    cursor: pointer;
+    margin-left: 0;
+  }
+  
+  .btn3-primary:hover {
+    background-color: #0056b3;
+  }
+  .inner h2{
+    color: #70C0CF;
+  }
+  .image img{
+    width:300px;
+    margin-right: 100px;
+    margin-top: 80px;
+    border-radius: 10px;
+  }
+  @media screen and (max-width: 768px){
+    .image img{
+        display: none;
+      }
+  }
