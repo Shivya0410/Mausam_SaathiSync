@@ -11,6 +11,12 @@ import { useTranslation } from 'react-i18next';
 export default function Dialog({ open, onClose, title, children, className = '', labelledBy }) {
   const { t } = useTranslation();
   const panel = useRef(null);
+  // Callers pass inline arrows; a ref keeps the effect from re-running (and
+  // re-moving focus) on every render.
+  const closeRef = useRef(onClose);
+  useEffect(() => {
+    closeRef.current = onClose;
+  });
 
   useEffect(() => {
     if (!open) return undefined;
@@ -21,7 +27,7 @@ export default function Dialog({ open, onClose, title, children, className = '',
     const onKey = (e) => {
       if (e.key === 'Escape') {
         e.stopPropagation();
-        onClose();
+        closeRef.current();
       }
       if (e.key === 'Tab') {
         const items = focusables();
@@ -42,7 +48,7 @@ export default function Dialog({ open, onClose, title, children, className = '',
       document.removeEventListener('keydown', onKey);
       if (returnTo && typeof returnTo.focus === 'function') returnTo.focus();
     };
-  }, [open, onClose]);
+  }, [open]);
 
   if (!open) return null;
   return (

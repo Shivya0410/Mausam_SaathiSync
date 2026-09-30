@@ -1504,3 +1504,69 @@
 .ms-depth-btn { justify-items: center; text-align: center; }
 .ms-depth-btn i { font-size: 1.6rem; color: var(--ms-rain); }
 .ms-depth-btn[aria-checked='true'] { border-color: var(--ms-brand); background: var(--ms-brand-soft); box-shadow: 0 0 0 2px var(--ms-brand); }
+
+/* ── Part 3C: Mausam Mitra ── */
+.ms-mitra-fab {
+  position: fixed;
+  right: 16px;
+  bottom: calc(var(--ms-tabbar-h) + 16px + env(safe-area-inset-bottom));
+  z-index: 960;
+  min-width: 56px;
+  min-height: 56px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--ms-brand);
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  box-shadow: 0 6px 18px rgba(45, 27, 78, 0.3);
+  cursor: pointer;
+}
+.ms-mitra-fab i { font-size: 1.3rem; }
+.ms-mitra-fab-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); }
+@media (min-width: 768px) {
+  .ms-mitra-fab { bottom: 24px; right: 24px; }
+  .ms-mitra-fab-label { position: static; width: auto; height: auto; clip: auto; overflow: visible; }
+}
+.ms-sheet.ms-mitra { display: flex; flex-direction: column; max-height: 100dvh; }
+@media (min-width: 768px) {
+  .ms-sheet.ms-mitra { width: 380px; height: 560px; max-height: 90vh; }
+}
+@media (max-width: 767px) {
+  .ms-sheet.ms-mitra { width: 100%; height: 100dvh; border-radius: 0; }
+}
+.ms-mitra-log { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; padding: 8px 2px; }
+.ms-bubble { max-width: 88%; padding: 10px 12px; border-radius: 14px; overflow-wrap: anywhere; }
+.ms-bubble p { margin: 0 0 6px; }
+.ms-bubble p:last-child { margin-bottom: 0; }
+.ms-bubble--bot { align-self: flex-start; background: var(--ms-canvas); border: 1px solid var(--ms-border); }
+.ms-bubble--user { align-self: flex-end; background: var(--ms-brand); color: #fff; }
+.ms-bubble--emergency { border: 3px solid var(--ms-level-red-fg); background: var(--ms-level-red-bg); color: var(--ms-level-red-fg); max-width: 100%; }
+.ms-mitra-calls { display: flex; flex-wrap: wrap; gap: 8px; }
+.ms-mitra-calls .ms-btn { min-height: 52px; font-size: var(--ms-text-lg); }
+.ms-mitra-source { font-size: var(--ms-text-xs); }
+.ms-mitra-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 6px; }
+.ms-mitra-starters { display: flex; flex-wrap: wrap; gap: 6px; padding: 6px 0; }
+.ms-mitra-form { display: flex; align-items: center; gap: 6px; padding-top: 8px; border-top: 1px solid var(--ms-border); }
+.ms-mitra-form input {
+  flex: 1;
+  min-width: 0;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid var(--ms-border);
+  border-radius: 999px;
+  font: inherit;
+  background: var(--ms-surface);
+  color: var(--ms-ink);
+}
+.ms-mitra-mic.is-listening { background: var(--ms-level-red-bg); color: var(--ms-level-red-fg); animation: ms-pulse 1.2s ease-in-out infinite; }
+@keyframes ms-pulse { 50% { box-shadow: 0 0 0 6px rgba(198, 40, 40, 0.2); } }
+.ms-reduce-motion .ms-mitra-mic.is-listening { animation: none; outline: 3px solid var(--ms-level-red-fg); }
+@media (prefers-reduced-motion: reduce) { .ms-mitra-mic.is-listening { animation: none; outline: 3px solid var(--ms-level-red-fg); } }
+.ms-mitra-novoice { font-size: var(--ms-text-xs); margin: 0; max-width: 8rem; }
+.ms-mitra-note { font-size: var(--ms-text-xs); margin: 6px 0 0; }
