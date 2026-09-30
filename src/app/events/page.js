@@ -1,12 +1,13 @@
 import WithNavbar from "../../components/layout/WithNavbar";
-import EventsExplorer from "../../components/events/EventsExplorer";
+import PlaceholderPage from "../../components/layout/PlaceholderPage";
 
-export const metadata = { title: "Fitness events across India | Swasth Infinity" };
+export const metadata = { title: "Event planner" };
 
-export default function EventsPage() {
+// Planned route (PRD section 4.1); content arrives in build plan Part 2 or 3.
+export default function Page() {
   return (
     <WithNavbar>
-      <EventsExplorer />
+      <PlaceholderPage pageKey="events" />
     </WithNavbar>
   );
 }

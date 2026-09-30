@@ -1,15 +1,11 @@
-"use client";
-
-import dynamic from "next/dynamic";
-
-// The bicycle animation drives a gsap timeline against DOM nodes it queries by
-// selector, so it is browser-only. Next shows this when a route actually
-// suspends, replacing the LoaderWrapper that used to force a 500ms spinner on
-// every single navigation.
-const AnimatedComponent = dynamic(() => import("../components/bicycle/animation"), {
-  ssr: false,
-});
-
+// Route loading state: a skeleton, not a spinner (PRD section 16.3).
 export default function Loading() {
-  return <AnimatedComponent />;
+  return (
+    <div className="ms-main" aria-busy="true" aria-live="polite">
+      <div className="ms-skeleton ms-skeleton--header"></div>
+      <div className="ms-skeleton"></div>
+      <div className="ms-skeleton"></div>
+      <span className="visually-hidden">Loading · लोड हो रहा है</span>
+    </div>
+  );
 }

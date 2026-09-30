@@ -1,19 +1,16 @@
 "use client";
 
 import { AuthProvider } from "../store/auth";
-import LanguageSwitcher from "../components/LanguageSwitcher";
-import StyledComponentsRegistry from "./styled-components-registry";
+import { LanguageSync } from "../lib/i18n/useLanguage";
 import "../i18n";
 
-// The LanguageSwitcher rendered above every page here is what App.js used to
-// render inside its router, so it stays visible on every route.
+// Part 2 adds A11yProvider, PlaceProvider and SettingsProvider here
+// (PRD section 14.1). The language control lives in the top bar.
 export default function Providers({ children }) {
   return (
-    <StyledComponentsRegistry>
-      <AuthProvider>
-        <LanguageSwitcher />
-        {children}
-      </AuthProvider>
-    </StyledComponentsRegistry>
+    <AuthProvider>
+      <LanguageSync />
+      {children}
+    </AuthProvider>
   );
 }

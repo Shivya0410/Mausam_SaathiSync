@@ -1,14 +1,14 @@
 "use client";
 
-import Homesection from '../components/Home/home';  
+import WithNavbar from "../components/layout/WithNavbar";
+import PlaceholderPage from "../components/layout/PlaceholderPage";
 
-const Home = () => {
+// The personalised homepage (PRD section 5) is built in Part 2. Until then
+// the route renders inside the new shell with an honest placeholder.
+export default function Home() {
   return (
-    <div>
-      
-      <Homesection/>
-    </div>
+    <WithNavbar>
+      <PlaceholderPage pageKey="home" />
+    </WithNavbar>
   );
-};
-
-export default Home;
+}

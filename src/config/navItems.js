@@ -1,23 +1,48 @@
 /**
- * Main sidebar navigation items (shared, testable definition).
+ * Main navigation (PRD section 4.2). Shared, testable definition.
  *
- * Sidebar order: Home, Profile, Fitness, Wellness, Dietary, Tracker,
- * Community, Challenges, Store, SheFit.
- * Sustain (/sus) and About (/about) stay reachable by URL and via
- * the Terms/Privacy footer links. Logout is appended for signed-in users
- * in src/components/Navbar/navbar.js — it is NOT part of this list, so
- * everything here (including Profile) renders for Guest Mode users too.
- * Labels are i18n keys resolved at render time.
+ * NAV_ITEMS is the desktop and tablet sidebar, in order. The "My pages"
+ * entry has no href: it opens the panel of persona pages. MOBILE_TABS is
+ * the bottom tab bar below 768 px; "More" opens a sheet with everything
+ * else. Sign-in is optional and reachable from Settings, so nothing here
+ * is auth-gated. Labels are i18n keys resolved at render time.
  */
-export const ORIGINAL_NAV_ITEMS = [
-  { href: '/', icon: 'fa-solid fa-house', labelKey: 'nav.home' },
-  { href: '/profile', icon: 'fa-solid fa-user', labelKey: 'nav.profile' },
-  { href: '/start', icon: 'fa-solid fa-dumbbell', labelKey: 'nav.fitness' },
-  { href: '/wellness', icon: 'fa-solid fa-spa', labelKey: 'nav.wellness' },
-  { href: '/cards', icon: 'fa-solid fa-apple-whole', labelKey: 'nav.dietary' },
-  { href: '/tracker', icon: 'fa-solid fa-chart-line', labelKey: 'nav.tracker' },
-  { href: '/community', icon: 'fa-solid fa-users', labelKey: 'nav.community' },
-  { href: '/challenges', icon: 'fa-solid fa-trophy', labelKey: 'nav.challenges' },
-  { href: '/store', icon: 'fa-solid fa-bag-shopping', labelKey: 'nav.store' },
-  { href: '/she', icon: 'fa-solid fa-venus', labelKey: 'nav.shefit' },
+export const NAV_ITEMS = [
+  { id: 'home', href: '/', icon: 'fa-solid fa-house', labelKey: 'nav.home' },
+  { id: 'alerts', href: '/alerts', icon: 'fa-solid fa-triangle-exclamation', labelKey: 'nav.alerts', badge: 'warnings' },
+  { id: 'forecast', href: '/forecast', icon: 'fa-solid fa-cloud-sun-rain', labelKey: 'nav.forecast' },
+  { id: 'map', href: '/map', icon: 'fa-solid fa-map-location-dot', labelKey: 'nav.map' },
+  { id: 'myDay', href: null, icon: 'fa-solid fa-user-gear', labelKey: 'nav.myDay', panel: 'myPages' },
+  { id: 'skySnap', href: '/sky-snap', icon: 'fa-solid fa-camera', labelKey: 'nav.skySnap' },
+  { id: 'report', href: '/report', icon: 'fa-solid fa-water', labelKey: 'nav.report' },
+  { id: 'ready', href: '/ready', icon: 'fa-solid fa-shield-heart', labelKey: 'nav.ready' },
+  { id: 'learn', href: '/learn', icon: 'fa-solid fa-book-open', labelKey: 'nav.learn' },
+  { id: 'settings', href: '/settings', icon: 'fa-solid fa-sliders', labelKey: 'nav.settings' },
 ];
+
+export const MOBILE_TABS = [
+  { id: 'home', href: '/', icon: 'fa-solid fa-house', labelKey: 'nav.home' },
+  { id: 'alerts', href: '/alerts', icon: 'fa-solid fa-triangle-exclamation', labelKey: 'nav.alerts', badge: 'warnings' },
+  { id: 'snap', href: '/sky-snap', icon: 'fa-solid fa-camera', labelKey: 'nav.snap', raised: true },
+  { id: 'map', href: '/map', icon: 'fa-solid fa-map-location-dot', labelKey: 'nav.map' },
+  { id: 'more', href: null, icon: 'fa-solid fa-bars', labelKey: 'nav.more', panel: 'more' },
+];
+
+/** Footer links required by GIGW 3.0 (PRD sections 4.2 and 15.1). */
+export const FOOTER_LINKS = [
+  { href: '/about', labelKey: 'footer.about' },
+  { href: '/help', labelKey: 'footer.help' },
+  { href: '/feedback', labelKey: 'footer.feedback' },
+  { href: '/contact', labelKey: 'footer.contact' },
+  { href: '/sitemap', labelKey: 'footer.sitemap' },
+  { href: '/accessibility', labelKey: 'footer.accessibility' },
+  { href: '/screen-reader-access', labelKey: 'footer.screenReader' },
+  { href: '/policies', labelKey: 'footer.policies' },
+];
+
+/** Whether `pathname` is inside the section `href` points to. */
+export function isActive(href, pathname) {
+  if (!href || !pathname) return false;
+  if (href === '/') return pathname === '/';
+  return pathname === href || pathname.startsWith(`${href}/`);
+}

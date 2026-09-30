@@ -60,3 +60,104 @@
   --swasth-space-lg: 24px;
   --swasth-space-xl: 40px;
 }
+
+/*
+ * Mausam Saathi tokens (PRD section 16.2).
+ *
+ * The purple brand is the app chrome. Weather states and official warning
+ * levels get their own semantic colours. Every bg/fg pair below is meant to
+ * reach 4.5:1; re-check with a contrast checker when changing a value.
+ * The --swasth-* and --wiki-* tokens above stay because existing components
+ * still reference them.
+ */
+:root {
+  /* Brand (chrome) */
+  --ms-brand: #493971;
+  --ms-brand-ink: #2d1b4e;
+  --ms-brand-soft: #ede7f6;
+  --ms-surface: #ffffff;
+  --ms-canvas: #f5f0fd;
+  --ms-ink: #1b1530;
+  --ms-muted: #574a73;
+  --ms-border: #ddd0f2;
+  --ms-focus: #1a56db;
+
+  /* Official warning levels (IMD) */
+  --ms-level-green-bg: #1b5e20;
+  --ms-level-green-fg: #ffffff;
+  --ms-level-yellow-bg: #ffd54f;
+  --ms-level-yellow-fg: #1b1530;
+  /* #e65100 on white is 3.8:1, below AA for body text; darkened. */
+  --ms-level-orange-bg: #bf4300;
+  --ms-level-orange-fg: #ffffff;
+  --ms-level-red-bg: #b71c1c;
+  --ms-level-red-fg: #ffffff;
+
+  /* AQI (CPCB categories) */
+  --ms-aqi-good-bg: #1b5e20;
+  --ms-aqi-good-fg: #ffffff;
+  --ms-aqi-satisfactory-bg: #9ccc65;
+  --ms-aqi-satisfactory-fg: #1b1530;
+  --ms-aqi-moderate-bg: #fdd835;
+  --ms-aqi-moderate-fg: #1b1530;
+  --ms-aqi-poor-bg: #ef6c00;
+  --ms-aqi-poor-fg: #1b1530;
+  --ms-aqi-verypoor-bg: #c62828;
+  --ms-aqi-verypoor-fg: #ffffff;
+  --ms-aqi-severe-bg: #6d1b1b;
+  --ms-aqi-severe-fg: #ffffff;
+
+  /* Card kinds */
+  --ms-tip: #5e35b1;
+  --ms-good: #2e7d32;
+
+  /* Weather accents */
+  --ms-rain: #1565c0;
+  --ms-heat: #d84315;
+  --ms-cold: #0277bd;
+  --ms-sea: #00838f;
+  --ms-sun: #f9a825;
+  --ms-fog: #607d8b;
+
+  /* Score bands (run, comfort) */
+  --ms-band-excellent: #2e7d32;
+  --ms-band-good: #7cb342;
+  --ms-band-fair: #fbc02d;
+  --ms-band-poor: #ef6c00;
+  --ms-band-unsafe: #b71c1c;
+
+  /* Type scale: rem-based so the text-size control scales everything. */
+  --ms-font-sans: var(--font-noto-sans), var(--font-noto-devanagari), system-ui, sans-serif;
+  --ms-text-xs: 0.75rem;
+  --ms-text-sm: 0.875rem;
+  --ms-text-md: 1rem;
+  --ms-text-lg: 1.125rem;
+  --ms-text-xl: 1.375rem;
+  --ms-text-2xl: 1.75rem;
+  --ms-text-hero: 3.5rem;
+  --ms-line: 1.5; /* Devanagari needs at least 1.5 */
+
+  --ms-radius-card: 16px;
+  --ms-shadow-card: 0 2px 10px rgba(45, 27, 78, 0.08);
+  --ms-topbar-h: 56px;
+  --ms-tabbar-h: 64px;
+}
+
+/* High contrast mode (A11yProvider adds .ms-hc to <html>). */
+.ms-hc {
+  --ms-canvas: #ffffff;
+  --ms-surface: #ffffff;
+  --ms-ink: #000000;
+  --ms-muted: #000000;
+  --ms-border: #000000;
+  --ms-brand: #000000;
+  --ms-brand-ink: #000000;
+  --ms-focus: #0000ee;
+}
+
+/* Text size control (A−, A, A+, A++, 200%) applied on <html>. */
+html.ms-text-90 { font-size: 90%; }
+html.ms-text-100 { font-size: 100%; }
+html.ms-text-125 { font-size: 125%; }
+html.ms-text-150 { font-size: 150%; }
+html.ms-text-200 { font-size: 200%; }

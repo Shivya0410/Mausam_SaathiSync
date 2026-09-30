@@ -1,7 +1,7 @@
 "use client";
 
 import { useSyncExternalStore } from 'react';
-import { localToday } from '../data/fitnessEvents';
+import { localToday } from "./mausam/time.js";
 
 const subscribe = () => () => {};
 

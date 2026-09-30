@@ -17,8 +17,6 @@ import {
 
 import { XP_POLICY, XP_POLICY_VERSION, XP_LEVELS, xpForDay, xpLevelFor, xpPreviewForEvents } from '../src/config/xpPolicy.js';
 
-import { demoRowsFor, DEMO_LEADERBOARD_ROWS } from '../src/data/demoLeaderboard.js';
-
 import {
   GOAL_STORE_KEY,
   createGoal,
@@ -246,16 +244,4 @@ test('per-user browser stores stay isolated (goals, prefs, badges)', () => {
   assert.equal(loadForUser('swasth.profilePrefs.v1', a, {}).city, 'Delhi');
   assert.equal(loadForUser('swasth.profilePrefs.v1', b, {}).city, 'Mumbai');
   assert.equal(loadForUser('swasth.profilePrefs.v1', null, null), null);
-});
-
-test('demo leaderboard fixtures stay separate and filterable', () => {
-  assert.ok(DEMO_LEADERBOARD_ROWS.length >= 8);
-  for (const r of DEMO_LEADERBOARD_ROWS) {
-    assert.ok(!('email' in r) && !('ownerId' in r), 'no private fields in fixtures');
-  }
-  const city = demoRowsFor('city', 'overall');
-  assert.ok(city.length > 0);
-  assert.ok(city.every((r) => typeof r.points === 'number'));
-  const sorted = [...city].sort((a, b) => b.points - a.points);
-  assert.deepEqual(city.map((r) => r.rank), sorted.map((_, i) => i + 1));
 });

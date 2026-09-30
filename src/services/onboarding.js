@@ -1,12 +1,10 @@
-// Post-auth fitness questionnaire storage.
+// First-run setup storage (PRD section 5.10).
 //
-// IMPORTANT: answers (weight, height, age, …) are stored ONLY in this
-// browser's localStorage. The /api/v1 preferences endpoint deliberately
-// rejects body measurements and medical data (see
-// src/server/domains/preferences.js), so nothing here is ever sent to a
-// server. Values are wellness inputs, not medical data.
+// Everything here stays in this browser's localStorage and is never sent to
+// a server. Part 2 rewrites the onboarding flow and adds the persona, place
+// and household stores; this module only records whether setup is done.
 
-const KEY = "swasth.onboarding.v1";
+const KEY = "mausam.onboarding.v1";
 
 export const ONBOARDING_VERSION = 1;
 
@@ -26,31 +24,31 @@ export function hasOnboarding() {
   return !!getOnboarding()?.completedAt;
 }
 
-export function saveOnboarding(answers) {
+export function saveOnboarding(answers = {}) {
   const payload = {
     version: ONBOARDING_VERSION,
     ...answers,
     completedAt: new Date().toISOString(),
   };
-  localStorage.setItem(KEY, JSON.stringify(payload));
+  try {
+    localStorage.setItem(KEY, JSON.stringify(payload));
+  } catch {
+    // Storage blocked: the app still works, it just asks again next visit.
+  }
   return payload;
 }
 
 export function clearOnboarding() {
-  localStorage.removeItem(KEY);
+  try {
+    localStorage.removeItem(KEY);
+  } catch {
+    // Nothing stored.
+  }
 }
 
 // Where to send the user right after a successful sign-in.
 export function resolvePostAuthDestination(next) {
-  const safeNext = next && next.startsWith("/") ? next : "/";
+  const safeNext = next && next.startsWith("/") && !next.startsWith("//") ? next : "/";
   if (hasOnboarding()) return safeNext;
   return `/onboarding?next=${encodeURIComponent(safeNext)}`;
-}
-
-export function bmiOf(weightKg, heightCm) {
-  const w = Number(weightKg);
-  const h = Number(heightCm);
-  if (!w || !h || h <= 0) return null;
-  const bmi = w / ((h / 100) * (h / 100));
-  return Math.round(bmi * 10) / 10;
 }

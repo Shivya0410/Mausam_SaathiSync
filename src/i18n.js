@@ -4,13 +4,13 @@ import { initReactI18next } from 'react-i18next';
 import en from './locales/en/translation.json';
 import hi from './locales/hi/translation.json';
 
-// `i18next-browser-languagedetector` used to be installed here, but it reads
-// `navigator`, `document.cookie` and `localStorage`, none of which exist during
-// the Next.js server render. It was already inert in practice: `lng: 'en'`
-// below pins the initial language, so detection never ran. Language is chosen
-// through the LanguageSwitcher component instead.
-// Resources are bundled at build/dev-compile time: touching this file forces
-// a fresh compile of the locale chunks (tracker.lastMonth and friends).
+// The server render always uses English (`lng: 'en'`): the saved language
+// lives in localStorage, which does not exist on the server. LanguageSync
+// (src/lib/i18n/useLanguage.js) switches to the saved language after
+// hydration, so server and first client render match.
+//
+// English and Hindi are bundled. Machine-translated languages (PRD 15.4)
+// will be registered lazily with i18n.addResourceBundle when added.
 if (!i18n.isInitialized) {
   i18n.use(initReactI18next).init({
     resources: {

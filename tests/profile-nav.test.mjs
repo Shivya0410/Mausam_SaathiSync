@@ -1,67 +1,54 @@
+// Navigation (PRD section 4.2, task T0.2). The file name is kept from the
+// SaathiSync suite so history stays traceable.
+
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
 
-import { ORIGINAL_NAV_ITEMS } from '../src/config/navItems.js';
+import { NAV_ITEMS, MOBILE_TABS, FOOTER_LINKS, isActive } from '../src/config/navItems.js';
 
-const en = JSON.parse(
-  readFileSync(new URL('../src/locales/en/translation.json', import.meta.url), 'utf8'),
-);
-const hi = JSON.parse(
-  readFileSync(new URL('../src/locales/hi/translation.json', import.meta.url), 'utf8'),
-);
-const navbarSource = readFileSync(
-  new URL('../src/components/Navbar/navbar.js', import.meta.url),
-  'utf8',
-);
+const en = JSON.parse(readFileSync(new URL('../src/locales/en/translation.json', import.meta.url), 'utf8'));
+const hi = JSON.parse(readFileSync(new URL('../src/locales/hi/translation.json', import.meta.url), 'utf8'));
+const navbarSource = readFileSync(new URL('../src/components/Navbar/navbar.js', import.meta.url), 'utf8');
+const get = (obj, key) => key.split('.').reduce((o, k) => o?.[k], obj);
 
-test('base nav list links to /profile with the project icon/label convention', () => {
-  const profile = ORIGINAL_NAV_ITEMS.find((item) => item.href === '/profile');
-  assert.ok(profile, 'expected a /profile entry in the base nav list');
-  assert.equal(profile.labelKey, 'nav.profile');
-  assert.ok(
-    typeof profile.icon === 'string' && profile.icon.startsWith('fa-solid fa-'),
-    'expected a FontAwesome solid icon like the other entries',
-  );
+test('sidebar has the ten PRD items in order with Font Awesome solid icons', () => {
+  assert.deepEqual(NAV_ITEMS.map((i) => i.id), [
+    'home', 'alerts', 'forecast', 'map', 'myDay', 'skySnap', 'report', 'ready', 'learn', 'settings',
+  ]);
+  for (const item of NAV_ITEMS) assert.match(item.icon, /^fa-solid fa-/);
+  assert.equal(NAV_ITEMS.find((i) => i.id === 'myDay').href, null, 'My pages opens a panel, not a route');
 });
 
-test('profile nav entry is guest-visible (logout stays the only auth-gated item)', () => {
-  // The shared list must not contain auth-gated entries: navbar.js appends
-  // /logout only for signed-in users, so everything here — including
-  // /profile — renders for Guest Mode too.
-  assert.ok(
-    ORIGINAL_NAV_ITEMS.every((item) => item.href !== '/logout'),
-    'logout must not be in the shared guest-visible list',
-  );
-  assert.ok(ORIGINAL_NAV_ITEMS.some((item) => item.href === '/profile'));
-  assert.ok(
-    navbarSource.includes("from '../../config/navItems'"),
-    'navbar must render the shared list (single source of truth)',
-  );
-  assert.ok(
-    navbarSource.includes("href: '/logout'"),
-    'logout is still appended separately for signed-in users',
-  );
+test('mobile tab bar has five items with Snap raised in the centre', () => {
+  assert.deepEqual(MOBILE_TABS.map((i) => i.id), ['home', 'alerts', 'snap', 'map', 'more']);
+  assert.equal(MOBILE_TABS[2].raised, true);
 });
 
-test('profile label resolves in English and Hindi', () => {
-  assert.ok(
-    typeof en.nav.profile === 'string' && en.nav.profile.trim().length > 0,
-    'en nav.profile must be a non-empty label',
-  );
-  assert.ok(
-    typeof hi.nav.profile === 'string' && hi.nav.profile.trim().length > 0,
-    'hi nav.profile must be a non-empty label',
-  );
+test('every nav and footer label resolves in English and Hindi', () => {
+  for (const { labelKey } of [...NAV_ITEMS, ...MOBILE_TABS, ...FOOTER_LINKS]) {
+    assert.ok(get(en, labelKey)?.trim(), `en ${labelKey}`);
+    assert.ok(get(hi, labelKey)?.trim(), `hi ${labelKey}`);
+  }
 });
 
-test('/profile route exists and renders without an auth gate', () => {
-  assert.ok(existsSync(new URL('../src/app/profile/page.js', import.meta.url)));
-  const viewSource = readFileSync(
-    new URL('../src/views/profile.js', import.meta.url),
-    'utf8',
-  );
-  assert.ok(viewSource.includes('Profile'));
-  // The view must not introduce an auth redirect/guard for /profile.
-  assert.ok(!/redirect|requireAuth|withAuth/i.test(viewSource));
+test('nothing in the shared lists is auth-gated; navbar renders the shared list', () => {
+  assert.ok([...NAV_ITEMS, ...MOBILE_TABS].every((i) => i.href !== '/logout' && i.href !== '/login'));
+  assert.ok(navbarSource.includes("from '../../config/navItems'"));
+});
+
+test('every linked route has a page', () => {
+  const hrefs = [...NAV_ITEMS, ...MOBILE_TABS, ...FOOTER_LINKS].map((i) => i.href).filter(Boolean);
+  for (const href of new Set(hrefs)) {
+    const file = href === '/' ? '../src/app/page.js' : `../src/app${href}/page.js`;
+    assert.ok(existsSync(new URL(file, import.meta.url)), `${href} has no page`);
+  }
+});
+
+test('active state matches the section, and Home only matches itself', () => {
+  assert.equal(isActive('/', '/'), true);
+  assert.equal(isActive('/', '/alerts'), false);
+  assert.equal(isActive('/learn', '/learn/heat'), true);
+  assert.equal(isActive('/learn', '/learner'), false);
+  assert.equal(isActive(null, '/'), false);
 });

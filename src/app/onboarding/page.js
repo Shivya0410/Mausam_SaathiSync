@@ -1,13 +1,13 @@
-"use client";
+import WithNavbar from "../../components/layout/WithNavbar";
+import PlaceholderPage from "../../components/layout/PlaceholderPage";
 
-import { Suspense } from "react";
-import OnboardingQuiz from "../../components/onboarding/OnboardingQuiz";
+export const metadata = { title: "Set up" };
 
-// useSearchParams requires a Suspense boundary in the App Router.
-export default function OnboardingPage() {
+// Planned route (PRD section 4.1); content arrives in build plan Part 2 or 3.
+export default function Page() {
   return (
-    <Suspense fallback={<p style={{ padding: 24 }}>Loading your fitness snapshot…</p>}>
-      <OnboardingQuiz />
-    </Suspense>
+    <WithNavbar>
+      <PlaceholderPage pageKey="onboarding" />
+    </WithNavbar>
   );
 }

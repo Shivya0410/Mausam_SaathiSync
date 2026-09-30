@@ -1,0 +1,351 @@
+/*
+ * App shell: skip link, top bar, layout, footer, mobile tab bar, sheets
+ * and the shared card and button styles (PRD sections 4.4, 16.3).
+ * Mobile first; no horizontal scroll at 320 px (WCAG 1.4.10).
+ */
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+/* ── Skip link (first focusable element) ── */
+.ms-skip-link {
+  position: absolute;
+  left: 8px;
+  top: -60px;
+  z-index: 2000;
+  padding: 10px 16px;
+  background: var(--ms-surface);
+  color: var(--ms-brand-ink);
+  border: 2px solid var(--ms-focus);
+  border-radius: 8px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.ms-skip-link:focus {
+  top: 8px;
+}
+
+/* ── Top bar ── */
+.ms-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: var(--ms-topbar-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 16px;
+  background: var(--ms-surface);
+  border-bottom: 1px solid var(--ms-border);
+  box-sizing: border-box;
+}
+.ms-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  color: var(--ms-brand-ink);
+  text-decoration: none;
+  font-weight: 800;
+  font-size: var(--ms-text-lg);
+}
+.ms-brand-mark {
+  display: inline-flex;
+  width: 36px;
+  height: 36px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: var(--ms-brand);
+  color: #fff;
+}
+.ms-topbar-tools {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.ms-lang {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--ms-brand-ink);
+}
+.ms-lang select {
+  min-height: 44px;
+  padding: 0 10px;
+  border: 1px solid var(--ms-border);
+  border-radius: 10px;
+  background: var(--ms-surface);
+  color: var(--ms-ink);
+  font: inherit;
+}
+
+/* ── Layout ── */
+.ms-shell {
+  display: flex;
+  align-items: flex-start;
+  min-height: calc(100vh - var(--ms-topbar-h));
+}
+.ms-shell-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - var(--ms-topbar-h));
+}
+.ms-main {
+  flex: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px;
+  box-sizing: border-box;
+}
+.ms-main:focus {
+  outline: none;
+}
+
+/* ── Footer ── */
+.ms-footer {
+  padding: 20px 16px calc(20px + var(--ms-tabbar-h));
+  background: var(--ms-brand-ink);
+  color: #ffffff;
+  font-size: var(--ms-text-sm);
+}
+.ms-footer a {
+  color: #ffffff;
+}
+.ms-footer-links {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  padding: 0;
+  margin: 0 0 12px;
+}
+.ms-footer-links a {
+  display: inline-block;
+  padding: 10px 0;
+}
+.ms-footer-note {
+  margin: 6px 0;
+  max-width: 80ch;
+  color: #ede7f6;
+}
+.ms-ext-icon {
+  font-size: 0.75em;
+  margin-left: 4px;
+}
+
+/* ── Mobile tab bar ── */
+.ms-tabbar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 950;
+  background: var(--ms-surface);
+  border-top: 1px solid var(--ms-border);
+  box-shadow: 0 -4px 14px rgba(45, 27, 78, 0.08);
+}
+.ms-tabbar ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  margin: 0;
+  padding: 0 4px env(safe-area-inset-bottom);
+  height: var(--ms-tabbar-h);
+}
+.ms-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  width: 100%;
+  height: 100%;
+  min-height: 44px;
+  color: var(--ms-muted);
+  text-decoration: none;
+  font: inherit;
+  font-size: var(--ms-text-xs);
+  font-weight: 600;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.ms-tab i {
+  font-size: 1.2rem;
+}
+.ms-tab[aria-current='page'] {
+  color: var(--ms-brand);
+}
+.ms-tab--raised i {
+  width: 48px;
+  height: 48px;
+  margin-top: -22px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ms-brand);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(73, 57, 113, 0.35);
+}
+@media (min-width: 768px) {
+  .ms-tabbar {
+    display: none;
+  }
+  .ms-footer {
+    padding-bottom: 20px;
+  }
+}
+
+/* ── Sheets (My pages, More) ── */
+.ms-sheet-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1500;
+  background: rgba(27, 21, 48, 0.45);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.ms-sheet {
+  width: 100%;
+  max-width: 480px;
+  max-height: 85vh;
+  overflow-y: auto;
+  background: var(--ms-surface);
+  color: var(--ms-ink);
+  border-radius: 16px 16px 0 0;
+  padding: 16px;
+  box-sizing: border-box;
+}
+@media (min-width: 768px) {
+  .ms-sheet-backdrop {
+    align-items: center;
+  }
+  .ms-sheet {
+    border-radius: 16px;
+  }
+}
+.ms-sheet-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.ms-sheet-head h2 {
+  margin: 0;
+  font-size: var(--ms-text-xl);
+}
+.ms-sheet-sub {
+  margin: 16px 0 4px;
+  font-size: var(--ms-text-md);
+  color: var(--ms-muted);
+}
+.ms-sheet-list {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 6px;
+}
+.ms-sheet-list a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  color: var(--ms-ink);
+  text-decoration: none;
+  background: var(--ms-brand-soft);
+}
+.ms-icon-btn {
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--ms-ink);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* ── Shared card and buttons (PRD 16.3) ── */
+.ms-card {
+  background: var(--ms-surface);
+  border-radius: var(--ms-radius-card);
+  box-shadow: var(--ms-shadow-card);
+  padding: 16px;
+  margin-bottom: 16px;
+}
+.ms-hc .ms-card {
+  border: 1px solid var(--ms-border);
+}
+@media (min-width: 768px) {
+  .ms-card {
+    padding: 20px;
+  }
+}
+.ms-card h2 {
+  margin: 0 0 8px;
+  font-size: var(--ms-text-lg);
+}
+.ms-card p {
+  margin: 0 0 12px;
+}
+.ms-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.ms-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 0 20px;
+  border-radius: 999px;
+  border: 2px solid var(--ms-brand);
+  background: var(--ms-brand);
+  color: #ffffff;
+  font: inherit;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+.ms-btn--secondary {
+  background: var(--ms-surface);
+  color: var(--ms-brand);
+}
+.ms-link-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* ── Skeleton (loading states) ── */
+.ms-skeleton {
+  height: 120px;
+  margin-bottom: 16px;
+  border-radius: var(--ms-radius-card);
+  background: linear-gradient(90deg, #ece6f6 0%, #f6f2fc 50%, #ece6f6 100%);
+  background-size: 200% 100%;
+  animation: ms-shimmer 1.4s ease-in-out infinite;
+}
+.ms-skeleton--header {
+  height: 72px;
+}
+@keyframes ms-shimmer {
+  from { background-position: 200% 0; }
+  to { background-position: -200% 0; }
+}

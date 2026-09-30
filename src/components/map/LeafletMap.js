@@ -3,8 +3,11 @@
 import React from 'react';
 import { MapContainer, TileLayer, Marker, Tooltip } from 'react-leaflet';
 import L from 'leaflet';
-import { INDIA_CENTER, INDIA_ZOOM } from './fitnessEvents';
 import './pins.css';
+
+// Whole-India view used when no place is selected.
+const INDIA_CENTER = [22.5, 80.5];
+const INDIA_ZOOM = 4;
 
 // Leaflet reads `window` as soon as it is imported, so nothing in this file may
 // be pulled into a server render. It is only ever reached through the
