@@ -19,3 +19,21 @@ export const LANGUAGES = [
 ];
 
 export const LANGUAGE_STORAGE_KEY = 'mausam.lang.v1';
+
+/**
+ * Machine-translated languages planned through Bhashini (PRD 15.4), shown
+ * disabled as "coming soon" until their translations are generated.
+ */
+export const UPCOMING_LANGUAGES = [
+  { code: 'bn', label: 'বাংলা' },
+  { code: 'mr', label: 'मराठी' },
+  { code: 'ta', label: 'தமிழ்' },
+  { code: 'te', label: 'తెలుగు' },
+  { code: 'gu', label: 'ગુજરાતી' },
+  { code: 'kn', label: 'ಕನ್ನಡ' },
+  { code: 'ml', label: 'മലയാളം' },
+  { code: 'or', label: 'ଓଡ଼ିଆ' },
+  { code: 'pa', label: 'ਪੰਜਾਬੀ' },
+  { code: 'as', label: 'অসমীয়া' },
+  { code: 'ur', label: 'اردو' },
+];

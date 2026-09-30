@@ -4,6 +4,7 @@ import "../styles/tokens.css";
 import "../index.css";
 import "../styles/lilac-theme.css";
 import "../styles/shell.css";
+import "../styles/app.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "leaflet/dist/leaflet.css";
 

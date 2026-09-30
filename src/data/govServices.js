@@ -13,5 +13,9 @@ export const GOV_SERVICES = [
   { id: 'cpcb', owner: 'CPCB', url: 'https://airquality.cpcb.gov.in', personas: ['health', 'family'] },
   { id: 'incois', owner: 'MoES', url: 'https://incois.gov.in', personas: ['coast', 'fisher'] },
   { id: 'fitIndia', owner: 'MoYAS', url: 'https://fitindia.gov.in', personas: ['fitness'] },
+  { id: 'pmkisan', owner: 'MoA&FW', url: 'https://pmkisan.gov.in', personas: ['farm'] },
+  { id: 'pmfby', owner: 'MoA&FW', url: 'https://pmfby.gov.in', personas: ['farm'] },
+  { id: 'enam', owner: 'MoA&FW', url: 'https://enam.gov.in', personas: ['farm'] },
+  { id: 'ndma', owner: 'NDMA', url: 'https://ndma.gov.in', personas: ['work', 'family'] },
   { id: 'indiaPortal', owner: 'NIC', url: 'https://www.india.gov.in', personas: ['all'] },
 ];

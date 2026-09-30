@@ -1,8 +1,5 @@
-// Illustrated profile picture for the sample community members, inbox senders
-// and notification sources.
-//
-// These people are fictional, so they get drawn avatars rather than photos of
-// real, identifiable strangers. The drawing is derived from a seed (usually
+// Illustrated avatars for household members (PRD 3.6: "choose from 12
+// illustrated avatars, no photos"). The drawing is derived from a seed (usually
 // the person's name), so the same person always looks the same everywhere.
 // Pure SVG with no hooks, so it renders on the server and the client alike.
 
@@ -24,7 +21,12 @@ function pick(list, h, shift) {
   return list[(h >>> shift) % list.length];
 }
 
-export default function Avatar({ seed = 'swasth', size = 40, className, style, title, look }) {
+/** The 12 avatars offered when adding a household member. */
+export const AVATAR_SEEDS = ['sun', 'rain', 'cloud', 'wind', 'river', 'field', 'hill', 'sea', 'tree', 'star', 'moon', 'leaf'];
+
+// `decorative`: the avatar sits next to the person's name, so it is hidden
+// from screen readers instead of announcing its seed.
+export default function Avatar({ seed = 'mausam', size = 40, className, style, title, look, decorative = false }) {
   const h = hash(seed);
   const bg = pick(BACKGROUNDS, h, 0);
   const skin = pick(SKIN, h, 3);
@@ -41,8 +43,9 @@ export default function Avatar({ seed = 'swasth', size = 40, className, style, t
       height={size}
       className={className}
       style={{ borderRadius: '50%', flexShrink: 0, display: 'block', ...style }}
-      role="img"
-      aria-label={title || seed}
+      role={decorative ? undefined : 'img'}
+      aria-label={decorative ? undefined : title || seed}
+      aria-hidden={decorative ? 'true' : undefined}
     >
       <rect width="64" height="64" fill={bg} />
       {hairStyle === 1 && <path d="M16 30c0-12 7-19 16-19s16 7 16 19v18H16z" fill={hair} />}

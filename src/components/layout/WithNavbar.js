@@ -5,10 +5,11 @@ import TopBar from './TopBar';
 import SiteFooter from './SiteFooter';
 import BottomTabBar from './BottomTabBar';
 import SkipLink from './SkipLink';
+import AlertRibbon from './AlertRibbon';
 
 /**
  * The page template every page uses (PRD section 4.4), in this DOM order:
- * skip link, top bar, (alert ribbon: Part 2), sidebar navigation, main,
+ * skip link, top bar, alert ribbon, sidebar navigation, main,
  * footer, then the fixed mobile tab bar.
  */
 export default function WithNavbar({ children }) {
@@ -16,6 +17,7 @@ export default function WithNavbar({ children }) {
     <>
       <SkipLink />
       <TopBar />
+      <AlertRibbon />
       <div className="ms-shell">
         <Navbar />
         <div className="ms-shell-body">

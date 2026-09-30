@@ -1,0 +1,43 @@
+/* 4-7-8 breathing (kept from the SaathiSync wellness hub, PRD 8.1). */
+.breath-widget {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px;
+}
+.breath-circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  font-weight: 800;
+  color: var(--ms-brand);
+  background: radial-gradient(circle, #ffffff 55%, #ede7f6 100%);
+  border: 3px solid #b3a2d6;
+  transition: transform var(--phase-secs, 4s) ease-in-out;
+}
+.breath-live.breath-inhale,
+.breath-live.breath-hold {
+  transform: scale(1.18);
+}
+.breath-live.breath-hold {
+  border-color: var(--ms-brand);
+}
+.breath-info p {
+  margin: 4px 0 10px;
+  color: var(--ms-muted);
+}
+.breath-actions {
+  display: flex;
+  gap: 8px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .breath-circle {
+    transition: none;
+  }
+}
+html.ms-reduce-motion .breath-circle {
+  transition: none;
+}

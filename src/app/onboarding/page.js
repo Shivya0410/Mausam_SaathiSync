@@ -1,13 +1,12 @@
 import WithNavbar from "../../components/layout/WithNavbar";
-import PlaceholderPage from "../../components/layout/PlaceholderPage";
+import OnboardingFlow from "../../components/onboarding/OnboardingFlow";
 
 export const metadata = { title: "Set up" };
 
-// Planned route (PRD section 4.1); content arrives in build plan Part 2 or 3.
-export default function Page() {
+export default function OnboardingPage() {
   return (
     <WithNavbar>
-      <PlaceholderPage pageKey="onboarding" />
+      <OnboardingFlow />
     </WithNavbar>
   );
 }

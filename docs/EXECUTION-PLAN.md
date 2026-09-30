@@ -109,6 +109,31 @@ All exit criteria met: build passes, 234 tests pass (all 90 matrix rows), live s
 - Demo scenarios load and every screen shows "Demo data".
 - axe: 0 serious/critical on Home, Alerts, Onboarding.
 
+### Part 2 status: done (30 Sep 2026)
+
+All exit criteria met: build passes, 266 tests pass, and ESLint is clean on Part 2 files. Checked in installed Google Chrome (playwright-core and axe-core) on all 15 Part 2 routes with a demo scenario:
+
+- axe: 0 serious or critical issues on every route, not just Home, Alerts and Onboarding.
+- No horizontal scroll at 320 px, at 100% text and at 200% text with high contrast.
+- Hindi renders on Home, Alerts, Settings and Work with no raw translation keys.
+- "Demo data" shows on demo scenarios, and a Red scenario shows the alert ribbon.
+- A fresh phone is redirected to onboarding and reaches a Delhi homepage in 2 taps ("Use New Delhi for now", then "Skip, show me the weather").
+
+What Part 3 needs to know:
+
+- **Where state lives.** Device state is in `src/lib/stores/index.js` (`stores.*`, all under `mausam.*` keys). React reads it through `useStore`. `WeatherProvider` gives place, snapshot and demo; `usePersonal()` gives the personal view.
+- **Widgets.** A widget is a component in `src/components/widgets/index.js` plus its id in `available.js`. A test keeps the two lists equal. `mapTeaser`, `readyStreak` and `waterlogging` are configured but have no component yet (Part 3).
+- **Card text.** `cardText()` formats cards. A test renders every card from every demo scenario, for every persona, in EN and HI. It fails on any unfilled `{{var}}` or raw key.
+- **i18n.** Scratchpad scripts were used to find missing keys. The UI is complete. The legacy adapt-later files (listed in OPEN-ISSUES) still have missing keys.
+- **Planner helpers.** `weekendPlan`, `dateComfort` and `mmss` are in `src/lib/mausam/plans.js`.
+- **Deferred to Part 3:**
+  - hospitals map (Health);
+  - waterlogging reports (Commute);
+  - highway forecasts (Travel);
+  - map teaser;
+  - push notifications (local notifications work now);
+  - install prompt.
+
 ---
 
 ## Part 3: Differentiators, compliance and ship

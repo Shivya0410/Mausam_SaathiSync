@@ -2,15 +2,19 @@
 
 import { AuthProvider } from "../store/auth";
 import { LanguageSync } from "../lib/i18n/useLanguage";
+import { A11yProvider } from "../lib/context/A11yProvider";
+import { WeatherProvider } from "../lib/context/WeatherProvider";
 import "../i18n";
 
-// Part 2 adds A11yProvider, PlaceProvider and SettingsProvider here
-// (PRD section 14.1). The language control lives in the top bar.
+// Order matters: stores are scoped by the signed-in identity (AuthProvider),
+// the weather request depends on lite mode (A11yProvider).
 export default function Providers({ children }) {
   return (
     <AuthProvider>
       <LanguageSync />
-      {children}
+      <A11yProvider>
+        <WeatherProvider>{children}</WeatherProvider>
+      </A11yProvider>
     </AuthProvider>
   );
 }

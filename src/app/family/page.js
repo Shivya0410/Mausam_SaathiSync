@@ -1,13 +1,12 @@
 import WithNavbar from "../../components/layout/WithNavbar";
-import PlaceholderPage from "../../components/layout/PlaceholderPage";
+import FamilyPage from "../../components/family/FamilyPage";
 
 export const metadata = { title: "Family" };
 
-// Planned route (PRD section 4.1); content arrives in build plan Part 2 or 3.
 export default function Page() {
   return (
     <WithNavbar>
-      <PlaceholderPage pageKey="family" />
+      <FamilyPage />
     </WithNavbar>
   );
 }

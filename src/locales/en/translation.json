@@ -29,7 +29,16 @@
     "skip": "Skip",
     "goHome": "Go to Home",
     "opensNewTab": "opens in a new tab",
-    "leavingSite": "You are leaving Mausam Saathi for {{site}}"
+    "leavingSite": "You are leaving Mausam Saathi for {{site}}",
+    "notAvailableShort": "Not available",
+    "notNow": "Not now",
+    "today": "Today",
+    "tomorrow": "Tomorrow",
+    "yesterday": "Yesterday",
+    "tomorrowAt": "tomorrow {{time}}",
+    "whatsapp": "Share on WhatsApp",
+    "estimateTitle": "This is an estimate, not an official reading",
+    "staleTitle": "This data may be out of date"
   },
   "nav": {
     "home": "Home",
@@ -55,7 +64,24 @@
     "accessibility": "Accessibility tools",
     "alertsBell": "Official warnings: {{count}}",
     "offlineChip": "Offline",
-    "liteMode": "Lite mode on"
+    "liteMode": "Lite mode on",
+    "contrast": "High contrast",
+    "demoScenario": "Demo",
+    "liteAuto": "Turned on automatically for a slow connection",
+    "liteHint": "Fewer images and charts, less data",
+    "moreLanguages": "More languages coming soon",
+    "noSpeech": "Read aloud is not supported in this browser.",
+    "rateFast": "Fast",
+    "rateNormal": "Normal",
+    "rateSlow": "Slow",
+    "readPage": "Read page aloud",
+    "reduceMotion": "Reduce motion",
+    "simpleView": "Simple view",
+    "simpleViewHint": "Bigger text, only the essentials",
+    "speechRate": "Reading speed",
+    "stopReading": "Stop reading",
+    "textSize": "Text size",
+    "textSizeValue": "Text size {{value}}%"
   },
   "footer": {
     "about": "About",
@@ -210,7 +236,8 @@
     "locationDenied": "Location is off. Search for your place instead.",
     "cameraDenied": "Camera permission is off. You can choose a photo from your gallery.",
     "pageCrashed": "Something went wrong on this page.",
-    "pageCrashedHint": "Try again, or go back to Home."
+    "pageCrashedHint": "Try again, or go back to Home.",
+    "weatherUnavailable": "Weather is not available right now."
   },
   "personas": {
     "health": {
@@ -433,7 +460,13 @@
       "powerBank": "Power bank",
       "firstAid": "First aid",
       "phone": "Phone"
-    }
+    },
+    "alsoForYou": "Also for you",
+    "helpfulNo": "Not helpful",
+    "helpfulYes": "Helpful",
+    "showFewer": "Show fewer",
+    "collapse": "Show less",
+    "expand": "Show more"
   },
   "home": {
     "greeting": {
@@ -457,7 +490,32 @@
       "fog": "fog from {{time}}"
     },
     "todayForYou": "Today for you",
-    "myPages": "My pages"
+    "myPages": "My pages",
+    "addPage": "Add a page",
+    "checked": "checked {{time}}",
+    "citizenPrompt": "Tell us what you do outdoors to get tips made for you.",
+    "citizenPromptGo": "Choose what matters to me",
+    "dataFrom": "Data from {{list}}",
+    "dataSources": "Data sources",
+    "demoNote": "You are viewing demo data, not real weather.",
+    "listenSummary": "Listen to today's summary",
+    "noPersonaPages": "No personal pages yet.",
+    "nudge": "You often check {{persona}}. Add it to your homepage?",
+    "summary": {
+      "base": "{{band}} in {{place}}",
+      "baseHumid": "{{band}} and humid in {{place}}",
+      "noBand": "Weather for {{place}}",
+      "sentence": "{{greeting}}. {{base}}.",
+      "withChange": "{{base}}, {{change}}"
+    },
+    "warningsStatus": {
+      "ok": "Official warnings checked.",
+      "partial": "Some official warning sources could not be checked.",
+      "unavailable": "Official warnings could not be checked. Visit mausam.imd.gov.in.",
+      "not_applicable": "IMD warnings cover India only.",
+      "not_requested": "Official warnings were not requested.",
+      "warnings": "Official warnings checked."
+    }
   },
   "rules": {
     "general": {
@@ -771,6 +829,13 @@
       "good": "Good",
       "fair": "Fair",
       "poor": "Poor"
+    },
+    "fisher": {
+      "go": "GO, WITH CARE",
+      "no_go": "DO NOT GO",
+      "official": "official warning for fishermen",
+      "wind": "strong wind at sea",
+      "waves": "high waves"
     }
   },
   "activities": {
@@ -859,5 +924,1157 @@
     "blocked2": "did not load. This is usually an ad-blocker, tracking protection, or no internet.",
     "retry": "Try again",
     "orEmail": "or use email login below."
+  },
+  "widgets": {
+    "aqi": {
+      "title": "Air quality",
+      "more": "Health advice",
+      "pm": "PM2.5 {{pm25}} · PM10 {{pm10}} µg/m³",
+      "station": "Station: {{name}}, {{km}} km away"
+    },
+    "bestTimeOut": {
+      "title": "Best time to go out",
+      "best": "Best: {{start}} to {{end}} (score {{score}})",
+      "none": "No comfortable window today. Stay indoors when you can."
+    },
+    "uv": {
+      "title": "UV and sun",
+      "peak": "UV peaks at {{uv}} ({{category}}) around {{time}}"
+    },
+    "humidityHeat": {
+      "title": "Humidity and heat",
+      "dewPoint": "Dew point",
+      "heatWave": "IMD heat warning: {{level}}",
+      "noHeatWave": "No heat wave warning for your area.",
+      "peak": "Hottest feel today"
+    },
+    "allergyEstimate": {
+      "title": "Allergy estimate",
+      "honest": "Estimated from weather, wind and air quality. India has no official pollen count yet."
+    },
+    "runWindow": {
+      "title": "Best time to run",
+      "best": "Best for {{activity}}: {{start}} to {{end}} (score {{score}})",
+      "more": "Run and play page",
+      "none": "No safe window in the next 24 hours. Try indoors.",
+      "outsideBand": "Best time is outside your usual time.",
+      "why": "{{temp}}, feels like {{feels}}. Main factors: {{factors}}."
+    },
+    "sunTimes": {
+      "title": "Sunrise and sunset",
+      "dayLength": "Day length",
+      "goldenHour": "Golden hour",
+      "hm": "{{h}} h {{m}} min",
+      "moon": "Moon lit",
+      "sunrise": "Sunrise",
+      "sunset": "Sunset"
+    },
+    "wind": {
+      "title": "Wind",
+      "from": "From the {{dir}} · {{word}}",
+      "gustLabel": "Gusts",
+      "gusts": "Gusts up to {{gust}} km/h"
+    },
+    "seaState": {
+      "title": "Sea state",
+      "incois": "INCOIS ocean forecasts",
+      "inland": "This place is not on the coast.",
+      "more": "Beach and sea page",
+      "swell": "Swell",
+      "swimNearLifeguards": "Swim only near lifeguards and flags.",
+      "waves": "Waves"
+    },
+    "tides": {
+      "title": "Tides",
+      "height": "Height",
+      "notAvailable": "Tide data is not available for this place.",
+      "tide": "Tide",
+      "high": "High tide",
+      "low": "Low tide"
+    },
+    "waterTemp": {
+      "title": "Water temperature"
+    },
+    "fisherWarning": {
+      "title": "Fishing today",
+      "listen": "Listen to today's sea advice",
+      "nextHours": "Next hours: {{list}}",
+      "noOfficial": "No official fishermen warning found. Always check INCOIS and IMD before going out."
+    },
+    "nextTrip": {
+      "title": "Next trip",
+      "add": "Add a trip",
+      "beyondForecast": "Forecast is available up to 16 days ahead.",
+      "inDays": "In {{count}} days",
+      "more": "Travel page",
+      "onTrip": "On your trip now"
+    },
+    "savedPlaces": {
+      "title": "My places",
+      "add": "Add a place",
+      "none": "Save places like home, work or family to compare weather."
+    },
+    "flightWeather": {
+      "title": "Airport weather",
+      "none": "Add a trip with an airport to see airport weather.",
+      "notStatus": "Weather only. Check your airline for flight status.",
+      "tafFog": "Airport forecast shows low visibility ({{vis}}). Delays possible.",
+      "visibility": "Visibility {{vis}}"
+    },
+    "packingList": {
+      "title": "What to pack",
+      "for": "For {{place}}",
+      "none": "Add a trip to get a packing list."
+    },
+    "schoolRun": {
+      "title": "School run",
+      "fine": "Looks fine",
+      "more": "Family page",
+      "set": "Set school times",
+      "setTimes": "Set school drop and pick-up times to see the weather then.",
+      "morning": "Drop-off",
+      "afternoon": "Pick-up"
+    },
+    "rainSoon": {
+      "title": "Rain soon?",
+      "likelyFrom": "Rain likely from {{time}} ({{prob}}% chance)",
+      "none": "No rain expected in the next 6 hours."
+    },
+    "rain5Day": {
+      "title": "Rain, next 5 days",
+      "categoryNote": "Categories follow IMD daily rainfall terms.",
+      "summary": "About {{mm}} mm of rain expected over 5 days."
+    },
+    "soil": {
+      "title": "Soil",
+      "irrigateHint": "Check the rain forecast before you irrigate.",
+      "temp": "Soil temperature {{t}}",
+      "top": "Top layer (0–1 cm)",
+      "mid": "Shallow (3–9 cm)",
+      "root": "Root zone (9–27 cm)"
+    },
+    "sprayWindow": {
+      "title": "Spray window",
+      "none": "No good spray window in the next 48 hours.",
+      "note": "Good spray time: light wind, no rain for 6 hours after, not too hot.",
+      "window": "Spray between {{start}} and {{end}}"
+    },
+    "frostHail": {
+      "title": "Frost and hail",
+      "groundNote": "Ground can be 2 to 4°C colder than the air on clear, calm nights.",
+      "hail": "Hail",
+      "hailPossible": "Hail possible {{when}}",
+      "min": "low {{t}}",
+      "tonight": "Frost tonight"
+    },
+    "agromet": {
+      "title": "Agromet advisory",
+      "notAvailable": "The district agromet advisory is not connected yet. Read it on Meghdoot.",
+      "openMeghdoot": "Open Meghdoot"
+    },
+    "plantingGuide": {
+      "title": "What to plant now",
+      "containers": "Container and balcony plants for this season",
+      "noZone": "We could not find your agro-climatic zone. Choose a place in India.",
+      "note": "General guide by zone. Ask your Krishi Vigyan Kendra for local advice."
+    },
+    "commuteNow": {
+      "title": "Commute",
+      "addPlaces": "Add home and work in Settings to see weather along the way.",
+      "at": "{{temp}}, rain chance {{rain}}",
+      "more": "Commute page",
+      "next": "Next trip at {{time}}",
+      "set": "Set commute times",
+      "setTimes": "Set your usual leaving times to get a leave-now answer.",
+      "traffic": "Check traffic",
+      "trafficNote": "Opens a map app. Mausam Saathi does not track traffic."
+    },
+    "visibility": {
+      "title": "Visibility and fog",
+      "categoryNote": "Fog levels follow IMD visibility terms.",
+      "clear": "No fog expected in the next 12 hours.",
+      "worst": "Worst: {{cat}}, {{vis}} around {{time}}"
+    },
+    "waterlogging": {
+      "title": "Waterlogging reports"
+    },
+    "eventComfort": {
+      "title": "My event",
+      "add": "Add an event",
+      "beyond": "Your event is beyond the 16-day forecast. We show past years' weather instead.",
+      "comfort": "Comfort",
+      "inDays": "In {{count}} days",
+      "more": "Event planner",
+      "slot": "Time: {{slot}}"
+    },
+    "heatDanger": {
+      "title": "Heat danger hours",
+      "bandsNote": "Bands use the heat index: what the heat feels like with humidity.",
+      "danger": "Dangerous heat {{start}} to {{end}}, feels like up to {{hi}}",
+      "firstAid": "Heat first aid",
+      "ok": "No dangerous heat hours today. Highest feels-like {{hi}}."
+    },
+    "lightning": {
+      "title": "Lightning",
+      "nearby": "Lightning nearby now. Go indoors.",
+      "possible": "Thunderstorms possible in the next 3 hours.",
+      "none": "No thunderstorms expected in the next 3 hours.",
+      "later": "Thunder possible later, around {{time}}.",
+      "rule3030": "30-30 rule: if thunder follows lightning within 30 seconds, go inside. Wait 30 minutes after the last thunder.",
+      "safety": "Lightning safety"
+    },
+    "coolSpots": {
+      "title": "Cool places nearby",
+      "more": "See all cool places",
+      "none": "No cool places listed near you yet.",
+      "publicPlace": "Public place, check opening hours"
+    },
+    "hourly": {
+      "title": "Next 24 hours",
+      "more": "48-hour chart",
+      "rainChance": "Rain chance"
+    },
+    "daily": {
+      "title": "Next 7 days",
+      "more": "Full forecast"
+    },
+    "mapTeaser": {
+      "title": "Weather map"
+    },
+    "readyStreak": {
+      "title": "Ready streak"
+    }
+  },
+  "bands": {
+    "excellent": "Excellent",
+    "good": "Good",
+    "fair": "Fair",
+    "poor": "Poor",
+    "unsafe": "Unsafe"
+  },
+  "heatBands": {
+    "comfortable": "Comfortable",
+    "caution": "Caution",
+    "extreme_caution": "Extreme caution",
+    "danger": "Danger",
+    "extreme_danger": "Extreme danger"
+  },
+  "factors": {
+    "heat": "heat",
+    "air": "air quality",
+    "rain": "rain",
+    "wind": "wind",
+    "uv": "strong sun",
+    "dark": "darkness",
+    "lightning": "lightning",
+    "none": "nothing major"
+  },
+  "beaufort": {
+    "calm": "calm",
+    "lightAir": "light air",
+    "lightBreeze": "light breeze",
+    "gentleBreeze": "gentle breeze",
+    "moderateBreeze": "moderate breeze",
+    "freshBreeze": "fresh breeze",
+    "strongBreeze": "strong breeze",
+    "nearGale": "near gale",
+    "gale": "gale",
+    "strongGale": "strong gale"
+  },
+  "fog": {
+    "veryDense": "Very dense fog",
+    "dense": "Dense fog",
+    "moderate": "Moderate fog",
+    "shallow": "Shallow fog",
+    "clear": "Clear"
+  },
+  "rainfall": {
+    "none": "No rain",
+    "very_light": "Very light",
+    "light": "Light",
+    "moderate": "Moderate",
+    "heavy": "Heavy",
+    "very_heavy": "Very heavy",
+    "extremely_heavy": "Extremely heavy"
+  },
+  "seaWords": {
+    "calm": "Calm",
+    "slight": "Slight",
+    "moderate": "Moderate",
+    "rough": "Rough",
+    "very_rough": "Very rough"
+  },
+  "waterWords": {
+    "cool": "Cool",
+    "pleasant": "Pleasant",
+    "warm": "Warm"
+  },
+  "soilWords": {
+    "dry": "Dry",
+    "moist": "Moist",
+    "wet": "Wet"
+  },
+  "risk": {
+    "low": "Low",
+    "moderate": "Moderate",
+    "high": "High"
+  },
+  "uvAdvice": {
+    "low": "No protection needed.",
+    "moderate": "Wear a cap and sunglasses at midday.",
+    "high": "Cover up, use sunscreen, seek shade 11 am to 3 pm.",
+    "very_high": "Avoid the midday sun. Sunscreen every 2 hours.",
+    "extreme": "Stay out of the sun at midday if you can."
+  },
+  "coolSpotTypes": {
+    "metro": "Metro station",
+    "library": "Library",
+    "hospital": "Hospital",
+    "railway": "Railway station",
+    "bus": "Bus terminal"
+  },
+  "metar": {
+    "clear": "no significant weather",
+    "drizzle": "drizzle",
+    "dust": "dust",
+    "fog": "fog",
+    "hail": "hail",
+    "haze": "haze",
+    "mist": "mist",
+    "rain": "rain",
+    "sand": "sand",
+    "showers": "showers",
+    "smoke": "smoke",
+    "snow": "snow",
+    "squall": "squall",
+    "thunderstorm": "thunderstorm"
+  },
+  "packingWhy": {
+    "rainDays": "rain on {{n}} of {{total}} days",
+    "cold": "lows near {{minC}}°C",
+    "freezing": "below freezing ({{minC}}°C)",
+    "hot": "highs near {{maxC}}°C",
+    "uv": "UV up to {{uv}}",
+    "coastal": "coastal place",
+    "hills": "hills, {{elevationM}} m",
+    "air": "air quality up to {{aqi}}",
+    "always": "always useful"
+  },
+  "slots": {
+    "morning": "Morning",
+    "afternoon": "Afternoon",
+    "evening": "Evening",
+    "night": "Night"
+  },
+  "seasons": {
+    "kharif": "Kharif (monsoon crops)",
+    "rabi": "Rabi (winter crops)",
+    "zaid": "Zaid (summer crops)"
+  },
+  "seasonNames": {
+    "winter": "winter",
+    "summer": "summer",
+    "monsoon": "monsoon",
+    "postMonsoon": "post-monsoon"
+  },
+  "timeOfDay": {
+    "morning": "morning",
+    "afternoon": "afternoon",
+    "evening": "evening",
+    "night": "night"
+  },
+  "modes": {
+    "two_wheeler": "Two-wheeler",
+    "car": "Car",
+    "public": "Bus or metro",
+    "walk": "Walk",
+    "cycle": "Cycle"
+  },
+  "activityNames": {
+    "run": "Running",
+    "walk": "Walking",
+    "cycle": "Cycling",
+    "sports": "Outdoor sports",
+    "yoga": "Outdoor yoga",
+    "trek": "Trekking"
+  },
+  "bandsTime": {
+    "early_morning": "Early morning",
+    "morning": "Morning",
+    "evening": "Evening",
+    "night": "Night"
+  },
+  "farmRoles": {
+    "farmer": "I farm",
+    "gardener": "I garden at home"
+  },
+  "workTypes": {
+    "delivery": "Delivery",
+    "construction": "Construction",
+    "vending": "Street vending",
+    "other": "Other outdoor work"
+  },
+  "pollutants": {
+    "pm25": "PM2.5",
+    "pm10": "PM10",
+    "no2": "NO₂",
+    "so2": "SO₂",
+    "o3": "Ozone",
+    "co": "CO",
+    "nh3": "Ammonia"
+  },
+  "severity": {
+    "1": "Ankle deep",
+    "2": "Knee deep",
+    "3": "Waist deep"
+  },
+  "reportStatus": {
+    "ai_verified": "Photo checked",
+    "unverified": "Not yet checked",
+    "confirmed": "Confirmed by others"
+  },
+  "learnTitles": {
+    "aqi": "Understanding air quality",
+    "uv": "UV and sun safety",
+    "heat": "Staying safe in heat",
+    "beach": "Beach safety and rip currents",
+    "cyclone": "Cyclone warnings explained",
+    "lightning": "Lightning safety",
+    "fog": "Driving in fog",
+    "monsoonKit": "Monsoon kit",
+    "frostHail": "Protecting crops from frost and hail",
+    "rainChance": "What “rain chance” means"
+  },
+  "sources": {
+    "open-meteo": "Open-Meteo forecast",
+    "open-meteo-air": "Open-Meteo air quality",
+    "open-meteo-marine": "Open-Meteo marine",
+    "cpcb": "CPCB air quality",
+    "imd_district": "IMD district warnings",
+    "imd_nowcast": "IMD nowcast",
+    "imd_marine": "IMD marine warnings",
+    "imd_highway": "IMD highway forecast",
+    "imd_cyclone": "IMD cyclone bulletin",
+    "ndma_cap": "NDMA SACHET alerts",
+    "demo": "Demo data",
+    "fixture": "Demo data",
+    "calculated": "Calculated in the app",
+    "aviationweather": "AviationWeather.gov (METAR/TAF)"
+  },
+  "emergency": {
+    "national": "Emergency",
+    "ambulance": "Ambulance",
+    "fire": "Fire",
+    "police": "Police",
+    "stateEoc": "State disaster control room",
+    "districtEoc": "District disaster control room",
+    "ndma": "NDMA helpline",
+    "coastGuard": "Coast Guard",
+    "teleManas": "Tele-MANAS mental health"
+  },
+  "places": {
+    "types": {
+      "home": "Home",
+      "work": "Work",
+      "school": "School",
+      "family": "Family",
+      "farm": "Farm",
+      "beach": "Beach",
+      "other": "Other"
+    },
+    "change": "Change place",
+    "currentLocation": "Current location",
+    "demoNote": "Demo scenario place",
+    "locating": "Finding you…",
+    "manage": "Manage places",
+    "nearCity": "Near {{city}}",
+    "noResults": "No places found. Try another spelling.",
+    "pinHint": "Your location is rounded and never leaves this phone.",
+    "resultCount": "{{count}} places found",
+    "saved": "Saved places",
+    "search": "Search a place",
+    "searchError": "Search failed. Check your connection.",
+    "searchPlaceholder": "City, town or village",
+    "searching": "Searching…",
+    "title": "Choose place",
+    "useMyLocation": "Use my location",
+    "locationUnavailable": "Could not find your location. Search for your place instead."
+  },
+  "units": {
+    "kmh": "km/h",
+    "mm": "mm"
+  },
+  "now": {
+    "aqi": "Air {{aqi}} · {{category}}",
+    "feelsLike": "Feels like",
+    "heading": "Weather now in {{place}}",
+    "high": "High",
+    "humidity": "Humidity",
+    "low": "Low",
+    "speech": "{{place}}: {{cond}}, {{temp}}, feels like {{feels}}. High {{hi}}, low {{lo}}.",
+    "tempAria": "Temperature {{temp}}, feels like {{feels}}",
+    "whyHotter": "Humidity makes it feel hotter than the thermometer shows.",
+    "wind": "Wind {{speed}} km/h {{dir}}"
+  },
+  "onboarding": {
+    "details": {
+      "airport": "Airport (optional)",
+      "beach": "Your beach",
+      "beachNone": "No beach nearby in our list",
+      "chosen": "Chosen: {{name}}",
+      "consent": "I agree to keep these health details on this phone only, to tailor my tips.",
+      "destination": "Where are you going?",
+      "duration": "How long?",
+      "event": "An event you are planning",
+      "eventDate": "Date",
+      "eventName": "Event name",
+      "from": "From",
+      "home": "Home",
+      "leaveHome": "Leave home at",
+      "leaveWork": "Leave work at",
+      "minutes": "{{m}} min",
+      "mode": "How do you travel?",
+      "noChildData": "We never ask for children's names or ages.",
+      "noFlight": "Not flying",
+      "none": "None",
+      "schoolAfternoon": "School pick-up",
+      "schoolMorning": "School drop-off",
+      "sensitivities": "Anything that affects you? (optional)",
+      "sub": "All optional. You can change these later in Settings.",
+      "to": "To",
+      "trip": "A trip coming up",
+      "usualTime": "Usual time",
+      "work": "Work",
+      "workFrom": "Work starts",
+      "workTo": "Work ends",
+      "title": "A few details"
+    },
+    "finish": "Show my weather",
+    "household": {
+      "sub": "Add family members who share this phone. You can skip this.",
+      "title": "Anyone else?"
+    },
+    "location": {
+      "popular": "Popular cities",
+      "search": "Search for your city or village",
+      "useDefault": "Use New Delhi for now",
+      "title": "Where are you?"
+    },
+    "personas": {
+      "title": "What matters to you?",
+      "max": "You can choose up to {{max}}.",
+      "seaLeisure": "For fun: swimming, beach visits",
+      "seaLivelihood": "For work: fishing or boats",
+      "seaQuestion": "Is the sea for fun or for work?",
+      "sub": "Pick up to {{max}}. The first one leads your homepage.",
+      "suggested": "Suggested for your place"
+    },
+    "notify": {
+      "title": "Warnings on this phone",
+      "allow": "Allow warnings",
+      "denied": "Notifications are blocked. You can allow them in your browser settings.",
+      "granted": "Done. We will alert you for official Orange and Red warnings.",
+      "sub": "Only official Orange and Red warnings by default. Never more than 6 a day.",
+      "unsupported": "This browser cannot show notifications.",
+      "official": "Official Orange and Red warnings",
+      "rain": "Rain in the next hour",
+      "morning": "Morning summary"
+    },
+    "locationWhy": "Your location stays on this phone. We only use it to fetch your weather.",
+    "placeChosen": "Place set: {{name}}",
+    "progress": "Setup progress",
+    "skipAll": "Skip, show me the weather",
+    "stepOf": "Step {{n}} of {{total}}"
+  },
+  "settings": {
+    "jump": "Jump to a section",
+    "moveUp": "Move {{name}} up",
+    "moveDown": "Move {{name}} down",
+    "sections": {
+      "places": "Places",
+      "personas": "What matters to me",
+      "layout": "Homepage layout",
+      "notifications": "Notifications",
+      "language": "Language and voice",
+      "accessibility": "Accessibility",
+      "data": "My data and privacy",
+      "demo": "Demo scenarios",
+      "account": "Account",
+      "about": "About"
+    },
+    "places": {
+      "current": "showing now",
+      "use": "Show",
+      "remove": "Remove {{name}}",
+      "none": "No saved places yet.",
+      "type": "Type of the next place you add",
+      "add": "Add a place",
+      "privacy": "Places are stored on this phone only."
+    },
+    "personas": {
+      "help": "Choose up to {{max}}. The first one you choose leads your homepage.",
+      "primary": "main",
+      "travelMin": "Travel time (minutes)",
+      "homeWork": "Set home and work as place types above.",
+      "workType": "Type of work",
+      "schoolTimes": "School times",
+      "fitness": "Activity and time",
+      "trips": "Trips",
+      "events": "Events",
+      "nudges": "Suggest pages I use often",
+      "redoSetup": "Run setup again"
+    },
+    "layout": {
+      "help": "This is the order of your homepage widgets and why each one is shown. Pin a widget to keep it on top.",
+      "pinned": "Pinned",
+      "pin": "Pin",
+      "hide": "Hide",
+      "show": "Show",
+      "hidden": "Hidden widgets",
+      "reset": "Reset to automatic order",
+      "shownBecause": "Shown because: {{reason}}",
+      "reason": {
+        "pinned": "you pinned it",
+        "persona": "you chose {{persona}}",
+        "season": "it is {{season}}",
+        "time": "it is {{time}}",
+        "official": "an official warning applies",
+        "tip": "the weather needs attention"
+      }
+    },
+    "notify": {
+      "official": "Official Orange and Red warnings",
+      "yellow": "Also Yellow warnings",
+      "rain": "Rain in the next hour",
+      "lightning": "Lightning nearby",
+      "morning": "Morning summary",
+      "quietFrom": "Quiet from",
+      "quietTo": "Quiet until",
+      "help": "Red warnings still come through in quiet hours. Never more than 6 alerts a day.",
+      "test": "Send a test alert",
+      "testTitle": "Mausam Saathi test",
+      "testBody": "Alerts are working on this phone.",
+      "testSent": "Test alert sent.",
+      "testFailed": "Could not show a notification here."
+    },
+    "language": {
+      "more": "Tamil, Bengali, Marathi and more are coming."
+    },
+    "data": {
+      "intro": "Everything below is stored only in this browser. Nothing is sent to us.",
+      "export": "Download my data",
+      "clearOld": "Clear data left by the old app",
+      "oldCleared": "Removed {{count}} old items.",
+      "delete": "Delete all my data",
+      "confirm": "Delete all places, settings and household members from this phone? This cannot be undone.",
+      "confirmYes": "Yes, delete everything",
+      "deleted": "Deleted {{count}} items. Reload to start fresh.",
+      "privacy": "Privacy policy",
+      "keys": {
+        "cache": "Saved weather for offline use",
+        "onboarding": "Setup progress",
+        "places": "Your places",
+        "currentPlace": "Place shown now",
+        "personas": "What matters to you",
+        "personaSettings": "Commute, school, work and farm details",
+        "sensitivities": "Health sensitivities",
+        "household": "Household members",
+        "layout": "Homepage layout",
+        "usage": "Pages you visit (for suggestions)",
+        "cardState": "Dismissed tips and feedback",
+        "trips": "Trips",
+        "events": "Events",
+        "packing": "Packing list ticks",
+        "a11y": "Accessibility settings",
+        "notify": "Notification settings",
+        "demo": "Demo scenario",
+        "language": "Language"
+      }
+    },
+    "demo": {
+      "help": "Load a sample weather situation to see how the app responds. All demo data is labelled.",
+      "load": "Load"
+    },
+    "account": {
+      "note": "Signing in is optional. All weather features work without an account.",
+      "signIn": "Sign in"
+    },
+    "about": {
+      "version": "Mausam Saathi version {{version}}"
+    }
+  },
+  "alerts": {
+    "checkedSources": "We checked IMD and NDMA SACHET for your place.",
+    "cyclone": "Cyclone",
+    "cycloneStatus": "Cyclone {{name}} is {{km}} km away, moving {{heading}} at {{speed}} km/h. Landfall expected in about {{hours}} hours.",
+    "details": "Details",
+    "disaster": "Disaster alerts (NDMA SACHET)",
+    "emergency": "Emergency numbers",
+    "followAuthorities": "Follow instructions from local authorities.",
+    "imdNotConnected": "Direct IMD warnings need government access that this build does not have yet.",
+    "instruction": "Instruction",
+    "issued": "Issued {{time}}",
+    "learnColours": "What the colours mean",
+    "left": "{{time}} left",
+    "legend": "Warning colours",
+    "legendText": {
+      "green": "no warning, normal weather",
+      "yellow": "weather could affect you, stay updated",
+      "orange": "bad weather likely, be ready to act",
+      "red": "dangerous weather, act now"
+    },
+    "marine": "Sea and fishermen",
+    "moreCount": "{{count}} more",
+    "next5": "Next 5 days",
+    "noDisaster": "No disaster alerts for this place.",
+    "noMarine": "No sea warnings for this place.",
+    "noNowcast": "No warnings for the next 3 hours.",
+    "noneThatDay": "No warnings that day.",
+    "now": "Next 3 hours",
+    "partial": "Some warning sources could not be reached. What you see may be incomplete.",
+    "places": "Your places",
+    "regional": "Elsewhere in {{state}}",
+    "regionalMore": "{{count}} more alerts in the state",
+    "share": "Share",
+    "shared": "Shared",
+    "copied": "Copied to clipboard",
+    "unavailableBody": "We could not reach official warning sources at {{time}}. This does not mean there are no warnings.",
+    "validTill": "Valid till {{time}}",
+    "verifyNumbers": "Numbers are national; your state may have its own.",
+    "visitImd": "IMD website",
+    "visitSachet": "NDMA SACHET",
+    "whatToDo": "What to do",
+    "readFull": "Read the full warning",
+    "showLess": "Show less"
+  },
+  "charts": {
+    "aqiLabel": "Air quality {{aqi}}, {{category}}. Main pollutant {{pollutant}}.",
+    "category": "Category",
+    "day": "Day",
+    "heatCell": "{{time}}: feels like {{hi}}°, {{band}}",
+    "rainChance": "Rain chance",
+    "rainMm": "Rain (mm)",
+    "runCell": "{{time}}: score {{score}}, {{band}}. {{temp}}, feels {{feels}}. {{why}}",
+    "scoreCell": "{{time}}: score {{score}}, {{band}}. {{why}}",
+    "scrollBack": "Earlier hours",
+    "scrollForward": "Later hours",
+    "showChart": "Show as chart",
+    "showTable": "Show as table",
+    "temp": "Temperature",
+    "time": "Time",
+    "wind": "Wind"
+  },
+  "forecast": {
+    "cloud": "Cloud cover",
+    "condition": "Condition",
+    "details": "Details now",
+    "fields": {
+      "current": "current weather",
+      "hourly": "hourly forecast",
+      "daily": "daily forecast",
+      "air": "air quality",
+      "marine": "waves and tides",
+      "warnings": "warnings",
+      "all": "everything (demo)",
+      "sun": "sunrise, sunset and moon"
+    },
+    "localTime": "Times are local to {{place}}.",
+    "lowerConfidence": "* Days 8 to 16 are less certain.",
+    "modelNote": "Forecasts come from computer weather models and can be wrong. Official warnings come from IMD and NDMA.",
+    "next16": "Next 16 days",
+    "next48": "Next 48 hours",
+    "noRain": "no rain expected",
+    "rainFrom": "rain likely from {{time}}",
+    "save": "Save this place",
+    "sources": "Where this data comes from",
+    "summary48": "Warmest {{max}} at {{maxTime}}, coolest {{min}} at {{minTime}}; {{rain}}.",
+    "title": "Forecast for {{place}}",
+    "windMax": "Gusts"
+  },
+  "gov": {
+    "title": "Government weather services",
+    "subtitle": "Official apps and sites from IMD, NDMA and ministries",
+    "visit": "Visit",
+    "services": {
+      "meghdoot": {
+        "name": "Meghdoot",
+        "desc": "Agromet advisories for farmers"
+      },
+      "damini": {
+        "name": "Damini",
+        "desc": "Lightning alerts"
+      },
+      "mausamApp": {
+        "name": "Mausam app (IMD)",
+        "desc": "Official IMD forecasts on your phone"
+      },
+      "umang": {
+        "name": "UMANG",
+        "desc": "Government services in one app"
+      },
+      "indiaPortal": {
+        "name": "National Portal of India",
+        "desc": "All government information"
+      },
+      "sachet": {
+        "name": "SACHET",
+        "desc": "NDMA disaster alerts"
+      },
+      "cpcb": {
+        "name": "CPCB Sameer",
+        "desc": "Official air quality"
+      },
+      "incois": {
+        "name": "INCOIS",
+        "desc": "Ocean state and high wave alerts"
+      },
+      "imd": {
+        "name": "IMD website",
+        "desc": "India Meteorological Department"
+      },
+      "fitIndia": {
+        "name": "Fit India",
+        "desc": "Fitness movement"
+      },
+      "pmkisan": {
+        "name": "PM-KISAN",
+        "desc": "Income support for farmers"
+      },
+      "pmfby": {
+        "name": "PM Fasal Bima Yojana",
+        "desc": "Crop insurance and claims"
+      },
+      "enam": {
+        "name": "e-NAM",
+        "desc": "Online crop markets"
+      },
+      "ndma": {
+        "name": "NDMA",
+        "desc": "Disaster preparedness guidance"
+      }
+    }
+  },
+  "empty": {
+    "events": "No events yet. Add one to check the weather for it.",
+    "trips": "No trips yet. Add one to see the weather at your destination."
+  },
+  "persona": {
+    "allAlerts": "All alerts",
+    "cards": "Tips for you",
+    "learnMore": "Learn more",
+    "noCards": "Nothing to watch out for right now.",
+    "officialFor": "Official warnings for {{place}}",
+    "services": "Useful government services"
+  },
+  "firstAid": {
+    "call": "Call {{number}}",
+    "signs": "Signs",
+    "whatToDo": "What to do",
+    "heatStroke": {
+      "title": "Heat stroke first aid",
+      "signs": [
+        "Very high body temperature",
+        "Confusion, slurred speech or fainting",
+        "Hot, dry or very sweaty skin",
+        "Fast heartbeat, headache, vomiting"
+      ],
+      "steps": [
+        "Call 108 now.",
+        "Move the person to shade or a cool room.",
+        "Loosen tight clothes.",
+        "Cool them with wet cloths, water spray and fanning.",
+        "If awake and able to swallow, give sips of water.",
+        "Do not give medicines for fever."
+      ]
+    },
+    "hypothermia": {
+      "title": "Cold exposure first aid",
+      "signs": [
+        "Strong shivering, or shivering that stops",
+        "Slow speech, confusion, sleepiness",
+        "Cold, pale skin"
+      ],
+      "steps": [
+        "Call 108.",
+        "Move the person somewhere warm and dry.",
+        "Remove wet clothes and wrap in blankets, covering the head.",
+        "Give warm, sweet drinks if they are awake. No alcohol.",
+        "Do not rub the skin or use very hot water."
+      ]
+    },
+    "lightning": {
+      "title": "Lightning strike first aid",
+      "steps": [
+        "Call 108. It is safe to touch the person: they carry no charge.",
+        "If they are not breathing, start CPR.",
+        "Check for burns and other injuries.",
+        "Keep them warm and lying down until help arrives."
+      ]
+    }
+  },
+  "health": {
+    "addSensitivities": "Add your sensitivities for advice made for you",
+    "adviceTitle": "Air today: {{category}}",
+    "disclaimer": "This is general guidance, not medical advice. Talk to your doctor about your health.",
+    "forMySensitivities": "For you",
+    "heatCold": "Heat and cold",
+    "hospitals": "Get help",
+    "hospitalsNote": "A map of nearby hospitals is coming. In an emergency, call 108.",
+    "noColdWarning": "No cold wave warning.",
+    "noHeatWarning": "No heat wave warning.",
+    "breath": {
+      "title": "Breathe with me",
+      "section": "A calm breathing exercise",
+      "pattern": "Breathe in 4, hold 4, out 6. Stop if you feel dizzy.",
+      "begin": "Start",
+      "pause": "Pause",
+      "reset": "Reset",
+      "in": "Breathe in",
+      "hold": "Hold",
+      "out": "Breathe out",
+      "cycles": "Rounds done: {{count}}"
+    },
+    "sensAdvice": {
+      "low": {
+        "asthma": "Air is fine. Keep your inhaler with you as usual.",
+        "allergies": "Low irritation from air today.",
+        "skin": "Use sunscreen if you are out at midday.",
+        "heart": "Normal activity is fine.",
+        "elderly": "A good day for a short walk.",
+        "pregnant": "Drink water regularly and rest in shade.",
+        "children": "Fine for outdoor play."
+      },
+      "mid": {
+        "asthma": "Carry your inhaler. Avoid hard exercise outdoors.",
+        "allergies": "Dust may irritate. Wash face and eyes after coming in.",
+        "skin": "Pollution can irritate skin. Wash and moisturise after coming in.",
+        "heart": "Take it easy outdoors. Rest if you feel breathless.",
+        "elderly": "Keep walks short and in the cooler hours.",
+        "pregnant": "Limit time outdoors and avoid traffic smoke.",
+        "children": "Shorter outdoor play, more breaks."
+      },
+      "high": {
+        "asthma": "Stay indoors. Keep your inhaler close and follow your action plan.",
+        "allergies": "Keep windows closed. Wear a mask outdoors.",
+        "skin": "Cover skin outdoors and wash after coming in.",
+        "heart": "Avoid exertion outdoors. Seek care for chest pain or breathlessness.",
+        "elderly": "Stay indoors today and keep medicines handy.",
+        "pregnant": "Stay indoors in clean air as much as you can.",
+        "children": "Keep children indoors today."
+      }
+    }
+  },
+  "household": {
+    "add": "Add",
+    "addMember": "Add a member",
+    "avatar": "Picture",
+    "avatarN": "Picture {{n}}",
+    "edit": "Edit",
+    "everyone": "Everyone",
+    "full": "You have reached the limit of members.",
+    "language": "Their language",
+    "me": "Me",
+    "members": "{{count}} of {{max}} members",
+    "nameRequired": "Please enter a nickname.",
+    "nickname": "Nickname",
+    "nicknameHint": "Like Dadi or Papa. No full names needed.",
+    "none": "No members yet. Add someone who shares this phone.",
+    "privacy": "Members are stored on this phone only.",
+    "readCards": "Read {{name}}'s tips aloud",
+    "remove": "Remove {{name}}",
+    "showFor": "Show tips for",
+    "theirDay": "What does their day include?",
+    "todayForFamily": "Today for the family",
+    "cardsFor": "Tips for {{name}}"
+  },
+  "run": {
+    "activity": "Activity",
+    "atBest": "At {{time}}",
+    "compare": "Now vs best time",
+    "duration": "Duration",
+    "heatAir": "Feels like {{feels}}, air quality {{aqi}}",
+    "hydration": "Water",
+    "hydrationNote": "General guide. Drink to thirst and more in heat.",
+    "now": "Now",
+    "plannedEvent": "Planning a race or match? Check the event planner.",
+    "yourActivity": "Your activity",
+    "water": {
+      "comfortable": "About 400 to 600 ml per hour.",
+      "caution": "About 600 to 800 ml per hour.",
+      "extreme_caution": "About 800 ml to 1 litre per hour, with salts.",
+      "danger": "Too hot for hard exercise. If you must, 1 litre per hour with salts.",
+      "extreme_danger": "Do not exercise outdoors now."
+    }
+  },
+  "coast": {
+    "currentPlace": "My current place",
+    "fisherTitle": "Before you go to sea",
+    "fisherTips": [
+      "Check the INCOIS and IMD warnings every morning.",
+      "Carry life jackets for everyone on board.",
+      "Keep a charged phone or radio and tell someone your return time.",
+      "Return early if the wind picks up or clouds build."
+    ],
+    "next48": "Next 48 hours at sea",
+    "next72": "Next 72 hours at sea",
+    "pickBeach": "Beach",
+    "ripProne": "This beach is known for rip currents. Swim only where lifeguards are.",
+    "safetyTitle": "Beach safety",
+    "safetyTips": [
+      "Swim only between the flags and near lifeguards.",
+      "If caught in a rip current, swim parallel to the shore.",
+      "Never swim after drinking or at night.",
+      "Keep children within arm's reach."
+    ],
+    "waveTable": "Waves, wind and tide by hour"
+  },
+  "commute": {
+    "atDeparture": "When you leave at {{time}}",
+    "evening": "Return at {{time}}",
+    "feels": "Feels like {{hi}}",
+    "google": "Google Maps",
+    "home": "Home",
+    "mappls": "Mappls (MapmyIndia)",
+    "midway": "Midway",
+    "minutesAgo": "{{minutes}} min ago",
+    "noPlace": "Add home and work places in Settings to compare both ends of your trip.",
+    "noReports": "No waterlogging reported near your route.",
+    "rain": "Rain chance {{prob}}%",
+    "reportsSoon": "Community waterlogging reports are coming soon.",
+    "setTimesTitle": "Set your commute",
+    "tipsTitle": "Safe commuting in bad weather",
+    "tips": [
+      "Never drive through water whose depth you cannot see.",
+      "In fog, use low beam and keep a long gap.",
+      "On two-wheelers, slow down on wet roads and avoid painted lines.",
+      "Stop under a solid building during lightning, not under trees or flyovers."
+    ],
+    "visibility": "Visibility {{vis}}",
+    "waterlogging": "Waterlogging reports",
+    "work": "Work"
+  },
+  "events": {
+    "add": "Add event",
+    "backupTitle": "Backup plan checklist",
+    "backupTips": [
+      "Book a covered area or tent for outdoor events.",
+      "Keep fans or coolers ready in hot weather.",
+      "Share a rain plan with guests in advance.",
+      "Check the forecast again 3 days and 1 day before."
+    ],
+    "calendar": "Comfort calendar ({{slot}})",
+    "calendarNote": "Scores for the next 16 days. Higher is more comfortable.",
+    "compare": "Compare dates",
+    "compareHint": "Pick up to 3 dates to compare.",
+    "dateN": "Date {{n}}",
+    "error": "Please enter a name and a date.",
+    "guests": "Guests",
+    "guestBands": {
+      "small": "Under 20",
+      "mid": "20 to 100",
+      "large": "Over 100"
+    },
+    "indoor": "Indoors",
+    "mine": "My events",
+    "outdoor": "Outdoors",
+    "pastYears": "From past years",
+    "recommended": "Best",
+    "remove": "Remove {{name}}",
+    "rows": {
+      "comfort": "Comfort",
+      "rain": "Rain chance",
+      "temp": "Temperature",
+      "humidity": "Humidity",
+      "gust": "Gusts",
+      "aqi": "Air quality",
+      "sunset": "Sunset"
+    },
+    "save": "Save event",
+    "slot": "Time of day",
+    "where": "Where",
+    "why": "{{date}} looks best, with a comfort score of {{score}}."
+  },
+  "family": {
+    "bestPark": "Best park time this weekend: {{day}} {{slot}}",
+    "closureNote": "Schools close by order of the district administration. Check your school or the DM's notice.",
+    "closureTitle": "School closures",
+    "heatTitle": "Keeping children safe in heat",
+    "heatTips": [
+      "Send a full water bottle and a cap.",
+      "Avoid outdoor play between 11 am and 4 pm on hot days.",
+      "Never leave a child in a parked vehicle.",
+      "Watch for tiredness, headache or no urine: signs of heat illness."
+    ],
+    "times": "School times",
+    "tipsSource": "Based on NDMA heat wave guidelines.",
+    "weekend": "This weekend"
+  },
+  "farm": {
+    "lightningTitle": "Lightning safety in the field",
+    "lightningTips": [
+      "Leave the open field when you hear thunder.",
+      "Do not shelter under a lone tree.",
+      "If caught outside, crouch low with feet together.",
+      "Keep away from tractors, pumps and wire fences."
+    ],
+    "listen": "Listen to today's farm advice",
+    "livestockTitle": "Livestock care",
+    "livestockTips": [
+      "Give animals shade and plenty of clean water in heat.",
+      "Keep animals in a shed during thunderstorms.",
+      "Cover sheds and use dry bedding on cold nights."
+    ],
+    "tipsSource": "Based on NDMA and IMD agromet guidance.",
+    "you": "You"
+  },
+  "travel": {
+    "add": "Add trip",
+    "hillNote": "Hill roads can close for landslides or snow. Check the state disaster authority before you go.",
+    "hillTitle": "Going to the hills: {{place}}",
+    "mode": "How are you travelling?",
+    "modes": {
+      "flight": "Flight",
+      "train": "Train",
+      "road": "Road",
+      "other": "Other"
+    },
+    "errors": {
+      "dates": "Please choose a start and end date. The end cannot be before the start.",
+      "destination": "Please choose where you are going."
+    },
+    "noAirport": "No airport chosen",
+    "remove": "Remove {{name}}",
+    "roads": "Road conditions",
+    "roadsNote": "Highway weather forecasts from IMD will appear here when connected.",
+    "save": "Save trip",
+    "sdmaLink": "State disaster authority",
+    "trips": "My trips"
+  },
+  "work": {
+    "airTitle": "Air at work",
+    "airAdvice": {
+      "low": "Air is fine for outdoor work.",
+      "mid": "Wear a mask on busy roads and take breaks away from traffic.",
+      "high": "Wear an N95 mask. Cut heavy work outdoors if you can."
+    },
+    "coolTitle": "Cool places to rest",
+    "dangerWindow": "Dangerous heat from {{start}} to {{end}}. Rest in shade and drink water every 20 minutes.",
+    "noDanger": "No dangerous heat hours during your work today.",
+    "rightsLink": "NDMA heat action guidance",
+    "rightsNote": "Many states advise shifting outdoor work away from 12 to 3 pm during heat waves. Ask your employer or contractor.",
+    "rightsTitle": "Heat and your work",
+    "takeover": {
+      "title": "Lightning nearby. Take shelter now.",
+      "body": "Go inside a solid building or a closed metal vehicle. Stay away from trees, poles and water.",
+      "stay": "Stay inside for",
+      "wait": "Wait 30 minutes after the last thunder before going out.",
+      "hear": "Hear this",
+      "safe": "I am in a safe place",
+      "speech": "Lightning nearby. Go inside a solid building now. Stay away from trees and poles. Wait 30 minutes after the last thunder."
+    },
+    "waterNow": "Time to drink a glass of water.",
+    "waterPermission": "Reminders show while this page is open, and as notifications if you allow them.",
+    "waterTitle": "Water reminders",
+    "waterToggle": "Remind me to drink water every 20 minutes during work hours"
   }
 }

@@ -52,7 +52,7 @@ export default function Navbar() {
         open={panelOpen}
         onClose={() => setPanelOpen(false)}
         variant="myPages"
-        returnFocusRef={panelButton}
+       
       />
     </nav>
   );

@@ -52,7 +52,7 @@ export default function BottomTabBar() {
           );
         })}
       </ul>
-      <PagesSheet open={moreOpen} onClose={() => setMoreOpen(false)} variant="more" returnFocusRef={moreButton} />
+      <PagesSheet open={moreOpen} onClose={() => setMoreOpen(false)} variant="more" />
     </nav>
   );
 }

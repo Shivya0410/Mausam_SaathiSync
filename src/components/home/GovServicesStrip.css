@@ -1,5 +1,4 @@
 .gov-banner {
-  grid-column: 1 / -1;
   position: relative;
   overflow: hidden;
   border-radius: 14px;
@@ -33,16 +32,20 @@
 .gov-head p {
   margin: 0 0 12px;
   font-size: 0.85rem;
-  color: #5c5470;
+  color: #574a73;
 }
 
 .gov-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
   gap: 10px;
 }
 
 .gov-card {
+  min-height: 44px;
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -69,7 +72,7 @@
 }
 
 .gov-card small {
-  color: #6b6480;
+  color: #574a73;
   font-size: 0.78rem;
   line-height: 1.4;
 }
@@ -77,6 +80,6 @@
 .gov-go {
   font-size: 0.75rem;
   font-weight: 800;
-  color: #138808;
+  color: #0b5d03; /* darker than the flag green for 4.5:1 text contrast */
   margin-top: 4px;
 }

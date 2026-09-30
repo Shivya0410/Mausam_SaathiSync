@@ -2,7 +2,7 @@
 
 This file records things that cannot be closed from inside this repository,
 or that were deliberately deferred. It was last updated at the end of build
-plan Part 1 (30 Sep 2026). Keep it current.
+plan Part 2 (30 Sep 2026). Keep it current.
 
 ## Blockers for a real rollout
 
@@ -60,13 +60,21 @@ These values are marked VERIFY in code:
 - **Coordinates and flags:**
   - airports, in `src/data/airports.js`;
   - beaches and their `ripProne` flags, in `src/data/beaches.js`.
+- **Mappls deep link** on the Commute page (`src/components/commute/CommutePage.js`): the URL format is unverified.
+- **Cool-spot coordinates** in `src/data/coolSpots/index.js` (Delhi, Ahmedabad, Mumbai, Hyderabad, Lucknow): check each place and its public access.
+- **Planting guide** (`src/data/plantingGuide.js`): an agronomist should review the crops by zone and season, including the Hindi names.
+- **Tips and first aid** text (heat stroke, cold exposure, lightning, beach, livestock) paraphrases NDMA guidance. Check it against the current NDMA documents.
 - **Open-Meteo terms** for a government deployment. Commercial or high-volume
   use needs their paid plan or self-hosting.
 
 ## Known unfixed issues
 
-- **Placeholder pages.** Every PRD route exists but most show "This page is
-  being built", with a link to IMD. Parts 2 and 3 replace them.
+- **Placeholder pages.** The Part 3 routes (map, Sky Snap, reports, ready,
+  learn and the government pages) still show "This page is being built",
+  with a link to IMD. The homepage and all Part 2 pages are live.
+- **Deferred page sections (Part 3).** The Health page has no hospitals map
+  and the Commute page has no waterlogging reports. The Travel page has no
+  IMD highway forecasts, which need IMD access (see 1). The pages say so.
 - **The register form collects "medical complications".** This comes from the
   legacy optional sign-in. It conflicts with the data-minimisation stance in
   PRD section 15.5, and needs removing (or the backend changing) before
@@ -87,7 +95,7 @@ These values are marked VERIFY in code:
   Deleted reference files are recoverable from the baseline commit
   (`5a56719`). In particular, `components/seniorFitness/ChairStandTest.js`
   is the camera lifecycle template for Part 3.
-- **Lint.** Touched files lint clean. Seven errors remain in untouched
+- **Lint.** Part 2 files lint clean. Seven errors remain in untouched
   adapt-later files: `GoogleAuthButton.jsx`, `register.js`, `ChatbotFloat.js`,
   `SavedPins.js`, `ClinicMap.js` and `Tracker.js` (mostly
   `react-hooks/set-state-in-effect`). They will be fixed as those files are

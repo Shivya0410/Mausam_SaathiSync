@@ -14,7 +14,7 @@ The work follows the build plan in [docs/EXECUTION-PLAN.md](docs/EXECUTION-PLAN.
   - The SaathiSync fitness features are removed. There is a new bilingual shell with placeholder pages for every PRD route.
   - The rules engine (50 rules), indices and homepage ranking are pure functions with tests.
   - The `/api/mausam/*` routes run on live data and fall back to demo fixtures.
-- **Part 2 (next):** the personalised homepage, onboarding, alerts, persona pages, household mode and settings.
+- **Part 2 (done):** the personalised homepage, onboarding, alerts, forecast, the nine persona pages, household mode and settings, in English and Hindi. Checked with axe in Chrome, and it reflows at 320 px with 200% text.
 - **Part 3:** camera features (Sky Snap, Jal-Bharav Watch, Dhundh Meter), the Mausam Mitra chatbot, map, preparedness, government (GIGW) pages, PWA, security headers and release.
 
 ## Setup
@@ -74,7 +74,7 @@ See [.env.example](.env.example). Nothing is required to run.
 
 ## Demo scenarios
 
-Add `&demo=<id>` to a snapshot request. Settings gets a switch in Part 2.
+Add `&demo=<id>` to a snapshot request. In the app, build with `NEXT_PUBLIC_DEMO_MODE=true`: then `?demo=<id>` works on any page, and Settings › Demo scenarios lists them all.
 
 | Id | What it shows |
 |---|---|
