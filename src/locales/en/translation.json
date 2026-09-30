@@ -2138,7 +2138,8 @@
       "dense": "dense",
       "moderate": "moderate",
       "light": "light haze",
-      "clear": "clear"
+      "clear": "clear",
+      "very_dense": "very dense"
     },
     "voteFailed": "Could not send your answer. Try again."
   },
@@ -2197,6 +2198,151 @@
       "name": "Aircraft trail (Contrail)",
       "means": "Made by aircraft. Long-lasting trails mean moist upper air.",
       "safety": "No action needed."
+    }
+  },
+  "cv": {
+    "again": "Take another photo",
+    "capture": "Capture photo",
+    "checkedIn": "Checked on your phone in {{ms}} ms.",
+    "errors": {
+      "badFile": "That file could not be opened as a photo.",
+      "denied": "Camera permission is off. You can choose a photo from your gallery instead.",
+      "failed": "The camera could not start. Try choosing a photo from your gallery.",
+      "insecure": "The camera needs a secure (https) connection. Choose a photo from your gallery instead.",
+      "noCamera": "No camera found. Choose a photo from your gallery instead.",
+      "rateLimited": "You have shared the most reports allowed for now. Thank you for helping.",
+      "shareFailed": "Could not share right now. Check your connection and try again."
+    },
+    "gallery": "Choose from gallery",
+    "guesses": "Best guesses",
+    "manualLabel": "You chose this. It was not checked by AI.",
+    "modelCard": "How this works (model card)",
+    "modelMissing": {
+      "title": "The {{name}} model is not installed on this version.",
+      "body": "You can still take a photo and choose the answer yourself. Your report will be marked “needs confirming”, not AI-checked."
+    },
+    "models": {
+      "sky": "Sky Snap",
+      "water": "waterlogging check"
+    },
+    "openCamera": "Open camera",
+    "pickMyself": "I'll choose myself",
+    "preview": "Camera preview",
+    "sending": "Sending…",
+    "shared": "Shared. Thank you.",
+    "yourPhoto": "Your photo",
+    "status": {
+      "checking": "Checking your photo on this phone…",
+      "ready": "Camera ready. Tap the round button to take the photo.",
+      "starting": "Starting the camera…"
+    },
+    "tabs": {
+      "water": "Waterlogging",
+      "fog": "Fog check"
+    },
+    "conf": {
+      "veryLikely": "Very likely",
+      "likely": "Likely",
+      "possibly": "Possibly",
+      "notSure": "Not sure"
+    },
+    "privacy": {
+      "stays": "Photo stays on your phone",
+      "noPeople": "Doesn't identify people",
+      "checkedHere": "Your photo is checked on your phone and never uploaded",
+      "onlyResult": "Only the result and an approximate area (about 500 m) are shared",
+      "noModel": "Works without the internet, using a simple image method"
+    },
+    "sky": {
+      "aim": "Aim at the sky: most of the frame should be sky, with the sun out of view.",
+      "couldBe": "Could be {{a}} or {{b}}.",
+      "forecastNoStorm": "No thunderstorm in the forecast for the next 6 hours.",
+      "forecastSays": "What the forecast says",
+      "forecastStorm": "Thunderstorm likely around {{time}}.",
+      "goodPhoto": "A good photo: mostly sky, no sun in the frame, no buildings covering it.",
+      "imdNowcast": "IMD nowcast for storms",
+      "introTitle": "Learn what the clouds mean",
+      "manualHelp": "Compare your photo with these descriptions and pick the closest.",
+      "manualTitle": "Which cloud looks most like yours?",
+      "mismatch": "Your sky shows a storm cloud even though the forecast doesn't. Storm clouds can develop quickly; stay alert.",
+      "notSky": "This doesn't look like the sky.",
+      "share": "Share to sky map",
+      "shareNote": "Shares only the cloud type, the time and an area of about 500 m. Never the photo.",
+      "unsure": "I'm not sure what these clouds are. Try again with more sky in the frame and the sun out of view.",
+      "yourSky": "What your sky shows"
+    },
+    "water": {
+      "aim": "Include the road and something for scale, like a kerb, a wheel or a person's legs (no faces needed).",
+      "another": "Report another",
+      "doneBody": "Your report is live for 3 hours and helps people nearby avoid this street.",
+      "doneTitle": "Thank you. Your report is live.",
+      "howDeep": "How deep does it look?",
+      "introBody": "Help people nearby avoid flooded streets.",
+      "introTitle": "Report waterlogging",
+      "looksFlooded": "Looks like a flooded street",
+      "manualHelp": "The AI check is not available, so you decide. Your report will need one person nearby to confirm it before it shows in others' tips.",
+      "manualNo": "No, not flooded",
+      "manualQuestion": "Is this street flooded?",
+      "manualYes": "Yes, it is flooded",
+      "notFlooded": "This doesn't look like a flooded street.",
+      "notFloodedHelp": "Wet roads after rain can look similar. Try a photo that shows standing water across the road.",
+      "pickDepth": "Choose how deep the water looks.",
+      "statusLine": "Status: {{status}} · {{count}} confirmations",
+      "submit": "Submit report",
+      "unverifiedNote": "The check is not fully sure, so the report will need one person nearby to confirm it.",
+      "depthHint": {
+        "1": "below 15 cm",
+        "2": "15 to 45 cm",
+        "3": "45 to 90 cm",
+        "4": "above 90 cm"
+      }
+    },
+    "fog": {
+      "aim": "Point at the road or skyline, not at lights.",
+      "estimateLabel": "Estimate from your photo (haze score {{score}} of 100)",
+      "forecast": "Forecast visibility now",
+      "forecastVis": "Use the forecast visibility instead: {{vis}}.",
+      "introBody": "Photograph the road or skyline to estimate how thick the fog or haze is.",
+      "introTitle": "Dhundh Meter: fog check",
+      "provisional": "This is an estimate from one photo, not a measurement. Follow IMD fog warnings.",
+      "share": "Share fog report",
+      "tooDark": "Too dark to estimate.",
+      "yourPhoto": "From your photo",
+      "bands": {
+        "clear": {
+          "title": "Clear",
+          "advice": "No fog to speak of.",
+          "visibility": "more than 2 km"
+        },
+        "mist": {
+          "title": "Mist or haze",
+          "advice": "Visibility a little reduced. Keep headlights on low beam if driving.",
+          "visibility": "about 1 to 2 km"
+        },
+        "moderate_fog": {
+          "title": "Moderate fog",
+          "advice": "Drive slower, keep a long gap, use low beam and fog lights.",
+          "visibility": "about 200 to 1,000 m"
+        },
+        "dense_fog": {
+          "title": "Dense fog",
+          "advice": "Dense fog: under 200 m likely. Drive slow, low beam, and avoid overtaking.",
+          "visibility": "about 50 to 200 m"
+        },
+        "very_dense_fog": {
+          "title": "Very dense fog",
+          "advice": "Very dense fog: under 50 m likely. Avoid driving if you can.",
+          "visibility": "under 50 m"
+        }
+      }
+    },
+    "where": {
+      "myLocation": "my location",
+      "near": "Near {{place}} (approximate)",
+      "note": "The location is rounded to about 500 m before it is stored.",
+      "title": "Where?",
+      "useGps": "Use my exact location",
+      "usePlace": "Use {{place}} instead"
     }
   }
 }

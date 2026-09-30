@@ -56,6 +56,15 @@ test('validateReport rejects unknown fields, low confidence, stale time and bad 
   assert.equal(ok.status, 'ai_verified');
 });
 
+test('manual and Dhundh Meter reports carry no score and always start unverified', () => {
+  const manual = validateReport(body({ confidence: undefined, modelVersion: 'manual' }), NOW);
+  assert.equal(manual.status, 'unverified');
+  const fog = validateReport(body({ type: 'fog', label: 'dense', severity: undefined, confidence: undefined, modelVersion: 'dhundh-dcp-0.1' }), NOW);
+  assert.equal(fog.status, 'unverified');
+  assert.equal(validateReport(body({ confidence: 0.99, modelVersion: 'manual' }), NOW).status, 'unverified', 'a manual pick is never AI-verified');
+  assert.throws(() => validateReport(body({ confidence: undefined }), NOW), (e) => 'confidence' in e.details.fields);
+});
+
 test('a stored report is grid-snapped, expires by type and never exposes the device', async () => {
   const repos = createMemoryRepositories();
   const r = await createReport(repos, body(), opts());

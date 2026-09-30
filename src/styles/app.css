@@ -1450,3 +1450,57 @@
 .ms-report-meta { margin: 8px 0; }
 .ms-report-vote { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
 .ms-teaser h2 { margin-top: 0; }
+
+/* ── Part 3B: camera features ── */
+.ms-camera-live { display: grid; gap: 10px; }
+.ms-camera-video { width: 100%; max-height: 60vh; border-radius: 12px; background: #000; object-fit: cover; }
+.ms-camera-hint { margin: 0; font-weight: 600; }
+.ms-camera-controls { display: flex; align-items: center; justify-content: center; gap: 16px; }
+.ms-capture-btn {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 4px solid var(--ms-brand);
+  background: var(--ms-surface);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.ms-capture-btn span { width: 44px; height: 44px; border-radius: 50%; background: var(--ms-brand); }
+.ms-cv-thumb { display: block; width: 100%; max-width: 360px; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 12px; margin-bottom: 12px; }
+.ms-cv-points { list-style: none; padding: 0; margin: 8px 0; display: grid; gap: 6px; }
+.ms-cv-points i { color: var(--ms-good); }
+.ms-cv-conf { font-size: var(--ms-text-lg); margin: 4px 0 8px; }
+.ms-cv-compare {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  margin: 12px 0;
+}
+.ms-cv-compare > div { border: 1px solid var(--ms-border); border-radius: 12px; padding: 10px 12px; }
+.ms-cv-compare h3 { margin: 0 0 4px; font-size: var(--ms-text-sm); color: var(--ms-muted); }
+.ms-cv-compare p { margin: 0; }
+.ms-callout { border-left: 5px solid var(--ms-brand); background: var(--ms-brand-soft); padding: 10px 12px; border-radius: 8px; font-weight: 600; }
+.ms-callout--danger { border-left-color: var(--ms-level-red-fg); background: var(--ms-level-red-bg); color: var(--ms-level-red-fg); }
+.ms-cloud-list { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px; }
+.ms-cloud-btn, .ms-depth-btn {
+  width: 100%;
+  min-height: 44px;
+  display: grid;
+  gap: 2px;
+  text-align: left;
+  padding: 10px 12px;
+  border: 2px solid var(--ms-border);
+  border-radius: 12px;
+  background: var(--ms-surface);
+  color: var(--ms-ink);
+  font: inherit;
+  cursor: pointer;
+}
+.ms-cloud-btn span { font-size: var(--ms-text-sm); color: var(--ms-muted); }
+.ms-cloud-btn:hover, .ms-depth-btn:hover { border-color: var(--ms-brand); }
+.ms-depth { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px; margin-bottom: 12px; }
+.ms-depth-btn { justify-items: center; text-align: center; }
+.ms-depth-btn i { font-size: 1.6rem; color: var(--ms-rain); }
+.ms-depth-btn[aria-checked='true'] { border-color: var(--ms-brand); background: var(--ms-brand-soft); box-shadow: 0 0 0 2px var(--ms-brand); }

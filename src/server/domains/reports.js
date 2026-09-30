@@ -56,7 +56,7 @@ export function statusFromConfidence(confidence) {
 const SCHEMA = {
   type: field.string({ required: true, oneOf: REPORT_TYPES }),
   label: field.string({ required: true, min: 1, max: 40 }),
-  confidence: field.number({ required: true, min: 0, max: 1 }),
+  confidence: field.number({ min: 0, max: 1 }),
   severity: field.integer({ min: 1, max: 4 }),
   lat: field.number({ required: true, min: -90, max: 90 }),
   lon: field.number({ required: true, min: -180, max: 180 }),
@@ -80,8 +80,17 @@ export function validateReport(body, now = Date.now()) {
   const observed = Date.parse(clean.observedAt);
   if (!Number.isFinite(observed)) errors.observedAt = 'must be an ISO timestamp';
   else if (Math.abs(now - observed) > LIMITS.maxSkewMinutes * MIN) errors.observedAt = 'must be within 30 minutes of now';
-  const status = statusFromConfidence(clean.confidence);
-  if (!status && !errors.confidence) errors.confidence = 'is too low to submit';
+  // No model score: a person chose the label (manual) or a classical
+  // estimate (Dhundh Meter) made it. Both start unverified, never AI-verified.
+  const unscored = clean.modelVersion === 'manual' || clean.modelVersion.startsWith('dhundh');
+  let status;
+  if (clean.confidence == null) {
+    if (unscored) status = 'unverified';
+    else errors.confidence = 'is required for model results';
+  } else {
+    status = unscored ? 'unverified' : statusFromConfidence(clean.confidence);
+    if (!status) errors.confidence = 'is too low to submit';
+  }
   if (Object.keys(errors).length) throw ApiError.validationFailed(errors);
   return { ...clean, lat: snapToGrid(clean.lat), lon: snapToGrid(clean.lon), observedMs: observed, status };
 }
@@ -119,7 +128,7 @@ export async function createReport(repos, body, { now = Date.now(), salt = SALT 
   const record = await repos.reports.create({
     type: v.type,
     label: v.label,
-    confidence: Math.round(v.confidence * 100) / 100,
+    confidence: v.confidence == null ? null : Math.round(v.confidence * 100) / 100,
     severity: v.severity ?? null,
     lat: v.lat,
     lon: v.lon,
