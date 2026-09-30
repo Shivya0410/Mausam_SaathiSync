@@ -50,6 +50,11 @@ export const stores = {
     { scoped: false },
   ),
   demo: createStore('mausam.demo.v1', { scenario: null }, { scoped: false }),
+  // A random id for this browser, used only for report rate limits and
+  // one-vote-per-report; the server stores it as a salted hash.
+  device: createStore('mausam.device.v1', { clientId: null }, { scoped: false }),
+  myReports: createStore('mausam.myReports.v1', [], { scoped: false }),
+  reportVotes: createStore('mausam.reportVotes.v1', {}, { scoped: false }),
 };
 
 // ── Personas ──

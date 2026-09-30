@@ -12,8 +12,10 @@ import { SeaStateWidget, TidesWidget, WaterTempWidget, FisherWarningWidget } fro
 import { NextTripWidget, SavedPlacesWidget, FlightWeatherWidget, PackingListWidget } from './travel';
 import { SoilWidget, SprayWindowWidget, FrostHailWidget, AgrometWidget, PlantingGuideWidget } from './farm';
 import { CommuteNowWidget, SchoolRunWidget } from './commute';
+import { WaterloggingWidget } from './reports';
 
 export const WIDGET_COMPONENTS = {
+  waterlogging: WaterloggingWidget,
   aqi: AqiWidget,
   bestTimeOut: BestTimeOutWidget,
   uv: UvWidget,

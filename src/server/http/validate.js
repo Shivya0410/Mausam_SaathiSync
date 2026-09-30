@@ -39,6 +39,18 @@ export const field = {
     };
   },
 
+  number({ min = -Infinity, max = Infinity, required = false } = {}) {
+    return (value) => {
+      if (value === undefined || value === null) {
+        return required ? 'is required' : null;
+      }
+      if (typeof value !== 'number' || !Number.isFinite(value)) return 'must be a number';
+      if (value < min) return `must be at least ${min}`;
+      if (value > max) return `must be at most ${max}`;
+      return null;
+    };
+  },
+
   boolean({ required = false } = {}) {
     return (value) => {
       if (value === undefined || value === null) {

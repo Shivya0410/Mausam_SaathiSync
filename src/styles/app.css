@@ -1436,3 +1436,17 @@
 .ms-text-150 { --ms-tabbar-h: 84px; }
 .ms-text-200 { --ms-tabbar-h: 104px; }
 .ms-text-200 .ms-tab { font-size: 0.56rem; }
+
+/* ── Part 3A: community reports ── */
+.ms-tabpanel:focus-visible { outline: 3px solid var(--ms-focus); outline-offset: 4px; }
+.ms-report { border-left: 6px solid var(--ms-rain); }
+.ms-report--unverified { border-left-style: dashed; border-left-color: var(--ms-muted); }
+.ms-report--community_verified { border-left-color: var(--ms-good); }
+.ms-report--cleared, .ms-report--expired { opacity: 0.75; border-left-color: var(--ms-border); }
+.ms-report-head { display: flex; align-items: flex-start; gap: 12px; }
+.ms-report-head > div { flex: 1; min-width: 0; }
+.ms-report-icon { font-size: 1.5rem; color: var(--ms-rain); margin-top: 4px; }
+.ms-report-title { margin: 0; font-size: var(--ms-text-md); }
+.ms-report-meta { margin: 8px 0; }
+.ms-report-vote { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.ms-teaser h2 { margin-top: 0; }

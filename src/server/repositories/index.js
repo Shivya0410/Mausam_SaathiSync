@@ -13,7 +13,7 @@
 
 import { createMemoryRepositories } from './memory.js';
 
-const CACHE_KEY = Symbol.for('swasth.repositories');
+const CACHE_KEY = Symbol.for('mausam.repositories');
 
 export function getRepositories() {
   const store = globalThis;

@@ -5,6 +5,7 @@
 
 import { T } from '../thresholds.js';
 import { nextClockTime, isoAt, hourOfIso } from '../time.js';
+import { waterloggingNear } from './commute.js';
 
 /**
  * Conditions at a school run time. Returns the worst condition and the item
@@ -22,6 +23,12 @@ export function schoolRunCheck(ctx, clock) {
   if (aqi >= T.aqi.poor) found.push({ condition: 'air', chip: 'mask', sev: aqi >= T.aqi.veryPoor ? 2 : 1 });
   if (h.visibilityM != null && h.visibilityM < T.fog.tipVisibilityM) {
     found.push({ condition: 'fog', chip: 'torch', sev: h.visibilityM < T.fog.dense ? 2 : 1 });
+  }
+  // Trusted crowd reports of waterlogging near a saved place (PRD 11.2).
+  const water = waterloggingNear(ctx);
+  if (water.length) {
+    const deep = Math.max(...water.map((w) => w.report.severity || 1));
+    found.push({ condition: 'waterlogging', chip: 'raincoat', sev: deep >= 2 ? 2 : 1 });
   }
   if (!found.length) return null;
   const worst = found.reduce((a, b) => (b.sev > a.sev ? b : a));
@@ -51,7 +58,7 @@ function schoolRule(id, slot) {
     },
     severity: (m) => m.sev,
     chips: (m) => m.chips,
-    source: ['forecast', 'air'],
+    source: ['forecast', 'air', 'reports'],
   };
 }
 

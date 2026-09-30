@@ -1,5 +1,6 @@
 "use client";
 
+import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 import PersonaPage from '../persona/PersonaPage';
 import { Tips } from '../persona/Sections';
@@ -85,7 +86,7 @@ export default function CommutePage() {
                 <ul className="ms-list">
                   {logged.map((r) => (
                     <li key={r.report.id}>
-                      <strong>{r.place}</strong> · {t(`severity.${r.report.severity || 1}`)} · {t('commute.minutesAgo', { minutes: r.minutes })} · {t(`reportStatus.${r.report.status}`)}
+                      <strong>{r.place}</strong> · {t(`severity.${r.report.severity || 1}`)} · {t('commute.minutesAgo', { minutes: r.minutes })} · {t(`reportStatus.${r.report.status}`)} · {t('reports.confirmed', { count: r.report.confirmations || 0 })}
                       {r.report.demo ? ` · ${t('common.demoData')}` : ''}
                     </li>
                   ))}
@@ -93,7 +94,10 @@ export default function CommutePage() {
               ) : (
                 <p className="ms-muted">{t('commute.noReports')}</p>
               )}
-              <p className="ms-muted">{t('commute.reportsSoon')}</p>
+              <p className="ms-actions">
+                <Link href="/reports" className="ms-btn ms-btn--secondary">{t('reports.seeReports')}</Link>
+                <Link href="/report" className="ms-btn ms-btn--secondary">{t('reports.reportWater')}</Link>
+              </p>
             </section>
             {eveningV ? (
               <section className="ms-card" aria-labelledby="cm-evening">

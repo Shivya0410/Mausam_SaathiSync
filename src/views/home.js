@@ -11,6 +11,8 @@ import MyPagesChips from "../components/home/MyPagesChips";
 import WidgetGrid from "../components/home/WidgetGrid";
 import GovServicesStrip from "../components/home/GovServicesStrip";
 import DataFootnote from "../components/home/DataFootnote";
+import { ReportsTeaser } from "../components/widgets/reports";
+import { sendCardFeedback } from "../lib/reportsClient";
 import MemberSwitcher from "../components/home/MemberSwitcher";
 import Nudges from "../components/home/Nudges";
 import { WIDGET_COMPONENTS } from "../components/widgets";
@@ -89,7 +91,10 @@ export default function Home() {
 
   const placeId = snapshot?.place?.id ?? weather.place.id;
   const onDismiss = (card) => setCardState((s) => dismissCard(s, today, placeId, card.ruleId));
-  const onFeedback = (card, helpful) => setCardState((s) => recordFeedback(s, today, card.id, helpful));
+  const onFeedback = (card, helpful) => {
+    setCardState((s) => recordFeedback(s, today, card.id, helpful));
+    if (!snapshot?.isDemo) sendCardFeedback(card, helpful, lang);
+  };
   const feedback = cardState?.[today]?.feedback || {};
 
   const ranked = active?.ranked || [];
@@ -132,6 +137,7 @@ export default function Home() {
           </div>
         ) : null}
         {active && !simple ? <WidgetGrid ranked={gridRanked} view={active} env={env} /> : null}
+        {active && !simple && !lite ? <ReportsTeaser reports={weather.reports.reports} season={active.season} now={now} /> : null}
         {!simple && !lite ? <GovServicesStrip personaIds={personaIds} /> : null}
         <DataFootnote snapshot={snapshot} />
       </div>

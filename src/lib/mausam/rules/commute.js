@@ -8,8 +8,8 @@ import { T } from '../thresholds.js';
 import { nextClockTime, isoAt } from '../time.js';
 import { rainSpans, leaveVerdict } from '../commute.js';
 import { haversineKm, pointToSegmentKm } from '../geo.js';
+import { isTrusted } from '../reports.js';
 
-const VERIFIED = new Set(['ai_verified', 'community_verified']);
 
 /** The next departure among the configured times (a departure up to 30 minutes ago still counts). */
 export function nextDeparture(ctx) {
@@ -30,7 +30,7 @@ export function waterloggingNear(ctx) {
   const maxAge = T.reports.maxAgeHours * 3600 * 1000;
   const out = [];
   for (const r of ctx.reports) {
-    if (r.type !== 'waterlogging' || !VERIFIED.has(r.status)) continue;
+    if (r.type !== 'waterlogging' || !isTrusted(r)) continue;
     const age = ctx.nowMs - Date.parse(r.observedAt);
     if (!(age >= 0 && age <= maxAge)) continue;
     let best = null;

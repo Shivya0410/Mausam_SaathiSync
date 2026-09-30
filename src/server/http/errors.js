@@ -70,6 +70,10 @@ export class ApiError extends Error {
     );
   }
 
+  static rateLimited(message = 'Too many requests. Please try again later.', details) {
+    return new ApiError(ErrorCode.RATE_LIMITED, message, details);
+  }
+
   static upstreamUnavailable(message = 'An upstream service is unavailable. Please try again.') {
     return new ApiError(ErrorCode.UPSTREAM_UNAVAILABLE, message);
   }

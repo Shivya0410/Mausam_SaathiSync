@@ -166,7 +166,7 @@
     },
     "reports": {
       "title": "Community reports",
-      "subtitle": "Recent verified reports near you"
+      "subtitle": "Street-level reports from people near you"
     },
     "ready": {
       "title": "Be ready",
@@ -822,7 +822,8 @@
       "rain": "rain likely",
       "heat": "very hot",
       "air": "poor air",
-      "fog": "fog"
+      "fog": "fog",
+      "waterlogging": "waterlogging reported nearby"
     },
     "comfort": {
       "excellent": "Excellent",
@@ -1096,7 +1097,10 @@
       "worst": "Worst: {{cat}}, {{vis}} around {{time}}"
     },
     "waterlogging": {
-      "title": "Waterlogging reports"
+      "title": "Waterlogging reports",
+      "more": "All reports",
+      "none": "No waterlogging reported near you.",
+      "source": "From people nearby, checked on their phones"
     },
     "eventComfort": {
       "title": "My event",
@@ -1326,12 +1330,15 @@
   "severity": {
     "1": "Ankle deep",
     "2": "Knee deep",
-    "3": "Waist deep"
+    "3": "Waist deep",
+    "4": "Vehicle stuck"
   },
   "reportStatus": {
-    "ai_verified": "Photo checked",
-    "unverified": "Not yet checked",
-    "confirmed": "Confirmed by others"
+    "ai_verified": "AI checked",
+    "unverified": "Needs confirming",
+    "community_verified": "Confirmed by others",
+    "cleared": "Cleared",
+    "expired": "Expired"
   },
   "learnTitles": {
     "aqi": "Understanding air quality",
@@ -2076,5 +2083,120 @@
     "waterPermission": "Reminders show while this page is open, and as notifications if you allow them.",
     "waterTitle": "Water reminders",
     "waterToggle": "Remind me to drink water every 20 minutes during work hours"
+  },
+  "reports": {
+    "aiCheck": "AI check: {{pct}}% flooded street",
+    "aiCheckOther": "AI check: {{pct}}% sure",
+    "alreadyVoted": "You have already answered for this report.",
+    "confirmed": "{{count}} people confirmed",
+    "filter": "Show report type",
+    "gone": "This report has already been cleared or has expired.",
+    "how": {
+      "title": "How reports work",
+      "points": [
+        "Your phone checks the photo on the device. The photo is never uploaded.",
+        "Only the type, how deep, the time and a rounded location (about 500 m) are shared. No name, no address, no text.",
+        "Reports the AI is sure about show as “AI checked”. Others need one person nearby to confirm them first.",
+        "When two people report the same place, or two people tap “Still there? Yes”, the report becomes “Confirmed by others”.",
+        "Two “No” answers hide a report. Waterlogging reports disappear after 3 hours, sky reports after 1 hour."
+      ],
+      "notOfficial": "Community reports are not official IMD observations. Always follow official warnings."
+    },
+    "kmAway": "{{km}} km away",
+    "loadFailed": "Could not load reports.",
+    "mapIntro": "See reports on the map with your places and warnings.",
+    "openMap": "Open the map",
+    "mineIntro": "Reports sent from this phone. Kept on this phone only.",
+    "mineNone": "You have not sent any reports yet.",
+    "minutesAgo": "{{minutes}} min ago",
+    "nearIntro": "Reports from the last few hours within {{km}} km of {{place}}.",
+    "nearPlace": "Near {{place}}",
+    "nearby": "Nearby",
+    "none": "No reports near you right now.",
+    "notDurable": "Reports are kept in temporary storage on this server and may reset.",
+    "reportWater": "Report waterlogging",
+    "seeReports": "See reports",
+    "snapSky": "Snap the sky",
+    "stillThere": "Still there?",
+    "tabs": {
+      "near": "Near me",
+      "map": "Map",
+      "mine": "My reports",
+      "how": "How it works"
+    },
+    "teaserTitle": "Reports from people nearby",
+    "teaserCount": "{{count}} active reports near you, {{water}} of waterlogging.",
+    "teaserNone": "No reports nearby yet. Seen a flooded street? Tell others.",
+    "thanksVote": "Thanks for helping.",
+    "types": {
+      "all": "All",
+      "waterlogging": "Waterlogging",
+      "sky": "Sky",
+      "fog": "Fog"
+    },
+    "fogLabels": {
+      "dense": "dense",
+      "moderate": "moderate",
+      "light": "light haze",
+      "clear": "clear"
+    },
+    "voteFailed": "Could not send your answer. Try again."
+  },
+  "cloudTypes": {
+    "Cb": {
+      "name": "Storm cloud (Cumulonimbus)",
+      "means": "Thunderstorm, lightning, heavy rain and gusts are likely, possibly hail.",
+      "safety": "Go indoors now and stay away from trees and open ground."
+    },
+    "Ns": {
+      "name": "Rain cloud (Nimbostratus)",
+      "means": "Steady rain, often for hours.",
+      "safety": "Carry an umbrella and expect slow roads."
+    },
+    "Cu": {
+      "name": "Fair-weather puffy cloud (Cumulus)",
+      "means": "Usually fine. If they grow tall in the afternoon, storms can follow.",
+      "safety": "Watch for clouds growing taller."
+    },
+    "Sc": {
+      "name": "Lumpy low cloud (Stratocumulus)",
+      "means": "Mostly dry and grey; light drizzle is possible.",
+      "safety": "No special action needed."
+    },
+    "St": {
+      "name": "Low grey layer (Stratus)",
+      "means": "Dull weather, drizzle or mist; fog if it reaches the ground.",
+      "safety": "Drive carefully if visibility drops."
+    },
+    "As": {
+      "name": "Grey sheet (Altostratus)",
+      "means": "Rain may follow within 12 to 24 hours.",
+      "safety": "Check the forecast before tomorrow's plans."
+    },
+    "Ac": {
+      "name": "Mid-level patches (Altocumulus)",
+      "means": "Often fine; on humid mornings, afternoon storms are possible.",
+      "safety": "On humid mornings, plan outdoor work early."
+    },
+    "Ci": {
+      "name": "Wispy high cloud (Cirrus)",
+      "means": "Fair now; a change in the weather may come in a day or two.",
+      "safety": "No action needed now."
+    },
+    "Cs": {
+      "name": "Thin high veil (Cirrostratus)",
+      "means": "A halo around the sun or moon; rain may come within a day.",
+      "safety": "Keep an umbrella handy tomorrow."
+    },
+    "Cc": {
+      "name": "Small high ripples (Cirrocumulus)",
+      "means": "Fair, sometimes unsettled later.",
+      "safety": "No action needed now."
+    },
+    "Ct": {
+      "name": "Aircraft trail (Contrail)",
+      "means": "Made by aircraft. Long-lasting trails mean moist upper air.",
+      "safety": "No action needed."
+    }
   }
 }

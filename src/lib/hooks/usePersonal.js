@@ -8,7 +8,6 @@ import { useWeather, usePersonas } from '../context/WeatherProvider';
 import { personalView } from '../mausam/personal';
 import { localParts, daysBetween } from '../mausam/time';
 import { fetchSnapshot, snapshotUrl } from './useSnapshot';
-import { scenarioReports } from '../../data/fixtures/scenarios';
 import { coolSpotsNear } from '../../data/coolSpots';
 import { AIRPORT_BY_ICAO } from '../../data/airports';
 import { AVAILABLE_WIDGETS } from '../../components/widgets/available';
@@ -139,7 +138,7 @@ export function usePersonal({ member = null, snapshotOverride = null } = {}) {
       places: weather.places,
       trips,
       events,
-      reports: snapshot.scenario ? scenarioReports(snapshot.scenario, now) : [],
+      reports: weather.reports.reports,
       coolSpots: coolSpotsNear(snapshot.place),
       tripData,
       climatology,
@@ -148,7 +147,7 @@ export function usePersonal({ member = null, snapshotOverride = null } = {}) {
       dismissed: dismissedFor(cardState, today, placeId),
       availableWidgets: AVAILABLE_WIDGETS,
     };
-  }, [snapshot, now, personaSettings, weather.places, trips, events, tripData, climatology, layout, usage, cardState, today, placeId]);
+  }, [snapshot, now, personaSettings, weather.places, trips, events, tripData, climatology, layout, usage, cardState, today, placeId, weather.reports.reports]);
 
   const view = useMemo(
     () => (inputs ? personalView({ ...inputs, personas, sensitivities: sens }) : null),

@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { stores, resolveCurrentPlace, personaList } from '../stores';
 import { useStore, useHydrated } from '../hooks/useStore';
 import useSnapshot from '../hooks/useSnapshot';
+import { useReports } from '../hooks/useReports';
 import { useA11y } from './A11yProvider';
 import { isScenario } from '../../data/fixtures/scenarios';
 import { pickNotifications } from '../mausam/notify';
@@ -36,6 +37,7 @@ export function WeatherProvider({ children }) {
   // Lite mode asks only for warnings (PRD 13.9); air is added on demand.
   const include = lite ? 'warnings,sun' : `air,warnings,sun${wantsSea ? ',marine' : ''}`;
   const { snapshot, status, refresh } = useSnapshot(hydrated ? place : null, { include, lang, demo });
+  const reports = useReports(hydrated ? place : null, { scenario: demo });
 
   // ?demo=<id> or ?demo=off, read once on load.
   useEffect(() => {
@@ -69,8 +71,8 @@ export function WeatherProvider({ children }) {
   const setDemo = useCallback((scenario) => setDemoState({ scenario }), [setDemoState]);
 
   const value = useMemo(
-    () => ({ place, places, setPlaces, setCurrentPlace, snapshot, status, refresh, demo, setDemo, hydrated }),
-    [place, places, setPlaces, setCurrentPlace, snapshot, status, refresh, demo, setDemo, hydrated],
+    () => ({ place, places, setPlaces, setCurrentPlace, snapshot, status, refresh, demo, setDemo, hydrated, reports }),
+    [place, places, setPlaces, setCurrentPlace, snapshot, status, refresh, demo, setDemo, hydrated, reports],
   );
   return <WeatherContext.Provider value={value}>{children}</WeatherContext.Provider>;
 }

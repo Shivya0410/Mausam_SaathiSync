@@ -16,6 +16,7 @@ import { personalView } from '../../lib/mausam/personal';
 import { levelName } from '../../lib/mausam/hazards';
 import { fmtTime } from '../../lib/format';
 import { GOV_SERVICES } from '../../data/govServices';
+import { sendCardFeedback } from '../../lib/reportsClient';
 
 /**
  * Persona view for a page: the page's persona leads, and the user's own
@@ -112,7 +113,10 @@ export default function PersonaPage({ persona, pageKey, snapshot, hero, widgets 
           title={t('persona.cards')}
           feedback={cardState?.[env.today]?.feedback || {}}
           onDismiss={(card) => setCardState((s) => dismissCard(s, env.today, placeId, card.ruleId))}
-          onFeedback={(card, helpful) => setCardState((s) => recordFeedback(s, env.today, card.id, helpful))}
+          onFeedback={(card, helpful) => {
+            setCardState((s) => recordFeedback(s, env.today, card.id, helpful));
+            if (!snap?.isDemo) sendCardFeedback(card, helpful, lang);
+          }}
         />
       ) : (
         <div className="ms-skeleton"></div>
