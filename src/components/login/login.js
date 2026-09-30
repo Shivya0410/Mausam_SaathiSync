@@ -68,9 +68,9 @@ const CustomLogin = () => {
     <div className={styles.container}>
       <div className={styles.brand}>
         <span className={styles.brandMark}>
-          <i className="fa-solid fa-spa"></i>
+          <i className="fa-solid fa-cloud-sun" aria-hidden="true"></i>
         </span>
-        Swasth Infinity
+        {t("common.appName")}
       </div>
       <h2 className={styles.heading}>{t("login.heading")}</h2>
       <p className={styles.subheading}>{t("login.subheading")}</p>

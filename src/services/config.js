@@ -1,4 +1,4 @@
-// Base URL for the Swasth Infinity backend.
+// Base URL for the legacy sign-in backend (optional login, PRD 9.5).
 //
 // This used to be derived from `window.location.hostname` at module scope,
 // which throws during the Next.js server render because `window` does not
@@ -8,13 +8,11 @@ export const API_BASE_URL =
   process.env.NEXT_PUBLIC_API_BASE_URL || 'https://sih24-backend.onrender.com';
 
 export const AUTH_API_URL = `${API_BASE_URL}/api/auth`;
-export const ADMIN_API_URL = `${API_BASE_URL}/api/admin`;
 
-// Floating WhatsApp button (bottom-right, site-wide). Set
-// NEXT_PUBLIC_WHATSAPP_NUMBER to the real business number in country-code
-// format without "+" (e.g. 919876543210). The default is a placeholder.
+// WhatsApp channel (roadmap, PRD 7.5). WhatsAppFloat is kept for that work
+// but is not rendered anywhere: the placeholder number would look broken.
 export const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "910000000000";
 
 export const WHATSAPP_LINK =
   `https://wa.me/${WHATSAPP_NUMBER}` +
-  `?text=${encodeURIComponent("Hi Swasth Infinity! I need help with my wellness journey.")}`;
+  `?text=${encodeURIComponent("Namaste Mausam Saathi! I need help.")}`;

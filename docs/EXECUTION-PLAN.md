@@ -53,6 +53,21 @@ Every part must end with `npm run build` and `npm test` passing (§0.1 rule 9). 
 
 ---
 
+### Part 1 status: done (30 Sep 2026)
+
+All exit criteria met: build passes, 234 tests pass (all 90 matrix rows), live snapshots verified for Lucknow, Goa and London, and `FORCE_FIXTURES` returns `isDemo: true`. What changed from the plan, for Part 2 to know:
+
+- **IMD** needs IP whitelisting (HTTP 401). The adapter follows IMD's published reference and is off by default. Official warnings come live from **NDMA SACHET** (`SACHET_FEED_URLS`).
+- **Warning scope.** The snapshot splits `warnings` (this place: cards and ribbon) from `regionalWarnings` (same state, other districts: Alerts page only). Use only `warnings` for the ribbon and cards.
+- **Snapshot params.** `/api/mausam/snapshot` also accepts `name`, `district` and `state` from the search result. Pass them for better warning matching.
+- **PIN codes** don't geocode. Search returns `hint: 'place_name'`.
+- **Warning status.** `officialStatus()` in `src/lib/mausam/warnings.js` gives the Now card chip state. It never returns "no warnings" for missing data.
+- **Rule text** is already in both locales (`rules.<id>.headline|reason|why`, `verdicts.*`, `officialAdvice.*`). Components format times and pass them as params.
+- **Deleted reference files** are recoverable from the baseline commit `5a56719`, for example `git show 5a56719:src/components/onboarding/OnboardingQuiz.js`.
+- **Security headers** (13.10) are still in Part 3E as planned.
+
+---
+
 ## Part 2: The personalised homepage and core pages
 
 **Goal:** everything a judge sees in the first four minutes. Onboard in under 60 s, get a persona-ranked homepage with decision cards, official warnings, Hindi, and accessibility tools.

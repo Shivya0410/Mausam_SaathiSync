@@ -3,9 +3,8 @@
 import "./PageHeader.css";
 
 /**
- * The one shared page header. Every main page (Fitness, Wellness, Dietary,
- * Tracker, Community, SheFit) renders this so headers can never drift apart
- * again: slim gradient bar, serif title, one-line subtitle, optional chip.
+ * The one shared page header (PRD 4.4). Every page renders this so headers
+ * never drift apart: one h1 title, a one-line subtitle, an optional chip.
  */
 export default function PageHeader({ title, subtitle, chipIcon, chipText }) {
   return (

@@ -7,7 +7,7 @@
  *   - every response carries a request id
  *   - every thrown error becomes the same normalised shape
  *   - an authenticated route cannot run its body without a verified subject
- *   - no response is cached
+ *   - no response is cached, except through cachedPublicRoute below
  */
 
 import { randomUUID } from 'node:crypto';
@@ -18,10 +18,10 @@ const NO_STORE = {
   'Cache-Control': 'no-store, private',
 };
 
-function jsonResponse(body, status, requestId) {
+function jsonResponse(body, status, requestId, cacheHeaders = NO_STORE) {
   return Response.json(body, {
     status,
-    headers: { ...NO_STORE, 'X-Request-Id': requestId },
+    headers: { ...cacheHeaders, 'X-Request-Id': requestId },
   });
 }
 
@@ -56,6 +56,29 @@ export function authenticatedRoute(fn) {
       const owner = await verifyIdentity(request);
       const { body, status = 200 } = await fn({ request, requestId, owner, routeContext });
       return jsonResponse(body, status, requestId);
+    } catch (error) {
+      const { status, body } = toErrorResponse(error, requestId);
+      return jsonResponse(body, status, requestId);
+    }
+  };
+}
+
+/**
+ * Wrap a public GET handler whose response is not personal and may be
+ * cached by shared caches (PRD section 13.3): weather snapshots, warnings,
+ * air, marine, airport, climatology and report lists. Errors are never
+ * cached. Coordinates reaching these routes are already rounded, so one
+ * cached response serves everyone in the same cell.
+ */
+export function cachedPublicRoute(fn, { sMaxAge = 300, staleWhileRevalidate = 600 } = {}) {
+  const cacheHeaders = {
+    'Cache-Control': `public, s-maxage=${sMaxAge}, stale-while-revalidate=${staleWhileRevalidate}`,
+  };
+  return async function handle(request, routeContext) {
+    const requestId = randomUUID();
+    try {
+      const { body, status = 200 } = await fn({ request, requestId, routeContext });
+      return jsonResponse(body, status, requestId, status === 200 ? cacheHeaders : NO_STORE);
     } catch (error) {
       const { status, body } = toErrorResponse(error, requestId);
       return jsonResponse(body, status, requestId);

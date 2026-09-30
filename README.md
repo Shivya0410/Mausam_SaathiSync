@@ -1,162 +1,102 @@
-# SWASTH INFINITY: A HOLISTIC WELLNESS APP
-Our main offerings include:
-## 1. Virtual Forest with HTML A-Frames 
-Interactive Virtual Environment
-Users can explore a 3D virtual forest built using HTML A-Frames.
+# Mausam Saathi
 
-Gamification for Sustainability
-Tracks eco-friendly activities and fitness goals, rewarding users with virtual trees and badges.
+A personalised, multilingual weather homepage that turns IMD forecasts into daily decisions.
 
-Customization
-Users can design and personalize their forests based on progress and achievements.
+Smart India Hackathon 2026 · Ministry of Earth Sciences / India Meteorological Department · "Development of personalised homepage for 'Mausam' mobile application" · Team SaathiSync.
 
-## 2. Real-Time Yoga Posture Monitoring System
-AI-Based Pose Detection
-Integrates MoveNet for real-time monitoring of yoga poses.
+> **Prototype.** Mausam Saathi is not an official service of IMD or MoES. It shows official IMD and NDMA warnings exactly as issued, with attribution. Its own advice is labelled "Saathi tip" and never overrides an official warning.
 
-Posture Correction Feedback
-Provides instant suggestions to correct form and alignment during yoga exercises.
+## Build status
 
-Progress Tracking
-Logs pose performance data to monitor flexibility, balance, and strength improvements.
+The work follows the build plan in [docs/EXECUTION-PLAN.md](docs/EXECUTION-PLAN.md).
 
-## 3. Health Risk Prediction
-Machine Learning-Based Risk Assessment
-Uses Random Forest Classifier to predict health risk levels (Low, Medium, High) based on user inputs.
-
-BMI and Body Shape Analysis
-Computes Body Mass Index (BMI) and classifies users as:
-
-Underweight
-Normal
-Overweight
-Obese
-Waist-to-Hip Ratio (WHR)
-Evaluates fat distribution and body shape based on waist and hip measurements.
-
-## 4. Diet Recommender System 
-AI-Driven Recommendations
-Suggests personalized diet plans based on:
-
-Body metrics
-Fitness goals
-Nutritional preferences
-Alternative Food Suggestions
-Provides healthier alternatives for commonly consumed junk foods.
-
-Integration with Recipe Databases
-Uses OpenFoodFacts and USDA datasets to recommend meals rich in essential nutrients.
-
-Real-Time Nutritional Tracking
-Monitors macronutrient and micronutrient intake to help users meet dietary targets.
-
-## 5. Personalized Advice and Recommendations
-Lifestyle Suggestions
-Offers tips for improving health based on BMI, WHR, and body fat percentage.
-
-Health Risk Warnings
-Alerts users about potential health issues like obesity, heart disease, and diabetes.
-
-Exercise and Activity Recommendations
-Suggests cardio, strength, and flexibility workouts tailored to fitness levels.
-
-## 6. Chat Consulting with Experts 
-Connect with Top Professionals
-In-built chat system to consult:
-
-Psychologists for mental health and stress management.
-Therapists for therapy and well-being tips.
-Fitness Trainers for workout and fitness plans.
-Expert Profiles
-
-Displays qualifications and areas of expertise.
-Allows users to select preferred consultants.
-Personalized Interaction
-AI chatbots and human experts collaborate for instant advice and long-term plans.
-
-## 7. User Blogs and Recipe Sharing Platform 
-Community-Driven Content
-Allows users to share healthy recipes and personal fitness journeys.
-
-Category-Based Filters
-Blogs sorted into categories like:
-
-Vegan, Keto, Low-Carb, High-Protein, etc.
-Interactive Features
-Users can like, comment, and save recipes to their profiles.
-
-Featured Blogs Section
-Highlights popular recipes and inspirational transformation stories.
-
-Recipe Ratings and Nutritional Breakdown
-Shows ratings and nutritional content for each recipe.
-
-
-
-
-
-
-# Getting Started
-
-This project runs on [Next.js](https://nextjs.org) using the App Router. It was
-originally bootstrapped with Create React App and migrated across; the routes
-now live as `page.js` files under `src/app/`.
+- **Part 1 (done):** the shell and the whole data and logic layer.
+  - The SaathiSync fitness features are removed. There is a new bilingual shell with placeholder pages for every PRD route.
+  - The rules engine (50 rules), indices and homepage ranking are pure functions with tests.
+  - The `/api/mausam/*` routes run on live data and fall back to demo fixtures.
+- **Part 2 (next):** the personalised homepage, onboarding, alerts, persona pages, household mode and settings.
+- **Part 3:** camera features (Sky Snap, Jal-Bharav Watch, Dhundh Meter), the Mausam Mitra chatbot, map, preparedness, government (GIGW) pages, PWA, security headers and release.
 
 ## Setup
 
 ```bash
 npm install
-cp .env.example .env.local   # then point NEXT_PUBLIC_API_BASE_URL at your backend
+cp .env.example .env.local   # optional; everything has a safe default
+npm run dev                  # http://localhost:3000
+npm test                     # node --test, no network needed
+npm run build
 ```
 
-`NEXT_PUBLIC_API_BASE_URL` is the base URL of the Swasth Infinity backend. The
-app appends `/api/auth` and `/api/admin` to it. For local backend development
-set it to `http://localhost:5000`.
+Node 22. This is Next.js 16 (App Router), which has breaking changes from earlier versions. Read `node_modules/next/dist/docs/` before using an unfamiliar API (see [AGENTS.md](AGENTS.md)).
 
-## Available Scripts
+## How it works
 
-### `npm run dev`
+```
+Phone (PWA)                                   Next.js server
+─────────────────────────────                 ───────────────────────────────────
+personas, places, household   ── rounded ──▶  /api/mausam/snapshot
+(stored on the device only)      lat/lon      │  Open-Meteo forecast, air, marine
+                                              │  CPCB (key) or computed AQI
+rules engine + ranking        ◀── snapshot ── │  IMD (whitelisted) + NDMA SACHET
+(src/lib/mausam, pure JS)                     │  provider cache + fallbacks
+decision cards, widget order                  └─ demo fixtures (labelled)
+```
 
-Runs the app in development mode at [http://localhost:3000](http://localhost:3000)
-with hot reloading.
+- **Personalisation runs on the device.** The server receives only coordinates rounded to about 1 km. It never learns who is asking (DPDP-friendly by design).
+- **Official means official.**
+  - IMD and NDMA warnings are shown verbatim. A tip that covers the same hazard as an active official warning is folded into the official card, never shown beside it.
+  - When no official source answers, the app says it couldn't check. It never says "no warnings".
+- **Demo data is always labelled.** Every fixture sets `isDemo: true`, and fixture warnings say "Demo of IMD warning format".
 
-### `npm run build`
+## Code map
 
-Builds the app for production into `.next`. This step prerenders every route on
-the server, so it is also what catches browser-only code that would break
-server rendering. Treat a build failure as a real defect, not a config problem.
+| Path | What |
+|---|---|
+| `src/lib/mausam/` | Pure weather logic: thresholds, heat index, National AQI, Run Score, Comfort Index, spray window, frost, sea safety, tides, packing, leave-now, 50 rules (`rules/`), widget ranking, summary line |
+| `src/lib/providers/` | Server adapters: Open-Meteo, IMD, NDMA SACHET (CAP), CPCB, aviationweather.gov, the snapshot orchestrator |
+| `src/app/api/mausam/` | API routes (contract in [contracts/mausam-api.md](contracts/mausam-api.md)) |
+| `src/config/` | Navigation, personas, widget registry (weights from PRD Appendix E) |
+| `src/data/` | Seed data (cities, airports, beaches, emergency numbers, government services) and demo scenarios |
+| `src/locales/{en,hi}` | All UI text. The key trees must match (a test enforces this) |
+| `tests/` | `node --test` suites, including the PRD's 90-row rule matrix |
 
-### `npm start`
+## Environment
 
-Serves the production build. Run `npm run build` first.
+See [.env.example](.env.example). Nothing is required to run.
 
-### `npm run lint`
+| Variable | Effect |
+|---|---|
+| `SACHET_FEED_URLS` | Live NDMA disaster alerts (public; the all-India feed is in the example) |
+| `IMD_API_ENABLED` + `IMD_PROXY_BASE_URL` | IMD warnings through a whitelisted static-IP proxy |
+| `DATA_GOV_IN_API_KEY` | CPCB station AQI instead of the model estimate |
+| `NEXT_PUBLIC_DEMO_MODE=true` | Demo scenario switch (for judging) |
+| `FORCE_FIXTURES=true` | Serve fixture weather for any place |
 
-Runs the Next.js linter.
+## Demo scenarios
 
-## Project layout
+Add `&demo=<id>` to a snapshot request. Settings gets a switch in Part 2.
 
-- `src/app/` — routes. Each directory holds a `page.js` that re-exports a
-  component, plus the shared `layout.js`, `providers.js` and `loading.js`.
-- `src/components/` — the UI components the routes render.
-- `src/views/` — page-level wrappers that compose components, kept from the
-  original structure. Not to be confused with the Next.js Pages Router.
-- `src/services/` — backend calls and the API base URL configuration.
-- `src/store/` — the authentication context.
-- `public/` — static files served at the site root, including the A-Frame
-  virtual forest and the SheFit microsite.
+| Id | What it shows |
+|---|---|
+| `delhi-winter-smog-fog` | Very Poor air, dense fog, airport fog |
+| `mumbai-monsoon-red` | Red rain warning, high waves, 8 seeded waterlogging and sky reports |
+| `chennai-cyclone` | Cyclone and fishermen warnings |
+| `lucknow-heatwave` | Heat wave for outdoor workers |
+| `punjab-village-frost` | Frost, spray window, agromet advisory |
+| `goa-swell-alert` | Long-period swell, real-shaped tides |
 
-## Notes
+## Data sources and attribution
 
-- Nearly every component carries a `"use client"` directive. Note that this does
-  not disable server rendering: client components are still prerendered at build
-  time, so browser-only APIs must be used inside effects.
-- Leaflet and TensorFlow.js are loaded through `next/dynamic` with `ssr: false`
-  because they touch `window` when their modules are evaluated.
-- `@mediapipe/pose` is aliased to a stub in `next.config.js`. See
-  `src/shims/mediapipe-pose.js` for why.
+- India Meteorological Department (when connected)
+- NDMA SACHET
+- CPCB National AQI
+- [Open-Meteo](https://open-meteo.com) (CC BY 4.0)
+- aviationweather.gov (NOAA)
+- SunCalc
+- © OpenStreetMap contributors
 
-## Learn More
+The IMD and MoES logos and the State Emblem are not used (PRD section 15.6).
 
-- [Next.js documentation](https://nextjs.org/docs)
-- [React documentation](https://react.dev)
+## Known limitations
+
+See [docs/OPEN-ISSUES.md](docs/OPEN-ISSUES.md).

@@ -27,6 +27,7 @@ export const HAZARD_GROUP = Object.freeze({
   high_waves: 'sea',
   cyclone: 'cyclone',
   flood: 'flood',
+  other: 'other',
   no_warning: null,
 });
 

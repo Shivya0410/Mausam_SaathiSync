@@ -305,6 +305,7 @@
     "high_waves": "High waves",
     "cyclone": "Cyclone",
     "flood": "Flood",
+    "other": "Disaster alert",
     "no_warning": "No warning"
   },
   "officialAdvice": {

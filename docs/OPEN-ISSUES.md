@@ -1,105 +1,110 @@
-# Open issues and deferred blockers
+# Open issues
 
-Recorded against commit `027ffba` plus the prohibition-fix work. These are
-things that cannot be closed from inside this repository, or that were
-deliberately left out of scope. Keep this file current.
+This file records things that cannot be closed from inside this repository,
+or that were deliberately deferred. It was last updated at the end of build
+plan Part 1 (30 Sep 2026). Keep it current.
 
-## Blockers
+## Blockers for a real rollout
 
-### 1. Admin registration is open on the backend
+### 1. IMD API access needs IP whitelisting
 
-The public `/adminregister` route has been deleted from this app, so there is
-no longer a visible signup page. **That is not the fix.** The real control
-point is `POST /api/admin/register` on `sih24-backend.onrender.com`, which is
-not in this repository.
+IMD's API answers unlisted callers with HTTP 401 ("IP ... needs to be
+whitelisted"). This was checked on 30 Sep 2026. Serverless hosts such as
+Vercel have no fixed outbound IP.
 
-That endpoint was deliberately **not** probed, because a successful request
-would create a real admin account on a live system. Someone with backend
-access must verify whether it accepts unauthenticated registrations and close
-it if so.
+The adapter (`src/lib/providers/imd/`) is built to IMD's published API
+reference, including its two opposite colour scales. It is off by default
+(`IMD_API_ENABLED=false`). To connect IMD, do one of the following:
 
-Admin accounts should be provisioned out of band until that is confirmed.
-`/adminlogin` and `/dashboard` are untouched and still work.
+- run a small proxy on a static IP that IMD has whitelisted, and set
+  `IMD_PROXY_BASE_URL`; or
+- use access that IMD provides for SIH teams.
 
-### 2. The Python recommender checkpoint is missing
+Until then, official warnings come from NDMA SACHET only. The adapter's
+district-name matching is untested against live IMD data.
 
-The architecture brief's Build 2 depends on an existing Python recommendation
-prototype, reported as 18 catalogue records and 210 passing tests. No Python
-artifacts exist anywhere in this repository: no `.py` files, no
-`requirements.txt`, no `master_report.json`, no checkpoint archive.
+### 2. District mapping is heuristic
 
-Build 2 cannot start until that checkpoint is supplied and audited.
+Warnings are matched to a place by district and state names.
 
-### 3. Database ownership is undecided
+- **Place names:** these come from the search result, or else from the
+  nearest of the 12 bundled cities.
+- **SACHET alerts** match a place only if one of these holds:
+  - their polygon contains the point;
+  - their area text names the district;
+  - they cover the whole state.
 
-The `/api/v1` boundary now exists and reads and writes through the repository
-contract in `src/server/repositories/types.js`, but its only implementation is
-in-memory. Data is lost on restart, on redeploy, and independently per
-serverless instance. `GET /api/v1/health` reports this as
-`persistence.durable: false`.
+  Other alerts in the same state go to `regionalWarnings`, never to cards or
+  the ribbon. This was checked live: a Balrampur flood alert does not become a
+  Lucknow warning.
+- **What is missing:** a district index built from IMD
+  (`scripts/build-imd-index.mjs`, PRD section 12.2.1) and a districts GeoJSON.
+  Both are needed for exact matching.
 
-Choosing a store and authorising credentials is the remaining blocker. Until
-then the following stay unimplemented rather than being built on a store that
-forgets: cycle history, habit history beyond the current process, the reward
-ledger, saved recipes, recommendation sessions, and data export or deletion.
+### 3. There is no durable store yet
 
-Swapping in a durable adapter should be one new module plus one branch in
-`src/server/repositories/index.js`, with no endpoint or domain service
-changing. See `contracts/api-v1.md`.
+Crowd reports, feedback and push subscriptions (Part 3) need `DATABASE_URL`.
+The in-memory adapter loses data on every restart and every serverless cold
+start. `/api/mausam/health` reports `durable: false`.
+
+## To verify before release
+
+These values are marked VERIFY in code:
+
+- **Emergency numbers:** 1070, 1077, 1078 and 1554 in
+  `src/data/emergencyNumbers.js`.
+- **CPCB:** the data.gov.in resource id (`CPCB_RESOURCE_ID`) and the Severe
+  band upper bounds in `naqi.js`. Severe-band upper bounds are not published
+  and only shape interpolation up to the cap of 500.
+- **Play Store ids:** Mausam, Meghdoot and Damini in `src/data/govServices.js`.
+- **Coordinates and flags:**
+  - airports, in `src/data/airports.js`;
+  - beaches and their `ripProne` flags, in `src/data/beaches.js`.
+- **Open-Meteo terms** for a government deployment. Commercial or high-volume
+  use needs their paid plan or self-hosting.
 
 ## Known unfixed issues
 
-### Fabricated content still in the UI
+- **Placeholder pages.** Every PRD route exists but most show "This page is
+  being built", with a link to IMD. Parts 2 and 3 replace them.
+- **The register form collects "medical complications".** This comes from the
+  legacy optional sign-in. It conflicts with the data-minimisation stance in
+  PRD section 15.5, and needs removing (or the backend changing) before
+  release.
+- **Adapt-later files kept for Parts 2 and 3.** These files are not rendered
+  by any route yet:
+  - `views/trackersheet/Tracker.js`
+  - `utils/badges.js`
+  - `config/xpPolicy.js`, which still uses pillars Y/M/E/C
+  - `components/wellness/*`
+  - `components/shefit/MythOrFact.js`
+  - `components/shefit/SavedPins.js`
+  - `components/profile/{ProfilePreferences,GuestBanner,XpPreview,ActivityHeatmap}.js`
+  - `components/shared/ChatbotFloat.js`
+  - `components/gov/GovBanner.js`
+  - `components/map/LeafletMap.js`
 
-Dashboard figures on Home and Profile are now marked with a "Sample data"
-badge and centralised in `src/data/demoStats.js`, but they remain fabricated.
-Two larger cases were left alone because they are static markup needing a
-design decision rather than a substitution:
+  Deleted reference files are recoverable from the baseline commit
+  (`5a56719`). In particular, `components/seniorFitness/ChairStandTest.js`
+  is the camera lifecycle template for Part 3.
+- **Lint.** Touched files lint clean. Seven errors remain in untouched
+  adapt-later files: `GoogleAuthButton.jsx`, `register.js`, `ChatbotFloat.js`,
+  `SavedPins.js`, `ClinicMap.js` and `Tracker.js` (mostly
+  `react-hooks/set-state-in-effect`). They will be fixed as those files are
+  adapted.
+- **Fonts.** Noto Sans and Noto Sans Devanagari are fetched from Google Fonts
+  at build time, so `npm run build` needs network access.
 
-- The eight-item appointment inbox on the profile.
-- The profile calendar, hardcoded to September 2024 with fixed appointments.
+## Closed by the migration
 
-### Unverified venue data
+The following SaathiSync items were removed with the fitness features:
 
-`tennis-venues.js` and `meditation-venues.js` list real-looking names,
-addresses, phone numbers and ratings for Delhi-area venues. None of it has
-been verified. Either verify it or label it clearly as illustrative.
+- fabricated dashboard figures;
+- unverified tennis and meditation venues;
+- hotlinked third-party images;
+- activity tiles with no destination;
+- the calorie, Yoga and PostList bugs.
 
-### Hotlinked third-party images
-
-Eighteen images are hotlinked from an unrelated public GitHub repository, plus
-others from CNN, India Today, WFLA and similar. These can break or be blocked
-at any time and were not licensed for this use.
-
-### Seven activity tiles have no destination
-
-Running, cycling, climbing, hiking, dancing, gardening and swimming render as
-plain tiles because no pages exist. Building them needs real venue data.
-
-### Correctness bugs reviewed but not fixed
-
-- `calorie.js` computes BMR from a hardcoded height and weight that the form
-  never collects, so every result is wrong.
-- `Yoga.js` never clears its 100ms detection interval on unmount and never
-  disposes TensorFlow tensors, leaking on every visit.
-- `PostList.js` mutates state through a shallow copy.
-
-### Lint findings (10 pre-existing)
-
-`npm run lint` now works. It calls ESLint directly, because `next lint` was
-removed in Next.js 16, and uses the flat config in `eslint.config.mjs`.
-
-It reports 8 errors and 2 warnings, all in code that predates this work. The
-rules were left at their default severity rather than downgraded, so the run
-exits non-zero. That is accurate: these are real findings, not noise to be
-silenced.
-
-| Rule | Count | Notes |
-|---|---|---|
-| `react-hooks/set-state-in-effect` | 7 | setState called synchronously inside an effect. The two calendars that did this were fixed by deriving with `useMemo`; the rest are in the auth context and the camera screen and need real reworking |
-| `react-hooks/globals` | 1 | `Yoga.js` reassigns the module-scope `interval` during render |
-| `react-hooks/exhaustive-deps` | 1 | `Yoga.js` effect missing `bestPerform` and `startingTime` |
-| `import/no-anonymous-default-export` | 1 | The mediapipe shim |
-
-Everything under `src/server/`, `src/app/api/`, the error boundaries and the
-rebuilt About page lints clean.
+The admin client code is gone, so the app no longer calls `/api/admin`. The
+backend's open admin registration endpoint is still outside this repository.
+The Python recommender (for `/api/v1`) is out of scope for Mausam Saathi.
