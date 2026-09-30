@@ -6,7 +6,6 @@ import "../styles/lilac-theme.css";
 import "../styles/shell.css";
 import "../styles/app.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import "leaflet/dist/leaflet.css";
 
 import { Noto_Sans, Noto_Sans_Devanagari } from "next/font/google";
 import Providers from "./providers";

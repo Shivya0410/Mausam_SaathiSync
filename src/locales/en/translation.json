@@ -118,7 +118,7 @@
     },
     "map": {
       "title": "Map",
-      "subtitle": "Warnings, air quality, reports and cool spots"
+      "subtitle": "Your places, warnings, air, reports and cool spots"
     },
     "health": {
       "title": "Health",
@@ -170,11 +170,11 @@
     },
     "ready": {
       "title": "Be ready",
-      "subtitle": "Preparedness habits for the season"
+      "subtitle": "Small daily habits that keep you ready for the weather"
     },
     "learn": {
       "title": "Learn",
-      "subtitle": "Weather safety in plain words"
+      "subtitle": "Short guides to staying safe in India's weather"
     },
     "household": {
       "title": "Household",
@@ -2488,5 +2488,418 @@
     "sessionNote": "This chat is not saved. Answers come from the same data as the rest of the app.",
     "error": "Something went wrong. Please try again.",
     "suggestions": "Suggested questions"
+  },
+  "learn": {
+    "articles": {
+      "colours": {
+        "title": "What IMD's colours mean",
+        "summary": "Green, Yellow, Orange and Red, and what to do for each.",
+        "body": [
+          "IMD uses four colours so everyone can understand a warning at a glance.",
+          "Green means no warning; carry on as usual. Yellow means “be aware”: the weather could cause minor trouble, so keep an eye on updates.",
+          "Orange means “be prepared”: the weather is likely to affect travel, power or daily life. Plan ahead, keep a torch, power bank and medicines ready, and avoid unnecessary travel.",
+          "Red means “take action”: the weather is dangerous and could threaten lives. Follow instructions from your local administration, stay indoors if advised, and call 112 in an emergency.",
+          "Warnings are issued for each district for the next five days, and nowcasts cover the next three hours. Mausam Saathi always shows IMD's colour exactly as issued. Our own tips are marked “Saathi tip” and never replace an official warning."
+        ]
+      },
+      "heat": {
+        "title": "Heat waves and heat stroke",
+        "summary": "How IMD declares a heat wave, and first aid for heat stroke.",
+        "body": [
+          "IMD declares a heat wave in the plains when the maximum temperature is at least 40°C and well above normal, or when it reaches 45°C. Humidity makes heat feel worse; that is why we show “feels like”.",
+          "Heat stroke is an emergency: the person may be confused, stop sweating, have hot dry skin, a fast pulse or collapse. Call 108, move them to shade, loosen clothes, cool them with water and fanning, and do not give anything by mouth if they are not fully awake.",
+          "To stay safe: drink water often even if you are not thirsty, avoid heavy work from 12 to 4 PM, wear light cotton and cover your head, never leave children or pets in a parked vehicle, and check on elderly neighbours.",
+          "Outdoor and gig workers are at the highest risk: take shade breaks every hour."
+        ]
+      },
+      "lightning": {
+        "title": "Lightning safety",
+        "summary": "The 30-30 rule and what to do if you are caught in the open.",
+        "body": [
+          "Lightning kills more people in India than any other weather hazard, most of them working or walking outdoors. If you can hear thunder, you are close enough to be struck.",
+          "Follow the 30-30 idea: if thunder comes within about 30 seconds of the flash, go indoors, and wait 30 minutes after the last thunder before going out.",
+          "Safe places are proper buildings and hard-topped vehicles with windows closed. Unsafe places: open fields, lone trees, water bodies, hilltops, open sheds and two-wheelers.",
+          "If caught in the open with no shelter, crouch low with feet together, head down and hands on ears, and do not lie flat. Stay away from metal fences and poles.",
+          "A person struck by lightning does not carry electricity; call 108 and start CPR if you are trained."
+        ]
+      },
+      "aqi": {
+        "title": "Understanding air quality",
+        "summary": "The National AQI, what the categories mean and how to protect yourself.",
+        "body": [
+          "The National Air Quality Index turns pollution levels into a number from 0 to 500 and six categories: Good, Satisfactory, Moderate, Poor, Very Poor and Severe.",
+          "Tiny particles called PM2.5 and PM10 are the main problem in most Indian cities, especially in winter and during dust storms.",
+          "When air is Poor or worse, limit long or hard exercise outdoors. People with asthma or heart disease, older adults, children and pregnant women should be extra careful. A well-fitted N95 mask helps outdoors; cloth masks help much less.",
+          "Air is often cleanest in the afternoon when the sun mixes the air, and worst in the early morning and late evening in winter. Mausam Saathi shows CPCB's AQI when a station is nearby, or an estimate from model data, clearly labelled."
+        ]
+      },
+      "uv": {
+        "title": "UV and sun safety",
+        "summary": "What the UV index means and how to avoid sunburn.",
+        "body": [
+          "The UV index measures the sun's burning power. In most of India it reaches High or Very High from late morning to mid-afternoon for much of the year, even on hazy or partly cloudy days.",
+          "At UV 6 or more, reduce time in direct sun between 11 AM and 3 PM, wear a cap and sunglasses, and use sunscreen of SPF 30 or more on exposed skin.",
+          "Water, sand and snow reflect UV and increase exposure at beaches and in the hills. Children and people with light or sensitive skin burn faster."
+        ]
+      },
+      "fog": {
+        "title": "Fog and safe driving",
+        "summary": "IMD fog categories and how to drive safely in fog.",
+        "body": [
+          "IMD classifies fog by visibility: shallow (500 to 1,000 m), moderate (200 to 500 m), dense (50 to 200 m) and very dense (below 50 m). North India sees dense fog from December to February, mostly between late night and mid-morning.",
+          "In fog, slow down, use low beam and fog lights (high beam reflects back and blinds you), keep a long gap, avoid overtaking, and follow lane markings.",
+          "If visibility is near zero, pull over safely away from the road with hazard lights on. Flights and trains are often delayed in dense fog; check with the operator before leaving."
+        ]
+      },
+      "monsoon-kit": {
+        "title": "Monsoon preparedness kit",
+        "summary": "What to keep ready at home and on the road in the rains.",
+        "body": [
+          "Keep ready: a torch and spare batteries, a charged power bank, basic medicines and a first-aid kit, important documents in a waterproof pouch, drinking water and dry food for two days, a raincoat and umbrella, and emergency numbers written on paper.",
+          "At home: clear drains and gutters, move valuables off the floor in flood-prone areas, and know where your main power switch is.",
+          "On the road: never walk or drive through moving water; 15 cm of flowing water can knock an adult down and 60 cm can carry away a car. Stay away from open drains and fallen electric wires."
+        ]
+      },
+      "cyclone": {
+        "title": "Cyclone preparedness",
+        "summary": "What to do before, during and after a cyclone.",
+        "body": [
+          "IMD tracks cyclones in the Bay of Bengal and the Arabian Sea and issues warnings days in advance for coastal districts.",
+          "Before a cyclone: listen to official updates, secure loose items, stock water, food and medicines, charge phones, and know your nearest cyclone shelter. Fishers should return to shore when advised.",
+          "During the cyclone: stay indoors away from windows. If the eye passes over, it may get calm briefly, but strong winds return from the other direction, so do not go out.",
+          "After: avoid fallen wires and damaged buildings, and follow the administration's instructions."
+        ]
+      },
+      "rain-chance": {
+        "title": "What “60% chance of rain” means",
+        "summary": "Chance of rain is not the share of the day it rains.",
+        "body": [
+          "A 60% chance of rain means that, in forecasts like this one, it rained at your place about six times out of ten.",
+          "It does not mean it will rain for 60% of the day or over 60% of the area.",
+          "The amount matters too: a 60% chance of light rain (a few millimetres) is different from a 60% chance of heavy rain (over 64 mm in a day, as IMD defines heavy). That is why our cards mention both the chance and how heavy the rain is likely to be."
+        ]
+      },
+      "beach": {
+        "title": "Rip currents and beach safety",
+        "summary": "How to spot a rip current and what to do if one pulls you out.",
+        "body": [
+          "A rip current is a narrow, fast channel of water flowing away from the shore. It can pull even strong swimmers out to sea. Signs include a gap in breaking waves, darker or choppy water, or floating debris moving seaward.",
+          "If caught, don't fight it: stay calm, float, and swim parallel to the shore until you are out of the current, then swim back at an angle.",
+          "Swim only near lifeguards, never after drinking alcohol, and always keep children within arm's reach. During swell alerts from INCOIS or IMD, stay out of the water."
+        ]
+      },
+      "frost-hail": {
+        "title": "Frost and hail: protecting crops",
+        "summary": "How frost forms on clear nights and how to protect crops.",
+        "body": [
+          "Frost forms on clear, calm winter nights when temperatures near the ground fall close to freezing, even if the air temperature reported is 2 to 4°C.",
+          "Protect nurseries and young plants by covering them overnight, with light irrigation in the evening (moist soil holds heat better), and with smoke or windbreaks where practised locally.",
+          "Hail comes with severe thunderstorms and can damage orchards and standing crops in minutes; nets help high-value crops. Follow your district agromet advisory and Krishi Vigyan Kendra."
+        ]
+      },
+      "how-it-works": {
+        "title": "How Mausam Saathi decides what to show you",
+        "summary": "The rules behind your homepage, in plain words.",
+        "body": [
+          "Your homepage is arranged by three things: who you told us you are (for example commuter or farmer), the season and time of day, and whether there is a warning or unusual weather.",
+          "Tips come from a set of clear rules that anyone can read, for example “if the rain chance is 60% or more and at least half a millimetre is expected, suggest an umbrella”.",
+          "Official IMD and NDMA warnings always come first and are never changed. Every card has a “Why am I seeing this?” button that shows the rule and the numbers used.",
+          "Your choices are stored only on your phone. You can pin, hide or reorder anything in Settings."
+        ]
+      }
+    },
+    "myths": {
+      "sameplace": {
+        "statement": "Lightning never strikes the same place twice.",
+        "why": "Tall and exposed places are struck again and again."
+      },
+      "tree": {
+        "statement": "Sheltering under a tree keeps you safe from lightning.",
+        "why": "Trees attract strikes. Go into a building or a hard-top vehicle."
+      },
+      "cloudy": {
+        "statement": "You can't get sunburnt on a cloudy day.",
+        "why": "UV passes through thin cloud and haze."
+      },
+      "elderly": {
+        "statement": "Heat stroke only affects the elderly.",
+        "why": "Outdoor workers, athletes and children are also at high risk."
+      },
+      "car": {
+        "statement": "A hard-top car is safer than open ground in a thunderstorm.",
+        "why": "The metal body carries the current around you. Keep the windows closed."
+      },
+      "rainchance": {
+        "statement": "A 40% chance of rain means it will rain for 40% of the day.",
+        "why": "It is the chance of rain at your place, not how long it rains."
+      },
+      "lowbeam": {
+        "statement": "Low beam is better than high beam in fog.",
+        "why": "High beam reflects off the fog and reduces what you can see."
+      },
+      "indoor": {
+        "statement": "Indoor air is always cleaner than outdoor air.",
+        "why": "Cooking smoke, incense and poor ventilation can make indoor air worse."
+      },
+      "rip": {
+        "statement": "To escape a rip current, swim parallel to the shore.",
+        "why": "Then swim back to the beach at an angle."
+      },
+      "water": {
+        "statement": "A little water on the road is always safe to drive through.",
+        "why": "Moving water 30 to 60 cm deep can sweep away vehicles."
+      }
+    },
+    "quiz": {
+      "title": "Weather myths quiz",
+      "intro": "Ten statements. Myth or fact? Finish it to earn the Weather Wise badge.",
+      "progress": "Question {{n}} of {{total}}",
+      "myth": "Myth",
+      "fact": "Fact",
+      "right": "Right!",
+      "wrong": "Not quite.",
+      "itsA": {
+        "myth": "It's a myth.",
+        "fact": "It's a fact."
+      },
+      "finish": "See my score",
+      "result": "You got {{score}} of {{total}} right.",
+      "badge": "You earned the Weather Wise badge.",
+      "again": "Play again"
+    },
+    "read": "Read",
+    "sources": "Sources",
+    "reviewNote": "General guidance. Always follow official warnings and local authorities.",
+    "related": "Related",
+    "all": "All articles",
+    "next": "Next: {{title}}",
+    "links": {
+      "_alerts": "Alerts",
+      "_health": "Health",
+      "_work": "Outdoor work",
+      "_farm": "Farm",
+      "_coast": "Beach and sea",
+      "_commute": "Commute",
+      "_travel": "Travel",
+      "_ready": "Be ready",
+      "_forecast": "Forecast",
+      "_settings_layout": "Homepage layout"
+    },
+    "check": {
+      "title": "Check what you learnt",
+      "submit": "Check my answers",
+      "pass": "All correct. Well done.",
+      "fail": "{{correct}} of {{total}} correct. Read the article again and retry.",
+      "badge": "You earned the Lightning Smart badge.",
+      "passedBefore": "You have already passed this check.",
+      "lightning": {
+        "q1": {
+          "q": "Where is it safest during a thunderstorm?",
+          "tree": "Under a big tree",
+          "car": "In a hard-top car with windows closed",
+          "field": "Lying flat in an open field"
+        },
+        "q2": {
+          "q": "After the last thunder, how many minutes should you wait before going out?",
+          "5": "5 minutes",
+          "30": "30 minutes",
+          "60": "60 minutes"
+        },
+        "q3": {
+          "q": "Does a person struck by lightning carry electricity?",
+          "yes": "Yes, don't touch them",
+          "no": "No, help them and call 108"
+        }
+      }
+    }
+  },
+  "ready": {
+    "todayTitle": "Today's habits ({{season}})",
+    "pillarNames": {
+      "A": "Aware",
+      "P": "Prepared",
+      "S": "Safe",
+      "H": "Helper"
+    },
+    "autoAware": "(ticked when you open the homepage after 5 AM)",
+    "pillars": {
+      "summer": {
+        "A": "Checked today's heat outlook",
+        "P": "Carried water or refilled my bottle",
+        "S": "Avoided outdoor exertion in the danger hours",
+        "H": "Checked on an elderly neighbour or shared a heat tip"
+      },
+      "monsoon": {
+        "A": "Checked rain and warnings",
+        "P": "Monsoon kit ready (torch, power bank, medicines, documents in a plastic cover)",
+        "S": "Avoided waterlogged roads and did not cross flowing water",
+        "H": "Reported waterlogging or shared an alert"
+      },
+      "winter": {
+        "A": "Checked fog and air quality",
+        "P": "Warm layers and a mask ready",
+        "S": "Drove slowly in fog or limited time outdoors in bad air",
+        "H": "Helped someone stay warm or shared a fog tip"
+      },
+      "postMonsoon": {
+        "A": "Checked warnings",
+        "P": "Cyclone or cold prep, as needed where I live",
+        "S": "Followed a safety tip",
+        "H": "Shared an alert"
+      }
+    },
+    "progress": "My progress",
+    "streak": "Streak",
+    "days": "{{count}} days",
+    "xpToday": "Points today",
+    "xpWeek": "Points this week",
+    "xpTotal": "All points",
+    "xpNote": "Local preview on this phone, not tamper-proof. 10 points a habit, +10 for all four, up to 50 a day and 350 a week.",
+    "last4Weeks": "Last 4 weeks",
+    "habitsDone": "{{count}} of 4 habits",
+    "kitHelp": "A one-time checklist for this season. Tick what you have ready.",
+    "kitDone": "Kit complete. Well done.",
+    "otherKits": "Other seasonal kits",
+    "badgesTitle": "Badges ({{earned}} of {{total}})",
+    "earnedOn": "Earned {{date}}",
+    "locked": "Not yet earned",
+    "earned": "New badge: {{list}}",
+    "disclaimer": "Badges celebrate habits. Always follow official warnings.",
+    "toLearn": "Learn more to earn more badges",
+    "kits": {
+      "monsoon": {
+        "title": "Monsoon kit",
+        "items": {
+          "torch": "Torch and spare batteries",
+          "powerbank": "Charged power bank",
+          "medicines": "Basic medicines and first-aid kit",
+          "documents": "Documents in a waterproof pouch",
+          "water": "Drinking water for two days",
+          "food": "Dry food for two days",
+          "raincoat": "Raincoat and umbrella",
+          "numbers": "Emergency numbers written on paper",
+          "drains": "Drains and gutters cleared",
+          "mainSwitch": "I know where the main power switch is"
+        }
+      },
+      "heat": {
+        "title": "Heat kit",
+        "items": {
+          "bottle": "Reusable water bottle",
+          "ors": "ORS packets",
+          "cap": "Cap, gamchha or umbrella for shade",
+          "cotton": "Light cotton clothes",
+          "curtains": "Curtains or covers to keep rooms cool",
+          "fan": "Fan or cooler checked",
+          "neighbour": "A neighbour to check on in heat waves",
+          "workHours": "Outdoor work planned before 11 AM or after 4 PM",
+          "petWater": "Water and shade for pets and animals",
+          "firstAid": "I know heat stroke first aid"
+        }
+      },
+      "winter": {
+        "title": "Winter kit",
+        "items": {
+          "layers": "Warm layers and a cap",
+          "mask": "N95 mask for smoggy days",
+          "purifier": "A way to keep indoor air clean (ventilation or purifier)",
+          "heaterSafety": "Never sleep with a coal or wood fire in a closed room",
+          "fogLights": "Vehicle fog lights and wipers checked",
+          "medicines": "Asthma and heart medicines stocked",
+          "elderly": "A plan to check on elderly relatives in cold waves",
+          "blanket": "Extra blankets",
+          "reflective": "Reflective strip or light for walking in fog",
+          "numbers": "Emergency numbers written on paper"
+        }
+      },
+      "cyclone": {
+        "title": "Cyclone kit",
+        "items": {
+          "shelter": "I know my nearest cyclone shelter",
+          "secure": "Loose items at home secured",
+          "water": "Drinking water for three days",
+          "food": "Dry food for three days",
+          "medicines": "Medicines and first-aid kit",
+          "powerbank": "Charged phones and power bank",
+          "documents": "Documents in a waterproof pouch",
+          "radio": "Battery radio for official updates",
+          "boats": "Boats and nets secured, if you fish",
+          "numbers": "Emergency numbers written on paper"
+        }
+      }
+    },
+    "badges": {
+      "first_check": {
+        "name": "First Look",
+        "req": "Log any preparedness habit"
+      },
+      "ready_day": {
+        "name": "Ready Day",
+        "req": "All 4 habits on one day"
+      },
+      "week_ready": {
+        "name": "Week Ready",
+        "req": "A 7-day streak"
+      },
+      "monsoon_ready": {
+        "name": "Monsoon Ready",
+        "req": "Complete the monsoon kit checklist"
+      },
+      "heat_hero": {
+        "name": "Heat Hero",
+        "req": "10 days of the “Safe” habit in summer"
+      },
+      "lightning_smart": {
+        "name": "Lightning Smart",
+        "req": "Read the lightning article and pass its 3-question check"
+      },
+      "sky_watcher": {
+        "name": "Sky Watcher",
+        "req": "5 Sky Snaps"
+      },
+      "citizen_reporter": {
+        "name": "Citizen Reporter",
+        "req": "A report confirmed by someone else or checked by AI"
+      },
+      "weather_wise": {
+        "name": "Weather Wise",
+        "req": "Finish the weather myths quiz"
+      },
+      "good_neighbour": {
+        "name": "Good Neighbour",
+        "req": "10 “Helper” habits"
+      },
+      "fog_safe": {
+        "name": "Fog Safe",
+        "req": "Read the fog article and 5 winter “Safe” habits"
+      }
+    }
+  },
+  "map": {
+    "layers": "Layers",
+    "layer": {
+      "places": "My places",
+      "warnings": "Official warnings",
+      "aqi": "Air quality",
+      "reports": "Crowd reports",
+      "cool": "Cool spots",
+      "radar": "Rain radar",
+      "lightning": "Lightning"
+    },
+    "notConnected": "not connected yet",
+    "viewAs": "View as",
+    "asMap": "Map",
+    "asList": "List",
+    "liteList": "Lite mode shows the list to save data.",
+    "current": "showing now",
+    "mapLabel": "Map around {{place}}",
+    "pinHelp": "Tab to a pin and press Enter to read it, or use the list view.",
+    "listCaption": "Map items near {{place}}, nearest first",
+    "colLayer": "Layer",
+    "colWhat": "What",
+    "colDistance": "Distance",
+    "nothing": "Nothing to show for these layers.",
+    "cycloneNoTrack": "The cyclone track is not drawn on this map yet.",
+    "note": "Warnings are shown at your saved places. District boundaries, radar and lightning layers are not connected yet."
   }
 }

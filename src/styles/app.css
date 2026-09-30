@@ -1570,3 +1570,57 @@
 @media (prefers-reduced-motion: reduce) { .ms-mitra-mic.is-listening { animation: none; outline: 3px solid var(--ms-level-red-fg); } }
 .ms-mitra-novoice { font-size: var(--ms-text-xs); margin: 0; max-width: 8rem; }
 .ms-mitra-note { font-size: var(--ms-text-xs); margin: 6px 0 0; }
+
+/* ── Part 3D: Be ready, Learn, Map ── */
+.ms-habits { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; }
+.ms-habit {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  min-height: 44px;
+  padding: 8px 10px;
+  border: 1px solid var(--ms-border);
+  border-radius: 12px;
+  cursor: pointer;
+}
+.ms-habit input { width: 22px; height: 22px; margin-top: 2px; flex: none; accent-color: var(--ms-brand); }
+.ms-habit > span:last-child { display: grid; gap: 2px; }
+.ms-habit-code {
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--ms-brand-soft);
+  color: var(--ms-brand-ink);
+  font-weight: 800;
+}
+.ms-ready-grid { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; max-width: 360px; }
+.ms-ready-day { aspect-ratio: 1; display: grid; place-items: center; border-radius: 6px; font-size: var(--ms-text-xs); font-weight: 700; border: 1px solid var(--ms-border); }
+.ms-ready-day--0 { background: var(--ms-canvas); }
+.ms-ready-day--1 { background: #d9d1ef; }
+.ms-ready-day--2 { background: #b3a3df; }
+.ms-ready-day--3 { background: #7d68c2; color: #fff; }
+.ms-ready-day--4 { background: #493971; color: #fff; }
+.ms-badges { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+.ms-badges li { display: grid; gap: 4px; justify-items: center; text-align: center; padding: 12px 8px; border: 1px solid var(--ms-border); border-radius: 12px; }
+.ms-badges li.is-locked { background: var(--ms-canvas); }
+.ms-badge-icon { font-size: 1.8rem; color: var(--ms-brand); }
+.is-locked .ms-badge-icon { color: var(--ms-muted); }
+.ms-details summary { cursor: pointer; font-weight: 700; min-height: 44px; display: flex; align-items: center; }
+.ms-learn-list { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; margin: 0 0 16px; }
+.ms-learn-card { display: flex; gap: 12px; align-items: flex-start; height: 100%; text-decoration: none; color: var(--ms-ink); }
+.ms-learn-card > span { display: grid; gap: 4px; }
+.ms-learn-card:hover strong { text-decoration: underline; }
+.ms-learn-icon { font-size: 1.5rem; color: var(--ms-brand); margin-top: 2px; }
+.ms-article p { line-height: 1.6; max-width: 70ch; }
+.ms-quiz-statement { font-size: var(--ms-text-lg); font-weight: 700; }
+.ms-btn--good { background: #2e7d32; border-color: #2e7d32; color: #fff; }
+.ms-map-layout { display: grid; gap: 12px; }
+@media (min-width: 900px) { .ms-map-layout { grid-template-columns: 260px minmax(0, 1fr); align-items: start; } }
+.ms-map-layers { display: grid; gap: 6px; }
+.ms-map-layers .ms-habit { align-items: center; }
+.ms-map-na { margin: 0; font-size: var(--ms-text-sm); }
+.ms-map { height: 60vh; min-height: 320px; width: 100%; border-radius: 12px; z-index: 0; }
+.ms-map-main { min-width: 0; }

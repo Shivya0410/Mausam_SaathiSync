@@ -16,6 +16,7 @@ import { personalView } from '../../lib/mausam/personal';
 import { levelName } from '../../lib/mausam/hazards';
 import { fmtTime } from '../../lib/format';
 import { GOV_SERVICES } from '../../data/govServices';
+import { LEARN_ID_TO_SLUG } from '../../data/learn';
 import { sendCardFeedback } from '../../lib/reportsClient';
 
 /**
@@ -139,7 +140,7 @@ export default function PersonaPage({ persona, pageKey, snapshot, hero, widgets 
           <ul className="ms-list">
             {learn.map((k) => (
               <li key={k}>
-                <Link href="/learn">{t(`learnTitles.${k}`)}</Link>
+                <Link href={`/learn/${LEARN_ID_TO_SLUG[k] || ''}`}>{t(`learnTitles.${k}`)}</Link>
               </li>
             ))}
           </ul>

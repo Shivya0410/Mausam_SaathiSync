@@ -13,6 +13,8 @@ import GovServicesStrip from "../components/home/GovServicesStrip";
 import DataFootnote from "../components/home/DataFootnote";
 import { ReportsTeaser } from "../components/widgets/reports";
 import { sendCardFeedback } from "../lib/reportsClient";
+import { useReady } from "../lib/hooks/useReady";
+import { toggleHabit } from "../lib/mausam/ready";
 import MemberSwitcher from "../components/home/MemberSwitcher";
 import Nudges from "../components/home/Nudges";
 import { WIDGET_COMPONENTS } from "../components/widgets";
@@ -45,6 +47,13 @@ export default function Home() {
   const [cardState, setCardState] = useStore(stores.cardState);
   const lang = i18n.language;
   const { view, snapshot, now, today, inputs } = personal;
+
+  // Be ready: viewing the homepage after 5 AM ticks "Aware" (PRD 9.4).
+  const [, updateReady] = useReady();
+  const awareDate = snapshot && !snapshot.isDemo && now && today && new Date(now).getHours() >= 5 ? today : null;
+  useEffect(() => {
+    if (awareDate) updateReady((s) => toggleHabit(s, awareDate, "A", true));
+  }, [awareDate, updateReady]);
 
   // First open goes to setup; demo mode skips it so judges land on Home.
   useEffect(() => {

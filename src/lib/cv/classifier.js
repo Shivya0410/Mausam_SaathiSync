@@ -4,20 +4,25 @@
 // imported dynamically so it never enters the homepage bundle (PRD 13.8).
 //
 // A model lives in /public/models/<name>/ as model.json + weight shards +
-// labels.json, with an optional config.json:
+// labels.json, with an optional config.json, and its name must be listed
+// in /public/models/index.json. Optional config.json:
 //   { "inputSize": 224, "range": "0-255" | "0-1" | "-1-1", "version": "..." }
 // When the files are missing the loader rejects with code 'not_installed',
 // and the pages offer an honest manual path instead of guessing.
 
 const cache = new Map();
 
-async function exists(url) {
-  try {
-    const r = await fetch(url, { method: 'HEAD', cache: 'no-cache' });
-    return r.ok;
-  } catch {
-    return false;
+// public/models/index.json lists installed models: { "installed": ["sky-snap"] }.
+// Reading it (always present) avoids probing for files that may not exist.
+let indexPromise = null;
+async function installed(name) {
+  if (!indexPromise) {
+    indexPromise = fetch('/models/index.json', { cache: 'no-cache' })
+      .then((r) => (r.ok ? r.json() : { installed: [] }))
+      .catch(() => ({ installed: [] }));
   }
+  const idx = await indexPromise;
+  return Array.isArray(idx.installed) && idx.installed.includes(name);
 }
 
 export function createClassifier(name) {
@@ -25,7 +30,7 @@ export function createClassifier(name) {
   let promise = null;
 
   async function load() {
-    if (!(await exists(`${base}/model.json`))) {
+    if (!(await installed(name))) {
       const e = new Error(`Model ${name} is not installed`);
       e.code = 'not_installed';
       throw e;

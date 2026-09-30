@@ -1,27 +1,48 @@
-/* Map pin drawn with CSS for Leaflet divIcons. Global because Leaflet injects
-   the markup outside React; every rule is namespaced under .swasth-pin. */
-.swasth-pin {
+/* Map pins drawn with CSS for Leaflet divIcons. Global because Leaflet
+   injects the markup outside React; every rule is namespaced .ms-pin. Each
+   layer also has a distinct glyph, so colour is never the only signal. */
+.ms-pin {
+  position: relative;
   display: grid;
   place-items: center;
   width: 34px;
   height: 34px;
-  border-radius: 50% 50% 50% 0;
-  transform: rotate(-45deg);
-  background: #6a1b9a;
+  border-radius: 50%;
   border: 3px solid #fff;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.35);
-  transition: transform 0.15s ease, background 0.15s ease;
-}
-
-.swasth-pin > span {
-  transform: rotate(45deg);
   color: #fff;
-  font: 800 13px/1 'Nunito', system-ui, sans-serif;
+  font-size: 14px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  background: #493971;
 }
-
-.swasth-pin--active,
-.leaflet-marker-icon:hover .swasth-pin,
-.leaflet-marker-icon:focus .swasth-pin {
-  background: #e65100;
-  transform: rotate(-45deg) scale(1.15);
+.ms-pin b {
+  position: absolute;
+  bottom: -8px;
+  right: -10px;
+  min-width: 20px;
+  padding: 1px 4px;
+  border-radius: 10px;
+  background: #1b1530;
+  color: #fff;
+  font: 700 11px/1.3 system-ui, sans-serif;
+  text-align: center;
 }
+.ms-pin--place { background: #493971; }
+.ms-pin--current { background: #1b1530; }
+.ms-pin--water1 { background: #4f9bd9; }
+.ms-pin--water2 { background: #1d6fb8; }
+.ms-pin--water3 { background: #0d4a85; }
+.ms-pin--water4 { background: #062c52; }
+.ms-pin--sky { background: #5b6b7a; }
+.ms-pin--storm { background: #5b2a86; }
+.ms-pin--fog { background: #6b7b86; }
+.ms-pin--cool { background: #0277bd; }
+.ms-pin--aqi-good { background: #2e7d32; }
+.ms-pin--aqi-satisfactory { background: #558b2f; }
+.ms-pin--aqi-moderate { background: #8d6e00; }
+.ms-pin--aqi-poor { background: #c25e00; }
+.ms-pin--aqi-very_poor { background: #b71c1c; }
+.ms-pin--aqi-severe { background: #6a1b1b; }
+.ms-pin--warn-yellow { background: #8d6e00; }
+.ms-pin--warn-orange { background: #c25e00; }
+.ms-pin--warn-red { background: #b71c1c; }
+.leaflet-marker-icon:focus .ms-pin { outline: 3px solid #ffbf00; outline-offset: 2px; }

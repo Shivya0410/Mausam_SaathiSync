@@ -37,6 +37,9 @@ tensorflowjs_converter --input_format=keras --quantize_uint8 '*' \
 cp ml/sky_snap/out/labels.json ml/sky_snap/out/config.json public/models/sky-snap/
 ```
 
+Then add the folder name to `public/models/index.json`, for example
+`{ "installed": ["sky-snap"] }`. The app only loads models listed there.
+
 Each model folder needs `model.json`, the weight shards, `labels.json` (class
 names in output order) and optionally `config.json`:
 

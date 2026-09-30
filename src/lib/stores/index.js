@@ -56,6 +56,8 @@ export const stores = {
   myReports: createStore('mausam.myReports.v1', [], { scoped: false }),
   reportVotes: createStore('mausam.reportVotes.v1', {}, { scoped: false }),
   // Counts for Be ready badges (sky_watcher after 5 snaps, PRD 11.1).
+  // Be ready habits, kits, read articles, quizzes and badges (PRD 9.4).
+  ready: createStore('mausam.ready.v1', { log: {}, kits: {}, read: {}, quizzes: {}, badges: [] }),
   cvStats: createStore('mausam.cvStats.v1', { skySnaps: 0, waterReports: 0, fogChecks: 0 }),
 };
 

@@ -180,7 +180,7 @@ export default function AlertsPage() {
             </li>
           ))}
         </ul>
-        <Link href="/learn">{t('alerts.learnColours')}</Link>
+        <Link href="/learn/colours">{t('alerts.learnColours')}</Link>
       </section>
 
       <section className="ms-card" aria-labelledby="al-emergency">
