@@ -52,7 +52,8 @@ export default function ReportCard({ report, places = [], now, onChange, mine = 
     }
   };
   const mins = now ? minutesAgo(report, now) : null;
-  const pct = Math.round((report.confidence || 0) * 100);
+  const hasConfidence = report.confidence != null;
+  const pct = hasConfidence ? Math.round(report.confidence * 100) : null;
 
   return (
     <article className={`ms-card ms-report ms-report--${report.status}`} aria-label={reportWhat(report, t)}>
@@ -69,7 +70,7 @@ export default function ReportCard({ report, places = [], now, onChange, mine = 
       </div>
       <p className="ms-report-meta">
         <span className={`ms-kind ms-kind--${report.status === 'unverified' ? 'tip' : 'good'}`}>{t(`reportStatus.${report.status}`)}</span>{' '}
-        {report.type === 'waterlogging' ? t('reports.aiCheck', { pct }) : t('reports.aiCheckOther', { pct })}
+        {hasConfidence ? (report.type === 'waterlogging' ? t('reports.aiCheck', { pct }) : t('reports.aiCheckOther', { pct })) : t('reports.notChecked')}
         {' · '}
         {t('reports.confirmed', { count: report.confirmations || 0 })}
       </p>

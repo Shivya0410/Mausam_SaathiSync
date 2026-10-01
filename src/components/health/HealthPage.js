@@ -6,10 +6,22 @@ import PersonaPage from '../persona/PersonaPage';
 import { FirstAid } from '../persona/Sections';
 import BreathWidget from './BreathWidget';
 import LevelBadge from '../shared/LevelBadge';
+import ExternalLink from '../shared/ExternalLink';
 import { useStore } from '../../lib/hooks/useStore';
 import { stores } from '../../lib/stores';
+import { useWeather } from '../../lib/context/WeatherProvider';
 import { SENSITIVITIES } from '../../config/personas';
 import { levelName } from '../../lib/mausam/hazards';
+
+/** Hospital search links for the current place (E-open: no hospitals map yet). */
+export function hospitalLinks(place) {
+  if (!Number.isFinite(place?.lat) || !Number.isFinite(place?.lon)) return null;
+  const q = `${place.lat.toFixed(3)},${place.lon.toFixed(3)}`;
+  return {
+    google: `https://www.google.com/maps/search/hospital+near+${q}`,
+    osm: `https://www.openstreetmap.org/search?query=hospital%20near%20${q}#map=13/${place.lat.toFixed(3)}/${place.lon.toFixed(3)}`,
+  };
+}
 
 const HEAT = ['heat_wave', 'severe_heat_wave', 'hot_humid', 'warm_night'];
 const COLD = ['cold_wave', 'cold_day', 'ground_frost'];
@@ -18,6 +30,8 @@ const COLD = ['cold_wave', 'cold_day', 'ground_frost'];
 export default function HealthPage() {
   const { t } = useTranslation();
   const [sens] = useStore(stores.sensitivities);
+  const weather = useWeather();
+  const links = hospitalLinks(weather.place);
   const [forMe, setForMe] = useState(true);
   return (
     <PersonaPage
@@ -74,9 +88,17 @@ export default function HealthPage() {
             <section className="ms-card" aria-labelledby="h-help">
               <h2 id="h-help">{t('health.hospitals')}</h2>
               <p>{t('health.hospitalsNote')}</p>
-              <a href="tel:108" className="ms-btn ms-btn--danger">
-                <i className="fa-solid fa-phone" aria-hidden="true"></i> {t('firstAid.call', { number: '108' })}
-              </a>
+              <p className="ms-actions">
+                <a href="tel:108" className="ms-btn ms-btn--danger">
+                  <i className="fa-solid fa-phone" aria-hidden="true"></i> {t('firstAid.call', { number: '108' })}
+                </a>
+                {links ? (
+                  <ExternalLink href={links.google} className="ms-btn ms-btn--secondary">
+                    <i className="fa-solid fa-hospital" aria-hidden="true"></i> {t('health.findHospitals')}
+                  </ExternalLink>
+                ) : null}
+              </p>
+              {links ? <p className="ms-muted">{t('health.mapNote')}</p> : null}
             </section>
           </>
         );

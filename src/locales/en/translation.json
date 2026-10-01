@@ -1395,6 +1395,7 @@
     "locating": "Finding you…",
     "manage": "Manage places",
     "nearCity": "Near {{city}}",
+    "seaArea": "Sea area near {{place}}",
     "noResults": "No places found. Try another spelling.",
     "pinHint": "Your location is rounded and never leaves this phone.",
     "resultCount": "{{count}} places found",
@@ -1653,7 +1654,9 @@
     "whatToDo": "What to do",
     "readFull": "Read the full warning",
     "showLess": "Show less",
-    "issuedInEnglish": "Official text, issued in English."
+    "issuedInEnglish": "Official text, issued in English.",
+    "hindiGist": "Hindi gist",
+    "gistNote": "Hindi gist of the danger level and advice only — not a translation of the official English text above."
   },
   "charts": {
     "aqiLabel": "Air quality {{aqi}}, {{category}}. Main pollutant {{pollutant}}.",
@@ -1828,6 +1831,8 @@
     "heatCold": "Heat and cold",
     "hospitals": "Get help",
     "hospitalsNote": "A map of nearby hospitals is coming. In an emergency, call 108.",
+    "findHospitals": "Find nearby hospitals",
+    "mapNote": "Opens an external map in a new tab. Hospital data is not verified by Mausam Saathi.",
     "noColdWarning": "No cold wave warning.",
     "noHeatWarning": "No heat wave warning.",
     "breath": {
@@ -2088,6 +2093,7 @@
   "reports": {
     "aiCheck": "AI check: {{pct}}% flooded street",
     "aiCheckOther": "AI check: {{pct}}% sure",
+    "notChecked": "Not checked by AI · needs confirming",
     "alreadyVoted": "You have already answered for this report.",
     "confirmed": "{{count}} people confirmed",
     "filter": "Show report type",

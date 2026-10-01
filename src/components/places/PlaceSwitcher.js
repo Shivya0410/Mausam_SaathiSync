@@ -9,21 +9,60 @@ import { useWeather } from '../../lib/context/WeatherProvider';
 import { useGeolocation } from '../../lib/hooks/useGeolocation';
 import { toPlace, upsertPlace } from '../../lib/stores';
 import { CITIES } from '../../data/cities';
+import { BEACHES } from '../../data/beaches';
 import { haversineKm } from '../../lib/mausam/geo';
 
-/** Label for a GPS fix: the nearest known city within 25 km, else "Current location". */
+/**
+ * Label for a GPS fix: the nearest known city within 25 km, else — if the
+ * fix is within 40 km of a beach or coastal city (E4, fisher at sea) —
+ * "Sea area near X", else "Current location". The sea label is a heuristic
+ * for naming only; the forecast always uses the real coordinates.
+ */
 export function gpsPlace(coords, t) {
   const near = CITIES.map((c) => ({ c, d: haversineKm(coords, c) })).sort((a, b) => a.d - b.d)[0];
   const city = near && near.d <= 25 ? near.c : null;
+  if (city) {
+    return toPlace(
+      {
+        id: 'gps',
+        name: t('places.nearCity', { city: city.name }),
+        nameHi: `${city.nameHi} के पास`,
+        lat: coords.lat,
+        lon: coords.lon,
+        state: city?.state ?? null,
+        district: city?.name ?? null,
+      },
+      { type: 'other', id: 'gps' },
+    );
+  }
+  const refs = [
+    ...BEACHES.map((b) => ({ name: b.name, nameHi: null, state: b.state, district: null, lat: b.lat, lon: b.lon })),
+    ...CITIES.filter((c) => c.coastal).map((c) => ({ name: c.name, nameHi: c.nameHi, state: c.state, district: c.name, lat: c.lat, lon: c.lon })),
+  ];
+  const sea = refs.map((r) => ({ r, d: haversineKm(coords, r) })).sort((a, b) => a.d - b.d)[0];
+  if (sea && sea.d <= 40) {
+    return toPlace(
+      {
+        id: 'gps',
+        name: t('places.seaArea', { place: sea.r.name }),
+        nameHi: sea.r.nameHi ? `${sea.r.nameHi} के पास समुद्री क्षेत्र` : null,
+        lat: coords.lat,
+        lon: coords.lon,
+        state: sea.r.state ?? null,
+        district: sea.r.district ?? null,
+      },
+      { type: 'other', id: 'gps' },
+    );
+  }
   return toPlace(
     {
       id: 'gps',
-      name: city ? t('places.nearCity', { city: city.name }) : t('places.currentLocation'),
-      nameHi: city ? `${city.nameHi} के पास` : null,
+      name: t('places.currentLocation'),
+      nameHi: null,
       lat: coords.lat,
       lon: coords.lon,
-      state: city?.state ?? null,
-      district: city?.name ?? null,
+      state: null,
+      district: null,
     },
     { type: 'other', id: 'gps' },
   );

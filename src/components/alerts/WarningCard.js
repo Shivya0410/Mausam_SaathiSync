@@ -25,6 +25,7 @@ export default function WarningCard({ w, today, now }) {
   const uid = useId();
   const [open, setOpen] = useState(false);
   const [advice, setAdvice] = useState(false);
+  const [gist, setGist] = useState(false);
   const [shared, setShared] = useState(null);
   const lvl = levelName(w.level);
   const group = hazardGroup(w.hazard);
@@ -72,6 +73,21 @@ export default function WarningCard({ w, today, now }) {
             {w.text}
           </p>
           {lang === 'hi' && !/[\u0900-\u097F]/.test(w.text) ? <p className="ms-muted">{t('alerts.issuedInEnglish')}</p> : null}
+          {lang === 'hi' && w.text && !/[\u0900-\u097F]/.test(w.text) ? (
+            <>
+              <button type="button" className="ms-chip-btn" aria-expanded={gist} onClick={() => setGist((g) => !g)}>
+                <i className="fa-solid fa-language" aria-hidden="true"></i> {t('alerts.hindiGist')}
+              </button>
+              {gist ? (
+                <p className="ms-why">
+                  <strong>{hazard} · {t(`levels.action.${lvl}`)}</strong>
+                  {w.area ? ` · ${w.area}` : ''}<br />
+                  {ADVICE_GROUPS.includes(group) ? t(`officialAdvice.${group}.${lvl}`) : t('alerts.followAuthorities')}<br />
+                  <span className="ms-muted">{t('alerts.gistNote')}</span>
+                </p>
+              ) : null}
+            </>
+          ) : null}
           {w.text.length > 160 ? (
             <button type="button" className="ms-link-btn" aria-expanded={open} aria-controls={`${uid}-text`} onClick={() => setOpen((o) => !o)}>
               {t(open ? 'alerts.showLess' : 'alerts.readFull')}

@@ -12,6 +12,7 @@
  */
 
 import { createMemoryRepositories } from './memory.js';
+import { createJsonFileRepositories, resolveReportsFile } from './jsonFile.js';
 
 const CACHE_KEY = Symbol.for('mausam.repositories');
 
@@ -20,8 +21,10 @@ export function getRepositories() {
 
   if (!store[CACHE_KEY]) {
     // When DATABASE_URL is authorised and an adapter exists, branch here.
-    // Until then the only implementation is explicitly non-durable.
-    store[CACHE_KEY] = createMemoryRepositories();
+    // Until then: local/demo restarts keep reports when REPORTS_FILE is set;
+    // otherwise the explicitly non-durable in-memory store is used.
+    const file = resolveReportsFile(process.env.REPORTS_FILE);
+    store[CACHE_KEY] = file ? createJsonFileRepositories(file) : createMemoryRepositories();
   }
 
   return store[CACHE_KEY];
