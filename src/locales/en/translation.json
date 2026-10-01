@@ -2901,5 +2901,534 @@
     "nothing": "Nothing to show for these layers.",
     "cycloneNoTrack": "The cyclone track is not drawn on this map yet.",
     "note": "Warnings are shown at your saved places. District boundaries, radar and lightning layers are not connected yet."
+  },
+  "gigw": {
+    "lastReviewed": "Content last reviewed: {{date}}",
+    "about": {
+      "title": "About Mausam Saathi",
+      "subtitle": "A personalised weather homepage concept for the Mausam app",
+      "what": {
+        "title": "What it is",
+        "body": [
+          "Mausam Saathi turns IMD forecasts and official warnings into a few clear decisions for your day: whether to carry an umbrella, when it is safe to run, whether to spray your crop, or whether to go to sea.",
+          "It is a proposed personalised homepage for the Mausam app, built as a prototype for Smart India Hackathon 2026. It works in English and Hindi, without an account, and keeps your personal settings on your phone."
+        ]
+      },
+      "problem": {
+        "title": "Why it matters",
+        "body": [
+          "Weather hurts most when people cannot act on a warning in time. Some figures (sources in brackets):"
+        ],
+        "items": [
+          "Lightning killed 2,558 people in 2023, about 40% of all deaths from forces of nature (NCRB 2023).",
+          "In 2024, news reports counted 733 heatstroke deaths in 17 states, about double the official figure; outdoor and gig workers are most exposed (HeatWatch 2024).",
+          "On 4 January 2025, zero visibility in Delhi disrupted over 200 flights and 81 trains (news reports).",
+          "Floods and landslides caused over 500 deaths in 2023, and urban waterlogging returns every monsoon (NCRB 2023).",
+          "Forecasts, warnings, air quality and farm advisories sit in separate apps, so people have to put the picture together themselves."
+        ]
+      },
+      "how": {
+        "title": "How it works",
+        "body": [
+          "You tell it what you do (for example commuter, farmer or parent). A set of clear, published rules turns the forecast into tips for you, and every tip says why you are seeing it.",
+          "Official IMD and NDMA warnings always come first, shown exactly as issued. The app never invents a warning. Anything estimated, or shown from demo data, is labelled."
+        ]
+      },
+      "sources": {
+        "title": "Data sources and attribution",
+        "imd": {
+          "name": "India Meteorological Department (IMD), Ministry of Earth Sciences",
+          "use": "official warnings and nowcasts, when connected"
+        },
+        "sachet": {
+          "name": "NDMA SACHET",
+          "use": "disaster alerts in the Common Alerting Protocol"
+        },
+        "cpcb": {
+          "name": "Central Pollution Control Board (CPCB)",
+          "use": "National Air Quality Index from monitoring stations, when configured"
+        },
+        "openMeteo": {
+          "name": "Open-Meteo (CC BY 4.0)",
+          "use": "forecast, air quality, marine, geocoding and climate history"
+        },
+        "osm": {
+          "name": "OpenStreetMap contributors",
+          "use": "map tiles"
+        },
+        "aviation": {
+          "name": "AviationWeather.gov",
+          "use": "airport observations (METAR) and forecasts (TAF)"
+        },
+        "suncalc": {
+          "name": "SunCalc",
+          "use": "sunrise, sunset and moon, calculated in the app"
+        },
+        "ccsn": {
+          "name": "CCSN cloud dataset (Zhang et al.)",
+          "use": "proposed training data for Sky Snap; licence to be checked before use"
+        }
+      },
+      "models": {
+        "title": "On-device models (model cards)",
+        "intro": "Camera features run on your phone. No photo is ever uploaded. Only measured accuracy is shown here.",
+        "purpose": "Purpose",
+        "method": "Method",
+        "data": "Training data",
+        "accuracy": "Accuracy",
+        "measured": "{{pct}}% on {{n}} test images",
+        "notMeasured": "Not measured yet",
+        "status": "Status in this version",
+        "builtIn": "Built in",
+        "notInstalled": "Not installed; you choose the answer yourself",
+        "leaves": "What leaves your phone",
+        "nothingLeaves": "Nothing, unless you choose to share a result (never the photo)",
+        "limits": "Known limits",
+        "skySnap": {
+          "name": "Sky Snap: cloud type",
+          "purpose": "Name the cloud type in a sky photo and explain what it usually means.",
+          "data": "CCSN ground-based cloud images, 11 classes (planned).",
+          "limits": "Struggles with night skies, heavy haze and photos mostly covered by buildings."
+        },
+        "jalBharav": {
+          "name": "Jal-Bharav Watch: flooded street check",
+          "purpose": "Check that a photo shows a flooded street before a report is shared.",
+          "data": "Public flood image sets plus Indian street photos (planned).",
+          "limits": "May confuse wet roads after rain with shallow waterlogging."
+        },
+        "dhundh": {
+          "name": "Dhundh Meter: fog estimate",
+          "purpose": "Estimate how thick fog or haze is from one photo.",
+          "data": "No training data: a physics-based image method.",
+          "limits": "Bands are provisional until calibrated on labelled photos; unreliable at night and with headlights."
+        }
+      },
+      "statusTitle": "Service status",
+      "statusError": "Could not check the service status right now.",
+      "on": "connected",
+      "off": "not connected",
+      "storage": "Report storage",
+      "durable": "permanent",
+      "notDurable": "temporary (resets on restart)",
+      "providers": {
+        "imd": "IMD warnings",
+        "sachet": "NDMA SACHET",
+        "cpcb": "CPCB air quality",
+        "openMeteo": "Open-Meteo forecast",
+        "aviationWeather": "Airport weather",
+        "demoMode": "Demo mode",
+        "forceFixtures": "Demo data forced"
+      },
+      "team": {
+        "title": "Team and disclaimer"
+      },
+      "disclaimer": "Mausam Saathi is a prototype developed for Smart India Hackathon 2026. It is not an official service of the India Meteorological Department or the Ministry of Earth Sciences. Official warnings shown here are sourced from IMD and NDMA and attributed; always follow instructions from IMD, NDMA and your local administration. Tips in this app are general guidance and not medical, legal or safety certification.",
+      "production": "For a production government release, the app would also need: a safe-to-host audit by a CERT-In or STQC empanelled auditor, hosting in India on a government or empanelled cloud, a named Web Information Manager and Grievance Officer, formally approved content policies, and IMD API access."
+    },
+    "help": {
+      "title": "Help",
+      "subtitle": "Getting started, common questions and emergency numbers",
+      "start": {
+        "title": "Getting started",
+        "items": [
+          "Choose your place, or let the app use New Delhi for now.",
+          "Tell it what you do outdoors (or skip). Your homepage arranges itself for you.",
+          "Check “Today for you” each morning, and tap “Why am I seeing this?” on any tip."
+        ]
+      },
+      "faqTitle": "Frequently asked questions",
+      "stillStuck": "Still need help? Send us feedback",
+      "faq": {
+        "numbers": {
+          "q": "Why do I see different numbers from other apps?",
+          "a": "Apps use different weather models and stations. Our forecast comes from Open-Meteo models and official warnings from IMD and NDMA. Each screen shows its source and update time."
+        },
+        "rainChance": {
+          "q": "What does 60% rain mean?",
+          "a": "In forecasts like this one, it rained at your place about six times out of ten. It is not the share of the day it rains."
+        },
+        "pollen": {
+          "q": "Why is the allergy level an estimate?",
+          "a": "India has no official pollen count yet, so we estimate from wind, humidity, rain and air quality, and label it as an estimate."
+        },
+        "location": {
+          "q": "Is my location stored?",
+          "a": "Your places stay on your phone. Our server sees only rounded coordinates to fetch weather, and a crowd report is rounded to about 500 m."
+        },
+        "family": {
+          "q": "How do I add family members?",
+          "a": "Open Household and add up to five members with a nickname. Each gets tips for what they do, and you can read their tips aloud."
+        },
+        "skySnap": {
+          "q": "How does Sky Snap work?",
+          "a": "Point your camera at the sky. The photo is checked on your phone and never uploaded. You see the cloud type, what it usually means and what the forecast says."
+        },
+        "report": {
+          "q": "What happens when I report waterlogging?",
+          "a": "Only the depth, the time and a rounded location are shared, never the photo. Your report shows for 3 hours and helps people nearby avoid the street."
+        },
+        "alerts": {
+          "q": "How do I get alerts?",
+          "a": "Allow notifications during setup or in Settings › Notifications. Official Orange and Red warnings are sent; Red ones come through even in quiet hours."
+        },
+        "language": {
+          "q": "How do I change language?",
+          "a": "Use the language menu in the top bar, or Settings › Language and voice."
+        },
+        "textSize": {
+          "q": "How do I make text bigger?",
+          "a": "Tap “Aa” in the top bar to choose text size, high contrast or simple view."
+        },
+        "offline": {
+          "q": "Can I use it offline?",
+          "a": "Yes. The last weather you loaded stays on your phone and is shown with its time. Install the app for the best offline use."
+        },
+        "demo": {
+          "q": "Why do I see “Demo data”?",
+          "a": "A demo scenario is switched on, or live data could not be reached. Demo data is never real weather; switch back in Settings."
+        },
+        "tips": {
+          "q": "How are tips chosen?",
+          "a": "By clear rules, your choices, the season and time of day. Official warnings always come first. Read “How Mausam Saathi decides” in Learn."
+        },
+        "delete": {
+          "q": "How do I delete my data?",
+          "a": "Settings › My data and privacy › Delete all my data. You can also download a copy first."
+        },
+        "who": {
+          "q": "Who made this?",
+          "a": "Team SaathiSync, for Smart India Hackathon 2026, for the problem statement of MoES and IMD. It is a prototype, not an official IMD service."
+        }
+      }
+    },
+    "feedback": {
+      "title": "Feedback",
+      "subtitle": "Tell us what works, what is wrong or what is missing",
+      "category": "What is it about?",
+      "categories": {
+        "bug": "Something is broken",
+        "wrongWeather": "Wrong weather",
+        "suggestion": "Suggestion",
+        "accessibility": "Accessibility problem",
+        "other": "Other"
+      },
+      "message": "Your message",
+      "count": "{{n}} of 1,000 characters",
+      "email": "Email (optional)",
+      "emailHelp": "Only if you want a reply. Leave it empty to stay anonymous.",
+      "consent": "I agree that my email is stored for up to one year so the team can reply. I can ask for it to be deleted.",
+      "noPersonal": "Please do not include phone numbers, addresses or health details in your message.",
+      "send": "Send feedback",
+      "errMessage": "Please write a message.",
+      "errConsent": "Please agree, or remove your email.",
+      "errEmail": "That email address doesn't look right.",
+      "errSend": "Could not send right now. Please try again.",
+      "thanks": "Thank you. We have your feedback.",
+      "reference": "Reference number: {{ref}}"
+    },
+    "contact": {
+      "title": "Contact us",
+      "subtitle": "Who runs this prototype and how to reach them",
+      "team": {
+        "title": "The team"
+      },
+      "email": "Email",
+      "useFeedback": "Write to the team through the feedback form:",
+      "source": "Source code",
+      "official": {
+        "title": "Official weather questions",
+        "body": "For official weather information, warnings or data requests, contact the India Meteorological Department.",
+        "link": "IMD contact page"
+      },
+      "grievance": {
+        "title": "Grievances and data requests",
+        "body": "To raise a grievance, or to ask us to delete feedback you sent with your email, use the feedback form and choose “Other”. Data on your phone can be deleted any time in Settings.",
+        "production": "A production release will name a Web Information Manager and a Grievance Officer here."
+      }
+    },
+    "sitemap": {
+      "title": "Sitemap",
+      "subtitle": "Every page in Mausam Saathi"
+    },
+    "screenReader": {
+      "title": "Screen reader access",
+      "subtitle": "Mausam Saathi works with these screen readers",
+      "caption": "Screen readers and where to get them",
+      "colName": "Screen reader",
+      "colPlatform": "Works on",
+      "colType": "Cost",
+      "types": {
+        "free": "Free",
+        "commercial": "Paid",
+        "builtIn": "Built in, free"
+      },
+      "readers": {
+        "nvda": {
+          "name": "NVDA",
+          "platform": "Windows"
+        },
+        "jaws": {
+          "name": "JAWS",
+          "platform": "Windows"
+        },
+        "talkback": {
+          "name": "TalkBack",
+          "platform": "Android"
+        },
+        "voiceover": {
+          "name": "VoiceOver",
+          "platform": "iPhone, iPad and Mac"
+        },
+        "narrator": {
+          "name": "Narrator",
+          "platform": "Windows"
+        }
+      },
+      "tips": {
+        "title": "Tips for using Mausam Saathi",
+        "items": [
+          "Use “Skip to main content” at the top of every page.",
+          "Each widget and tip has a heading, so you can move by headings.",
+          "Every chart has a text summary and a “Show as table” option.",
+          "The map has a list view with the same information.",
+          "“Listen” buttons read tips and answers aloud in English or Hindi."
+        ]
+      }
+    },
+    "accessibility": {
+      "title": "Accessibility statement",
+      "subtitle": "Our commitment, what we support and what we know is not yet right",
+      "commitment": {
+        "title": "Our commitment",
+        "body": [
+          "Mausam Saathi should be usable by everyone, including people who use screen readers, people with low vision, older people and people on slow connections."
+        ]
+      },
+      "standard": {
+        "title": "Standard",
+        "body": [
+          "We aim to meet WCAG 2.1 Level AA, as required by the Guidelines for Indian Government Websites and Apps (GIGW 3.0) and IS 17802."
+        ]
+      },
+      "features": {
+        "title": "Features",
+        "items": [
+          "Text size up to 200%, high contrast and a simple view (the “Aa” menu).",
+          "Read aloud in English and Hindi.",
+          "Full keyboard use, a skip link and visible focus.",
+          "Warning levels shown with words and shapes, never colour alone.",
+          "Charts with text summaries and tables; a list view for the map.",
+          "Lite mode for slow connections."
+        ]
+      },
+      "limits": {
+        "title": "Known limitations",
+        "items": [
+          "The map itself is visual; please use its list view.",
+          "Camera features need sight to frame a photo; the same reports can be read on the Reports page.",
+          "Only English and Hindi are fully reviewed; other languages are not available yet.",
+          "Hindi text still needs review by a fluent speaker."
+        ]
+      },
+      "testing": {
+        "title": "How we tested",
+        "body": [
+          "Every page is checked with the axe accessibility engine in Chrome (no serious or critical issues), at 320 px width with 200% text and high contrast, and by keyboard. Testing with screen reader users is still to be done."
+        ]
+      },
+      "contact": {
+        "title": "Report a problem",
+        "body": [
+          "If something is hard to use, tell us through the feedback form and choose “Accessibility problem”. We aim to reply within 7 days."
+        ]
+      }
+    },
+    "policies": {
+      "title": "Website policies",
+      "subtitle": "How we handle your data, content and links",
+      "all": "All website policies"
+    },
+    "offline": {
+      "title": "You are offline",
+      "subtitle": "This page isn't saved on your phone yet",
+      "what": {
+        "title": "What you can do",
+        "items": [
+          "Open the homepage: the last weather you loaded is shown with its time.",
+          "Check your connection and try again.",
+          "In an emergency, call 112."
+        ]
+      }
+    },
+    "policyPages": {
+      "privacy": {
+        "who": {
+          "title": "Who we are",
+          "body": [
+            "Mausam Saathi is a prototype built by Team SaathiSync for Smart India Hackathon 2026. It is not run by IMD."
+          ]
+        },
+        "what": {
+          "title": "What we process on our server",
+          "body": [
+            "Rounded coordinates (about 1 km) to fetch weather and warnings for your place.",
+            "Crowd reports you choose to share: type, depth, time and a location rounded to about 500 m. Never a photo, never your name.",
+            "Feedback you send, and an email only if you add one and agree.",
+            "A random device code, stored only as a scrambled (hashed) value, to limit reports and votes."
+          ]
+        },
+        "device": {
+          "title": "What stays on your phone",
+          "body": [
+            "Your places, what you do, health sensitivities (with your consent), household members, trips, events, notification and accessibility settings, Be ready progress, and the weather last loaded. You can see, download and delete all of it in Settings › My data."
+          ]
+        },
+        "why": {
+          "title": "Why",
+          "body": [
+            "Only to show you weather, warnings and tips, and to let people nearby see crowd reports. We do not sell data, show ads or track you across sites."
+          ]
+        },
+        "howLong": {
+          "title": "How long",
+          "body": [
+            "Crowd reports expire after 1 to 3 hours and are deleted after 7 days; only anonymous totals are kept. Feedback is kept for one year. Server logs contain no personal data."
+          ]
+        },
+        "rights": {
+          "title": "Your rights",
+          "body": [
+            "Under the Digital Personal Data Protection Act 2023 you can ask what we hold, correct it or have it deleted. Data on your phone is fully in your control. For feedback you sent with your email, ask us through the feedback form."
+          ]
+        },
+        "contact": {
+          "title": "Contact",
+          "body": [
+            "Use the Contact page. The app does not ask for children's names, ages or photos; children should use it with a parent."
+          ]
+        }
+      },
+      "terms": {
+        "use": {
+          "title": "Using the app",
+          "body": [
+            "You may use Mausam Saathi free of charge for personal, non-commercial purposes."
+          ]
+        },
+        "accuracy": {
+          "title": "Accuracy",
+          "body": [
+            "Forecasts can be wrong. Always follow official IMD and NDMA warnings and your local administration. Tips are general guidance, not professional advice."
+          ]
+        },
+        "conduct": {
+          "title": "Reports and feedback",
+          "body": [
+            "Share only reports you believe are true. False or repeated reports may be limited or removed."
+          ]
+        },
+        "changes": {
+          "title": "Changes",
+          "body": [
+            "These terms may change as the prototype develops. The date at the bottom of this page shows the last review."
+          ]
+        }
+      },
+      "copyright": {
+        "main": {
+          "title": "Copyright",
+          "body": [
+            "Material in this app may be reproduced free of charge after taking permission from the team, with the source acknowledged. It may not be used in a misleading way. Weather data and warnings belong to their providers (IMD, NDMA, CPCB, Open-Meteo and others) and are used under their terms."
+          ]
+        }
+      },
+      "hyperlinking": {
+        "out": {
+          "title": "Links to other sites",
+          "body": [
+            "We link to official sites such as IMD, NDMA and CPCB. External links open in a new tab and are marked. We are not responsible for the content of other sites."
+          ]
+        },
+        "in": {
+          "title": "Linking to us",
+          "body": [
+            "You may link to any page of Mausam Saathi without asking. Please do not show our pages inside frames on your site."
+          ]
+        }
+      },
+      "disclaimer": {
+        "main": {
+          "title": "Disclaimer",
+          "body": [
+            "Mausam Saathi is a prototype developed for Smart India Hackathon 2026. It is not an official service of the India Meteorological Department or the Ministry of Earth Sciences. Official warnings shown here are sourced from IMD and NDMA and attributed; always follow instructions from IMD, NDMA and your local administration. Tips in this app are general guidance and not medical, legal or safety certification."
+          ]
+        }
+      },
+      "archival": {
+        "main": {
+          "title": "Archival",
+          "body": [
+            "Official warnings are shown only while they are valid. Crowd reports expire within hours and are deleted after 7 days. Learn articles are kept current rather than archived; older versions are not published."
+          ]
+        }
+      },
+      "review": {
+        "main": {
+          "title": "Review",
+          "body": [
+            "Weather and warnings update automatically. Learn articles, tips and safety text are reviewed weekly against NDMA, IMD, CPCB and WHO guidance during the prototype period. Hindi text is to be reviewed by a fluent speaker."
+          ]
+        }
+      },
+      "security": {
+        "main": {
+          "title": "Security",
+          "body": [
+            "The app is served over HTTPS with security headers, validates every request, limits how often reports and feedback can be sent, keeps keys only on the server, and never shows user-written HTML. A government release would need a safe-to-host audit by a CERT-In or STQC empanelled auditor."
+          ]
+        }
+      }
+    }
+  },
+  "policies": {
+    "privacy": {
+      "title": "Privacy policy",
+      "summary": "What we process, what stays on your phone, and your rights"
+    },
+    "terms": {
+      "title": "Terms of use",
+      "summary": "The rules for using this prototype"
+    },
+    "copyright": {
+      "title": "Copyright policy",
+      "summary": "Reusing material from this app"
+    },
+    "hyperlinking": {
+      "title": "Hyperlinking policy",
+      "summary": "Links to and from other sites"
+    },
+    "disclaimer": {
+      "title": "Disclaimer",
+      "summary": "A prototype, not an official IMD service"
+    },
+    "archival": {
+      "title": "Content archival policy",
+      "summary": "How long information stays"
+    },
+    "review": {
+      "title": "Content review policy",
+      "summary": "How often content is checked"
+    },
+    "security": {
+      "title": "Security policy",
+      "summary": "How the app and your data are protected"
+    }
+  },
+  "pwa": {
+    "region": "App messages",
+    "update": "A new version of Mausam Saathi is ready.",
+    "reload": "Reload",
+    "installText": "Install Mausam Saathi for quick access and offline use.",
+    "install": "Install"
   }
 }

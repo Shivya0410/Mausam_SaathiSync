@@ -19,7 +19,7 @@ import {
 } from '../../lib/stores';
 import { listMausamKeys, readKey, clearKeys } from '../../lib/stores/deviceStore';
 import { PERSONAS, MAX_PERSONAS } from '../../config/personas';
-import { LANGUAGES } from '../../config/site';
+import { LANGUAGES, SITE } from '../../config/site';
 import { WIDGETS } from '../../config/widgets';
 import { SCENARIO_IDS } from '../../data/fixtures/scenarios';
 import { effectiveNotify } from '../../lib/mausam/notify';
@@ -323,7 +323,7 @@ export default function SettingsPage() {
       </Section>
 
       <Section id="about" title={t('settings.sections.about')}>
-        <p>{t('settings.about.version', { version: '0.2.0' })}</p>
+        <p>{t('settings.about.version', { version: SITE.version })}</p>
         <p>{t('footer.dataAttribution')}</p>
         <p><Link href="/about">{t('footer.about')}</Link></p>
       </Section>

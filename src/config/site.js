@@ -10,6 +10,13 @@ export const SITE = {
   // "Last updated" date shown in the footer (GIGW G13). Change on content releases.
   lastUpdated: '2026-09-30',
   nationalPortal: 'https://www.india.gov.in',
+  // Public origin for the sitemap and robots.txt (set SITE_URL in deployment).
+  url: (process.env.SITE_URL || 'http://localhost:3000').replace(/\/$/, ''),
+  version: '0.3.0',
+  // Optional public contact details (GIGW G11); the feedback form is the
+  // default contact route when these are unset.
+  contactEmail: process.env.NEXT_PUBLIC_CONTACT_EMAIL || null,
+  repoUrl: process.env.NEXT_PUBLIC_REPO_URL || null,
 };
 
 /** UI languages fully reviewed today. Others arrive via Bhashini (PRD 15.4). */

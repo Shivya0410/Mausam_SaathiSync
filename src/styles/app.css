@@ -1624,3 +1624,42 @@
 .ms-map-na { margin: 0; font-size: var(--ms-text-sm); }
 .ms-map { height: 60vh; min-height: 320px; width: 100%; border-radius: 12px; z-index: 0; }
 .ms-map-main { min-width: 0; }
+
+/* ── Part 3E: PWA toasts ── */
+.ms-toasts {
+  position: fixed;
+  left: 12px;
+  right: 12px;
+  bottom: calc(var(--ms-tabbar-h) + 84px + env(safe-area-inset-bottom));
+  z-index: 970;
+  display: grid;
+  gap: 8px;
+  justify-items: center;
+  pointer-events: none;
+}
+@media (min-width: 768px) { .ms-toasts { bottom: 96px; left: auto; right: 24px; justify-items: end; } }
+.ms-toast {
+  pointer-events: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  max-width: 480px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: var(--ms-surface);
+  color: var(--ms-ink);
+  border: 1px solid var(--ms-border);
+  box-shadow: 0 8px 24px rgba(45, 27, 78, 0.25);
+}
+.ms-toast > span { flex: 1 1 12rem; }
+.ms-toast img { border-radius: 8px; }
+.ms-faq { border-bottom: 1px solid var(--ms-line); padding: 6px 0; }
+.ms-faq summary { cursor: pointer; font-weight: 700; min-height: 44px; display: flex; align-items: center; }
+.ms-faq p { margin: 4px 0 10px; }
+.ms-sitemap { list-style: none; padding-left: 0; margin: 0; }
+.ms-sitemap ul { list-style: none; padding-left: 1.25rem; border-left: 2px solid var(--ms-line); margin: 4px 0 8px; }
+.ms-sitemap li { padding: 4px 0; }
+.ms-sitemap a { display: inline-block; min-height: 32px; padding-top: 4px; }
+.ms-model-card { border: 1px solid var(--ms-border); border-radius: 12px; padding: 10px 12px; margin-top: 10px; }
+.ms-model-card h3 { margin-top: 0; }

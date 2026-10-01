@@ -25,8 +25,11 @@ export const metadata = {
   description: SITE.description,
   applicationName: SITE.name,
   icons: {
-    icon: "/imgs/favicon.ico",
-    apple: "/imgs/apple-touch-icon.png",
+    icon: [
+      { url: "/icons/icon.svg", type: "image/svg+xml" },
+      { url: "/icons/favicon-32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: "/icons/apple-touch-icon.png",
   },
 };
 

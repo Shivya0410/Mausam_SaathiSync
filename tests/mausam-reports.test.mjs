@@ -161,8 +161,15 @@ test('feedback: card needs a rule, site needs a message, capped at 1,000 chars',
   await assert.rejects(createFeedback(repos, { kind: 'card' }), (e) => 'ruleId' in e.details.fields);
   await assert.rejects(createFeedback(repos, { kind: 'site', message: '  ' }), (e) => 'message' in e.details.fields);
   await assert.rejects(createFeedback(repos, { kind: 'site', message: 'x'.repeat(1001) }), (e) => 'message' in e.details.fields);
-  await assert.rejects(createFeedback(repos, { kind: 'site', message: 'ok', email: 'a@b.c' }), (e) => 'email' in e.details.fields);
-  assert.equal((await repos.feedback.list()).length, 1);
+  await assert.rejects(createFeedback(repos, { kind: 'site', message: 'ok', email: 'not-an-email', consent: true }), (e) => 'email' in e.details.fields);
+  await assert.rejects(createFeedback(repos, { kind: 'site', message: 'ok', email: 'me@example.in' }), (e) => 'consent' in e.details.fields, 'email needs consent');
+  await assert.rejects(createFeedback(repos, { kind: 'site', message: 'ok', name: 'X' }), (e) => 'name' in e.details.fields);
+  await createFeedback(repos, { kind: 'site', category: 'bug', message: 'Map is slow', email: 'Me@Example.in', consent: true, lang: 'en', page: '/map' });
+  const list = await repos.feedback.list();
+  assert.equal(list.length, 2);
+  assert.equal(list[1].email, 'me@example.in');
+  assert.ok(list[1].consentAt);
+  assert.equal(list[0].email, null);
 });
 
 test('IP limiter blocks after the limit and recovers after the window', () => {

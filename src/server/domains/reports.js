@@ -222,19 +222,45 @@ export function aggregateReports(reports, { since = 0 } = {}) {
   };
 }
 
-/** Site and card feedback (PRD 13.3): no personal data, message capped. */
+export const FEEDBACK_CATEGORIES = ['bug', 'wrongWeather', 'suggestion', 'accessibility', 'other'];
+const EMAIL = /^[^\s@]{1,64}@[^\s@]{1,190}\.[^\s@]{2,}$/;
+
+/**
+ * Site and card feedback (PRD 13.3, 15.3). No personal data is asked for;
+ * an email is optional, only "if you want a reply", and needs explicit
+ * consent (DPDP, PRD 15.5).
+ */
 export async function createFeedback(repos, body, { now = Date.now() } = {}) {
   const v = validateBody(body, {
     kind: field.string({ required: true, oneOf: ['card', 'site'] }),
+    category: field.string({ oneOf: FEEDBACK_CATEGORIES }),
     ruleId: field.string({ max: 60 }),
     helpful: field.boolean(),
     message: field.string({ max: 1000 }),
+    email: field.string({ max: 254 }),
+    consent: field.boolean(),
     lang: field.string({ oneOf: ['en', 'hi'] }),
     page: field.string({ max: 120 }),
   });
-  if (v.kind === 'card' && !v.ruleId) throw ApiError.validationFailed({ ruleId: 'is required for card feedback' });
-  if (v.kind === 'site' && !v.message?.trim()) throw ApiError.validationFailed({ message: 'is required for site feedback' });
-  if (v.page && !v.page.startsWith('/')) throw ApiError.validationFailed({ page: 'must be a path' });
-  const item = await repos.feedback.create({ ...v, message: v.message?.trim() || null, createdAt: new Date(now).toISOString() });
+  const errors = {};
+  if (v.kind === 'card' && !v.ruleId) errors.ruleId = 'is required for card feedback';
+  if (v.kind === 'site' && !v.message?.trim()) errors.message = 'is required for site feedback';
+  if (v.page && !v.page.startsWith('/')) errors.page = 'must be a path';
+  if (v.email && !EMAIL.test(v.email.trim())) errors.email = 'must be an email address';
+  if (v.email && v.consent !== true) errors.consent = 'is required when an email is given';
+  if (v.kind === 'card' && v.email) errors.email = 'is not accepted for card feedback';
+  if (Object.keys(errors).length) throw ApiError.validationFailed(errors);
+  const item = await repos.feedback.create({
+    kind: v.kind,
+    category: v.category ?? null,
+    ruleId: v.ruleId ?? null,
+    helpful: v.helpful ?? null,
+    message: v.message?.trim() || null,
+    email: v.email ? v.email.trim().toLowerCase() : null,
+    consentAt: v.email ? new Date(now).toISOString() : null,
+    lang: v.lang ?? null,
+    page: v.page ?? null,
+    createdAt: new Date(now).toISOString(),
+  });
   return { id: item.id, createdAt: item.createdAt };
 }

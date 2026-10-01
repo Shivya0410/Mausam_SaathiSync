@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Mausam Saathi">
+  <rect width="512" height="512" rx="112" fill="#493971"/>
+  <g fill="#ffc94a">
+    <circle cx="206" cy="196" r="70"/>
+    <g stroke="#ffc94a" stroke-width="22" stroke-linecap="round">
+      <line x1="206" y1="78" x2="206" y2="102"/>
+      <line x1="206" y1="290" x2="206" y2="314" opacity="0"/>
+      <line x1="88" y1="196" x2="112" y2="196"/>
+      <line x1="122" y1="112" x2="139" y2="129"/>
+      <line x1="290" y1="112" x2="273" y2="129"/>
+      <line x1="122" y1="280" x2="139" y2="263"/>
+    </g>
+  </g>
+  <path fill="#ffffff" d="M168 404c-44 0-80-34-80-77 0-40 31-73 71-77 12-50 57-86 110-86 56 0 103 41 112 95 41 3 73 36 73 76 0 38-31 69-70 69z"/>
+</svg>
