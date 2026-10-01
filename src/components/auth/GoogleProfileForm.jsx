@@ -67,7 +67,6 @@ export default function GoogleProfileForm({ pending, onSuccess, onError, onBack 
     <div className={styles.form}>
       <p className={styles.accountHint} role="note">
         {account.picture ? (
-          // eslint-disable-next-line @next/next/no-img-element
           <img src={account.picture} alt="" width={22} height={22} referrerPolicy="no-referrer" />
         ) : (
           <i className="fa-solid fa-circle-check" aria-hidden="true" />

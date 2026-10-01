@@ -55,9 +55,10 @@ export default function DecisionCard({ card, today, members = [], feedback, onDi
       <h3 id={headingId}>{txt.headline}</h3>
       {!collapsed ? (
         <>
-          <p className="ms-dcard-reason" lang={official ? card.params.lang?.slice(0, 2) || undefined : undefined}>
+          <p className="ms-dcard-reason" lang={official ? card.params.lang?.slice(0, 2) || (/[\u0900-\u097F]/.test(txt.reason) ? 'hi' : 'en') : undefined}>
             {txt.reason}
           </p>
+          {official && lang === 'hi' && !/[\u0900-\u097F]/.test(txt.reason) ? <p className="ms-muted">{t('alerts.issuedInEnglish')}</p> : null}
           {official ? (
             <div className="ms-dcard-official">
               {txt.advice ? <p><strong>{txt.action}:</strong> {txt.advice}</p> : null}

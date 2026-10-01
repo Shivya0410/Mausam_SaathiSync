@@ -42,6 +42,14 @@ const securityHeaders = [
 const nextConfig = {
   poweredByHeader: false,
 
+  // Inline our small CSS (~13 KB gzipped) into the HTML so slow connections
+  // skip the render-blocking stylesheet round trips (PRD 13.8). Returning
+  // visitors are served from the service worker cache. Experimental in
+  // Next 16; remove if it misbehaves.
+  experimental: {
+    inlineCss: true,
+  },
+
   async headers() {
     return [
       { source: '/:path*', headers: securityHeaders },

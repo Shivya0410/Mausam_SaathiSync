@@ -49,6 +49,9 @@ export default function AlertsPage() {
   const [openDay, setOpenDay] = useState(null);
   const showMarine = personaIds.includes('coast') || personaIds.includes('fisher') || snapshot?.place?.isCoastal;
   const tabName = (p) => (lang === 'hi' && p.nameHi ? p.nameHi : p.name);
+  // Static sections wait until loading settles (data or error) so arriving
+  // warnings never push them down (layout shift).
+  const settled = Boolean(snapshot) || ['error', 'offline'].includes(weather.status);
 
   return (
     <>
@@ -171,31 +174,35 @@ export default function AlertsPage() {
         )}
       </Tabs>
 
-      <section className="ms-card" id="colours" aria-labelledby="al-legend">
-        <h2 id="al-legend">{t('alerts.legend')}</h2>
-        <ul className="ms-legend">
-          {['green', 'yellow', 'orange', 'red'].map((l) => (
-            <li key={l}>
-              <LevelBadge level={l} /> {t(`levels.action.${l}`)}: {t(`alerts.legendText.${l}`)}
-            </li>
-          ))}
-        </ul>
-        <Link href="/learn/colours">{t('alerts.learnColours')}</Link>
-      </section>
+      {settled ? (
+        <>
+        <section className="ms-card" id="colours" aria-labelledby="al-legend">
+          <h2 id="al-legend">{t('alerts.legend')}</h2>
+          <ul className="ms-legend">
+            {['green', 'yellow', 'orange', 'red'].map((l) => (
+              <li key={l}>
+                <LevelBadge level={l} /> {t(`levels.action.${l}`)}: {t(`alerts.legendText.${l}`)}
+              </li>
+            ))}
+          </ul>
+          <Link href="/learn/colours">{t('alerts.learnColours')}</Link>
+        </section>
 
-      <section className="ms-card" aria-labelledby="al-emergency">
-        <h2 id="al-emergency">{t('alerts.emergency')}</h2>
-        <ul className="ms-emergency">
-          {EMERGENCY_NUMBERS.filter((n) => ['112', '108', '1070', '1077', '1078'].includes(n.number)).map((n) => (
-            <li key={n.number}>
-              <a href={`tel:${n.number}`} className={`ms-btn ${n.primary ? '' : 'ms-btn--secondary'}`}>
-                <i className="fa-solid fa-phone" aria-hidden="true"></i> {n.number} · {t(`emergency.${n.key}`)}
-              </a>
-            </li>
-          ))}
-        </ul>
-        <p className="ms-muted">{t('alerts.verifyNumbers')}</p>
-      </section>
+        <section className="ms-card" aria-labelledby="al-emergency">
+          <h2 id="al-emergency">{t('alerts.emergency')}</h2>
+          <ul className="ms-emergency">
+            {EMERGENCY_NUMBERS.filter((n) => ['112', '108', '1070', '1077', '1078'].includes(n.number)).map((n) => (
+              <li key={n.number}>
+                <a href={`tel:${n.number}`} className={`ms-btn ${n.primary ? '' : 'ms-btn--secondary'}`}>
+                  <i className="fa-solid fa-phone" aria-hidden="true"></i> {n.number} · {t(`emergency.${n.key}`)}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <p className="ms-muted">{t('alerts.verifyNumbers')}</p>
+        </section>
+        </>
+      ) : null}
     </>
   );
 }

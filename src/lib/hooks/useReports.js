@@ -1,7 +1,6 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { scenarioReports } from '../../data/fixtures/scenarios';
 import { haversineKm } from '../mausam/geo';
 import { REPORT_RADIUS_KM } from '../mausam/reports';
 
@@ -21,6 +20,8 @@ export function useReports(place, { scenario = null, enabled = true } = {}) {
     if (!key) return;
     if (scenario) {
       const now = Date.now();
+      // Fixtures load only in demo mode.
+      const { scenarioReports } = await import('../../data/fixtures/scenarios');
       const list = scenarioReports(scenario, now).map((r) => ({ ...r, distanceKm: Math.round(haversineKm(place, r) * 10) / 10 }));
       setState({ reports: list, status: 'ready', durable: null, key });
       return;

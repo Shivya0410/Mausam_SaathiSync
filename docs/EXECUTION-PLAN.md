@@ -184,6 +184,43 @@ T3.1 Web Push + cron, T3.3 Bhashini languages and TTS, T3.4 pySTEPS nowcast serv
 - Every on-screen number has a source and time; every estimate and demo value is labelled.
 - Deployed, documented, and the 7-minute demo runs end to end.
 
+### Part 3 status: built and verified locally, not deployed (1 Oct 2026)
+
+Done and checked:
+
+- **Quality checks:**
+  - 305 tests pass; `npm run lint` has no errors in `src`; `npm audit` reports 0 vulnerabilities.
+  - `npm run check:browser` passes on all 34 routes: no serious or critical axe issues; 320 px reflow at 100% and at 200% text with high contrast; no raw keys; no console or CSP errors.
+  - Lighthouse mobile (median of 3, demo build): Home Performance 80 and Accessibility 100. Alerts 81 and Onboarding 82. Best Practices and SEO are 100.
+  - The service worker was checked offline: visited pages load, unvisited pages show `/offline`, and the weather falls back to the copy saved on the device.
+- **3A:** reports, votes, export and feedback, with rate limits, location-jump rejection and community verification. The `/reports` page, waterlogging widget and home teaser are live, and the commute and school-run cards use trusted reports.
+- **3B:**
+  - CameraCapture, `/sky-snap` and `/report` are built.
+  - The Dhundh Meter works without a model.
+  - The TF.js loader is a dynamic import, so it is never on the homepage.
+- **3C:**
+  - Mitra covers all 24 intents plus greeting, thanks and language switch, in EN, HI and Hinglish.
+  - The safety check runs first; voice in and out works; the panel loads on first open.
+  - There are 135 utterance tests, and end-to-end replies are tested on all six scenarios.
+- **3D:** `/map` (layers plus a list view), `/ready` (habits, kits, 11 badges), and `/learn` (12 bilingual articles, myths quiz, lightning check). The legacy SaathiSync tracker, profile, SheFit and wellness code is removed.
+- **3E:**
+  - All GIGW pages, the manifest, sitemap and robots, new app icons, the service worker and install card, and security headers.
+  - The feedback email is optional and needs consent.
+- **3F:**
+  - Edge cases E8, E16, E19 and E22 are fixed.
+  - The layout-shift fixes include docking the alert ribbon at the bottom (Home CLS went from 0.95 to 0.03).
+  - Font Awesome is subset (CSS 69 KB to 11 KB, fonts 300 KB to 19 KB), CSS is inlined, Hindi loads on demand, and the weather request starts from `<head>`.
+  - The README and OPEN-ISSUES are updated.
+
+Not met or not done (details in [OPEN-ISSUES](OPEN-ISSUES.md)):
+
+- **No trained Sky Snap or Jal-Bharav model.** The dataset licences need checking first. Both features run a labelled manual path, so the 700 ms and tensor-leak criteria are unmeasured.
+- **The first-load JS budget of 200 KB is not met.** Home is about 300 KB gzipped, and the framework alone is about 153 KB. The Lighthouse targets are met.
+- **Not deployed to Vercel.** It needs the team's account.
+- **Not rehearsed on a mid-range Android phone.**
+- **No Hindi review by a fluent speaker.**
+- **Stretch (3G) not started:** Postgres, push notifications, Bhashini, the pySTEPS nowcast service, the radar overlay, district polygons and site search.
+
 ---
 
 ## Open questions to settle before Part 1 (PRD §17.7 defaults in brackets)

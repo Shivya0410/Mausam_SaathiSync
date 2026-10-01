@@ -11,9 +11,10 @@ import MyPagesChips from "../components/home/MyPagesChips";
 import WidgetGrid from "../components/home/WidgetGrid";
 import GovServicesStrip from "../components/home/GovServicesStrip";
 import DataFootnote from "../components/home/DataFootnote";
-import { ReportsTeaser } from "../components/widgets/reports";
+import ReportsTeaser from "../components/home/ReportsTeaser";
 import { sendCardFeedback } from "../lib/reportsClient";
 import { useReady } from "../lib/hooks/useReady";
+import { ensureLanguage } from "../i18n";
 import { toggleHabit } from "../lib/mausam/ready";
 import MemberSwitcher from "../components/home/MemberSwitcher";
 import Nudges from "../components/home/Nudges";
@@ -61,6 +62,11 @@ export default function Home() {
   }, [hydrated, onboarding.completedAt, weather.demo, router]);
 
   const members = household.members;
+  // Members who hear their tips in Hindi need the Hindi strings loaded.
+  const anyHindi = members.some((m) => m.lang === "hi");
+  useEffect(() => {
+    if (anyHindi) ensureLanguage("hi");
+  }, [anyHindi]);
   const selected = members.length ? household.selected : "me";
   const member = members.find((m) => m.id === selected) || null;
 
@@ -136,8 +142,8 @@ export default function Home() {
             </div>
           )}
         </div>
-        {!simple ? <Nudges now={now} /> : null}
-        {!simple ? <MyPagesChips personaIds={personaIds} /> : null}
+        {active && !simple ? <Nudges now={now} /> : null}
+        {active && !simple ? <MyPagesChips personaIds={personaIds} /> : null}
         {active && simple ? (
           <div className="ms-grid">
             <div className="ms-grid-item ms-span--full">
@@ -147,7 +153,7 @@ export default function Home() {
         ) : null}
         {active && !simple ? <WidgetGrid ranked={gridRanked} view={active} env={env} /> : null}
         {active && !simple && !lite ? <ReportsTeaser reports={weather.reports.reports} season={active.season} now={now} /> : null}
-        {!simple && !lite ? <GovServicesStrip personaIds={personaIds} /> : null}
+        {active && !simple && !lite ? <GovServicesStrip personaIds={personaIds} /> : null}
         <DataFootnote snapshot={snapshot} />
       </div>
     </WithNavbar>

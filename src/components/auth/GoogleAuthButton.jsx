@@ -11,6 +11,7 @@ import {
   saveRememberedGoogleAccount,
 } from "../../services/googleAuth";
 import authStyles from "./AuthForm.module.css";
+import { useHydrated } from "../../lib/hooks/useStore";
 
 // GIS keeps one global config: re-initialising on every React remount
 // (StrictMode double-fires effects in dev) logs "initialize() is called
@@ -50,12 +51,10 @@ export default function GoogleAuthButton({
   const [status, setStatus] = useState("idle");
   const [detail, setDetail] = useState("");
   const [retryKey, setRetryKey] = useState(0);
-  const [remembered, setRemembered] = useState(null);
+  // Read from storage only after hydration so server and client match.
+  const hydrated = useHydrated();
+  const remembered = hydrated ? getRememberedGoogleAccount() : null;
   const clientId = getGoogleClientId();
-
-  useEffect(() => {
-    setRemembered(getRememberedGoogleAccount());
-  }, []);
 
   const reportError = useCallback(
     (message) => {
@@ -65,10 +64,8 @@ export default function GoogleAuthButton({
   );
 
   useEffect(() => {
-    if (!clientId) {
-      setStatus("idle");
-      return;
-    }
+    // Without a client id the button stays "idle" (its initial state).
+    if (!clientId) return;
 
     let cancelled = false;
 
@@ -202,7 +199,6 @@ export default function GoogleAuthButton({
       {remembered && (status === "ready" || status === "verifying") && (
         <p className={authStyles.accountHint} role="note">
           {remembered.picture ? (
-            // eslint-disable-next-line @next/next/no-img-element
             <img src={remembered.picture} alt="" width={22} height={22} referrerPolicy="no-referrer" />
           ) : (
             <i className="fa-brands fa-google" aria-hidden="true" />

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 import { useWeather } from '../../lib/context/WeatherProvider';
@@ -17,6 +17,11 @@ const SEEN_KEY = 'mausam.ribbonAnnounced';
  * (PRD 7.3, 20.9). Cannot be dismissed, only collapsed. role="alert" the
  * first time a warning appears in a session, role="status" afterwards, so a
  * screen reader announces it once.
+ *
+ * Docked at the bottom of the screen (above the mobile tab bar) rather than
+ * in the page flow: warnings arrive after the page renders, and an in-flow
+ * banner pushed the whole page down (layout shift, CLS 0.87). Its height is
+ * published as --ms-ribbon-h so floating buttons and the page end make room.
  */
 export default function AlertRibbon() {
   const { t, i18n } = useTranslation();
@@ -26,6 +31,28 @@ export default function AlertRibbon() {
   const [announce, setAnnounce] = useState(false);
   const list = snapshot && now ? ribbonWarnings(snapshot, now) : [];
   const top = list[0];
+  const ref = useRef(null);
+
+  // Publish the ribbon height for fixed elements and the page bottom padding.
+  useEffect(() => {
+    const root = document.documentElement;
+    const el = ref.current;
+    if (!el) {
+      root.style.removeProperty('--ms-ribbon-h');
+      root.classList.remove('ms-has-ribbon');
+      return undefined;
+    }
+    const set = () => root.style.setProperty('--ms-ribbon-h', `${Math.ceil(el.getBoundingClientRect().height)}px`);
+    set();
+    root.classList.add('ms-has-ribbon');
+    const ro = new ResizeObserver(set);
+    ro.observe(el);
+    return () => {
+      ro.disconnect();
+      root.style.removeProperty('--ms-ribbon-h');
+      root.classList.remove('ms-has-ribbon');
+    };
+  }, [top]);
 
   useEffect(() => {
     if (!top) return;
@@ -52,7 +79,7 @@ export default function AlertRibbon() {
   const lvl = levelName(top.level);
   const hazard = t(`hazards.${top.hazard}`, { defaultValue: top.title });
   return (
-    <div className={`ms-ribbon ms-level--${lvl} ${collapsed ? 'is-collapsed' : ''}`} role={announce ? 'alert' : 'status'}>
+    <div ref={ref} className={`ms-ribbon ms-level--${lvl} ${collapsed ? 'is-collapsed' : ''}`} role={announce ? 'alert' : 'status'}>
       <LevelShape level={lvl} size={18} />
       <p className="ms-ribbon-text">
         <strong>{t(`levels.${lvl}`)}</strong> · {hazard}

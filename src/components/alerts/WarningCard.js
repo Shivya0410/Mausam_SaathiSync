@@ -68,9 +68,10 @@ export default function WarningCard({ w, today, now }) {
       </p>
       {w.text ? (
         <>
-          <p className={open ? '' : 'ms-clamp'} id={`${uid}-text`} lang={w.lang ? w.lang.slice(0, 2).toLowerCase() : undefined}>
+          <p className={open ? '' : 'ms-clamp'} id={`${uid}-text`} lang={w.lang ? w.lang.slice(0, 2).toLowerCase() : /[\u0900-\u097F]/.test(w.text) ? 'hi' : 'en'}>
             {w.text}
           </p>
+          {lang === 'hi' && !/[\u0900-\u097F]/.test(w.text) ? <p className="ms-muted">{t('alerts.issuedInEnglish')}</p> : null}
           {w.text.length > 160 ? (
             <button type="button" className="ms-link-btn" aria-expanded={open} aria-controls={`${uid}-text`} onClick={() => setOpen((o) => !o)}>
               {t(open ? 'alerts.showLess' : 'alerts.readFull')}

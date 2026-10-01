@@ -31,8 +31,10 @@ export function pickNotifications(warnings, settings, now, offsetMin = 330) {
   const quiet = inQuietHours(now, offsetMin, settings.quietFrom, settings.quietTo);
   const toSend = [];
   let count = sent;
+  // Expired or not-yet-valid warnings never notify (PRD edge case E8).
   const loud = (warnings || [])
     .filter((w) => w.level >= minLevel && !w.demo)
+    .filter((w) => (!w.validTo || Date.parse(w.validTo) > now) && (!w.validFrom || Date.parse(w.validFrom) <= now + 24 * 3600 * 1000))
     .sort((a, b) => b.level - a.level);
   for (const w of loud) {
     // An upgrade (Orange to Red) is a new announcement.

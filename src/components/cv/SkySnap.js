@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 import PageHeader from '../layout/PageHeader';
 import CameraCapture from './CameraCapture';
 import ListenButton from '../shared/ListenButton';
 import LevelBadge from '../shared/LevelBadge';
-import { PhotoThumb, ConfidenceLine, PrivacyPoints, ModelMissing, WhereStep } from './parts';
+import { PhotoThumb, ConfidenceLine, PrivacyPoints, ModelMissing, ModelFailed, WhereStep, useModelState } from './parts';
 import { useWeather } from '../../lib/context/WeatherProvider';
 import { useStore } from '../../lib/hooks/useStore';
 import { useNow } from '../../lib/hooks/useNow';
@@ -31,22 +31,12 @@ export default function SkySnap() {
   const [, setStats] = useStore(stores.cvStats);
   const [step, setStep] = useState('intro');
   const [canvas, setCanvas] = useState(null);
-  const [model, setModel] = useState('loading');
+  const [model, retryModel] = useModelState(sky);
   const [result, setResult] = useState(null);
   const [where, setWhere] = useState(null);
   const [share, setShare] = useState({ status: 'idle', error: null });
 
   // Warm the model on mount (PRD 20.10); a missing model is not an error.
-  useEffect(() => {
-    let live = true;
-    sky()
-      .warmUp()
-      .then(() => live && setModel('ready'))
-      .catch((e) => live && setModel(e.code === 'not_installed' ? 'missing' : 'failed'));
-    return () => {
-      live = false;
-    };
-  }, []);
 
   const onCapture = async (c) => {
     setCanvas(c);
@@ -127,6 +117,7 @@ export default function SkySnap() {
           <PrivacyPoints keys={['cv.privacy.stays', 'cv.privacy.noPeople']} />
           <p>{t('cv.sky.goodPhoto')}</p>
           {model === 'missing' ? <ModelMissing nameKey="cv.models.sky" /> : null}
+          {model === 'failed' ? <ModelFailed onRetry={retryModel} /> : null}
           <CameraCapture onCapture={onCapture} hintKey="cv.sky.aim" />
         </section>
       ) : null}

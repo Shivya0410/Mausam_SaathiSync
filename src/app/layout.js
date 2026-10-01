@@ -5,11 +5,20 @@ import "../index.css";
 import "../styles/lilac-theme.css";
 import "../styles/shell.css";
 import "../styles/app.css";
-import "@fortawesome/fontawesome-free/css/all.min.css";
+import "../styles/icons.css";
 
 import { Noto_Sans, Noto_Sans_Devanagari } from "next/font/google";
 import Providers from "./providers";
 import { SITE } from "../config/site";
+import { prefetchScript } from "../lib/prefetchSnapshot";
+import { DEFAULT_PLACE } from "../lib/stores";
+import { SCENARIO_IDS } from "../data/fixtures/scenarioIds";
+
+const PREFETCH = prefetchScript({
+  demoMode: process.env.NEXT_PUBLIC_DEMO_MODE === "true",
+  scenarioIds: [...SCENARIO_IDS],
+  defaultPlace: DEFAULT_PLACE,
+});
 
 // Unicode fonts for Latin and Devanagari so Hindi never falls back to a poor
 // system font (PRD section 15.4). Exposed as CSS variables for tokens.css.
@@ -44,6 +53,10 @@ export const viewport = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${notoSans.variable} ${notoDevanagari.variable}`}>
+      <head>
+        {/* Starts the weather request before the app's JS loads (PRD 13.8). */}
+        <script dangerouslySetInnerHTML={{ __html: PREFETCH }} />
+      </head>
       <body>
         <Providers>{children}</Providers>
       </body>

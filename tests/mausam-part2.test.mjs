@@ -91,6 +91,12 @@ test('pickNotifications: quiet hours and the daily cap hold back all but Red', (
   assert.equal(pickNotifications(ws, { ...NOTIFY, official: false }, ms(at(DATE, 10))).toSend.length, 0);
 });
 
+test('pickNotifications never announces an expired warning (E8)', () => {
+  const now = ms(at(DATE, 10));
+  const expired = warning({ id: 'old', level: 4, validTo: at(DATE, 9) });
+  assert.equal(pickNotifications([expired], NOTIFY, now).toSend.length, 0);
+});
+
 test('effectiveNotify defaults rain and lightning alerts from personas', () => {
   assert.equal(effectiveNotify({}, ['commute']).rainHour, true);
   assert.equal(effectiveNotify({}, ['health']).rainHour, false);
@@ -246,4 +252,39 @@ test('every card in every demo scenario renders with no raw keys or unfilled {{v
     }
   }
   assert.deepEqual([...problems].sort(), []);
+});
+
+test('scenario id list matches the fixture builder', async () => {
+  const ids = await import('../src/data/fixtures/scenarioIds.js');
+  const full = await import('../src/data/fixtures/scenarios.js');
+  assert.deepEqual([...ids.SCENARIO_IDS].sort(), [...full.SCENARIO_IDS].sort());
+});
+
+// ── Early snapshot request (PRD 13.8) ──
+test('the <head> prefetch URL equals the URL the app requests first', async () => {
+  const { snapshotPrefetchUrl, prefetchScript } = await import('../src/lib/prefetchSnapshot.js');
+  const { snapshotUrl } = await import('../src/lib/hooks/useSnapshot.js');
+  const { DEFAULT_PLACE, resolveCurrentPlace } = await import('../src/lib/stores/index.js');
+  const { SCENARIO_IDS } = await import('../src/data/fixtures/scenarioIds.js');
+  const cfg = { demoMode: true, scenarioIds: [...SCENARIO_IDS], defaultPlace: DEFAULT_PLACE };
+  const pune = { id: 'p1', name: 'Pune', district: 'Pune', state: 'Maharashtra', lat: 18.5204, lon: 73.8567, type: 'home' };
+  const goa = { id: 'p2', name: 'Calangute', state: 'Goa', lat: 15.54, lon: 73.76 };
+  const cases = [
+    { store: {}, search: '', expect: { place: DEFAULT_PLACE, include: 'air,warnings,sun' } },
+    { store: { 'mausam.places.v1::guest': [pune, goa], 'mausam.currentPlace.v1::guest': { id: 'p2' } }, search: '', expect: { place: goa, include: 'air,warnings,sun' } },
+    { store: { 'mausam.places.v1::guest': [pune], 'mausam.personas.v1::guest': { primary: 'fisher', secondary: [] } }, search: '', expect: { place: pune, include: 'air,warnings,sun,marine' } },
+    { store: { 'mausam.a11y.v1': { lite: true } }, search: '', expect: { place: DEFAULT_PLACE, include: 'warnings,sun' } },
+    { store: {}, search: '?demo=mumbai-monsoon-red', expect: { place: DEFAULT_PLACE, include: 'air,warnings,sun,marine', demo: 'mumbai-monsoon-red' } },
+    { store: { 'mausam.demo.v1': { scenario: 'goa-swell-alert' } }, search: '?demo=off', expect: { place: DEFAULT_PLACE, include: 'air,warnings,sun' } },
+  ];
+  for (const c of cases) {
+    const get = (k) => (k in c.store ? JSON.stringify(c.store[k]) : null);
+    const got = snapshotPrefetchUrl(get, c.search, undefined, cfg);
+    const want = snapshotUrl(resolveCurrentPlace(c.expect.place === DEFAULT_PLACE ? [] : [c.expect.place], c.expect.place.id), { include: c.expect.include, lang: 'en', demo: c.expect.demo });
+    assert.equal(got, want, JSON.stringify(c.store) + c.search);
+  }
+  assert.equal(snapshotPrefetchUrl((k) => (k === 'token' ? 'abc' : null), '', undefined, cfg), null, 'signed-in users are skipped');
+  assert.equal(snapshotPrefetchUrl(() => null, '', { saveData: true }, cfg).includes('include=warnings%2Csun&'), true, 'data saver means lite');
+  // The serialised script must be valid JavaScript.
+  assert.doesNotThrow(() => new Function(prefetchScript(cfg)));
 });

@@ -7,7 +7,7 @@ import PageHeader from '../layout/PageHeader';
 import Tabs from '../shared/Tabs';
 import CameraCapture from './CameraCapture';
 import LevelBadge from '../shared/LevelBadge';
-import { PhotoThumb, ConfidenceLine, PrivacyPoints, ModelMissing, WhereStep } from './parts';
+import { PhotoThumb, ConfidenceLine, PrivacyPoints, ModelMissing, ModelFailed, WhereStep, useModelState } from './parts';
 import { useWeather } from '../../lib/context/WeatherProvider';
 import { useStore } from '../../lib/hooks/useStore';
 import { stores } from '../../lib/stores';
@@ -52,7 +52,7 @@ function WaterFlow() {
   const { t, i18n } = useTranslation();
   const weather = useWeather();
   const [, setStats] = useStore(stores.cvStats);
-  const [model, setModel] = useState('loading');
+  const [model, retryModel] = useModelState(flood);
   const [step, setStep] = useState('intro');
   const [canvas, setCanvas] = useState(null);
   const [check, setCheck] = useState(null);
@@ -60,16 +60,6 @@ function WaterFlow() {
   const [where, setWhere] = useState(null);
   const [sub, send, resetSub] = useSubmit();
 
-  useEffect(() => {
-    let live = true;
-    flood()
-      .warmUp()
-      .then(() => live && setModel('ready'))
-      .catch((e) => live && setModel(e.code === 'not_installed' ? 'missing' : 'failed'));
-    return () => {
-      live = false;
-    };
-  }, []);
 
   const reset = () => {
     setCanvas(null);
@@ -138,6 +128,7 @@ function WaterFlow() {
           <p>{t('cv.water.introBody')}</p>
           <PrivacyPoints keys={['cv.privacy.checkedHere', 'cv.privacy.onlyResult']} />
           {model === 'missing' ? <ModelMissing nameKey="cv.models.water" /> : null}
+          {model === 'failed' ? <ModelFailed onRetry={retryModel} /> : null}
           <CameraCapture onCapture={onCapture} hintKey="cv.water.aim" />
         </section>
       ) : null}

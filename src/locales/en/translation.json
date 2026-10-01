@@ -38,7 +38,8 @@
     "tomorrowAt": "tomorrow {{time}}",
     "whatsapp": "Share on WhatsApp",
     "estimateTitle": "This is an estimate, not an official reading",
-    "staleTitle": "This data may be out of date"
+    "staleTitle": "This data may be out of date",
+    "storageBlocked": "This browser isn't saving data, so your settings will reset when you close it. The weather still works."
   },
   "nav": {
     "home": "Home",
@@ -895,7 +896,6 @@
     "lastNamePlaceholder": "Last Name",
     "emailPlaceholder": "Email",
     "agePlaceholder": "Age",
-    "medicalComplicationsPlaceholder": "Medical Complications (comma-separated)",
     "genderPlaceholder": "Select Gender",
     "genderOptions": {
       "male": "Male",
@@ -1652,7 +1652,8 @@
     "visitSachet": "NDMA SACHET",
     "whatToDo": "What to do",
     "readFull": "Read the full warning",
-    "showLess": "Show less"
+    "showLess": "Show less",
+    "issuedInEnglish": "Official text, issued in English."
   },
   "charts": {
     "aqiLabel": "Air quality {{aqi}}, {{category}}. Main pollutant {{pollutant}}.",
@@ -2343,7 +2344,8 @@
       "title": "Where?",
       "useGps": "Use my exact location",
       "usePlace": "Use {{place}} instead"
-    }
+    },
+    "modelFailed": "Couldn't load the AI model. Check your connection and try again. You can still choose the answer yourself."
   },
   "mitra": {
     "greeting": "Namaste! Ask me about rain, heat, air, the sea, your farm, travel or warnings.",

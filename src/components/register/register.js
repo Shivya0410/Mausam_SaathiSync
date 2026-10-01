@@ -19,7 +19,6 @@ const Register = () => {
     lastName: "",
     email: "",
     age: "",
-    medicalComplications: "",
     gender: "",
     password: "",
   });
@@ -32,8 +31,11 @@ const Register = () => {
   const next = searchParams.get("next") || "/";
   const { storetokenInLS } = useAuth();
 
+  // Consumes a one-time hand-off from sessionStorage (an external store),
+  // so it must run once after mount rather than during render.
   useEffect(() => {
     const handed = takePendingGoogleProfile();
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (handed) setGooglePending(handed);
   }, []);
 
@@ -44,7 +46,9 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const data = { ...formData, medicalComplications: formData.medicalComplications.split(",") };
+      // Health details are never collected (DPDP data minimisation, PRD 15.5);
+      // the legacy backend still expects the field, so it is sent empty.
+      const data = { ...formData, medicalComplications: [] };
       // registerUser stores the token and routes to /login; on success we
       // take the user through the fitness snapshot (onboarding) instead.
       const response = await registerUser(data, { push: () => {} }, storetokenInLS);
@@ -153,14 +157,6 @@ const Register = () => {
           value={formData.age}
           onChange={handleChange}
           required
-        />
-        <input
-          type="text"
-          name="medicalComplications"
-          className={styles.input}
-          placeholder={t("register.medicalComplicationsPlaceholder")}
-          value={formData.medicalComplications}
-          onChange={handleChange}
         />
         <select
           name="gender"

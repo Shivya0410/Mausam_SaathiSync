@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import PageHeader from '../layout/PageHeader';
 import Avatar, { AVATAR_SEEDS } from '../shared/Avatar';
@@ -14,6 +14,7 @@ import { personalView } from '../../lib/mausam/personal';
 import { cardText, cardSpeech } from '../../lib/mausam/cardText';
 import { speak } from '../../lib/speech';
 import { useA11y } from '../../lib/context/A11yProvider';
+import { ensureLanguage } from '../../i18n';
 
 const TILES = PERSONAS.filter((p) => p.tile);
 const EMPTY = { name: '', avatar: AVATAR_SEEDS[0], personas: [], sensitivities: [], lang: 'en' };
@@ -85,6 +86,13 @@ export default function HouseholdPage() {
   const [editing, setEditing] = useState(null);
   const [adding, setAdding] = useState(false);
   const members = household.members;
+
+  // Preload Hindi strings when a member uses Hindi, so read-aloud can speak
+  // immediately inside the tap (some phones block speech after a delay).
+  const needsHindi = members.some((x) => x.lang === 'hi');
+  useEffect(() => {
+    if (needsHindi) ensureLanguage('hi');
+  }, [needsHindi]);
 
   const readAloud = (m) => {
     if (!personal.inputs) return;

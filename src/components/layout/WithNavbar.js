@@ -8,6 +8,7 @@ import SkipLink from './SkipLink';
 import AlertRibbon from './AlertRibbon';
 import MitraPanel from '../mitra/MitraPanel';
 import PwaManager from './PwaManager';
+import StorageNotice from './StorageNotice';
 
 /**
  * The page template every page uses (PRD section 4.4), in this DOM order:
@@ -32,6 +33,7 @@ export default function WithNavbar({ children }) {
       <BottomTabBar />
       <MitraPanel />
       <PwaManager />
+      <StorageNotice />
     </>
   );
 }

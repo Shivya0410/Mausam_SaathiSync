@@ -7,7 +7,7 @@ import { useStore, useHydrated } from '../hooks/useStore';
 import useSnapshot from '../hooks/useSnapshot';
 import { useReports } from '../hooks/useReports';
 import { useA11y } from './A11yProvider';
-import { isScenario } from '../../data/fixtures/scenarios';
+import { isScenario } from '../../data/fixtures/scenarioIds';
 import { pickNotifications } from '../mausam/notify';
 import { levelName } from '../mausam/hazards';
 

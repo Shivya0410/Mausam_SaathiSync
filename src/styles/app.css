@@ -1663,3 +1663,26 @@
 .ms-sitemap a { display: inline-block; min-height: 32px; padding-top: 4px; }
 .ms-model-card { border: 1px solid var(--ms-border); border-radius: 12px; padding: 10px 12px; margin-top: 10px; }
 .ms-model-card h3 { margin-top: 0; }
+
+/* ── 3F: alert ribbon docked at the bottom (no layout shift) ── */
+:root { --ms-ribbon-h: 0px; }
+.ms-ribbon {
+  position: fixed;
+  top: auto;
+  left: 0;
+  right: 0;
+  bottom: calc(var(--ms-tabbar-h) + env(safe-area-inset-bottom));
+  z-index: 955;
+  box-shadow: 0 -4px 14px rgba(0, 0, 0, 0.2);
+  padding: 6px 12px;
+}
+@media (min-width: 768px) { .ms-ribbon { bottom: 0; } }
+.ms-ribbon.is-collapsed .ms-ribbon-text { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ms-has-ribbon .ms-footer { padding-bottom: calc(20px + var(--ms-tabbar-h) + var(--ms-ribbon-h)); }
+@media (min-width: 768px) { .ms-has-ribbon .ms-footer { padding-bottom: calc(20px + var(--ms-ribbon-h)); } }
+/* Floating elements make room for the ribbon with a transform, which never
+   counts as a layout shift. */
+.ms-mitra-fab, .ms-toasts { transform: translateY(calc(-1 * var(--ms-ribbon-h))); }
+/* Main content fills the viewport, so the footer starts below the fold and
+   content arriving after load never moves anything in view. */
+.ms-main { min-height: calc(100vh - var(--ms-topbar-h)); }

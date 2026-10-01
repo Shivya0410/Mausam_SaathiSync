@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 import { useGeolocation } from '../../lib/hooks/useGeolocation';
@@ -105,5 +105,41 @@ export function WhereStep({ place, value, onChange }) {
       {geo.status === 'error' ? <p className="ms-error" role="alert">{t(geo.error === 'denied' ? 'errors.locationDenied' : 'places.locationUnavailable')}</p> : null}
       <p className="ms-muted">{t('cv.where.note')}</p>
     </fieldset>
+  );
+}
+
+/**
+ * Model warm-up state: 'loading' | 'ready' | 'missing' | 'failed', with a
+ * retry for a failed download (PRD edge case E16). Other features keep
+ * working while a model is unavailable.
+ */
+export function useModelState(getClassifier) {
+  const [state, setState] = useState('loading');
+  const load = useCallback(() => {
+    let live = true;
+    getClassifier()
+      .warmUp()
+      .then(() => live && setState('ready'))
+      .catch((e) => live && setState(e.code === 'not_installed' ? 'missing' : 'failed'));
+    return () => {
+      live = false;
+    };
+  }, [getClassifier]);
+  useEffect(() => load(), [load]);
+  const retry = () => {
+    setState('loading');
+    load();
+  };
+  return [state, retry];
+}
+
+/** "Couldn't load the AI model" with a retry (E16). */
+export function ModelFailed({ onRetry }) {
+  const { t } = useTranslation();
+  return (
+    <div className="ms-card ms-unknown" role="alert">
+      <p>{t('cv.modelFailed')}</p>
+      <button type="button" className="ms-btn ms-btn--secondary" onClick={onRetry}>{t('common.retry')}</button>
+    </div>
   );
 }

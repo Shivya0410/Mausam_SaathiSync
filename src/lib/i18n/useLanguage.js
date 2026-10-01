@@ -3,6 +3,7 @@
 import { useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { LANGUAGES, LANGUAGE_STORAGE_KEY } from '../../config/site';
+import { ensureLanguage } from '../../i18n';
 
 function applyToDocument(code) {
   const lang = LANGUAGES.find((l) => l.code === code) || LANGUAGES[0];
@@ -19,8 +20,10 @@ export function useLanguage() {
   const setLanguage = useCallback(
     (code) => {
       if (!LANGUAGES.some((l) => l.code === code)) return;
-      i18n.changeLanguage(code);
-      applyToDocument(code);
+      ensureLanguage(code).then(() => {
+        i18n.changeLanguage(code);
+        applyToDocument(code);
+      });
       try {
         localStorage.setItem(LANGUAGE_STORAGE_KEY, code);
       } catch {
@@ -47,9 +50,13 @@ export function LanguageSync() {
       saved = null;
     }
     if (saved && saved !== i18n.language && LANGUAGES.some((l) => l.code === saved)) {
-      i18n.changeLanguage(saved);
+      ensureLanguage(saved).then(() => {
+        i18n.changeLanguage(saved);
+        applyToDocument(saved);
+      });
+    } else {
+      applyToDocument(i18n.language);
     }
-    applyToDocument(saved || i18n.language);
   }, [i18n]);
   return null;
 }

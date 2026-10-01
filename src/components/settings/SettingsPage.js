@@ -21,7 +21,7 @@ import { listMausamKeys, readKey, clearKeys } from '../../lib/stores/deviceStore
 import { PERSONAS, MAX_PERSONAS } from '../../config/personas';
 import { LANGUAGES, SITE } from '../../config/site';
 import { WIDGETS } from '../../config/widgets';
-import { SCENARIO_IDS } from '../../data/fixtures/scenarios';
+import { SCENARIO_IDS } from '../../data/fixtures/scenarioIds';
 import { effectiveNotify } from '../../lib/mausam/notify';
 
 const TILES = PERSONAS.filter((p) => p.tile || p.id === 'fisher');

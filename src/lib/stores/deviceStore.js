@@ -65,6 +65,13 @@ export function readKey(fullKey, fallback) {
 }
 
 /** Write a key and notify subscribers. Returns false when storage is blocked. */
+// Set once when a write fails (private mode, full or blocked storage).
+let blocked = false;
+export const STORAGE_BLOCKED_EVENT = 'mausam:storage-blocked';
+export function storageBlocked() {
+  return blocked;
+}
+
 export function writeKey(fullKey, value) {
   const ls = storage();
   let ok = false;
@@ -76,6 +83,10 @@ export function writeKey(fullKey, value) {
     } catch {
       ok = false; // storage full or blocked (edge case E19)
     }
+  }
+  if (!ok && !blocked && typeof window !== 'undefined') {
+    blocked = true;
+    window.dispatchEvent(new Event(STORAGE_BLOCKED_EVENT));
   }
   if (typeof window !== 'undefined' && typeof window.dispatchEvent === 'function') {
     window.dispatchEvent(new Event(STORE_EVENT));

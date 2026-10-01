@@ -74,6 +74,12 @@ function subscribe(cb) {
 
 /** Fetch once per URL at a time, shared by every caller. */
 export function fetchSnapshot(url) {
+  // Reuse the request the inline <head> script started (one shot).
+  const pre = typeof window !== 'undefined' ? window.__msPrefetch : null;
+  if (pre && pre.url === url && !inflight.has(url)) {
+    window.__msPrefetch = null;
+    inflight.set(url, pre.promise.finally(() => inflight.delete(url)));
+  }
   if (!inflight.has(url)) {
     inflight.set(
       url,
