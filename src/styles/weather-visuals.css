@@ -1587,112 +1587,161 @@ body {
   color: #ffffff;
 }
 
-/* ── Daily Forecast Rows ── */
+/* ── Daily Forecast Rows & Visual Temperature Range Bar ── */
+.ms-daylist {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+}
+
+.ms-daylist li.ms-day-row,
 .ms-day-row {
-  display: grid;
-  grid-template-columns: 100px 1.5fr 75px 1.2fr 40px;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 16px;
-  border-radius: 14px;
-  background: #ffffff;
-  border: 1px solid var(--ms-border, #e4d8f0);
-  box-shadow: 0 2px 6px rgba(35, 18, 65, 0.02);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: grid !important;
+  grid-template-columns: 88px 1.2fr 75px 1.4fr 28px !important;
+  align-items: center !important;
+  gap: 12px !important;
+  padding: 12px 16px !important;
+  border-radius: 14px !important;
+  background: linear-gradient(180deg, #ffffff 0%, #faf8fc 100%) !important;
+  border: 1px solid var(--ms-border, #e4d8f0) !important;
+  box-shadow: 0 2px 6px rgba(35, 18, 65, 0.02) !important;
+  border-bottom: 1px solid var(--ms-border, #e4d8f0) !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease !important;
+  box-sizing: border-box !important;
 }
 
 .ms-day-row:hover {
-  transform: translateX(4px);
-  box-shadow: 0 4px 12px rgba(35, 18, 65, 0.06);
+  transform: translateX(4px) !important;
+  box-shadow: 0 4px 14px rgba(35, 18, 65, 0.07) !important;
+  border-color: var(--ms-brand, #432874) !important;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 650px) {
+  .ms-daylist li.ms-day-row,
   .ms-day-row {
-    grid-template-columns: 80px 1.2fr 65px 1fr 30px;
-    gap: 8px;
-    padding: 10px 12px;
+    grid-template-columns: 75px 1fr 65px 1fr 24px !important;
+    gap: 8px !important;
+    padding: 10px 12px !important;
   }
 }
 
 .ms-day-lead {
-  display: flex;
-  flex-direction: column;
+  display: flex !important;
+  flex-direction: column !important;
 }
 
 .ms-day-name {
-  font-size: var(--ms-text-sm, 0.875rem);
-  font-weight: 800;
-  color: var(--ms-brand-ink, #1f1238);
+  font-size: var(--ms-text-sm, 0.875rem) !important;
+  font-weight: 800 !important;
+  color: var(--ms-brand-ink, #1f1238) !important;
+  line-height: 1.2 !important;
 }
 
 .ms-day-date-sub {
-  font-size: 0.7rem;
-  color: var(--ms-muted, #5e5077);
-  font-weight: 600;
+  font-size: 0.72rem !important;
+  color: var(--ms-muted, #5e5077) !important;
+  font-weight: 600 !important;
 }
 
 .ms-day-condition {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  min-width: 0 !important;
 }
 
 .ms-day-cond-text {
-  font-size: var(--ms-text-sm, 0.875rem);
-  font-weight: 600;
-  color: var(--ms-ink, #1c142d);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  font-size: var(--ms-text-sm, 0.875rem) !important;
+  font-weight: 700 !important;
+  color: var(--ms-ink, #1c142d) !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
 }
 
 .ms-rain-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  padding: 3px 8px;
-  border-radius: 999px;
-  background: #e3f2fd;
-  color: #1565c0;
-  font-size: 0.75rem;
-  font-weight: 700;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  padding: 3px 10px !important;
+  border-radius: 999px !important;
+  background: #e3f2fd !important;
+  color: #1565c0 !important;
+  font-size: 0.75rem !important;
+  font-weight: 800 !important;
+  border: 1px solid #bbdefb !important;
 }
 
 .ms-day-temps-bar-wrap {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  width: 100% !important;
+  min-width: 0 !important;
 }
 
 .ms-day-temp-min {
-  font-size: var(--ms-text-sm, 0.875rem);
-  font-weight: 700;
-  color: #0277bd;
-  min-width: 26px;
-  text-align: right;
+  font-size: var(--ms-text-sm, 0.875rem) !important;
+  font-weight: 800 !important;
+  color: #0277bd !important;
+  min-width: 26px !important;
+  text-align: right !important;
 }
 
 .ms-day-temp-max {
-  font-size: var(--ms-text-sm, 0.875rem);
-  font-weight: 800;
-  color: #d84315;
-  min-width: 26px;
+  font-size: var(--ms-text-sm, 0.875rem) !important;
+  font-weight: 900 !important;
+  color: #d84315 !important;
+  min-width: 26px !important;
 }
 
 .ms-day-temp-bar-bg {
-  position: relative;
-  flex: 1;
-  height: 6px;
-  background: #ede7f6;
-  border-radius: 999px;
-  overflow: hidden;
+  position: relative !important;
+  flex: 1 !important;
+  height: 7px !important;
+  background: #ede7f6 !important;
+  border-radius: 999px !important;
+  overflow: hidden !important;
+  min-width: 36px !important;
 }
 
 .ms-day-temp-bar-fill {
-  position: absolute;
-  height: 100%;
-  background: linear-gradient(90deg, #29b6f6, #ff7043);
-  border-radius: 999px;
+  position: absolute !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  background: linear-gradient(90deg, #0288d1 0%, #f57c00 50%, #d84315 100%) !important;
+  border-radius: 999px !important;
+}
+
+/* ── Friendly Notice / Empty State Styling ── */
+.ms-empty {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  background: var(--ms-brand-soft, #f2ebfc) !important;
+  border: 1px solid var(--ms-border, #e4d8f0) !important;
+  padding: 10px 14px !important;
+  border-radius: 12px !important;
+  color: var(--ms-brand-ink, #1f1238) !important;
+  font-size: var(--ms-text-sm, 0.875rem) !important;
+  font-weight: 600 !important;
+  margin: 8px 0 !important;
+}
+
+.ms-empty i {
+  color: var(--ms-brand, #432874) !important;
+  font-size: 1.1rem !important;
+  flex-shrink: 0 !important;
+}
+
+.ms-empty a {
+  color: var(--ms-brand, #432874) !important;
+  font-weight: 800 !important;
+  text-decoration: underline !important;
+  margin-left: 6px !important;
 }
 
 /* ── Floating Mausam Mitra Button ── */
