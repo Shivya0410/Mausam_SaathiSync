@@ -128,8 +128,9 @@ export default function NowCard({ snapshot, status, now, today, summary, onRetry
       <div className="ms-now-top">
         <div className="ms-now-loc-badge">
           <i className="fa-solid fa-location-dot" aria-hidden="true"></i>
-          <span className="ms-loc-name">{placeName}</span>
-          {snapshot.place?.state ? <span className="ms-loc-state">, {snapshot.place.state}</span> : null}
+          <span className="ms-loc-name">
+            {placeName}{snapshot.place?.state ? `, ${snapshot.place.state}` : ''}
+          </span>
         </div>
 
         <div className="ms-now-top-actions">
@@ -221,10 +222,10 @@ export default function NowCard({ snapshot, status, now, today, summary, onRetry
                 <i className="fa-solid fa-wind" aria-hidden="true"></i>
               </div>
               <div className="ms-metric-info">
-                <span className="ms-metric-label">AQI ({t(`aqi.category.${air.category}`)})</span>
+                <span className="ms-metric-label">{isHi ? 'वायु गुणवत्ता (AQI)' : 'Air Quality'}</span>
                 <strong className="ms-metric-val">
                   <span className={`ms-aqi-indicator ms-dot--${air.category}`} aria-hidden="true"></span>
-                  {air.aqi}
+                  {air.aqi} <span className="ms-metric-unit">· {t(`aqi.category.${air.category}`)}</span>
                 </strong>
               </div>
             </div>
@@ -237,9 +238,9 @@ export default function NowCard({ snapshot, status, now, today, summary, onRetry
                 <i className="fa-solid fa-sun" aria-hidden="true"></i>
               </div>
               <div className="ms-metric-info">
-                <span className="ms-metric-label">{t('widgets.uv.title')}</span>
+                <span className="ms-metric-label">{isHi ? 'यूवी इंडेक्स' : 'UV Index'}</span>
                 <strong className="ms-metric-val">
-                  {currentUv} <span className="ms-metric-unit">({uvCat ? t(`uv.category.${uvCat}`) : ''})</span>
+                  {currentUv} {uvCat ? <span className="ms-metric-unit">· {t(`uv.category.${uvCat}`)}</span> : ''}
                 </strong>
               </div>
             </div>
@@ -249,10 +250,10 @@ export default function NowCard({ snapshot, status, now, today, summary, onRetry
           {sun.sunrise || day?.sunrise ? (
             <div className="ms-metric-pill">
               <div className="ms-metric-icon ms-metric-icon--sun">
-                <i className="fa-solid fa-sun-plant-wilt" aria-hidden="true"></i>
+                <i className="fa-solid fa-sun" aria-hidden="true"></i>
               </div>
               <div className="ms-metric-info">
-                <span className="ms-metric-label">{isHi ? 'सूर्योदय / सूर्यास्त' : 'Sun Times'}</span>
+                <span className="ms-metric-label">{isHi ? 'सूर्योदय / सूर्यास्त' : 'Sun Cycle'}</span>
                 <strong className="ms-metric-val ms-sun-times">
                   <span>🌅 {fmtTime(sun.sunrise || day.sunrise, lang)}</span>
                   <span>🌇 {fmtTime(sun.sunset || day.sunset, lang)}</span>
@@ -269,7 +270,7 @@ export default function NowCard({ snapshot, status, now, today, summary, onRetry
               </div>
               <div className="ms-metric-info">
                 <span className="ms-metric-label">{isHi ? 'बारिश की संभावना' : 'Rain Chance'}</span>
-                <strong className="ms-metric-val">{day.precipProbMax}% {day.precipMm ? `(${day.precipMm} mm)` : ''}</strong>
+                <strong className="ms-metric-val">{day.precipProbMax}% {day.precipMm ? <span className="ms-metric-unit">({day.precipMm} mm)</span> : ''}</strong>
               </div>
             </div>
           ) : null}
