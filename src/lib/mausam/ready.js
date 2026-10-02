@@ -176,6 +176,16 @@ export function markRead(state, slug, nowIso) {
   return { ...state, read: { ...state.read, [slug]: nowIso } };
 }
 
+export function toggleBookmark(state, slug) {
+  const bookmarks = { ...(state.bookmarks || {}) };
+  if (bookmarks[slug]) {
+    delete bookmarks[slug];
+  } else {
+    bookmarks[slug] = new Date().toISOString();
+  }
+  return { ...state, bookmarks };
+}
+
 export function recordQuiz(state, id, result) {
   return { ...state, quizzes: { ...state.quizzes, [id]: result } };
 }

@@ -1823,3 +1823,537 @@ body {
   max-width: 90%;
 }
 
+/* ══════════════════════════════════════════════════════════════
+   LEARN PAGE (PRD 9.3) — Modern, Colorful, Animated & Bookmarks
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── Progress & Milestone Card ── */
+.ms-learn-progress-card {
+  background: linear-gradient(145deg, #ffffff 0%, #fbf9fd 100%) !important;
+  border-radius: var(--ms-radius-card, 20px) !important;
+  border: 1px solid var(--ms-border, #e4d8f0) !important;
+  padding: 20px 24px !important;
+  margin-bottom: 18px !important;
+  box-shadow: 0 4px 18px rgba(35, 18, 65, 0.05) !important;
+}
+
+.ms-learn-progress-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.ms-learn-progress-title-box {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.ms-learn-trophy {
+  font-size: 2rem;
+  animation: msTrophyBounce 2.5s ease-in-out infinite;
+  display: inline-block;
+}
+
+@keyframes msTrophyBounce {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-5px) rotate(6deg); }
+}
+
+.ms-learn-progress-title {
+  font-size: 1.25rem !important;
+  font-weight: 900 !important;
+  color: var(--ms-brand-ink, #1f1238) !important;
+  margin: 0 0 4px !important;
+}
+
+.ms-learn-progress-sub {
+  margin: 0 !important;
+  font-size: var(--ms-text-sm, 0.875rem) !important;
+  color: var(--ms-muted, #5e5077) !important;
+  font-weight: 600 !important;
+}
+
+.ms-learn-stat-badges {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ms-learn-stat-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--ms-brand-soft, #f2ebfc);
+  color: var(--ms-brand, #432874);
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  border: 1px solid var(--ms-border, #e4d8f0);
+}
+
+.ms-learn-stat-pill--green {
+  background: #e8f5e9;
+  color: #1b5e20;
+  border-color: #c8e6c9;
+}
+
+.ms-learn-bar-track {
+  width: 100%;
+  height: 10px;
+  background: #ede7f6;
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+}
+
+.ms-learn-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #7c4dff 0%, #00b0ff 50%, #00e676 100%);
+  border-radius: 999px;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.ms-learn-bar-sparkle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.6) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: msShimmerSparkle 2s infinite linear;
+}
+
+@keyframes msShimmerSparkle {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* ── Filter Tabs ── */
+.ms-learn-tabs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 4px 2px;
+  margin-bottom: 20px;
+  scrollbar-width: none;
+}
+
+.ms-learn-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 40px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  border: 1.5px solid var(--ms-border, #e4d8f0);
+  background: #ffffff;
+  color: var(--ms-brand-ink, #1f1238);
+  font-size: var(--ms-text-sm, 0.875rem);
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ms-learn-tab-btn:hover {
+  background: var(--ms-brand-soft, #f2ebfc);
+  border-color: var(--ms-brand, #432874);
+  transform: translateY(-1px);
+}
+
+.ms-learn-tab-btn.is-active {
+  background: linear-gradient(135deg, #432874 0%, #5e35b1 100%);
+  color: #ffffff;
+  border-color: #432874;
+  box-shadow: 0 4px 12px rgba(67, 40, 116, 0.25);
+}
+
+/* ── Guides Grid ── */
+.ms-learn-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+}
+
+.ms-learn-grid-item {
+  display: flex;
+  width: 100%;
+}
+
+.ms-learn-card {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  padding: 18px 20px !important;
+  border-radius: var(--ms-radius-card, 20px) !important;
+  border: 1.5px solid var(--ms-border, #e4d8f0) !important;
+  background: #ffffff !important;
+  text-decoration: none !important;
+  color: var(--ms-ink, #1c142d) !important;
+  box-shadow: 0 4px 14px rgba(35, 18, 65, 0.04) !important;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s ease, border-color 0.25s ease !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.ms-learn-card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 12px 30px rgba(35, 18, 65, 0.1) !important;
+}
+
+/* Card Themes & Vibrant Hover Accents */
+.ms-learn-card--purple:hover { border-color: #7c4dff !important; }
+.ms-learn-card--orange:hover { border-color: #ff7043 !important; }
+.ms-learn-card--amber:hover { border-color: #ffb300 !important; }
+.ms-learn-card--teal:hover { border-color: #26a69a !important; }
+.ms-learn-card--gold:hover { border-color: #ffd54f !important; }
+.ms-learn-card--slate:hover { border-color: #78909c !important; }
+.ms-learn-card--blue:hover { border-color: #29b6f6 !important; }
+.ms-learn-card--red:hover { border-color: #ef5350 !important; }
+.ms-learn-card--indigo:hover { border-color: #5c6bc0 !important; }
+.ms-learn-card--cyan:hover { border-color: #00bcd4 !important; }
+.ms-learn-card--emerald:hover { border-color: #66bb6a !important; }
+.ms-learn-card--violet:hover { border-color: #ab47bc !important; }
+
+/* ── Card Top Header ── */
+.ms-learn-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.ms-learn-tag {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--ms-brand-soft, #f2ebfc);
+  color: var(--ms-brand, #432874);
+  border: 1px solid var(--ms-border, #e4d8f0);
+}
+
+.ms-learn-tag--purple { background: #ede7f6; color: #512da8; border-color: #d1c4e9; }
+.ms-learn-tag--orange { background: #fbe9e7; color: #d84315; border-color: #ffccbc; }
+.ms-learn-tag--amber { background: #fff8e1; color: #f57f17; border-color: #ffe082; }
+.ms-learn-tag--teal { background: #e0f2f1; color: #00695c; border-color: #b2dfdb; }
+.ms-learn-tag--gold { background: #fffde7; color: #f9a825; border-color: #fff59d; }
+.ms-learn-tag--slate { background: #eceff1; color: #37474f; border-color: #cfd8dc; }
+.ms-learn-tag--blue { background: #e1f5fe; color: #0277bd; border-color: #b3e5fc; }
+.ms-learn-tag--red { background: #ffebee; color: #c62828; border-color: #ffcdd2; }
+.ms-learn-tag--indigo { background: #e8eaf6; color: #283593; border-color: #c5cae9; }
+.ms-learn-tag--cyan { background: #e0f7fa; color: #00838f; border-color: #b2ebf2; }
+.ms-learn-tag--emerald { background: #e8f5e9; color: #1b5e20; border-color: #c8e6c9; }
+.ms-learn-tag--violet { background: #f3e5f5; color: #6a1b9a; border-color: #e1bee7; }
+
+.ms-learn-top-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ms-learn-readtime {
+  font-size: 0.75rem;
+  color: var(--ms-muted, #5e5077);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ── Bookmark Button ── */
+.ms-bookmark-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--ms-border, #e4d8f0);
+  background: #ffffff;
+  color: var(--ms-muted, #5e5077);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0;
+}
+
+.ms-bookmark-btn:hover {
+  background: var(--ms-brand-soft, #f2ebfc);
+  color: var(--ms-brand, #432874);
+  transform: scale(1.1);
+}
+
+.ms-bookmark-btn.is-bookmarked {
+  background: #fff8e1;
+  border-color: #ffd54f;
+  color: #f57f17;
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px rgba(245, 127, 23, 0.2);
+}
+
+/* ── Card Body & Animated Icon ── */
+.ms-learn-card-body {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.ms-learn-icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  flex-shrink: 0;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ms-learn-card:hover .ms-learn-icon-box {
+  transform: scale(1.08) rotate(-4deg);
+}
+
+.ms-learn-icon-box--purple { background: linear-gradient(135deg, #7c4dff, #512da8); color: #fff; }
+.ms-learn-icon-box--orange { background: linear-gradient(135deg, #ff7043, #d84315); color: #fff; }
+.ms-learn-icon-box--amber { background: linear-gradient(135deg, #ffd54f, #f57f17); color: #fff; }
+.ms-learn-icon-box--teal { background: linear-gradient(135deg, #26a69a, #00695c); color: #fff; }
+.ms-learn-icon-box--gold { background: linear-gradient(135deg, #ffca28, #f9a825); color: #fff; }
+.ms-learn-icon-box--slate { background: linear-gradient(135deg, #90a4ae, #37474f); color: #fff; }
+.ms-learn-icon-box--blue { background: linear-gradient(135deg, #29b6f6, #0277bd); color: #fff; }
+.ms-learn-icon-box--red { background: linear-gradient(135deg, #ef5350, #c62828); color: #fff; }
+.ms-learn-icon-box--indigo { background: linear-gradient(135deg, #7986cb, #283593); color: #fff; }
+.ms-learn-icon-box--cyan { background: linear-gradient(135deg, #26c6da, #00838f); color: #fff; }
+.ms-learn-icon-box--emerald { background: linear-gradient(135deg, #66bb6a, #1b5e20); color: #fff; }
+.ms-learn-icon-box--violet { background: linear-gradient(135deg, #ab47bc, #6a1b9a); color: #fff; }
+
+.ms-learn-card-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.ms-learn-card-title {
+  display: block;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--ms-brand-ink, #1f1238);
+  line-height: 1.35;
+  margin-bottom: 6px;
+}
+
+.ms-learn-card-summary {
+  margin: 0;
+  font-size: var(--ms-text-sm, 0.875rem);
+  color: var(--ms-muted, #5e5077);
+  line-height: 1.45;
+}
+
+/* ── Card Footer ── */
+.ms-learn-card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 12px;
+  border-top: 1px solid var(--ms-border, #e4d8f0);
+}
+
+.ms-learn-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+.ms-learn-status-badge--read {
+  background: #e8f5e9;
+  color: #1b5e20;
+  border: 1px solid #a5d6a7;
+}
+
+.ms-learn-status-badge--unread {
+  background: #faf8fc;
+  color: var(--ms-muted, #5e5077);
+  border: 1px solid var(--ms-border, #e4d8f0);
+}
+
+.ms-learn-cta {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--ms-brand, #432874);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ms-learn-cta-arrow {
+  transition: transform 0.2s ease;
+}
+
+.ms-learn-card:hover .ms-learn-cta-arrow {
+  transform: translateX(4px);
+}
+
+/* Empty Bookmark State */
+.ms-learn-empty-card {
+  text-align: center;
+  padding: 36px 20px !important;
+  background: #ffffff !important;
+  border-radius: var(--ms-radius-card, 20px) !important;
+  border: 2px dashed var(--ms-border, #e4d8f0) !important;
+}
+
+.ms-learn-empty-icon {
+  font-size: 2.5rem;
+  color: var(--ms-muted, #5e5077);
+  margin-bottom: 12px;
+}
+
+/* Quiz Section Enhancement */
+.ms-quiz-section {
+  background: linear-gradient(145deg, #ffffff 0%, #fbf9fe 100%) !important;
+  border-radius: var(--ms-radius-card, 20px) !important;
+  border: 1px solid var(--ms-border, #e4d8f0) !important;
+  padding: 22px 24px !important;
+  box-shadow: 0 4px 18px rgba(35, 18, 65, 0.05) !important;
+}
+
+.ms-quiz-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.ms-quiz-badge-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #f57c00 0%, #ffb300 100%);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(245, 124, 0, 0.25);
+}
+
+.ms-quiz-title {
+  margin: 0 0 4px !important;
+  font-size: 1.25rem !important;
+  font-weight: 900 !important;
+  color: var(--ms-brand-ink, #1f1238) !important;
+}
+
+.ms-quiz-sub {
+  margin: 0 !important;
+  font-size: var(--ms-text-sm, 0.875rem) !important;
+  color: var(--ms-muted, #5e5077) !important;
+}
+
+/* ── Article Reading Page Enhancements ── */
+.ms-article-action-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.ms-article-meta-tags {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.ms-article-bookmark-btn {
+  background: #ffffff !important;
+  border: 1.5px solid var(--ms-border, #e4d8f0) !important;
+  color: var(--ms-brand, #432874) !important;
+  box-shadow: 0 2px 8px rgba(35, 18, 65, 0.04) !important;
+  font-size: var(--ms-text-sm, 0.875rem) !important;
+  padding: 8px 16px !important;
+  min-height: 40px !important;
+}
+
+.ms-article-bookmark-btn.is-active {
+  background: #fff8e1 !important;
+  border-color: #ffd54f !important;
+  color: #f57f17 !important;
+}
+
+.ms-article-enhanced {
+  padding: 24px 28px !important;
+  border-radius: var(--ms-radius-card, 20px) !important;
+  border: 1px solid var(--ms-border, #e4d8f0) !important;
+  box-shadow: var(--ms-shadow-card) !important;
+}
+
+.ms-article-listen-wrap {
+  margin-bottom: 18px;
+}
+
+.ms-article-content {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.ms-article-para {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--ms-ink, #1c142d);
+  margin: 0;
+}
+
+.ms-article-sources-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--ms-brand-soft, #f2ebfc);
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-size: 0.825rem;
+  margin: 16px 0 8px;
+}
+
+.ms-article-sources-title {
+  font-weight: 800;
+  color: var(--ms-brand-ink, #1f1238);
+}
+
+.ms-article-review-note {
+  font-size: 0.75rem !important;
+  margin: 6px 0 0 !important;
+}
+
+.ms-chip--primary {
+  background: var(--ms-brand, #432874) !important;
+  color: #ffffff !important;
+  border-color: #432874 !important;
+}
+
