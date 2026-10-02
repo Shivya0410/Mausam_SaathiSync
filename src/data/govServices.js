@@ -5,9 +5,7 @@
  */
 export const GOV_SERVICES = [
   { id: 'imd', owner: 'MoES / IMD', url: 'https://mausam.imd.gov.in', personas: ['all'], icon: 'fa-solid fa-tower-broadcast', theme: 'purple', category: 'portal', type: 'Website' },
-  { id: 'mausamApp', owner: 'IMD', url: 'https://play.google.com/store/apps/details?id=com.imd.masuam', personas: ['all'], verify: true, icon: 'fa-solid fa-mobile-screen-button', theme: 'blue', category: 'app', type: 'Mobile App' },
   { id: 'meghdoot', owner: 'IMD, ICAR', url: 'https://play.google.com/store/apps/details?id=com.aas.meghdoot', personas: ['farm'], verify: true, icon: 'fa-solid fa-cloud-sun-rain', theme: 'emerald', category: 'farm', type: 'Agromet App' },
-  { id: 'damini', owner: 'IITM', url: 'https://play.google.com/store/apps/details?id=com.lightening.live.damini', personas: ['work', 'farm', 'fitness'], verify: true, icon: 'fa-solid fa-bolt', theme: 'amber', category: 'safety', type: 'Safety App' },
   { id: 'sachet', owner: 'NDMA', url: 'https://sachet.ndma.gov.in', personas: ['all'], icon: 'fa-solid fa-triangle-exclamation', theme: 'red', category: 'safety', type: 'Disaster Portal' },
   { id: 'umang', owner: 'MeitY', url: 'https://web.umang.gov.in', personas: ['all'], icon: 'fa-solid fa-layer-group', theme: 'orange', category: 'app', type: 'Super App' },
   { id: 'cpcb', owner: 'CPCB', url: 'https://airquality.cpcb.gov.in', personas: ['health', 'family'], icon: 'fa-solid fa-lungs', theme: 'teal', category: 'health', type: 'AQI Portal' },
