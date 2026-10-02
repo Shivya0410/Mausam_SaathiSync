@@ -7,7 +7,6 @@ import WithNavbar from "../components/layout/WithNavbar";
 import NowCard from "../components/home/NowCard";
 import GreetingLine from "../components/home/GreetingLine";
 import DecisionCardList from "../components/home/DecisionCardList";
-import MyPagesChips from "../components/home/MyPagesChips";
 import WidgetGrid from "../components/home/WidgetGrid";
 import GovServicesStrip from "../components/home/GovServicesStrip";
 import DataFootnote from "../components/home/DataFootnote";
@@ -145,7 +144,6 @@ export default function Home() {
         </div>
         {active && !simple ? <PersonalizationBar /> : null}
         {active && !simple ? <Nudges now={now} /> : null}
-        {active && !simple ? <MyPagesChips personaIds={personaIds} /> : null}
         {active && simple ? (
           <div className="ms-grid">
             <div className="ms-grid-item ms-span--full">

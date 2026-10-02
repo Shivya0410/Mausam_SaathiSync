@@ -12,7 +12,6 @@ export const NAV_ITEMS = [
   { id: 'alerts', href: '/alerts', icon: 'fa-solid fa-triangle-exclamation', labelKey: 'nav.alerts', badge: 'warnings' },
   { id: 'forecast', href: '/forecast', icon: 'fa-solid fa-cloud-sun-rain', labelKey: 'nav.forecast' },
   { id: 'map', href: '/map', icon: 'fa-solid fa-map-location-dot', labelKey: 'nav.map' },
-  { id: 'myDay', href: null, icon: 'fa-solid fa-user-gear', labelKey: 'nav.myDay', panel: 'myPages' },
   { id: 'skySnap', href: '/sky-snap', icon: 'fa-solid fa-camera', labelKey: 'nav.skySnap' },
   { id: 'report', href: '/report', icon: 'fa-solid fa-water', labelKey: 'nav.report' },
   { id: 'ready', href: '/ready', icon: 'fa-solid fa-shield-heart', labelKey: 'nav.ready' },

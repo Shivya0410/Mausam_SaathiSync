@@ -12,12 +12,11 @@ const hi = JSON.parse(readFileSync(new URL('../src/locales/hi/translation.json',
 const navbarSource = readFileSync(new URL('../src/components/Navbar/navbar.js', import.meta.url), 'utf8');
 const get = (obj, key) => key.split('.').reduce((o, k) => o?.[k], obj);
 
-test('sidebar has the ten PRD items in order with Font Awesome solid icons', () => {
+test('sidebar has the navigation items in order with Font Awesome solid icons', () => {
   assert.deepEqual(NAV_ITEMS.map((i) => i.id), [
-    'home', 'alerts', 'forecast', 'map', 'myDay', 'skySnap', 'report', 'ready', 'learn', 'settings',
+    'home', 'alerts', 'forecast', 'map', 'skySnap', 'report', 'ready', 'learn', 'settings',
   ]);
   for (const item of NAV_ITEMS) assert.match(item.icon, /^fa-solid fa-/);
-  assert.equal(NAV_ITEMS.find((i) => i.id === 'myDay').href, null, 'My pages opens a panel, not a route');
 });
 
 test('mobile tab bar has five items with Snap raised in the centre', () => {
