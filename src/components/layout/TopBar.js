@@ -1,5 +1,6 @@
 "use client";
 
+import React from 'react';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 import { LANGUAGES, UPCOMING_LANGUAGES } from '../../config/site';
@@ -14,8 +15,8 @@ import SampleDataBadge from '../shared/SampleDataBadge';
 import { fmtTime } from '../../lib/format';
 
 /**
- * Top bar (PRD 5.3, 20.1): brand, place switcher, language, accessibility
- * tools, alerts bell, and offline, lite and demo chips. Two rows on mobile.
+ * Top bar (PRD 5.3, 20.1): brand on left, centered search/location selector,
+ * right actions (language, accessibility, alerts, settings).
  */
 export default function TopBar() {
   const { t, i18n } = useTranslation();
@@ -26,18 +27,21 @@ export default function TopBar() {
   const offline = !online || status === 'offline';
 
   return (
-    <header role="banner" className="ms-topbar">
-      <div className="ms-topbar-row">
+    <header role="banner" className="ms-topbar ms-topbar--modern">
+      <div className="ms-topbar-left">
         <Link href="/" className="ms-brand" aria-label={t('topbar.homeLink')}>
           <span className="ms-brand-mark" aria-hidden="true">
             <i className="fa-solid fa-cloud-sun"></i>
           </span>
           <span className="ms-brand-name">{t('common.appName')}</span>
         </Link>
-        <PlaceSwitcher />
-        <AlertsBell />
       </div>
-      <div className="ms-topbar-row ms-topbar-tools">
+
+      <div className="ms-topbar-center">
+        <PlaceSwitcher />
+      </div>
+
+      <div className="ms-topbar-right">
         {offline ? (
           <span className="ms-topchip ms-topchip--offline" role="status">
             <i className="fa-solid fa-wifi" aria-hidden="true"></i>{' '}
@@ -46,7 +50,8 @@ export default function TopBar() {
         ) : null}
         {lite ? <span className="ms-topchip">{t('topbar.liteMode')}</span> : null}
         {demo ? <SampleDataBadge variant="demo" label={t('topbar.demoScenario')} /> : null}
-        <label className="ms-lang">
+
+        <label className="ms-lang ms-lang-select-wrap">
           <span className="visually-hidden">{t('topbar.language')}</span>
           <i className="fa-solid fa-language" aria-hidden="true"></i>
           <select value={language} onChange={(e) => setLanguage(e.target.value)}>
@@ -64,7 +69,13 @@ export default function TopBar() {
             </optgroup>
           </select>
         </label>
+
         <A11yMenu />
+        <AlertsBell />
+
+        <Link href="/settings" className="ms-icon-btn ms-profile-btn" aria-label={t('nav.settings')}>
+          <i className="fa-solid fa-circle-user" aria-hidden="true"></i>
+        </Link>
       </div>
     </header>
   );

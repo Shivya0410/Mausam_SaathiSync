@@ -141,7 +141,8 @@ export function createMemoryRepositories() {
     // Crowd reports are anonymous and public: NOT owner-scoped (see types.js).
     reports: {
       async create(report) {
-        pruneReports(Date.now());
+        const refTime = Date.parse(report.observedAt) || Date.now();
+        pruneReports(refTime);
         reportSequence += 1;
         const record = { ...report, id: `rpt_${Date.now().toString(36)}${reportSequence.toString(36)}`, voters: {} };
         reports.set(record.id, record);

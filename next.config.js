@@ -60,6 +60,9 @@ const nextConfig = {
 
   reactStrictMode: true,
 
+  // Dev server is accessed as localhost:3002 and 127.0.0.1:3002.
+  allowedDevOrigins: ['127.0.0.1', '192.168.29.138'],
+
   // Old SaathiSync sections whose content moved (PRD section 4.1). Every
   // other removed route falls through to the custom not-found page, which
   // links to Home, Alerts and Forecast.

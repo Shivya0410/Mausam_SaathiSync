@@ -72,20 +72,32 @@
  */
 :root {
   /* Brand (chrome) */
-  --ms-brand: #493971;
-  --ms-brand-ink: #2d1b4e;
-  --ms-brand-soft: #ede7f6;
+  --ms-brand: #432874;
+  --ms-brand-ink: #1f1238;
+  --ms-brand-soft: #f2ebfc;
   --ms-surface: #ffffff;
-  --ms-canvas: #f5f0fd;
-  --ms-ink: #1b1530;
-  --ms-muted: #574a73;
-  --ms-border: #ddd0f2;
+  --ms-surface-warm: #fefdfa;
+  --ms-canvas: #faf6f0;
+  --ms-canvas-warm: #f5eee4;
+  --ms-ink: #1c142d;
+  --ms-muted: #5e5077;
+  --ms-border: #e4d8f0;
+  --ms-border-warm: #edd9c0;
   --ms-focus: #1a56db;
+
+  /* Warm Indian Accents */
+  --ms-saffron: #f57c00;
+  --ms-saffron-light: #fff3e0;
+  --ms-saffron-border: #ffb74d;
+  --ms-emerald: #1b5e20;
+  --ms-emerald-light: #e8f5e9;
+  --ms-gold: #ffb300;
+  --ms-gold-soft: #fffde7;
 
   /* Official warning levels (IMD) */
   --ms-level-green-bg: #1b5e20;
   --ms-level-green-fg: #ffffff;
-  --ms-level-yellow-bg: #ffd54f;
+  --ms-level-yellow-bg: #f9a825;
   --ms-level-yellow-fg: #1b1530;
   /* #e65100 on white is 3.8:1, below AA for body text; darkened. */
   --ms-level-orange-bg: #bf4300;
@@ -96,9 +108,9 @@
   /* AQI (CPCB categories) */
   --ms-aqi-good-bg: #1b5e20;
   --ms-aqi-good-fg: #ffffff;
-  --ms-aqi-satisfactory-bg: #9ccc65;
+  --ms-aqi-satisfactory-bg: #7cb342;
   --ms-aqi-satisfactory-fg: #1b1530;
-  --ms-aqi-moderate-bg: #fdd835;
+  --ms-aqi-moderate-bg: #fbc02d;
   --ms-aqi-moderate-fg: #1b1530;
   --ms-aqi-poor-bg: #ef6c00;
   --ms-aqi-poor-fg: #1b1530;
@@ -116,8 +128,8 @@
   --ms-heat: #d84315;
   --ms-cold: #0277bd;
   --ms-sea: #00838f;
-  --ms-sun: #f9a825;
-  --ms-fog: #607d8b;
+  --ms-sun: #f57f17;
+  --ms-fog: #546e7a;
 
   /* Score bands (run, comfort) */
   --ms-band-excellent: #2e7d32;
@@ -137,10 +149,13 @@
   --ms-text-hero: 3.5rem;
   --ms-line: 1.5; /* Devanagari needs at least 1.5 */
 
-  --ms-radius-card: 16px;
-  --ms-shadow-card: 0 2px 10px rgba(45, 27, 78, 0.08);
-  --ms-topbar-h: 60px;
-  --ms-tabbar-h: 64px;
+  --ms-radius-card: 20px;
+  --ms-radius-lg: 24px;
+  --ms-shadow-card: 0 4px 20px rgba(35, 18, 65, 0.06), 0 1px 3px rgba(35, 18, 65, 0.04);
+  --ms-shadow-hover: 0 8px 30px rgba(35, 18, 65, 0.1), 0 2px 6px rgba(35, 18, 65, 0.06);
+  --ms-shadow-hero: 0 12px 40px rgba(35, 18, 65, 0.08), 0 2px 8px rgba(35, 18, 65, 0.04);
+  --ms-topbar-h: 64px;
+  --ms-tabbar-h: 68px;
 }
 
 /* High contrast mode (A11yProvider adds .ms-hc to <html>). */

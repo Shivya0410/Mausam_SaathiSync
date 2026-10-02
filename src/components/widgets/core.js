@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { WidgetShell, NotAvailable, heatCell, upcoming } from './shared';
 import WeatherIcon from '../shared/WeatherIcon';
@@ -26,33 +26,98 @@ export function beaufort(kmh) {
 export function HourlyWidget({ view }) {
   const { t, i18n } = useTranslation();
   const lang = i18n.language;
+  const isHi = lang === 'hi';
   const scroller = useRef(null);
+  const [metric, setMetric] = useState('temp'); // 'temp' | 'feels' | 'rain'
   const hours = upcoming(view, 24);
+
   if (!hours.length) return <WidgetShell id="hourly"><NotAvailable /></WidgetShell>;
-  const scroll = (dir) => scroller.current?.scrollBy({ left: dir * 240, behavior: 'smooth' });
+  const scroll = (dir) => scroller.current?.scrollBy({ left: dir * 260, behavior: 'smooth' });
+
   return (
     <WidgetShell id="hourly" icon="fa-solid fa-clock" more={{ href: '/forecast', label: t('widgets.hourly.more') }}>
+      <div className="ms-hourly-toolbar">
+        <div className="ms-metric-toggle-group" role="radiogroup" aria-label="Forecast metric">
+          <button
+            type="button"
+            className={`ms-metric-toggle-btn ${metric === 'temp' ? 'is-active' : ''}`}
+            role="radio"
+            aria-checked={metric === 'temp'}
+            onClick={() => setMetric('temp')}
+          >
+            <i className="fa-solid fa-temperature-half" aria-hidden="true"></i>
+            <span>{isHi ? 'तापमान' : 'Temperature'}</span>
+          </button>
+          <button
+            type="button"
+            className={`ms-metric-toggle-btn ${metric === 'feels' ? 'is-active' : ''}`}
+            role="radio"
+            aria-checked={metric === 'feels'}
+            onClick={() => setMetric('feels')}
+          >
+            <i className="fa-solid fa-hand-sparkles" aria-hidden="true"></i>
+            <span>{isHi ? 'महसूस' : 'Feels Like'}</span>
+          </button>
+          <button
+            type="button"
+            className={`ms-metric-toggle-btn ${metric === 'rain' ? 'is-active' : ''}`}
+            role="radio"
+            aria-checked={metric === 'rain'}
+            onClick={() => setMetric('rain')}
+          >
+            <i className="fa-solid fa-cloud-rain" aria-hidden="true"></i>
+            <span>{isHi ? 'बारिश' : 'Rain Chance'}</span>
+          </button>
+        </div>
+      </div>
+
       <div className="ms-strip-nav">
-        <button type="button" className="ms-icon-btn" onClick={() => scroll(-1)} aria-label={t('charts.scrollBack')}>
+        <button type="button" className="ms-icon-btn ms-strip-arrow-btn" onClick={() => scroll(-1)} aria-label={t('charts.scrollBack')}>
           <i className="fa-solid fa-chevron-left" aria-hidden="true"></i>
         </button>
         <ol className="ms-strip" ref={scroller} tabIndex={0} aria-label={t('widgets.hourly.title')}>
-          {hours.map((h) => (
-            <li key={h.time} className="ms-strip-item">
-              <span className="ms-strip-time">{fmtHour(h.time, lang)}</span>
-              <WeatherIcon code={h.wmo} isDay={h.isDay} size={28} />
-              <span className="ms-strip-temp">{fmtTemp(h.tempC)}</span>
-              <span className="ms-strip-rain">
-                <i className="fa-solid fa-droplet" aria-hidden="true"></i>
-                <span className="visually-hidden">{t('widgets.hourly.rainChance')}</span> {h.precipProb}%
-              </span>
-              <span className="ms-strip-wind">
-                {Math.round(h.windKmh)} <span className="ms-unit">{t('units.kmh')}</span>
-              </span>
-            </li>
-          ))}
+          {hours.map((h) => {
+            const isHighRain = (h.precipProb ?? 0) >= 50;
+            return (
+              <li key={h.time} className={`ms-strip-item ${metric === 'rain' && isHighRain ? 'is-rain-likely' : ''}`}>
+                <span className="ms-strip-time">{fmtHour(h.time, lang)}</span>
+                <div className="ms-strip-icon-wrap">
+                  <WeatherIcon code={h.wmo} isDay={h.isDay} size={30} />
+                </div>
+                
+                {metric === 'temp' && (
+                  <span className="ms-strip-temp">{fmtTemp(h.tempC)}</span>
+                )}
+                {metric === 'feels' && (
+                  <span className="ms-strip-temp ms-strip-temp--feels">
+                    <span className="ms-strip-label-mini">{t('now.feelsLike')}</span>
+                    {fmtTemp(h.feelsC)}
+                  </span>
+                )}
+                {metric === 'rain' && (
+                  <div className="ms-strip-rain-metric">
+                    <div className="ms-strip-rain-bar-wrap">
+                      <div className="ms-strip-rain-bar" style={{ height: `${Math.max(8, h.precipProb ?? 0)}%` }}></div>
+                    </div>
+                    <span className="ms-strip-rain-pct">{h.precipProb ?? 0}%</span>
+                  </div>
+                )}
+
+                <div className="ms-strip-badges">
+                  {metric !== 'rain' && (
+                    <span className={`ms-strip-rain-badge ${isHighRain ? 'is-high' : ''}`}>
+                      <i className="fa-solid fa-droplet" aria-hidden="true"></i> {h.precipProb ?? 0}%
+                    </span>
+                  )}
+                  <span className="ms-strip-wind">
+                    <i className="fa-solid fa-wind" aria-hidden="true"></i> {Math.round(h.windKmh)} {t('units.kmh')}
+                  </span>
+                </div>
+              </li>
+            );
+          })}
         </ol>
-        <button type="button" className="ms-icon-btn" onClick={() => scroll(1)} aria-label={t('charts.scrollForward')}>
+        <button type="button" className="ms-icon-btn ms-strip-arrow-btn" onClick={() => scroll(1)} aria-label={t('charts.scrollForward')}>
           <i className="fa-solid fa-chevron-right" aria-hidden="true"></i>
         </button>
       </div>
@@ -66,6 +131,7 @@ export function DailyWidget({ view, env }) {
   const lang = i18n.language;
   const days = view.ctx.daily.filter((d) => d.date >= env.today).slice(0, 7);
   if (!days.length) return <WidgetShell id="daily"><NotAvailable /></WidgetShell>;
+
   const warnLevel = (date) =>
     Math.max(
       0,
@@ -73,31 +139,59 @@ export function DailyWidget({ view, env }) {
         .filter((w) => (w.validFrom || '').slice(0, 10) <= date && (w.validTo || '9999').slice(0, 10) >= date)
         .map((w) => w.level),
     );
+
+  // Find min/max across all 7 days for visual temperature range bar
+  const allMax = Math.max(...days.map((d) => d.maxC ?? 30));
+  const allMin = Math.min(...days.map((d) => d.minC ?? 20));
+  const tempSpan = Math.max(1, allMax - allMin);
+
   return (
     <WidgetShell id="daily" icon="fa-solid fa-calendar-week" more={{ href: '/forecast', label: t('widgets.daily.more') }}>
       <ul className="ms-daylist">
         {days.map((d) => {
           const rel = relativeDay(d.date, env.today);
           const level = warnLevel(d.date);
+          const leftPct = Math.round((((d.minC ?? allMin) - allMin) / tempSpan) * 100);
+          const widthPct = Math.max(15, Math.round((((d.maxC ?? allMax) - (d.minC ?? allMin)) / tempSpan) * 100));
+
           return (
-            <li key={d.date}>
-              <span className="ms-day-name">{rel ? t(`common.${rel}`) : fmtWeekday(d.date, lang)}</span>
-              <WeatherIcon code={d.wmo} size={26} />
-              <span className="ms-day-cond">{t(`wmo.${d.wmo}`)}</span>
-              <span className="ms-day-rain">
-                <i className="fa-solid fa-droplet" aria-hidden="true"></i> {d.precipProbMax}%
-              </span>
-              <span className="ms-day-temps">
-                <strong>{fmtTemp(d.maxC)}</strong> / {fmtTemp(d.minC)}
-              </span>
-              <span className="ms-day-warn">
+            <li key={d.date} className="ms-day-row">
+              <div className="ms-day-lead">
+                <span className="ms-day-name">{rel ? t(`common.${rel}`) : fmtWeekday(d.date, lang)}</span>
+                <span className="ms-day-date-sub">{d.date.slice(5)}</span>
+              </div>
+
+              <div className="ms-day-condition">
+                <WeatherIcon code={d.wmo} size={26} />
+                <span className="ms-day-cond-text">{t(`wmo.${d.wmo}`)}</span>
+              </div>
+
+              <div className="ms-day-rain-prob">
+                <div className="ms-rain-pill">
+                  <i className="fa-solid fa-droplet" aria-hidden="true"></i>
+                  <span>{d.precipProbMax ?? 0}%</span>
+                </div>
+              </div>
+
+              <div className="ms-day-temps-bar-wrap">
+                <span className="ms-day-temp-min">{fmtTemp(d.minC)}</span>
+                <div className="ms-day-temp-bar-bg" aria-hidden="true">
+                  <div
+                    className="ms-day-temp-bar-fill"
+                    style={{ left: `${leftPct}%`, width: `${widthPct}%` }}
+                  ></div>
+                </div>
+                <span className="ms-day-temp-max">{fmtTemp(d.maxC)}</span>
+              </div>
+
+              <div className="ms-day-warn">
                 {level >= 2 ? (
                   <span className={`ms-level ms-level--${levelName(level)} ms-level--dot`} title={t(`levels.${levelName(level)}`)}>
                     <LevelShape level={levelName(level)} />
                     <span className="visually-hidden">{t(`levels.${levelName(level)}`)}</span>
                   </span>
                 ) : null}
-              </span>
+              </div>
             </li>
           );
         })}

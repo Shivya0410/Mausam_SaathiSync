@@ -78,18 +78,31 @@ export default function AlertsPage() {
                 <p className="ms-muted">{t('alerts.imdNotConnected')}</p>
               </section>
             ) : status === 'not_applicable' ? (
-              <section className="ms-card" role="status">
-                <p>{t('levels.notApplicable')}</p>
+              <section className="ms-card ms-notice-card" role="status">
+                <div className="ms-notice-content">
+                  <div className="ms-notice-icon-box">
+                    <i className="fa-solid fa-map-location-dot" aria-hidden="true"></i>
+                  </div>
+                  <div>
+                    <h3 className="ms-notice-title">{t('levels.notApplicable')}</h3>
+                    <p className="ms-muted ms-notice-sub">{t('alerts.checkedSources')}</p>
+                  </div>
+                </div>
               </section>
             ) : (
               <>
                 {status === 'partial' ? <p className="ms-muted" role="status">{t('alerts.partial')}</p> : null}
                 {!warnings.length ? (
-                  <section className="ms-card">
-                    <p className="ms-status ms-status--none">
-                      <i className="fa-solid fa-circle-check" aria-hidden="true"></i> {t('levels.noWarnings')}
-                    </p>
-                    <p className="ms-muted">{t('alerts.checkedSources')}</p>
+                  <section className="ms-card ms-no-warnings-card">
+                    <div className="ms-notice-content">
+                      <div className="ms-notice-icon-box ms-notice-icon-box--green">
+                        <i className="fa-solid fa-circle-check" aria-hidden="true"></i>
+                      </div>
+                      <div>
+                        <h3 className="ms-notice-title">{t('levels.noWarnings')}</h3>
+                        <p className="ms-muted ms-notice-sub">{t('alerts.checkedSources')}</p>
+                      </div>
+                    </div>
                   </section>
                 ) : null}
 
@@ -176,30 +189,52 @@ export default function AlertsPage() {
 
       {settled ? (
         <>
-        <section className="ms-card" id="colours" aria-labelledby="al-legend">
-          <h2 id="al-legend">{t('alerts.legend')}</h2>
+        <section className="ms-card ms-legend-section" id="colours" aria-labelledby="al-legend">
+          <div className="ms-legend-top-row">
+            <h2 id="al-legend">{t('alerts.legend')}</h2>
+            <Link href="/learn/colours" className="ms-learn-btn">
+              <i className="fa-solid fa-graduation-cap" aria-hidden="true"></i> {t('alerts.learnColours')}
+            </Link>
+          </div>
           <ul className="ms-legend">
             {['green', 'yellow', 'orange', 'red'].map((l) => (
-              <li key={l}>
-                <LevelBadge level={l} /> {t(`levels.action.${l}`)}: {t(`alerts.legendText.${l}`)}
+              <li key={l} className={`ms-legend-item ms-legend-item--${l}`}>
+                <div className="ms-legend-badge-row">
+                  <LevelBadge level={l} />
+                  <span className="ms-legend-action">{t(`levels.action.${l}`)}</span>
+                </div>
+                <p className="ms-legend-desc">{t(`alerts.legendText.${l}`)}</p>
               </li>
             ))}
           </ul>
-          <Link href="/learn/colours">{t('alerts.learnColours')}</Link>
         </section>
 
-        <section className="ms-card" aria-labelledby="al-emergency">
-          <h2 id="al-emergency">{t('alerts.emergency')}</h2>
+        <section className="ms-card ms-emergency-section" aria-labelledby="al-emergency">
+          <div className="ms-section-header-row">
+            <h2 id="al-emergency">{t('alerts.emergency')}</h2>
+            <span className="ms-emergency-badge-tag">
+              <i className="fa-solid fa-shield-halved" aria-hidden="true"></i> 24x7 Verified
+            </span>
+          </div>
           <ul className="ms-emergency">
             {EMERGENCY_NUMBERS.filter((n) => ['112', '108', '1070', '1077', '1078'].includes(n.number)).map((n) => (
-              <li key={n.number}>
-                <a href={`tel:${n.number}`} className={`ms-btn ${n.primary ? '' : 'ms-btn--secondary'}`}>
-                  <i className="fa-solid fa-phone" aria-hidden="true"></i> {n.number} · {t(`emergency.${n.key}`)}
+              <li key={n.number} className="ms-emergency-item">
+                <a
+                  href={`tel:${n.number}`}
+                  className={`ms-btn ms-emergency-btn ${n.primary ? 'ms-emergency-btn--primary' : 'ms-emergency-btn--secondary'}`}
+                >
+                  <span className="ms-emergency-icon-circle">
+                    <i className="fa-solid fa-phone" aria-hidden="true"></i>
+                  </span>
+                  <div className="ms-emergency-details">
+                    <span className="ms-emergency-number-text">{n.number}</span>
+                    <span className="ms-emergency-label-text">{t(`emergency.${n.key}`)}</span>
+                  </div>
                 </a>
               </li>
             ))}
           </ul>
-          <p className="ms-muted">{t('alerts.verifyNumbers')}</p>
+          <p className="ms-muted ms-emergency-verify-note">{t('alerts.verifyNumbers')}</p>
         </section>
         </>
       ) : null}

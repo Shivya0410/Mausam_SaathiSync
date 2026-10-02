@@ -49,6 +49,9 @@ export function wmoInfo(code, isDay = true) {
 export const isThunderCode = (code) => code === 95 || code === 96 || code === 99;
 export const isHailCode = (code) => code === 96 || code === 99;
 export const isFogCode = (code) => code === 45 || code === 48;
+export const isRainCode = (code) => [61, 63, 65, 66, 67, 80, 81, 82].includes(code);
+export const isDrizzleCode = (code) => [51, 53, 55, 56, 57].includes(code);
+export const isSnowCode = (code) => [71, 73, 75, 77, 85, 86].includes(code);
 
 /** Rough severity for choosing a day's dominant condition. */
 export function wmoWeight(code) {

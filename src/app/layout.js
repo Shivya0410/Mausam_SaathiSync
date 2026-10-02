@@ -6,6 +6,7 @@ import "../styles/lilac-theme.css";
 import "../styles/shell.css";
 import "../styles/app.css";
 import "../styles/icons.css";
+import "../styles/weather-visuals.css";
 
 import { Noto_Sans, Noto_Sans_Devanagari } from "next/font/google";
 import Providers from "./providers";

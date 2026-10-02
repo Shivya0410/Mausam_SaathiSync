@@ -16,6 +16,7 @@ import { sendCardFeedback } from "../lib/reportsClient";
 import { useReady } from "../lib/hooks/useReady";
 import { ensureLanguage } from "../i18n";
 import { toggleHabit } from "../lib/mausam/ready";
+import PersonalizationBar from "../components/home/PersonalizationBar";
 import MemberSwitcher from "../components/home/MemberSwitcher";
 import Nudges from "../components/home/Nudges";
 import { WIDGET_COMPONENTS } from "../components/widgets";
@@ -142,6 +143,7 @@ export default function Home() {
             </div>
           )}
         </div>
+        {active && !simple ? <PersonalizationBar /> : null}
         {active && !simple ? <Nudges now={now} /> : null}
         {active && !simple ? <MyPagesChips personaIds={personaIds} /> : null}
         {active && simple ? (
