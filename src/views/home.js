@@ -28,6 +28,7 @@ import { personalView } from "../lib/mausam/personal";
 import { mergeHouseholdCards } from "../lib/mausam/rules/household";
 import { summarize } from "../lib/mausam/summary";
 import { summaryText } from "../lib/mausam/cardText";
+import WeatherSplash from "../components/splash/WeatherSplash";
 
 const LITE_WIDGETS = ["hourly", "daily"];
 
@@ -119,6 +120,7 @@ export default function Home() {
 
   return (
     <WithNavbar>
+      <WeatherSplash />
       <div className="ms-home">
         {members.length ? (
           <MemberSwitcher members={members} selected={selected} onSelect={(id) => setHousehold((h) => ({ ...h, selected: id }))} />

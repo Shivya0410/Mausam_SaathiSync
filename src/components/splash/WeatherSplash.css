@@ -1,0 +1,640 @@
+/* ==========================================================================
+   MAUSAM SAATHI — PREMIUM ANIMATED SPLASH EXPERIENCE
+   Inspired by official Mausam / IMD mobile app opening
+   ========================================================================== */
+
+.ms-splash-container {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  z-index: 99999;
+  overflow: hidden;
+  user-select: none;
+  touch-action: none;
+  font-family: var(--font-noto-sans, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.65s;
+  will-change: opacity, transform, filter;
+}
+
+/* Exit transition state */
+.ms-splash-container.ms-splash--exiting {
+  opacity: 0;
+  transform: scale(1.06);
+  filter: blur(8px);
+  pointer-events: none;
+  visibility: hidden;
+}
+
+/* Base Scene Layer */
+.ms-splash-scene {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.ms-splash-scene.ms-splash-scene--active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ==========================================================================
+   SCENE 1: THUNDERSTORM ENVIRONMENT
+   ========================================================================== */
+.ms-splash-scene--thunderstorm {
+  background: radial-gradient(circle at 50% 20%, #1e293b 0%, #0f172a 60%, #020617 100%);
+}
+
+/* Ambient Lightning Sky Flash */
+.ms-storm-flash-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 60% 25%, rgba(186, 230, 253, 0.85) 0%, rgba(147, 197, 253, 0.5) 40%, rgba(30, 58, 138, 0.2) 80%);
+  opacity: 0;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  animation: msThunderFlashes 2s cubic-bezier(0.1, 0.9, 0.2, 1) infinite;
+}
+
+@keyframes msThunderFlashes {
+  0%, 14%, 22%, 52%, 60%, 100% {
+    opacity: 0;
+  }
+  16% {
+    opacity: 0.9;
+  }
+  18% {
+    opacity: 0.35;
+  }
+  20% {
+    opacity: 0.85;
+  }
+  54% {
+    opacity: 0.65;
+  }
+  56% {
+    opacity: 0.15;
+  }
+  58% {
+    opacity: 0.75;
+  }
+}
+
+/* SVG Lightning Bolts */
+.ms-lightning-bolt-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.ms-lightning-svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ms-lightning-path {
+  stroke: #ffffff;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  filter: drop-shadow(0 0 8px #38bdf8) drop-shadow(0 0 20px #60a5fa) drop-shadow(0 0 35px #93c5fd);
+  animation: msBoltStrike 2s ease-in-out infinite;
+}
+
+.ms-lightning-branch {
+  stroke: #e0f2fe;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  filter: drop-shadow(0 0 5px #38bdf8);
+  animation: msBoltStrike 2s ease-in-out infinite;
+}
+
+@keyframes msBoltStrike {
+  0%, 14%, 22%, 52%, 60%, 100% {
+    opacity: 0;
+    stroke-dashoffset: 200;
+  }
+  16%, 19% {
+    opacity: 1;
+    stroke-dashoffset: 0;
+  }
+  20% {
+    opacity: 0.4;
+  }
+  54%, 57% {
+    opacity: 0.95;
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Storm Cloud Layers */
+.ms-storm-clouds {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.ms-storm-cloud-puff {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px);
+  background: rgba(30, 41, 59, 0.85);
+  animation: msStormCloudFloat 8s ease-in-out infinite alternate;
+}
+
+.ms-storm-cloud-puff--1 {
+  width: 120vw;
+  height: 55vh;
+  top: -15vh;
+  left: -10vw;
+  background: radial-gradient(ellipse at center, rgba(51, 65, 85, 0.9) 0%, rgba(30, 41, 59, 0.6) 70%, transparent 100%);
+  animation-duration: 9s;
+}
+
+.ms-storm-cloud-puff--2 {
+  width: 110vw;
+  height: 60vh;
+  top: 15vh;
+  right: -20vw;
+  background: radial-gradient(ellipse at center, rgba(30, 41, 59, 0.95) 0%, rgba(15, 23, 42, 0.8) 70%, transparent 100%);
+  animation-duration: 11s;
+}
+
+.ms-storm-cloud-puff--3 {
+  width: 140vw;
+  height: 50vh;
+  bottom: -10vh;
+  left: -20vw;
+  background: radial-gradient(ellipse at center, rgba(15, 23, 42, 0.95) 0%, rgba(2, 6, 23, 0.9) 70%, transparent 100%);
+  animation-duration: 13s;
+}
+
+@keyframes msStormCloudFloat {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(15px, 10px) scale(1.04);
+  }
+  100% {
+    transform: translate(-10px, -8px) scale(0.98);
+  }
+}
+
+/* ==========================================================================
+   SCENE 2: CLOUDY / CLEARING SKY ENVIRONMENT
+   ========================================================================== */
+.ms-splash-scene--cloudy {
+  background: linear-gradient(180deg, #b0c4de 0%, #d8e2ec 35%, #eef3f8 70%, #f8fafc 100%);
+}
+
+/* Glowing Ambient Sunlight */
+.ms-sun-radiance {
+  position: absolute;
+  top: 12%;
+  right: 15%;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.95) 0%, rgba(254, 240, 138, 0.6) 30%, rgba(253, 224, 71, 0.25) 55%, transparent 75%);
+  filter: blur(25px);
+  pointer-events: none;
+  animation: msSunPulse 4s ease-in-out infinite alternate;
+  z-index: 1;
+}
+
+/* Sun Rays Effect */
+.ms-sun-rays {
+  position: absolute;
+  top: -5%;
+  right: -5%;
+  width: 400px;
+  height: 400px;
+  background: conic-gradient(
+    from 180deg at 50% 50%,
+    transparent 0deg,
+    rgba(255, 255, 255, 0.18) 25deg,
+    transparent 50deg,
+    rgba(255, 255, 255, 0.22) 80deg,
+    transparent 110deg,
+    rgba(255, 255, 255, 0.15) 140deg,
+    transparent 180deg,
+    rgba(255, 255, 255, 0.2) 220deg,
+    transparent 260deg
+  );
+  filter: blur(20px);
+  pointer-events: none;
+  animation: msSunRaysRotate 20s linear infinite;
+  z-index: 1;
+}
+
+@keyframes msSunPulse {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.85;
+  }
+  100% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+
+@keyframes msSunRaysRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Drifting White/Cumulus Clouds */
+.ms-cloudy-clouds-wrap {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.ms-cumulus-cloud {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(30px);
+  opacity: 0.88;
+}
+
+.ms-cumulus-cloud--1 {
+  width: 500px;
+  height: 300px;
+  top: 5%;
+  left: -80px;
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.95) 0%, rgba(241, 245, 249, 0.7) 65%, transparent 100%);
+  animation: msDriftHoriz 12s linear infinite alternate;
+}
+
+.ms-cumulus-cloud--2 {
+  width: 550px;
+  height: 320px;
+  top: 35%;
+  right: -100px;
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.9) 0%, rgba(226, 232, 240, 0.65) 60%, transparent 100%);
+  animation: msDriftHorizReverse 14s linear infinite alternate;
+}
+
+.ms-cumulus-cloud--3 {
+  width: 600px;
+  height: 350px;
+  bottom: 0;
+  left: -60px;
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.95) 0%, rgba(241, 245, 249, 0.8) 60%, transparent 100%);
+  animation: msDriftHoriz 16s linear infinite alternate;
+}
+
+@keyframes msDriftHoriz {
+  0% {
+    transform: translateX(-20px) translateY(0);
+  }
+  100% {
+    transform: translateX(40px) translateY(-10px);
+  }
+}
+
+@keyframes msDriftHorizReverse {
+  0% {
+    transform: translateX(30px) translateY(0);
+  }
+  100% {
+    transform: translateX(-35px) translateY(12px);
+  }
+}
+
+/* ==========================================================================
+   SCENE 3: RAIN ENVIRONMENT
+   ========================================================================== */
+.ms-splash-scene--rain {
+  background: radial-gradient(circle at 50% 30%, #334155 0%, #1e293b 55%, #0f172a 100%);
+}
+
+/* Rain Canvas for high-performance physics streaks */
+.ms-rain-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Lens Bokeh / Water Droplets on Camera */
+.ms-lens-droplets {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.ms-water-drop {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.3) 30%, rgba(255, 255, 255, 0.05) 70%, rgba(0, 0, 0, 0.15) 100%);
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.8),
+              0 2px 4px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(1.5px);
+  -webkit-backdrop-filter: blur(1.5px);
+  opacity: 0.85;
+}
+
+.ms-water-drop--1 { top: 18%; left: 12%; width: 16px; height: 18px; }
+.ms-water-drop--2 { top: 28%; right: 18%; width: 22px; height: 26px; }
+.ms-water-drop--3 { bottom: 32%; left: 22%; width: 14px; height: 16px; }
+.ms-water-drop--4 { bottom: 20%; right: 15%; width: 20px; height: 24px; }
+.ms-water-drop--5 { top: 60%; left: 8%; width: 12px; height: 14px; }
+.ms-water-drop--6 { top: 48%; right: 28%; width: 18px; height: 20px; }
+
+/* Soft Bokeh Orbs in Background */
+.ms-bokeh-orbs {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ms-bokeh-orb {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(186, 230, 253, 0.18);
+  filter: blur(18px);
+  animation: msBokehFloat 6s ease-in-out infinite alternate;
+}
+
+.ms-bokeh-orb--1 { top: 15%; right: 20%; width: 110px; height: 110px; animation-duration: 5s; }
+.ms-bokeh-orb--2 { top: 55%; left: 10%; width: 140px; height: 140px; animation-duration: 7s; }
+.ms-bokeh-orb--3 { bottom: 15%; right: 25%; width: 90px; height: 90px; animation-duration: 6s; }
+
+@keyframes msBokehFloat {
+  0% { transform: translateY(0) scale(0.9); opacity: 0.15; }
+  100% { transform: translateY(-15px) scale(1.1); opacity: 0.3; }
+}
+
+/* ==========================================================================
+   CENTERED MAUSAM & IMD BRANDING CONTENT
+   ========================================================================== */
+.ms-splash-branding {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: env(safe-area-inset-top, 24px) 24px env(safe-area-inset-bottom, 24px);
+  box-sizing: border-box;
+  text-align: center;
+  transition: color 0.6s ease, text-shadow 0.6s ease;
+}
+
+/* "Mausam" Title */
+.ms-splash-title {
+  font-size: clamp(2.8rem, 9vw, 4rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 16px 0;
+  line-height: 1.1;
+  transition: color 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              text-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: msTitleEntry 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes msTitleEntry {
+  0% {
+    opacity: 0;
+    transform: translateY(-12px) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Emblem Container */
+.ms-splash-emblem-wrap {
+  margin: 8px 0 16px 0;
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.3));
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: msEmblemEntry 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+}
+
+@keyframes msEmblemEntry {
+  0% {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Sub-branding: "Unified Mobile App" */
+.ms-splash-app-label {
+  font-size: clamp(1.1rem, 3.8vw, 1.35rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0 0 4px 0;
+  line-height: 1.25;
+  transition: color 0.6s ease, text-shadow 0.6s ease;
+  animation: msSubEntry 1s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+}
+
+/* Sub-branding: "India Meteorological Department" */
+.ms-splash-dept-label {
+  font-size: clamp(0.85rem, 2.8vw, 1rem);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  margin: 0;
+  line-height: 1.3;
+  opacity: 0.92;
+  transition: color 0.6s ease, text-shadow 0.6s ease;
+  animation: msSubEntry 1s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
+}
+
+@keyframes msSubEntry {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   DYNAMIC TEXT THEMES (DARK VS LIGHT BACKGROUNDS)
+   Matching exact Reference Screenshots
+   ========================================================================== */
+
+/* Dark themes (Thunderstorm & Rain scenes) */
+.ms-splash--dark-theme .ms-splash-title {
+  color: #ffffff;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.75), 0 0 30px rgba(56, 189, 248, 0.3);
+}
+
+.ms-splash--dark-theme .ms-splash-app-label {
+  color: #ffffff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+.ms-splash--dark-theme .ms-splash-dept-label {
+  color: #e2e8f0;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.75);
+}
+
+/* Light theme (Cloudy / Clearing scene) */
+.ms-splash--light-theme .ms-splash-title {
+  color: #0f172a;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.9), 0 4px 16px rgba(15, 23, 42, 0.12);
+}
+
+.ms-splash--light-theme .ms-splash-app-label {
+  color: #0f172a;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9);
+}
+
+.ms-splash--light-theme .ms-splash-dept-label {
+  color: #334155;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9);
+}
+
+/* ==========================================================================
+   CONTROLS & SKIP BUTTON
+   ========================================================================== */
+.ms-splash-skip-btn {
+  position: absolute;
+  top: max(env(safe-area-inset-top, 16px), 16px);
+  right: 18px;
+  z-index: 50;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  background: rgba(15, 23, 42, 0.45);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  transition: all 0.2s ease;
+  animation: msFadeIn 0.8s ease-out 0.4s both;
+}
+
+.ms-splash-skip-btn:hover {
+  background: rgba(15, 23, 42, 0.7);
+  border-color: rgba(255, 255, 255, 0.45);
+  transform: translateY(-1px);
+}
+
+.ms-splash-skip-btn:active {
+  transform: translateY(0) scale(0.97);
+}
+
+.ms-splash--light-theme .ms-splash-skip-btn {
+  background: rgba(255, 255, 255, 0.65);
+  color: #0f172a;
+  border-color: rgba(15, 23, 42, 0.15);
+}
+
+.ms-splash--light-theme .ms-splash-skip-btn:hover {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* Progress Indicator Dots */
+.ms-splash-progress-dots {
+  position: absolute;
+  bottom: max(env(safe-area-inset-bottom, 20px), 24px);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 50;
+  pointer-events: none;
+}
+
+.ms-splash-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.3);
+  transition: all 0.4s ease;
+}
+
+.ms-splash-dot--active {
+  width: 22px;
+  background: #38bdf8;
+  box-shadow: 0 0 10px #38bdf8;
+}
+
+.ms-splash--light-theme .ms-splash-dot {
+  background: rgba(15, 23, 42, 0.2);
+}
+
+.ms-splash--light-theme .ms-splash-dot--active {
+  background: #0284c7;
+  box-shadow: 0 0 8px rgba(2, 132, 199, 0.5);
+}
+
+@keyframes msFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ==========================================================================
+   REDUCED MOTION SUPPORT
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .ms-splash-container,
+  .ms-splash-scene,
+  .ms-storm-flash-overlay,
+  .ms-lightning-path,
+  .ms-lightning-branch,
+  .ms-storm-cloud-puff,
+  .ms-sun-radiance,
+  .ms-sun-rays,
+  .ms-cumulus-cloud,
+  .ms-bokeh-orb,
+  .ms-splash-title,
+  .ms-splash-emblem-wrap,
+  .ms-splash-app-label,
+  .ms-splash-dept-label {
+    animation: none !important;
+    transition: opacity 0.3s ease !important;
+  }
+}
